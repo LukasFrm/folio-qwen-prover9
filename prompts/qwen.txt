@@ -1,0 +1,5 @@
+Write a proof or disproof for the following logical statement:
+
+{statement}
+
+Use detailed reasoning and provide your answer in a clear format.

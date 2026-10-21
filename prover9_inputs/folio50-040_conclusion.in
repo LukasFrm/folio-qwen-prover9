@@ -1,0 +1,8 @@
+formulas(assumptions).
+(((((all v_x ((p_deadly_disease(v_x) -> p_come_with(v_x, c_low_survival_rate))) & all v_x ((p_severe_cancer(v_x) -> p_deadly_disease(v_x)))) & all v_x ((p_bile_duct_cancer(v_x) -> p_severe_cancer(v_x)))) & all v_x ((p_cholangiocarcinoma(v_x) -> p_bile_duct_cancer(v_x)))) & all v_x ((p_mild_flu(v_x) -> p_come_with(v_x, c_low_survival_rate)))) & -((p_bile_duct_cancer(c_colorectal_cancer) & p_come_with(c_colorectal_cancer, c_low_survival_rate)))).
+-(c_colorectal_cancer = c_low_survival_rate).
+end_of_list.
+
+formulas(goals).
+p_severe_cancer(c_colorectal_cancer).
+end_of_list.

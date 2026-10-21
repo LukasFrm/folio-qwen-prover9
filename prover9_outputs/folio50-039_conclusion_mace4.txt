@@ -1,0 +1,120 @@
+============================== Mace4 =================================
+Mace4 (64) version 2009-11A, November 2009.
+Process 29706 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Sat Oct 17 13:02:00 2026
+The command was "mace4 -t 5 -n 2 -N 8".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(assumptions).
+p_german(c_heinrich_schmidt) & p_politician(c_heinrich_schmidt) & p_member(c_heinrich_schmidt,c_prussian_state_parliament) & p_member(c_heinrich_schmidt,c_nazi_reichstag).
+c_heinrich_schmidt != c_nazi_reichstag.
+c_heinrich_schmidt != c_prussian_state_parliament.
+c_nazi_reichstag != c_prussian_state_parliament.
+end_of_list.
+
+formulas(goals).
+(all v_x (p_politician(v_x) -> -p_member(v_x,c_nazi_reichstag))).
+end_of_list.
+
+% From the command line: assign(max_seconds, 5).
+    % assign(domain_size, 2) -> assign(start_size, 2).
+    % assign(domain_size, 2) -> assign(end_size, 2).
+
+% From the command line: assign(domain_size, 2).
+
+% From the command line: assign(end_size, 8).
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 p_german(c_heinrich_schmidt) & p_politician(c_heinrich_schmidt) & p_member(c_heinrich_schmidt,c_prussian_state_parliament) & p_member(c_heinrich_schmidt,c_nazi_reichstag) # label(non_clause).  [assumption].
+2 (all v_x (p_politician(v_x) -> -p_member(v_x,c_nazi_reichstag))) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+p_german(c_heinrich_schmidt).
+p_politician(c_heinrich_schmidt).
+p_member(c_heinrich_schmidt,c_prussian_state_parliament).
+p_member(c_heinrich_schmidt,c_nazi_reichstag).
+c_heinrich_schmidt != c_nazi_reichstag.
+c_heinrich_schmidt != c_prussian_state_parliament.
+c_nazi_reichstag != c_prussian_state_parliament.
+p_politician(c1).
+p_member(c1,c_nazi_reichstag).
+end_of_list.
+
+============================== end of clauses for search =============
+
+% There are no natural numbers in the input.
+
+============================== DOMAIN SIZE 2 =========================
+
+============================== STATISTICS ============================
+
+For domain size 2.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=9, kept=9.
+Selections=1, assignments=1, propagations=4, current_models=0.
+Rewrite_terms=8, rewrite_bools=2, indexes=2.
+Rules_from_neg_clauses=2, cross_offs=2.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 3 =========================
+
+============================== MODEL =================================
+
+interpretation( 3, [number=1, seconds=0], [
+
+        function(c_heinrich_schmidt, [ 0 ]),
+
+        function(c_nazi_reichstag, [ 1 ]),
+
+        function(c_prussian_state_parliament, [ 2 ]),
+
+        function(c1, [ 0 ]),
+
+        relation(p_german(_), [ 1, 0, 0 ]),
+
+        relation(p_politician(_), [ 1, 0, 0 ]),
+
+        relation(p_member(_,_), [
+			   0, 1, 1,
+			   0, 0, 0,
+			   0, 0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 3.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=9, kept=9.
+Selections=14, assignments=15, propagations=5, current_models=1.
+Rewrite_terms=18, rewrite_bools=10, indexes=4.
+Rules_from_neg_clauses=1, cross_offs=3.
+
+============================== end of statistics =====================
+
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+Exiting with 1 model.
+
+Process 29706 exit (max_models) Sat Oct 17 13:02:00 2026
+The process finished Sat Oct 17 13:02:00 2026
+
+=== Mace4 starting on domain size 2. ===
+
+=== Mace4 starting on domain size 3. ===
+
+------ process 29706 exit (max_models) ------

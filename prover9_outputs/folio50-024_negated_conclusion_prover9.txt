@@ -1,0 +1,279 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 29657 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Sat Oct 17 13:02:00 2026
+The command was "prover9 -t 5".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(assumptions).
+(all v_x (p_born_in(v_x,c_multiple_birth) -> p_spend_time_playing_with(v_x,c_siblings))) & (all v_x ((exists v_y (p_sibling(v_x,v_y) & p_born_together(v_x,v_y))) -> p_born_in(v_x,c_multiple_birth))) & (all v_x (p_complain_about_often(v_x,c_annoying_siblings) -> (exists v_y (p_sibling(v_x,v_y) & p_born_together(v_x,v_y))))) & (all v_x (p_live_at(v_x,c_home) -> -p_live_with(v_x,c_strangers))) & (all v_x (p_spend_time_playing_with(v_x,c_siblings) -> p_live_at(v_x,c_home))) & -((p_born_in(c_luke,c_multiple_birth) | p_live_with(c_luke,c_strangers)) & -(p_born_in(c_luke,c_multiple_birth) & p_live_with(c_luke,c_strangers))).
+c_annoying_siblings != c_home.
+c_annoying_siblings != c_luke.
+c_annoying_siblings != c_multiple_birth.
+c_annoying_siblings != c_siblings.
+c_annoying_siblings != c_strangers.
+c_home != c_luke.
+c_home != c_multiple_birth.
+c_home != c_siblings.
+c_home != c_strangers.
+c_luke != c_multiple_birth.
+c_luke != c_siblings.
+c_luke != c_strangers.
+c_multiple_birth != c_siblings.
+c_multiple_birth != c_strangers.
+c_siblings != c_strangers.
+end_of_list.
+
+formulas(goals).
+-(-p_born_in(c_luke,c_multiple_birth) & -p_complain_about_often(c_luke,c_annoying_siblings)).
+end_of_list.
+
+============================== end of input ==========================
+
+% From the command line: assign(max_seconds, 5).
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (all v_x (p_born_in(v_x,c_multiple_birth) -> p_spend_time_playing_with(v_x,c_siblings))) & (all v_x ((exists v_y (p_sibling(v_x,v_y) & p_born_together(v_x,v_y))) -> p_born_in(v_x,c_multiple_birth))) & (all v_x (p_complain_about_often(v_x,c_annoying_siblings) -> (exists v_y (p_sibling(v_x,v_y) & p_born_together(v_x,v_y))))) & (all v_x (p_live_at(v_x,c_home) -> -p_live_with(v_x,c_strangers))) & (all v_x (p_spend_time_playing_with(v_x,c_siblings) -> p_live_at(v_x,c_home))) & -((p_born_in(c_luke,c_multiple_birth) | p_live_with(c_luke,c_strangers)) & -(p_born_in(c_luke,c_multiple_birth) & p_live_with(c_luke,c_strangers))) # label(non_clause).  [assumption].
+2 -(-p_born_in(c_luke,c_multiple_birth) & -p_complain_about_often(c_luke,c_annoying_siblings)) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+-p_born_in(x,c_multiple_birth) | p_spend_time_playing_with(x,c_siblings).  [clausify(1)].
+-p_sibling(x,y) | -p_born_together(x,y) | p_born_in(x,c_multiple_birth).  [clausify(1)].
+-p_complain_about_often(x,c_annoying_siblings) | p_sibling(x,f1(x)).  [clausify(1)].
+-p_complain_about_often(x,c_annoying_siblings) | p_born_together(x,f1(x)).  [clausify(1)].
+-p_live_at(x,c_home) | -p_live_with(x,c_strangers).  [clausify(1)].
+-p_spend_time_playing_with(x,c_siblings) | p_live_at(x,c_home).  [clausify(1)].
+-p_born_in(c_luke,c_multiple_birth) | p_live_with(c_luke,c_strangers).  [clausify(1)].
+-p_live_with(c_luke,c_strangers) | p_born_in(c_luke,c_multiple_birth).  [clausify(1)].
+c_annoying_siblings != c_home.  [assumption].
+c_annoying_siblings != c_luke.  [assumption].
+c_annoying_siblings != c_multiple_birth.  [assumption].
+c_annoying_siblings != c_siblings.  [assumption].
+c_annoying_siblings != c_strangers.  [assumption].
+c_home != c_luke.  [assumption].
+c_home != c_multiple_birth.  [assumption].
+c_home != c_siblings.  [assumption].
+c_home != c_strangers.  [assumption].
+c_luke != c_multiple_birth.  [assumption].
+c_luke != c_siblings.  [assumption].
+c_luke != c_strangers.  [assumption].
+c_multiple_birth != c_siblings.  [assumption].
+c_multiple_birth != c_strangers.  [assumption].
+c_siblings != c_strangers.  [assumption].
+-p_born_in(c_luke,c_multiple_birth).  [deny(2)].
+-p_complain_about_often(c_luke,c_annoying_siblings).  [deny(2)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+Eliminating p_sibling/2
+3 -p_complain_about_often(x,c_annoying_siblings) | p_sibling(x,f1(x)).  [clausify(1)].
+4 -p_sibling(x,y) | -p_born_together(x,y) | p_born_in(x,c_multiple_birth).  [clausify(1)].
+Derived: -p_complain_about_often(x,c_annoying_siblings) | -p_born_together(x,f1(x)) | p_born_in(x,c_multiple_birth).  [resolve(3,b,4,a)].
+
+============================== end predicate elimination =============
+
+Auto_denials:
+  % assign(max_proofs, 18).  % (Horn set with more than one neg. clause)
+
+WARNING, because some of the denials share constants,
+some of the denials or their descendents may be subsumed,
+preventing the target number of proofs from being found.
+The shared constants are:  c_siblings, c_multiple_birth, c_luke, c_annoying_siblings, c_strangers, c_home.
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ =, p_born_in, p_born_together, p_complain_about_often, p_live_with, p_spend_time_playing_with, p_live_at ]).
+Function symbol precedence:  function_order([ c_luke, c_multiple_birth, c_annoying_siblings, c_siblings, c_strangers, c_home, f1 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(neg_binary_resolution).  % (HNE depth_diff=0)
+  % clear(ordered_res).  % (HNE depth_diff=0)
+  % set(ur_resolution).  % (HNE depth_diff=0)
+    % set(ur_resolution) -> set(pos_ur_resolution).
+    % set(ur_resolution) -> set(neg_ur_resolution).
+
+Auto_process settings:
+  % set(unit_deletion).  % (Horn set with negative nonunits)
+
+kept:      5 -p_born_in(x,c_multiple_birth) | p_spend_time_playing_with(x,c_siblings).  [clausify(1)].
+kept:      6 -p_complain_about_often(x,c_annoying_siblings) | p_born_together(x,f1(x)).  [clausify(1)].
+kept:      7 -p_live_at(x,c_home) | -p_live_with(x,c_strangers).  [clausify(1)].
+kept:      8 -p_spend_time_playing_with(x,c_siblings) | p_live_at(x,c_home).  [clausify(1)].
+kept:      9 -p_born_in(c_luke,c_multiple_birth) | p_live_with(c_luke,c_strangers).  [clausify(1)].
+kept:      10 -p_live_with(c_luke,c_strangers) | p_born_in(c_luke,c_multiple_birth).  [clausify(1)].
+           11 c_annoying_siblings != c_home.  [assumption].
+kept:      12 c_home != c_annoying_siblings.  [copy(11),flip(a)].
+kept:      13 c_annoying_siblings != c_luke.  [assumption].
+kept:      14 c_annoying_siblings != c_multiple_birth.  [assumption].
+           15 c_annoying_siblings != c_siblings.  [assumption].
+kept:      16 c_siblings != c_annoying_siblings.  [copy(15),flip(a)].
+           17 c_annoying_siblings != c_strangers.  [assumption].
+kept:      18 c_strangers != c_annoying_siblings.  [copy(17),flip(a)].
+kept:      19 c_home != c_luke.  [assumption].
+kept:      20 c_home != c_multiple_birth.  [assumption].
+kept:      21 c_home != c_siblings.  [assumption].
+kept:      22 c_home != c_strangers.  [assumption].
+           23 c_luke != c_multiple_birth.  [assumption].
+kept:      24 c_multiple_birth != c_luke.  [copy(23),flip(a)].
+           25 c_luke != c_siblings.  [assumption].
+kept:      26 c_siblings != c_luke.  [copy(25),flip(a)].
+           27 c_luke != c_strangers.  [assumption].
+kept:      28 c_strangers != c_luke.  [copy(27),flip(a)].
+           29 c_multiple_birth != c_siblings.  [assumption].
+kept:      30 c_siblings != c_multiple_birth.  [copy(29),flip(a)].
+           31 c_multiple_birth != c_strangers.  [assumption].
+kept:      32 c_strangers != c_multiple_birth.  [copy(31),flip(a)].
+           33 c_siblings != c_strangers.  [assumption].
+kept:      34 c_strangers != c_siblings.  [copy(33),flip(a)].
+kept:      35 -p_born_in(c_luke,c_multiple_birth).  [deny(2)].
+kept:      36 -p_complain_about_often(c_luke,c_annoying_siblings).  [deny(2)].
+kept:      37 -p_complain_about_often(x,c_annoying_siblings) | -p_born_together(x,f1(x)) | p_born_in(x,c_multiple_birth).  [resolve(3,b,4,a)].
+kept:      38 -p_live_with(c_luke,c_strangers).  [back_unit_del(10),unit_del(b,35)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+5 -p_born_in(x,c_multiple_birth) | p_spend_time_playing_with(x,c_siblings).  [clausify(1)].
+6 -p_complain_about_often(x,c_annoying_siblings) | p_born_together(x,f1(x)).  [clausify(1)].
+7 -p_live_at(x,c_home) | -p_live_with(x,c_strangers).  [clausify(1)].
+8 -p_spend_time_playing_with(x,c_siblings) | p_live_at(x,c_home).  [clausify(1)].
+12 c_home != c_annoying_siblings.  [copy(11),flip(a)].
+13 c_annoying_siblings != c_luke.  [assumption].
+14 c_annoying_siblings != c_multiple_birth.  [assumption].
+16 c_siblings != c_annoying_siblings.  [copy(15),flip(a)].
+18 c_strangers != c_annoying_siblings.  [copy(17),flip(a)].
+19 c_home != c_luke.  [assumption].
+20 c_home != c_multiple_birth.  [assumption].
+21 c_home != c_siblings.  [assumption].
+22 c_home != c_strangers.  [assumption].
+24 c_multiple_birth != c_luke.  [copy(23),flip(a)].
+26 c_siblings != c_luke.  [copy(25),flip(a)].
+28 c_strangers != c_luke.  [copy(27),flip(a)].
+30 c_siblings != c_multiple_birth.  [copy(29),flip(a)].
+32 c_strangers != c_multiple_birth.  [copy(31),flip(a)].
+34 c_strangers != c_siblings.  [copy(33),flip(a)].
+35 -p_born_in(c_luke,c_multiple_birth).  [deny(2)].
+36 -p_complain_about_often(c_luke,c_annoying_siblings).  [deny(2)].
+37 -p_complain_about_often(x,c_annoying_siblings) | -p_born_together(x,f1(x)) | p_born_in(x,c_multiple_birth).  [resolve(3,b,4,a)].
+38 -p_live_with(c_luke,c_strangers).  [back_unit_del(10),unit_del(b,35)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.00 seconds.
+
+given #1 (I,wt=6): 5 -p_born_in(x,c_multiple_birth) | p_spend_time_playing_with(x,c_siblings).  [clausify(1)].
+
+given #2 (I,wt=7): 6 -p_complain_about_often(x,c_annoying_siblings) | p_born_together(x,f1(x)).  [clausify(1)].
+
+given #3 (I,wt=6): 7 -p_live_at(x,c_home) | -p_live_with(x,c_strangers).  [clausify(1)].
+
+given #4 (I,wt=6): 8 -p_spend_time_playing_with(x,c_siblings) | p_live_at(x,c_home).  [clausify(1)].
+
+given #5 (I,wt=3): 12 c_home != c_annoying_siblings.  [copy(11),flip(a)].
+
+given #6 (I,wt=3): 13 c_annoying_siblings != c_luke.  [assumption].
+
+given #7 (I,wt=3): 14 c_annoying_siblings != c_multiple_birth.  [assumption].
+
+given #8 (I,wt=3): 16 c_siblings != c_annoying_siblings.  [copy(15),flip(a)].
+
+given #9 (I,wt=3): 18 c_strangers != c_annoying_siblings.  [copy(17),flip(a)].
+
+given #10 (I,wt=3): 19 c_home != c_luke.  [assumption].
+
+given #11 (I,wt=3): 20 c_home != c_multiple_birth.  [assumption].
+
+given #12 (I,wt=3): 21 c_home != c_siblings.  [assumption].
+
+given #13 (I,wt=3): 22 c_home != c_strangers.  [assumption].
+
+given #14 (I,wt=3): 24 c_multiple_birth != c_luke.  [copy(23),flip(a)].
+
+given #15 (I,wt=3): 26 c_siblings != c_luke.  [copy(25),flip(a)].
+
+given #16 (I,wt=3): 28 c_strangers != c_luke.  [copy(27),flip(a)].
+
+given #17 (I,wt=3): 30 c_siblings != c_multiple_birth.  [copy(29),flip(a)].
+
+given #18 (I,wt=3): 32 c_strangers != c_multiple_birth.  [copy(31),flip(a)].
+
+given #19 (I,wt=3): 34 c_strangers != c_siblings.  [copy(33),flip(a)].
+
+given #20 (I,wt=3): 35 -p_born_in(c_luke,c_multiple_birth).  [deny(2)].
+
+given #21 (I,wt=3): 36 -p_complain_about_often(c_luke,c_annoying_siblings).  [deny(2)].
+
+given #22 (I,wt=10): 37 -p_complain_about_often(x,c_annoying_siblings) | -p_born_together(x,f1(x)) | p_born_in(x,c_multiple_birth).  [resolve(3,b,4,a)].
+
+given #23 (I,wt=3): 38 -p_live_with(c_luke,c_strangers).  [back_unit_del(10),unit_del(b,35)].
+
+given #24 (A,wt=6): 39 -p_spend_time_playing_with(x,c_siblings) | -p_live_with(x,c_strangers).  [resolve(8,b,7,a)].
+
+given #25 (F,wt=6): 40 -p_live_with(x,c_strangers) | -p_born_in(x,c_multiple_birth).  [resolve(39,a,5,b)].
+
+given #26 (F,wt=10): 41 -p_live_with(x,c_strangers) | -p_complain_about_often(x,c_annoying_siblings) | -p_born_together(x,f1(x)).  [resolve(40,b,37,c)].
+
+given #27 (F,wt=6): 42 -p_live_with(x,c_strangers) | -p_complain_about_often(x,c_annoying_siblings).  [resolve(41,c,6,b),merge(c)].
+
+============================== STATISTICS ============================
+
+Given=27. Generated=30. Kept=29. proofs=0.
+Usable=26. Sos=0. Demods=0. Limbo=0, Disabled=29. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=1. Back_subsumed=2.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=1.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=13.
+Megabytes=0.09.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+SEARCH FAILED
+
+Exiting with failure.
+
+Process 29657 exit (sos_empty) Sat Oct 17 13:02:00 2026
+
+WARNING: denials share constants (see output).
+
+
+SEARCH FAILED
+
+------ process 29657 exit (sos_empty) ------
+

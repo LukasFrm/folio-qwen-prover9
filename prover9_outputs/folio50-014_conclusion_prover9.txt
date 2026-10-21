@@ -1,0 +1,292 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 29624 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Sat Oct 17 13:01:59 2026
+The command was "prover9 -t 5".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(assumptions).
+(exists v_x (p_british_sitcom(c_badults) & p_series(c_badults) & p_member_of(v_x,c_pappys) & p_star(v_x,c_badults))) & p_piloted_in(c_badults,c_july2013) & p_piloted_on(c_badults,c_b_b_c_three) & p_working_title(c_the_secret_dude_society,c_badults) & p_used_for(c_the_secret_dude_society,c_badults) & p_script_editor_for(c_andrew_collins,c_badults).
+c_andrew_collins != c_b_b_c_three.
+c_andrew_collins != c_b_b_c_two.
+c_andrew_collins != c_badults.
+c_andrew_collins != c_july2013.
+c_andrew_collins != c_pappys.
+c_andrew_collins != c_the_secret_dude_society.
+c_b_b_c_three != c_b_b_c_two.
+c_b_b_c_three != c_badults.
+c_b_b_c_three != c_july2013.
+c_b_b_c_three != c_pappys.
+c_b_b_c_three != c_the_secret_dude_society.
+c_b_b_c_two != c_badults.
+c_b_b_c_two != c_july2013.
+c_b_b_c_two != c_pappys.
+c_b_b_c_two != c_the_secret_dude_society.
+c_badults != c_july2013.
+c_badults != c_pappys.
+c_badults != c_the_secret_dude_society.
+c_july2013 != c_pappys.
+c_july2013 != c_the_secret_dude_society.
+c_pappys != c_the_secret_dude_society.
+end_of_list.
+
+formulas(goals).
+(all v_x all v_y (p_member_of(v_x,c_pappys) & p_star(v_x,v_y) -> -(p_piloted_on(v_y,c_b_b_c_two) | p_piloted_on(v_y,c_b_b_c_three)))).
+end_of_list.
+
+============================== end of input ==========================
+
+% From the command line: assign(max_seconds, 5).
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (exists v_x (p_british_sitcom(c_badults) & p_series(c_badults) & p_member_of(v_x,c_pappys) & p_star(v_x,c_badults))) & p_piloted_in(c_badults,c_july2013) & p_piloted_on(c_badults,c_b_b_c_three) & p_working_title(c_the_secret_dude_society,c_badults) & p_used_for(c_the_secret_dude_society,c_badults) & p_script_editor_for(c_andrew_collins,c_badults) # label(non_clause).  [assumption].
+2 (all v_x all v_y (p_member_of(v_x,c_pappys) & p_star(v_x,v_y) -> -(p_piloted_on(v_y,c_b_b_c_two) | p_piloted_on(v_y,c_b_b_c_three)))) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p_british_sitcom(c_badults).  [clausify(1)].
+p_series(c_badults).  [clausify(1)].
+p_member_of(c1,c_pappys).  [clausify(1)].
+p_star(c1,c_badults).  [clausify(1)].
+p_piloted_in(c_badults,c_july2013).  [clausify(1)].
+p_piloted_on(c_badults,c_b_b_c_three).  [clausify(1)].
+p_working_title(c_the_secret_dude_society,c_badults).  [clausify(1)].
+p_used_for(c_the_secret_dude_society,c_badults).  [clausify(1)].
+p_script_editor_for(c_andrew_collins,c_badults).  [clausify(1)].
+c_andrew_collins != c_b_b_c_three.  [assumption].
+c_andrew_collins != c_b_b_c_two.  [assumption].
+c_andrew_collins != c_badults.  [assumption].
+c_andrew_collins != c_july2013.  [assumption].
+c_andrew_collins != c_pappys.  [assumption].
+c_andrew_collins != c_the_secret_dude_society.  [assumption].
+c_b_b_c_three != c_b_b_c_two.  [assumption].
+c_b_b_c_three != c_badults.  [assumption].
+c_b_b_c_three != c_july2013.  [assumption].
+c_b_b_c_three != c_pappys.  [assumption].
+c_b_b_c_three != c_the_secret_dude_society.  [assumption].
+c_b_b_c_two != c_badults.  [assumption].
+c_b_b_c_two != c_july2013.  [assumption].
+c_b_b_c_two != c_pappys.  [assumption].
+c_b_b_c_two != c_the_secret_dude_society.  [assumption].
+c_badults != c_july2013.  [assumption].
+c_badults != c_pappys.  [assumption].
+c_badults != c_the_secret_dude_society.  [assumption].
+c_july2013 != c_pappys.  [assumption].
+c_july2013 != c_the_secret_dude_society.  [assumption].
+c_pappys != c_the_secret_dude_society.  [assumption].
+p_member_of(c2,c_pappys).  [deny(2)].
+p_star(c2,c3).  [deny(2)].
+p_piloted_on(c3,c_b_b_c_two) | p_piloted_on(c3,c_b_b_c_three).  [deny(2)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+Eliminating p_british_sitcom/1
+
+Eliminating p_series/1
+
+Eliminating p_member_of/2
+
+Eliminating p_star/2
+
+Eliminating p_piloted_in/2
+
+Eliminating p_working_title/2
+
+Eliminating p_used_for/2
+
+Eliminating p_script_editor_for/2
+
+============================== end predicate elimination =============
+
+Auto_denials:  (non-Horn, no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ =, p_piloted_on ]).
+Function symbol precedence:  function_order([ c_b_b_c_three, c_b_b_c_two, c_badults, c_andrew_collins, c_july2013, c_pappys, c_the_secret_dude_society, c3 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      3 p_piloted_on(c_badults,c_b_b_c_three).  [clausify(1)].
+kept:      4 c_andrew_collins != c_b_b_c_three.  [assumption].
+kept:      5 c_andrew_collins != c_b_b_c_two.  [assumption].
+kept:      6 c_andrew_collins != c_badults.  [assumption].
+           7 c_andrew_collins != c_july2013.  [assumption].
+kept:      8 c_july2013 != c_andrew_collins.  [copy(7),flip(a)].
+           9 c_andrew_collins != c_pappys.  [assumption].
+kept:      10 c_pappys != c_andrew_collins.  [copy(9),flip(a)].
+           11 c_andrew_collins != c_the_secret_dude_society.  [assumption].
+kept:      12 c_the_secret_dude_society != c_andrew_collins.  [copy(11),flip(a)].
+           13 c_b_b_c_three != c_b_b_c_two.  [assumption].
+kept:      14 c_b_b_c_two != c_b_b_c_three.  [copy(13),flip(a)].
+           15 c_b_b_c_three != c_badults.  [assumption].
+kept:      16 c_badults != c_b_b_c_three.  [copy(15),flip(a)].
+           17 c_b_b_c_three != c_july2013.  [assumption].
+kept:      18 c_july2013 != c_b_b_c_three.  [copy(17),flip(a)].
+           19 c_b_b_c_three != c_pappys.  [assumption].
+kept:      20 c_pappys != c_b_b_c_three.  [copy(19),flip(a)].
+           21 c_b_b_c_three != c_the_secret_dude_society.  [assumption].
+kept:      22 c_the_secret_dude_society != c_b_b_c_three.  [copy(21),flip(a)].
+           23 c_b_b_c_two != c_badults.  [assumption].
+kept:      24 c_badults != c_b_b_c_two.  [copy(23),flip(a)].
+           25 c_b_b_c_two != c_july2013.  [assumption].
+kept:      26 c_july2013 != c_b_b_c_two.  [copy(25),flip(a)].
+           27 c_b_b_c_two != c_pappys.  [assumption].
+kept:      28 c_pappys != c_b_b_c_two.  [copy(27),flip(a)].
+           29 c_b_b_c_two != c_the_secret_dude_society.  [assumption].
+kept:      30 c_the_secret_dude_society != c_b_b_c_two.  [copy(29),flip(a)].
+           31 c_badults != c_july2013.  [assumption].
+kept:      32 c_july2013 != c_badults.  [copy(31),flip(a)].
+           33 c_badults != c_pappys.  [assumption].
+kept:      34 c_pappys != c_badults.  [copy(33),flip(a)].
+           35 c_badults != c_the_secret_dude_society.  [assumption].
+kept:      36 c_the_secret_dude_society != c_badults.  [copy(35),flip(a)].
+           37 c_july2013 != c_pappys.  [assumption].
+kept:      38 c_pappys != c_july2013.  [copy(37),flip(a)].
+           39 c_july2013 != c_the_secret_dude_society.  [assumption].
+kept:      40 c_the_secret_dude_society != c_july2013.  [copy(39),flip(a)].
+           41 c_pappys != c_the_secret_dude_society.  [assumption].
+kept:      42 c_the_secret_dude_society != c_pappys.  [copy(41),flip(a)].
+kept:      43 p_piloted_on(c3,c_b_b_c_two) | p_piloted_on(c3,c_b_b_c_three).  [deny(2)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+3 p_piloted_on(c_badults,c_b_b_c_three).  [clausify(1)].
+4 c_andrew_collins != c_b_b_c_three.  [assumption].
+5 c_andrew_collins != c_b_b_c_two.  [assumption].
+6 c_andrew_collins != c_badults.  [assumption].
+8 c_july2013 != c_andrew_collins.  [copy(7),flip(a)].
+10 c_pappys != c_andrew_collins.  [copy(9),flip(a)].
+12 c_the_secret_dude_society != c_andrew_collins.  [copy(11),flip(a)].
+14 c_b_b_c_two != c_b_b_c_three.  [copy(13),flip(a)].
+16 c_badults != c_b_b_c_three.  [copy(15),flip(a)].
+18 c_july2013 != c_b_b_c_three.  [copy(17),flip(a)].
+20 c_pappys != c_b_b_c_three.  [copy(19),flip(a)].
+22 c_the_secret_dude_society != c_b_b_c_three.  [copy(21),flip(a)].
+24 c_badults != c_b_b_c_two.  [copy(23),flip(a)].
+26 c_july2013 != c_b_b_c_two.  [copy(25),flip(a)].
+28 c_pappys != c_b_b_c_two.  [copy(27),flip(a)].
+30 c_the_secret_dude_society != c_b_b_c_two.  [copy(29),flip(a)].
+32 c_july2013 != c_badults.  [copy(31),flip(a)].
+34 c_pappys != c_badults.  [copy(33),flip(a)].
+36 c_the_secret_dude_society != c_badults.  [copy(35),flip(a)].
+38 c_pappys != c_july2013.  [copy(37),flip(a)].
+40 c_the_secret_dude_society != c_july2013.  [copy(39),flip(a)].
+42 c_the_secret_dude_society != c_pappys.  [copy(41),flip(a)].
+43 p_piloted_on(c3,c_b_b_c_two) | p_piloted_on(c3,c_b_b_c_three).  [deny(2)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.00 seconds.
+
+given #1 (I,wt=3): 3 p_piloted_on(c_badults,c_b_b_c_three).  [clausify(1)].
+
+given #2 (I,wt=3): 4 c_andrew_collins != c_b_b_c_three.  [assumption].
+
+given #3 (I,wt=3): 5 c_andrew_collins != c_b_b_c_two.  [assumption].
+
+given #4 (I,wt=3): 6 c_andrew_collins != c_badults.  [assumption].
+
+given #5 (I,wt=3): 8 c_july2013 != c_andrew_collins.  [copy(7),flip(a)].
+
+given #6 (I,wt=3): 10 c_pappys != c_andrew_collins.  [copy(9),flip(a)].
+
+given #7 (I,wt=3): 12 c_the_secret_dude_society != c_andrew_collins.  [copy(11),flip(a)].
+
+given #8 (I,wt=3): 14 c_b_b_c_two != c_b_b_c_three.  [copy(13),flip(a)].
+
+given #9 (I,wt=3): 16 c_badults != c_b_b_c_three.  [copy(15),flip(a)].
+
+given #10 (I,wt=3): 18 c_july2013 != c_b_b_c_three.  [copy(17),flip(a)].
+
+given #11 (I,wt=3): 20 c_pappys != c_b_b_c_three.  [copy(19),flip(a)].
+
+given #12 (I,wt=3): 22 c_the_secret_dude_society != c_b_b_c_three.  [copy(21),flip(a)].
+
+given #13 (I,wt=3): 24 c_badults != c_b_b_c_two.  [copy(23),flip(a)].
+
+given #14 (I,wt=3): 26 c_july2013 != c_b_b_c_two.  [copy(25),flip(a)].
+
+given #15 (I,wt=3): 28 c_pappys != c_b_b_c_two.  [copy(27),flip(a)].
+
+given #16 (I,wt=3): 30 c_the_secret_dude_society != c_b_b_c_two.  [copy(29),flip(a)].
+
+given #17 (I,wt=3): 32 c_july2013 != c_badults.  [copy(31),flip(a)].
+
+given #18 (I,wt=3): 34 c_pappys != c_badults.  [copy(33),flip(a)].
+
+given #19 (I,wt=3): 36 c_the_secret_dude_society != c_badults.  [copy(35),flip(a)].
+
+given #20 (I,wt=3): 38 c_pappys != c_july2013.  [copy(37),flip(a)].
+
+given #21 (I,wt=3): 40 c_the_secret_dude_society != c_july2013.  [copy(39),flip(a)].
+
+given #22 (I,wt=3): 42 c_the_secret_dude_society != c_pappys.  [copy(41),flip(a)].
+
+given #23 (I,wt=6): 43 p_piloted_on(c3,c_b_b_c_two) | p_piloted_on(c3,c_b_b_c_three).  [deny(2)].
+
+============================== STATISTICS ============================
+
+Given=23. Generated=23. Kept=23. proofs=0.
+Usable=23. Sos=0. Demods=0. Limbo=0, Disabled=33. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=0. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=1.
+Megabytes=0.06.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+SEARCH FAILED
+
+Exiting with failure.
+
+Process 29624 exit (sos_empty) Sat Oct 17 13:01:59 2026
+
+SEARCH FAILED
+
+------ process 29624 exit (sos_empty) ------
+

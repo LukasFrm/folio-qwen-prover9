@@ -1,0 +1,175 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 29721 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Sat Oct 17 13:02:00 2026
+The command was "prover9 -t 5".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(assumptions).
+p_sporting_event(c_olympics) & p_last_summer_olympics(c_tokyoolympics) & p_most_medals(c_united_states,c_tokyoolympics).
+c_olympics != c_tokyoolympics.
+c_olympics != c_united_states.
+c_tokyoolympics != c_united_states.
+end_of_list.
+
+formulas(goals).
+--p_last_summer_olympics(c_tokyoolympics).
+end_of_list.
+
+============================== end of input ==========================
+
+% From the command line: assign(max_seconds, 5).
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 p_sporting_event(c_olympics) & p_last_summer_olympics(c_tokyoolympics) & p_most_medals(c_united_states,c_tokyoolympics) # label(non_clause).  [assumption].
+2 --p_last_summer_olympics(c_tokyoolympics) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p_sporting_event(c_olympics).  [clausify(1)].
+p_last_summer_olympics(c_tokyoolympics).  [clausify(1)].
+p_most_medals(c_united_states,c_tokyoolympics).  [clausify(1)].
+c_olympics != c_tokyoolympics.  [assumption].
+c_olympics != c_united_states.  [assumption].
+c_tokyoolympics != c_united_states.  [assumption].
+-p_last_summer_olympics(c_tokyoolympics).  [deny(2)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+Eliminating p_sporting_event/1
+
+Eliminating p_most_medals/2
+
+============================== end predicate elimination =============
+
+Auto_denials:
+  % assign(max_proofs, 4).  % (Horn set with more than one neg. clause)
+
+WARNING, because some of the denials share constants,
+some of the denials or their descendents may be subsumed,
+preventing the target number of proofs from being found.
+The shared constants are:  c_united_states, c_tokyoolympics, c_olympics.
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ =, p_last_summer_olympics ]).
+Function symbol precedence:  function_order([ c_tokyoolympics, c_olympics, c_united_states ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(neg_binary_resolution).  % (HNE depth_diff=0)
+  % clear(ordered_res).  % (HNE depth_diff=0)
+  % set(ur_resolution).  % (HNE depth_diff=0)
+    % set(ur_resolution) -> set(pos_ur_resolution).
+    % set(ur_resolution) -> set(neg_ur_resolution).
+
+Auto_process settings:  (no changes).
+
+kept:      3 p_last_summer_olympics(c_tokyoolympics).  [clausify(1)].
+kept:      4 c_olympics != c_tokyoolympics.  [assumption].
+           5 c_olympics != c_united_states.  [assumption].
+kept:      6 c_united_states != c_olympics.  [copy(5),flip(a)].
+           7 c_tokyoolympics != c_united_states.  [assumption].
+kept:      8 c_united_states != c_tokyoolympics.  [copy(7),flip(a)].
+kept:      9 -p_last_summer_olympics(c_tokyoolympics).  [deny(2)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 5.
+% Level of proof is 2.
+% Maximum clause weight is 2.000.
+% Given clauses 0.
+
+1 p_sporting_event(c_olympics) & p_last_summer_olympics(c_tokyoolympics) & p_most_medals(c_united_states,c_tokyoolympics) # label(non_clause).  [assumption].
+2 --p_last_summer_olympics(c_tokyoolympics) # label(non_clause) # label(goal).  [goal].
+3 p_last_summer_olympics(c_tokyoolympics).  [clausify(1)].
+9 -p_last_summer_olympics(c_tokyoolympics).  [deny(2)].
+10 $F.  [resolve(9,a,3,a)].
+
+============================== end of proof ==========================
+
+% Disable descendants (x means already disabled):
+ 9
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+3 p_last_summer_olympics(c_tokyoolympics).  [clausify(1)].
+4 c_olympics != c_tokyoolympics.  [assumption].
+6 c_united_states != c_olympics.  [copy(5),flip(a)].
+8 c_united_states != c_tokyoolympics.  [copy(7),flip(a)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.00 seconds.
+
+given #1 (I,wt=2): 3 p_last_summer_olympics(c_tokyoolympics).  [clausify(1)].
+
+given #2 (I,wt=3): 4 c_olympics != c_tokyoolympics.  [assumption].
+
+given #3 (I,wt=3): 6 c_united_states != c_olympics.  [copy(5),flip(a)].
+
+given #4 (I,wt=3): 8 c_united_states != c_tokyoolympics.  [copy(7),flip(a)].
+
+============================== STATISTICS ============================
+
+Given=4. Generated=5. Kept=5. proofs=1.
+Usable=4. Sos=0. Demods=0. Limbo=0, Disabled=8. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=0. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.03.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+SEARCH FAILED
+
+Exiting with 1 proof.
+
+Process 29721 exit (sos_empty) Sat Oct 17 13:02:00 2026
+
+WARNING: denials share constants (see output).
+
+-------- Proof 1 -------- 
+
+SEARCH FAILED
+
+------ process 29721 exit (sos_empty) ------
+

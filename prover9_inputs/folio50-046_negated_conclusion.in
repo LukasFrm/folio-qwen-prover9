@@ -1,0 +1,8 @@
+formulas(assumptions).
+((((((all v_x (((p_animal(v_x) & p_bark(v_x)) -> -(p_like(c_jane, v_x)))) & all v_x ((p_dog(v_x) -> (p_animal(v_x) & p_bark(v_x))))) & all v_x (((p_animal(v_x) & p_jump(v_x)) -> p_like(c_jane, v_x)))) & all v_x (((p_animal(v_x) & p_has_legs(v_x)) -> p_jump(v_x)))) & all v_x (((p_animal(v_x) & p_terricolous(v_x)) -> p_has_legs(v_x)))) & p_animal(c_kiki)) & ((-(p_jump(c_kiki)) & -(p_has_legs(c_kiki))) -> (p_terricolous(c_kiki) | p_has_legs(c_kiki)))).
+-(c_jane = c_kiki).
+end_of_list.
+
+formulas(goals).
+-(p_terricolous(c_kiki)).
+end_of_list.

@@ -1,0 +1,1499 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 29622 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Sat Oct 17 13:01:59 2026
+The command was "prover9 -t 5".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(assumptions).
+p_private_ivy_league_research_university(c_yale_university) & p_moved_to(c_yale_university,c_new_haven) & p_moved_in(c_yale_university,c_year1716) & p_valued_at(c_yale_universitys_endowment,c_usd42point3billion) & p_residential_college(c_benjamin_franklin_college) & p_at(c_benjamin_franklin_college,c_yale_university) & p_residential_college(c_berkeley_college) & p_at(c_berkeley_college,c_yale_university) & p_residential_college(c_branford_college) & p_at(c_branford_college,c_yale_university) & p_residential_college(c_davenport_college) & p_at(c_davenport_college,c_yale_university) & p_residential_college(c_ezra_stiles_college) & p_at(c_ezra_stiles_college,c_yale_university) & p_residential_college(c_grace_hopper_college) & p_at(c_grace_hopper_college,c_yale_university) & p_residential_college(c_jonathan_edwards_college) & p_at(c_jonathan_edwards_college,c_yale_university) & p_residential_college(c_morse_college) & p_at(c_morse_college,c_yale_university) & p_residential_college(c_pauli_murray_college) & p_at(c_pauli_murray_college,c_yale_university) & p_residential_college(c_pierson_college) & p_at(c_pierson_college,c_yale_university) & p_residential_college(c_saybrook_college) & p_at(c_saybrook_college,c_yale_university) & p_residential_college(c_silliman_college) & p_at(c_silliman_college,c_yale_university) & p_residential_college(c_timothy_dwight_college) & p_at(c_timothy_dwight_college,c_yale_university) & p_residential_college(c_trumbull_college) & p_at(c_trumbull_college,c_yale_university).
+c_any_educational_institution != c_benjamin_franklin_college.
+c_any_educational_institution != c_berkeley_college.
+c_any_educational_institution != c_branford_college.
+c_any_educational_institution != c_davenport_college.
+c_any_educational_institution != c_ezra_stiles_college.
+c_any_educational_institution != c_grace_hopper_college.
+c_any_educational_institution != c_jonathan_edwards_college.
+c_any_educational_institution != c_morse_college.
+c_any_educational_institution != c_new_haven.
+c_any_educational_institution != c_pauli_murray_college.
+c_any_educational_institution != c_pierson_college.
+c_any_educational_institution != c_saybrook_college.
+c_any_educational_institution != c_silliman_college.
+c_any_educational_institution != c_timothy_dwight_college.
+c_any_educational_institution != c_trumbull_college.
+c_any_educational_institution != c_usd42point3billion.
+c_any_educational_institution != c_yale_university.
+c_any_educational_institution != c_yale_universitys_endowment.
+c_any_educational_institution != c_year1716.
+c_benjamin_franklin_college != c_berkeley_college.
+c_benjamin_franklin_college != c_branford_college.
+c_benjamin_franklin_college != c_davenport_college.
+c_benjamin_franklin_college != c_ezra_stiles_college.
+c_benjamin_franklin_college != c_grace_hopper_college.
+c_benjamin_franklin_college != c_jonathan_edwards_college.
+c_benjamin_franklin_college != c_morse_college.
+c_benjamin_franklin_college != c_new_haven.
+c_benjamin_franklin_college != c_pauli_murray_college.
+c_benjamin_franklin_college != c_pierson_college.
+c_benjamin_franklin_college != c_saybrook_college.
+c_benjamin_franklin_college != c_silliman_college.
+c_benjamin_franklin_college != c_timothy_dwight_college.
+c_benjamin_franklin_college != c_trumbull_college.
+c_benjamin_franklin_college != c_usd42point3billion.
+c_benjamin_franklin_college != c_yale_university.
+c_benjamin_franklin_college != c_yale_universitys_endowment.
+c_benjamin_franklin_college != c_year1716.
+c_berkeley_college != c_branford_college.
+c_berkeley_college != c_davenport_college.
+c_berkeley_college != c_ezra_stiles_college.
+c_berkeley_college != c_grace_hopper_college.
+c_berkeley_college != c_jonathan_edwards_college.
+c_berkeley_college != c_morse_college.
+c_berkeley_college != c_new_haven.
+c_berkeley_college != c_pauli_murray_college.
+c_berkeley_college != c_pierson_college.
+c_berkeley_college != c_saybrook_college.
+c_berkeley_college != c_silliman_college.
+c_berkeley_college != c_timothy_dwight_college.
+c_berkeley_college != c_trumbull_college.
+c_berkeley_college != c_usd42point3billion.
+c_berkeley_college != c_yale_university.
+c_berkeley_college != c_yale_universitys_endowment.
+c_berkeley_college != c_year1716.
+c_branford_college != c_davenport_college.
+c_branford_college != c_ezra_stiles_college.
+c_branford_college != c_grace_hopper_college.
+c_branford_college != c_jonathan_edwards_college.
+c_branford_college != c_morse_college.
+c_branford_college != c_new_haven.
+c_branford_college != c_pauli_murray_college.
+c_branford_college != c_pierson_college.
+c_branford_college != c_saybrook_college.
+c_branford_college != c_silliman_college.
+c_branford_college != c_timothy_dwight_college.
+c_branford_college != c_trumbull_college.
+c_branford_college != c_usd42point3billion.
+c_branford_college != c_yale_university.
+c_branford_college != c_yale_universitys_endowment.
+c_branford_college != c_year1716.
+c_davenport_college != c_ezra_stiles_college.
+c_davenport_college != c_grace_hopper_college.
+c_davenport_college != c_jonathan_edwards_college.
+c_davenport_college != c_morse_college.
+c_davenport_college != c_new_haven.
+c_davenport_college != c_pauli_murray_college.
+c_davenport_college != c_pierson_college.
+c_davenport_college != c_saybrook_college.
+c_davenport_college != c_silliman_college.
+c_davenport_college != c_timothy_dwight_college.
+c_davenport_college != c_trumbull_college.
+c_davenport_college != c_usd42point3billion.
+c_davenport_college != c_yale_university.
+c_davenport_college != c_yale_universitys_endowment.
+c_davenport_college != c_year1716.
+c_ezra_stiles_college != c_grace_hopper_college.
+c_ezra_stiles_college != c_jonathan_edwards_college.
+c_ezra_stiles_college != c_morse_college.
+c_ezra_stiles_college != c_new_haven.
+c_ezra_stiles_college != c_pauli_murray_college.
+c_ezra_stiles_college != c_pierson_college.
+c_ezra_stiles_college != c_saybrook_college.
+c_ezra_stiles_college != c_silliman_college.
+c_ezra_stiles_college != c_timothy_dwight_college.
+c_ezra_stiles_college != c_trumbull_college.
+c_ezra_stiles_college != c_usd42point3billion.
+c_ezra_stiles_college != c_yale_university.
+c_ezra_stiles_college != c_yale_universitys_endowment.
+c_ezra_stiles_college != c_year1716.
+c_grace_hopper_college != c_jonathan_edwards_college.
+c_grace_hopper_college != c_morse_college.
+c_grace_hopper_college != c_new_haven.
+c_grace_hopper_college != c_pauli_murray_college.
+c_grace_hopper_college != c_pierson_college.
+c_grace_hopper_college != c_saybrook_college.
+c_grace_hopper_college != c_silliman_college.
+c_grace_hopper_college != c_timothy_dwight_college.
+c_grace_hopper_college != c_trumbull_college.
+c_grace_hopper_college != c_usd42point3billion.
+c_grace_hopper_college != c_yale_university.
+c_grace_hopper_college != c_yale_universitys_endowment.
+c_grace_hopper_college != c_year1716.
+c_jonathan_edwards_college != c_morse_college.
+c_jonathan_edwards_college != c_new_haven.
+c_jonathan_edwards_college != c_pauli_murray_college.
+c_jonathan_edwards_college != c_pierson_college.
+c_jonathan_edwards_college != c_saybrook_college.
+c_jonathan_edwards_college != c_silliman_college.
+c_jonathan_edwards_college != c_timothy_dwight_college.
+c_jonathan_edwards_college != c_trumbull_college.
+c_jonathan_edwards_college != c_usd42point3billion.
+c_jonathan_edwards_college != c_yale_university.
+c_jonathan_edwards_college != c_yale_universitys_endowment.
+c_jonathan_edwards_college != c_year1716.
+c_morse_college != c_new_haven.
+c_morse_college != c_pauli_murray_college.
+c_morse_college != c_pierson_college.
+c_morse_college != c_saybrook_college.
+c_morse_college != c_silliman_college.
+c_morse_college != c_timothy_dwight_college.
+c_morse_college != c_trumbull_college.
+c_morse_college != c_usd42point3billion.
+c_morse_college != c_yale_university.
+c_morse_college != c_yale_universitys_endowment.
+c_morse_college != c_year1716.
+c_new_haven != c_pauli_murray_college.
+c_new_haven != c_pierson_college.
+c_new_haven != c_saybrook_college.
+c_new_haven != c_silliman_college.
+c_new_haven != c_timothy_dwight_college.
+c_new_haven != c_trumbull_college.
+c_new_haven != c_usd42point3billion.
+c_new_haven != c_yale_university.
+c_new_haven != c_yale_universitys_endowment.
+c_new_haven != c_year1716.
+c_pauli_murray_college != c_pierson_college.
+c_pauli_murray_college != c_saybrook_college.
+c_pauli_murray_college != c_silliman_college.
+c_pauli_murray_college != c_timothy_dwight_college.
+c_pauli_murray_college != c_trumbull_college.
+c_pauli_murray_college != c_usd42point3billion.
+c_pauli_murray_college != c_yale_university.
+c_pauli_murray_college != c_yale_universitys_endowment.
+c_pauli_murray_college != c_year1716.
+c_pierson_college != c_saybrook_college.
+c_pierson_college != c_silliman_college.
+c_pierson_college != c_timothy_dwight_college.
+c_pierson_college != c_trumbull_college.
+c_pierson_college != c_usd42point3billion.
+c_pierson_college != c_yale_university.
+c_pierson_college != c_yale_universitys_endowment.
+c_pierson_college != c_year1716.
+c_saybrook_college != c_silliman_college.
+c_saybrook_college != c_timothy_dwight_college.
+c_saybrook_college != c_trumbull_college.
+c_saybrook_college != c_usd42point3billion.
+c_saybrook_college != c_yale_university.
+c_saybrook_college != c_yale_universitys_endowment.
+c_saybrook_college != c_year1716.
+c_silliman_college != c_timothy_dwight_college.
+c_silliman_college != c_trumbull_college.
+c_silliman_college != c_usd42point3billion.
+c_silliman_college != c_yale_university.
+c_silliman_college != c_yale_universitys_endowment.
+c_silliman_college != c_year1716.
+c_timothy_dwight_college != c_trumbull_college.
+c_timothy_dwight_college != c_usd42point3billion.
+c_timothy_dwight_college != c_yale_university.
+c_timothy_dwight_college != c_yale_universitys_endowment.
+c_timothy_dwight_college != c_year1716.
+c_trumbull_college != c_usd42point3billion.
+c_trumbull_college != c_yale_university.
+c_trumbull_college != c_yale_universitys_endowment.
+c_trumbull_college != c_year1716.
+c_usd42point3billion != c_yale_university.
+c_usd42point3billion != c_yale_universitys_endowment.
+c_usd42point3billion != c_year1716.
+c_yale_university != c_yale_universitys_endowment.
+c_yale_university != c_year1716.
+c_yale_universitys_endowment != c_year1716.
+end_of_list.
+
+formulas(goals).
+-p_largest_university_endowment_of(c_yale_university,c_any_educational_institution).
+end_of_list.
+
+============================== end of input ==========================
+
+% From the command line: assign(max_seconds, 5).
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 p_private_ivy_league_research_university(c_yale_university) & p_moved_to(c_yale_university,c_new_haven) & p_moved_in(c_yale_university,c_year1716) & p_valued_at(c_yale_universitys_endowment,c_usd42point3billion) & p_residential_college(c_benjamin_franklin_college) & p_at(c_benjamin_franklin_college,c_yale_university) & p_residential_college(c_berkeley_college) & p_at(c_berkeley_college,c_yale_university) & p_residential_college(c_branford_college) & p_at(c_branford_college,c_yale_university) & p_residential_college(c_davenport_college) & p_at(c_davenport_college,c_yale_university) & p_residential_college(c_ezra_stiles_college) & p_at(c_ezra_stiles_college,c_yale_university) & p_residential_college(c_grace_hopper_college) & p_at(c_grace_hopper_college,c_yale_university) & p_residential_college(c_jonathan_edwards_college) & p_at(c_jonathan_edwards_college,c_yale_university) & p_residential_college(c_morse_college) & p_at(c_morse_college,c_yale_university) & p_residential_college(c_pauli_murray_college) & p_at(c_pauli_murray_college,c_yale_university) & p_residential_college(c_pierson_college) & p_at(c_pierson_college,c_yale_university) & p_residential_college(c_saybrook_college) & p_at(c_saybrook_college,c_yale_university) & p_residential_college(c_silliman_college) & p_at(c_silliman_college,c_yale_university) & p_residential_college(c_timothy_dwight_college) & p_at(c_timothy_dwight_college,c_yale_university) & p_residential_college(c_trumbull_college) & p_at(c_trumbull_college,c_yale_university) # label(non_clause).  [assumption].
+2 -p_largest_university_endowment_of(c_yale_university,c_any_educational_institution) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p_private_ivy_league_research_university(c_yale_university).  [clausify(1)].
+p_moved_to(c_yale_university,c_new_haven).  [clausify(1)].
+p_moved_in(c_yale_university,c_year1716).  [clausify(1)].
+p_valued_at(c_yale_universitys_endowment,c_usd42point3billion).  [clausify(1)].
+p_residential_college(c_benjamin_franklin_college).  [clausify(1)].
+p_at(c_benjamin_franklin_college,c_yale_university).  [clausify(1)].
+p_residential_college(c_berkeley_college).  [clausify(1)].
+p_at(c_berkeley_college,c_yale_university).  [clausify(1)].
+p_residential_college(c_branford_college).  [clausify(1)].
+p_at(c_branford_college,c_yale_university).  [clausify(1)].
+p_residential_college(c_davenport_college).  [clausify(1)].
+p_at(c_davenport_college,c_yale_university).  [clausify(1)].
+p_residential_college(c_ezra_stiles_college).  [clausify(1)].
+p_at(c_ezra_stiles_college,c_yale_university).  [clausify(1)].
+p_residential_college(c_grace_hopper_college).  [clausify(1)].
+p_at(c_grace_hopper_college,c_yale_university).  [clausify(1)].
+p_residential_college(c_jonathan_edwards_college).  [clausify(1)].
+p_at(c_jonathan_edwards_college,c_yale_university).  [clausify(1)].
+p_residential_college(c_morse_college).  [clausify(1)].
+p_at(c_morse_college,c_yale_university).  [clausify(1)].
+p_residential_college(c_pauli_murray_college).  [clausify(1)].
+p_at(c_pauli_murray_college,c_yale_university).  [clausify(1)].
+p_residential_college(c_pierson_college).  [clausify(1)].
+p_at(c_pierson_college,c_yale_university).  [clausify(1)].
+p_residential_college(c_saybrook_college).  [clausify(1)].
+p_at(c_saybrook_college,c_yale_university).  [clausify(1)].
+p_residential_college(c_silliman_college).  [clausify(1)].
+p_at(c_silliman_college,c_yale_university).  [clausify(1)].
+p_residential_college(c_timothy_dwight_college).  [clausify(1)].
+p_at(c_timothy_dwight_college,c_yale_university).  [clausify(1)].
+p_residential_college(c_trumbull_college).  [clausify(1)].
+p_at(c_trumbull_college,c_yale_university).  [clausify(1)].
+c_any_educational_institution != c_benjamin_franklin_college.  [assumption].
+c_any_educational_institution != c_berkeley_college.  [assumption].
+c_any_educational_institution != c_branford_college.  [assumption].
+c_any_educational_institution != c_davenport_college.  [assumption].
+c_any_educational_institution != c_ezra_stiles_college.  [assumption].
+c_any_educational_institution != c_grace_hopper_college.  [assumption].
+c_any_educational_institution != c_jonathan_edwards_college.  [assumption].
+c_any_educational_institution != c_morse_college.  [assumption].
+c_any_educational_institution != c_new_haven.  [assumption].
+c_any_educational_institution != c_pauli_murray_college.  [assumption].
+c_any_educational_institution != c_pierson_college.  [assumption].
+c_any_educational_institution != c_saybrook_college.  [assumption].
+c_any_educational_institution != c_silliman_college.  [assumption].
+c_any_educational_institution != c_timothy_dwight_college.  [assumption].
+c_any_educational_institution != c_trumbull_college.  [assumption].
+c_any_educational_institution != c_usd42point3billion.  [assumption].
+c_any_educational_institution != c_yale_university.  [assumption].
+c_any_educational_institution != c_yale_universitys_endowment.  [assumption].
+c_any_educational_institution != c_year1716.  [assumption].
+c_benjamin_franklin_college != c_berkeley_college.  [assumption].
+c_benjamin_franklin_college != c_branford_college.  [assumption].
+c_benjamin_franklin_college != c_davenport_college.  [assumption].
+c_benjamin_franklin_college != c_ezra_stiles_college.  [assumption].
+c_benjamin_franklin_college != c_grace_hopper_college.  [assumption].
+c_benjamin_franklin_college != c_jonathan_edwards_college.  [assumption].
+c_benjamin_franklin_college != c_morse_college.  [assumption].
+c_benjamin_franklin_college != c_new_haven.  [assumption].
+c_benjamin_franklin_college != c_pauli_murray_college.  [assumption].
+c_benjamin_franklin_college != c_pierson_college.  [assumption].
+c_benjamin_franklin_college != c_saybrook_college.  [assumption].
+c_benjamin_franklin_college != c_silliman_college.  [assumption].
+c_benjamin_franklin_college != c_timothy_dwight_college.  [assumption].
+c_benjamin_franklin_college != c_trumbull_college.  [assumption].
+c_benjamin_franklin_college != c_usd42point3billion.  [assumption].
+c_benjamin_franklin_college != c_yale_university.  [assumption].
+c_benjamin_franklin_college != c_yale_universitys_endowment.  [assumption].
+c_benjamin_franklin_college != c_year1716.  [assumption].
+c_berkeley_college != c_branford_college.  [assumption].
+c_berkeley_college != c_davenport_college.  [assumption].
+c_berkeley_college != c_ezra_stiles_college.  [assumption].
+c_berkeley_college != c_grace_hopper_college.  [assumption].
+c_berkeley_college != c_jonathan_edwards_college.  [assumption].
+c_berkeley_college != c_morse_college.  [assumption].
+c_berkeley_college != c_new_haven.  [assumption].
+c_berkeley_college != c_pauli_murray_college.  [assumption].
+c_berkeley_college != c_pierson_college.  [assumption].
+c_berkeley_college != c_saybrook_college.  [assumption].
+c_berkeley_college != c_silliman_college.  [assumption].
+c_berkeley_college != c_timothy_dwight_college.  [assumption].
+c_berkeley_college != c_trumbull_college.  [assumption].
+c_berkeley_college != c_usd42point3billion.  [assumption].
+c_berkeley_college != c_yale_university.  [assumption].
+c_berkeley_college != c_yale_universitys_endowment.  [assumption].
+c_berkeley_college != c_year1716.  [assumption].
+c_branford_college != c_davenport_college.  [assumption].
+c_branford_college != c_ezra_stiles_college.  [assumption].
+c_branford_college != c_grace_hopper_college.  [assumption].
+c_branford_college != c_jonathan_edwards_college.  [assumption].
+c_branford_college != c_morse_college.  [assumption].
+c_branford_college != c_new_haven.  [assumption].
+c_branford_college != c_pauli_murray_college.  [assumption].
+c_branford_college != c_pierson_college.  [assumption].
+c_branford_college != c_saybrook_college.  [assumption].
+c_branford_college != c_silliman_college.  [assumption].
+c_branford_college != c_timothy_dwight_college.  [assumption].
+c_branford_college != c_trumbull_college.  [assumption].
+c_branford_college != c_usd42point3billion.  [assumption].
+c_branford_college != c_yale_university.  [assumption].
+c_branford_college != c_yale_universitys_endowment.  [assumption].
+c_branford_college != c_year1716.  [assumption].
+c_davenport_college != c_ezra_stiles_college.  [assumption].
+c_davenport_college != c_grace_hopper_college.  [assumption].
+c_davenport_college != c_jonathan_edwards_college.  [assumption].
+c_davenport_college != c_morse_college.  [assumption].
+c_davenport_college != c_new_haven.  [assumption].
+c_davenport_college != c_pauli_murray_college.  [assumption].
+c_davenport_college != c_pierson_college.  [assumption].
+c_davenport_college != c_saybrook_college.  [assumption].
+c_davenport_college != c_silliman_college.  [assumption].
+c_davenport_college != c_timothy_dwight_college.  [assumption].
+c_davenport_college != c_trumbull_college.  [assumption].
+c_davenport_college != c_usd42point3billion.  [assumption].
+c_davenport_college != c_yale_university.  [assumption].
+c_davenport_college != c_yale_universitys_endowment.  [assumption].
+c_davenport_college != c_year1716.  [assumption].
+c_ezra_stiles_college != c_grace_hopper_college.  [assumption].
+c_ezra_stiles_college != c_jonathan_edwards_college.  [assumption].
+c_ezra_stiles_college != c_morse_college.  [assumption].
+c_ezra_stiles_college != c_new_haven.  [assumption].
+c_ezra_stiles_college != c_pauli_murray_college.  [assumption].
+c_ezra_stiles_college != c_pierson_college.  [assumption].
+c_ezra_stiles_college != c_saybrook_college.  [assumption].
+c_ezra_stiles_college != c_silliman_college.  [assumption].
+c_ezra_stiles_college != c_timothy_dwight_college.  [assumption].
+c_ezra_stiles_college != c_trumbull_college.  [assumption].
+c_ezra_stiles_college != c_usd42point3billion.  [assumption].
+c_ezra_stiles_college != c_yale_university.  [assumption].
+c_ezra_stiles_college != c_yale_universitys_endowment.  [assumption].
+c_ezra_stiles_college != c_year1716.  [assumption].
+c_grace_hopper_college != c_jonathan_edwards_college.  [assumption].
+c_grace_hopper_college != c_morse_college.  [assumption].
+c_grace_hopper_college != c_new_haven.  [assumption].
+c_grace_hopper_college != c_pauli_murray_college.  [assumption].
+c_grace_hopper_college != c_pierson_college.  [assumption].
+c_grace_hopper_college != c_saybrook_college.  [assumption].
+c_grace_hopper_college != c_silliman_college.  [assumption].
+c_grace_hopper_college != c_timothy_dwight_college.  [assumption].
+c_grace_hopper_college != c_trumbull_college.  [assumption].
+c_grace_hopper_college != c_usd42point3billion.  [assumption].
+c_grace_hopper_college != c_yale_university.  [assumption].
+c_grace_hopper_college != c_yale_universitys_endowment.  [assumption].
+c_grace_hopper_college != c_year1716.  [assumption].
+c_jonathan_edwards_college != c_morse_college.  [assumption].
+c_jonathan_edwards_college != c_new_haven.  [assumption].
+c_jonathan_edwards_college != c_pauli_murray_college.  [assumption].
+c_jonathan_edwards_college != c_pierson_college.  [assumption].
+c_jonathan_edwards_college != c_saybrook_college.  [assumption].
+c_jonathan_edwards_college != c_silliman_college.  [assumption].
+c_jonathan_edwards_college != c_timothy_dwight_college.  [assumption].
+c_jonathan_edwards_college != c_trumbull_college.  [assumption].
+c_jonathan_edwards_college != c_usd42point3billion.  [assumption].
+c_jonathan_edwards_college != c_yale_university.  [assumption].
+c_jonathan_edwards_college != c_yale_universitys_endowment.  [assumption].
+c_jonathan_edwards_college != c_year1716.  [assumption].
+c_morse_college != c_new_haven.  [assumption].
+c_morse_college != c_pauli_murray_college.  [assumption].
+c_morse_college != c_pierson_college.  [assumption].
+c_morse_college != c_saybrook_college.  [assumption].
+c_morse_college != c_silliman_college.  [assumption].
+c_morse_college != c_timothy_dwight_college.  [assumption].
+c_morse_college != c_trumbull_college.  [assumption].
+c_morse_college != c_usd42point3billion.  [assumption].
+c_morse_college != c_yale_university.  [assumption].
+c_morse_college != c_yale_universitys_endowment.  [assumption].
+c_morse_college != c_year1716.  [assumption].
+c_new_haven != c_pauli_murray_college.  [assumption].
+c_new_haven != c_pierson_college.  [assumption].
+c_new_haven != c_saybrook_college.  [assumption].
+c_new_haven != c_silliman_college.  [assumption].
+c_new_haven != c_timothy_dwight_college.  [assumption].
+c_new_haven != c_trumbull_college.  [assumption].
+c_new_haven != c_usd42point3billion.  [assumption].
+c_new_haven != c_yale_university.  [assumption].
+c_new_haven != c_yale_universitys_endowment.  [assumption].
+c_new_haven != c_year1716.  [assumption].
+c_pauli_murray_college != c_pierson_college.  [assumption].
+c_pauli_murray_college != c_saybrook_college.  [assumption].
+c_pauli_murray_college != c_silliman_college.  [assumption].
+c_pauli_murray_college != c_timothy_dwight_college.  [assumption].
+c_pauli_murray_college != c_trumbull_college.  [assumption].
+c_pauli_murray_college != c_usd42point3billion.  [assumption].
+c_pauli_murray_college != c_yale_university.  [assumption].
+c_pauli_murray_college != c_yale_universitys_endowment.  [assumption].
+c_pauli_murray_college != c_year1716.  [assumption].
+c_pierson_college != c_saybrook_college.  [assumption].
+c_pierson_college != c_silliman_college.  [assumption].
+c_pierson_college != c_timothy_dwight_college.  [assumption].
+c_pierson_college != c_trumbull_college.  [assumption].
+c_pierson_college != c_usd42point3billion.  [assumption].
+c_pierson_college != c_yale_university.  [assumption].
+c_pierson_college != c_yale_universitys_endowment.  [assumption].
+c_pierson_college != c_year1716.  [assumption].
+c_saybrook_college != c_silliman_college.  [assumption].
+c_saybrook_college != c_timothy_dwight_college.  [assumption].
+c_saybrook_college != c_trumbull_college.  [assumption].
+c_saybrook_college != c_usd42point3billion.  [assumption].
+c_saybrook_college != c_yale_university.  [assumption].
+c_saybrook_college != c_yale_universitys_endowment.  [assumption].
+c_saybrook_college != c_year1716.  [assumption].
+c_silliman_college != c_timothy_dwight_college.  [assumption].
+c_silliman_college != c_trumbull_college.  [assumption].
+c_silliman_college != c_usd42point3billion.  [assumption].
+c_silliman_college != c_yale_university.  [assumption].
+c_silliman_college != c_yale_universitys_endowment.  [assumption].
+c_silliman_college != c_year1716.  [assumption].
+c_timothy_dwight_college != c_trumbull_college.  [assumption].
+c_timothy_dwight_college != c_usd42point3billion.  [assumption].
+c_timothy_dwight_college != c_yale_university.  [assumption].
+c_timothy_dwight_college != c_yale_universitys_endowment.  [assumption].
+c_timothy_dwight_college != c_year1716.  [assumption].
+c_trumbull_college != c_usd42point3billion.  [assumption].
+c_trumbull_college != c_yale_university.  [assumption].
+c_trumbull_college != c_yale_universitys_endowment.  [assumption].
+c_trumbull_college != c_year1716.  [assumption].
+c_usd42point3billion != c_yale_university.  [assumption].
+c_usd42point3billion != c_yale_universitys_endowment.  [assumption].
+c_usd42point3billion != c_year1716.  [assumption].
+c_yale_university != c_yale_universitys_endowment.  [assumption].
+c_yale_university != c_year1716.  [assumption].
+c_yale_universitys_endowment != c_year1716.  [assumption].
+p_largest_university_endowment_of(c_yale_university,c_any_educational_institution).  [deny(2)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+Eliminating p_private_ivy_league_research_university/1
+
+Eliminating p_moved_to/2
+
+Eliminating p_moved_in/2
+
+Eliminating p_valued_at/2
+
+Eliminating p_residential_college/1
+
+Eliminating p_at/2
+
+Eliminating p_largest_university_endowment_of/2
+
+============================== end predicate elimination =============
+
+Auto_denials:
+  % assign(max_proofs, 190).  % (Horn set with more than one neg. clause)
+
+WARNING, because some of the denials share constants,
+some of the denials or their descendents may be subsumed,
+preventing the target number of proofs from being found.
+The shared constants are:  c_year1716, c_yale_universitys_endowment, c_yale_university, c_usd42point3billion, c_trumbull_college, c_timothy_dwight_college, c_silliman_college, c_saybrook_college, c_pierson_college, c_pauli_murray_college, c_new_haven, c_morse_college, c_jonathan_edwards_college, c_grace_hopper_college, c_ezra_stiles_college, c_davenport_college, c_branford_college, c_berkeley_college, c_benjamin_franklin_college, c_any_educational_institution.
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ = ]).
+Function symbol precedence:  function_order([ c_any_educational_institution, c_benjamin_franklin_college, c_berkeley_college, c_branford_college, c_davenport_college, c_ezra_stiles_college, c_grace_hopper_college, c_jonathan_edwards_college, c_morse_college, c_new_haven, c_pauli_murray_college, c_pierson_college, c_saybrook_college, c_silliman_college, c_timothy_dwight_college, c_trumbull_college, c_usd42point3billion, c_yale_university, c_yale_universitys_endowment, c_year1716 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(neg_binary_resolution).  % (HNE depth_diff=0)
+  % clear(ordered_res).  % (HNE depth_diff=0)
+  % set(ur_resolution).  % (HNE depth_diff=0)
+    % set(ur_resolution) -> set(pos_ur_resolution).
+    % set(ur_resolution) -> set(neg_ur_resolution).
+
+Auto_process settings:  (no changes).
+
+           3 c_any_educational_institution != c_benjamin_franklin_college.  [assumption].
+kept:      4 c_benjamin_franklin_college != c_any_educational_institution.  [copy(3),flip(a)].
+           5 c_any_educational_institution != c_berkeley_college.  [assumption].
+kept:      6 c_berkeley_college != c_any_educational_institution.  [copy(5),flip(a)].
+           7 c_any_educational_institution != c_branford_college.  [assumption].
+kept:      8 c_branford_college != c_any_educational_institution.  [copy(7),flip(a)].
+           9 c_any_educational_institution != c_davenport_college.  [assumption].
+kept:      10 c_davenport_college != c_any_educational_institution.  [copy(9),flip(a)].
+           11 c_any_educational_institution != c_ezra_stiles_college.  [assumption].
+kept:      12 c_ezra_stiles_college != c_any_educational_institution.  [copy(11),flip(a)].
+           13 c_any_educational_institution != c_grace_hopper_college.  [assumption].
+kept:      14 c_grace_hopper_college != c_any_educational_institution.  [copy(13),flip(a)].
+           15 c_any_educational_institution != c_jonathan_edwards_college.  [assumption].
+kept:      16 c_jonathan_edwards_college != c_any_educational_institution.  [copy(15),flip(a)].
+           17 c_any_educational_institution != c_morse_college.  [assumption].
+kept:      18 c_morse_college != c_any_educational_institution.  [copy(17),flip(a)].
+           19 c_any_educational_institution != c_new_haven.  [assumption].
+kept:      20 c_new_haven != c_any_educational_institution.  [copy(19),flip(a)].
+           21 c_any_educational_institution != c_pauli_murray_college.  [assumption].
+kept:      22 c_pauli_murray_college != c_any_educational_institution.  [copy(21),flip(a)].
+           23 c_any_educational_institution != c_pierson_college.  [assumption].
+kept:      24 c_pierson_college != c_any_educational_institution.  [copy(23),flip(a)].
+           25 c_any_educational_institution != c_saybrook_college.  [assumption].
+kept:      26 c_saybrook_college != c_any_educational_institution.  [copy(25),flip(a)].
+           27 c_any_educational_institution != c_silliman_college.  [assumption].
+kept:      28 c_silliman_college != c_any_educational_institution.  [copy(27),flip(a)].
+           29 c_any_educational_institution != c_timothy_dwight_college.  [assumption].
+kept:      30 c_timothy_dwight_college != c_any_educational_institution.  [copy(29),flip(a)].
+           31 c_any_educational_institution != c_trumbull_college.  [assumption].
+kept:      32 c_trumbull_college != c_any_educational_institution.  [copy(31),flip(a)].
+           33 c_any_educational_institution != c_usd42point3billion.  [assumption].
+kept:      34 c_usd42point3billion != c_any_educational_institution.  [copy(33),flip(a)].
+           35 c_any_educational_institution != c_yale_university.  [assumption].
+kept:      36 c_yale_university != c_any_educational_institution.  [copy(35),flip(a)].
+           37 c_any_educational_institution != c_yale_universitys_endowment.  [assumption].
+kept:      38 c_yale_universitys_endowment != c_any_educational_institution.  [copy(37),flip(a)].
+           39 c_any_educational_institution != c_year1716.  [assumption].
+kept:      40 c_year1716 != c_any_educational_institution.  [copy(39),flip(a)].
+           41 c_benjamin_franklin_college != c_berkeley_college.  [assumption].
+kept:      42 c_berkeley_college != c_benjamin_franklin_college.  [copy(41),flip(a)].
+           43 c_benjamin_franklin_college != c_branford_college.  [assumption].
+kept:      44 c_branford_college != c_benjamin_franklin_college.  [copy(43),flip(a)].
+           45 c_benjamin_franklin_college != c_davenport_college.  [assumption].
+kept:      46 c_davenport_college != c_benjamin_franklin_college.  [copy(45),flip(a)].
+           47 c_benjamin_franklin_college != c_ezra_stiles_college.  [assumption].
+kept:      48 c_ezra_stiles_college != c_benjamin_franklin_college.  [copy(47),flip(a)].
+           49 c_benjamin_franklin_college != c_grace_hopper_college.  [assumption].
+kept:      50 c_grace_hopper_college != c_benjamin_franklin_college.  [copy(49),flip(a)].
+           51 c_benjamin_franklin_college != c_jonathan_edwards_college.  [assumption].
+kept:      52 c_jonathan_edwards_college != c_benjamin_franklin_college.  [copy(51),flip(a)].
+           53 c_benjamin_franklin_college != c_morse_college.  [assumption].
+kept:      54 c_morse_college != c_benjamin_franklin_college.  [copy(53),flip(a)].
+           55 c_benjamin_franklin_college != c_new_haven.  [assumption].
+kept:      56 c_new_haven != c_benjamin_franklin_college.  [copy(55),flip(a)].
+           57 c_benjamin_franklin_college != c_pauli_murray_college.  [assumption].
+kept:      58 c_pauli_murray_college != c_benjamin_franklin_college.  [copy(57),flip(a)].
+           59 c_benjamin_franklin_college != c_pierson_college.  [assumption].
+kept:      60 c_pierson_college != c_benjamin_franklin_college.  [copy(59),flip(a)].
+           61 c_benjamin_franklin_college != c_saybrook_college.  [assumption].
+kept:      62 c_saybrook_college != c_benjamin_franklin_college.  [copy(61),flip(a)].
+           63 c_benjamin_franklin_college != c_silliman_college.  [assumption].
+kept:      64 c_silliman_college != c_benjamin_franklin_college.  [copy(63),flip(a)].
+           65 c_benjamin_franklin_college != c_timothy_dwight_college.  [assumption].
+kept:      66 c_timothy_dwight_college != c_benjamin_franklin_college.  [copy(65),flip(a)].
+           67 c_benjamin_franklin_college != c_trumbull_college.  [assumption].
+kept:      68 c_trumbull_college != c_benjamin_franklin_college.  [copy(67),flip(a)].
+           69 c_benjamin_franklin_college != c_usd42point3billion.  [assumption].
+kept:      70 c_usd42point3billion != c_benjamin_franklin_college.  [copy(69),flip(a)].
+           71 c_benjamin_franklin_college != c_yale_university.  [assumption].
+kept:      72 c_yale_university != c_benjamin_franklin_college.  [copy(71),flip(a)].
+           73 c_benjamin_franklin_college != c_yale_universitys_endowment.  [assumption].
+kept:      74 c_yale_universitys_endowment != c_benjamin_franklin_college.  [copy(73),flip(a)].
+           75 c_benjamin_franklin_college != c_year1716.  [assumption].
+kept:      76 c_year1716 != c_benjamin_franklin_college.  [copy(75),flip(a)].
+           77 c_berkeley_college != c_branford_college.  [assumption].
+kept:      78 c_branford_college != c_berkeley_college.  [copy(77),flip(a)].
+           79 c_berkeley_college != c_davenport_college.  [assumption].
+kept:      80 c_davenport_college != c_berkeley_college.  [copy(79),flip(a)].
+           81 c_berkeley_college != c_ezra_stiles_college.  [assumption].
+kept:      82 c_ezra_stiles_college != c_berkeley_college.  [copy(81),flip(a)].
+           83 c_berkeley_college != c_grace_hopper_college.  [assumption].
+kept:      84 c_grace_hopper_college != c_berkeley_college.  [copy(83),flip(a)].
+           85 c_berkeley_college != c_jonathan_edwards_college.  [assumption].
+kept:      86 c_jonathan_edwards_college != c_berkeley_college.  [copy(85),flip(a)].
+           87 c_berkeley_college != c_morse_college.  [assumption].
+kept:      88 c_morse_college != c_berkeley_college.  [copy(87),flip(a)].
+           89 c_berkeley_college != c_new_haven.  [assumption].
+kept:      90 c_new_haven != c_berkeley_college.  [copy(89),flip(a)].
+           91 c_berkeley_college != c_pauli_murray_college.  [assumption].
+kept:      92 c_pauli_murray_college != c_berkeley_college.  [copy(91),flip(a)].
+           93 c_berkeley_college != c_pierson_college.  [assumption].
+kept:      94 c_pierson_college != c_berkeley_college.  [copy(93),flip(a)].
+           95 c_berkeley_college != c_saybrook_college.  [assumption].
+kept:      96 c_saybrook_college != c_berkeley_college.  [copy(95),flip(a)].
+           97 c_berkeley_college != c_silliman_college.  [assumption].
+kept:      98 c_silliman_college != c_berkeley_college.  [copy(97),flip(a)].
+           99 c_berkeley_college != c_timothy_dwight_college.  [assumption].
+kept:      100 c_timothy_dwight_college != c_berkeley_college.  [copy(99),flip(a)].
+           101 c_berkeley_college != c_trumbull_college.  [assumption].
+kept:      102 c_trumbull_college != c_berkeley_college.  [copy(101),flip(a)].
+           103 c_berkeley_college != c_usd42point3billion.  [assumption].
+kept:      104 c_usd42point3billion != c_berkeley_college.  [copy(103),flip(a)].
+           105 c_berkeley_college != c_yale_university.  [assumption].
+kept:      106 c_yale_university != c_berkeley_college.  [copy(105),flip(a)].
+           107 c_berkeley_college != c_yale_universitys_endowment.  [assumption].
+kept:      108 c_yale_universitys_endowment != c_berkeley_college.  [copy(107),flip(a)].
+           109 c_berkeley_college != c_year1716.  [assumption].
+kept:      110 c_year1716 != c_berkeley_college.  [copy(109),flip(a)].
+           111 c_branford_college != c_davenport_college.  [assumption].
+kept:      112 c_davenport_college != c_branford_college.  [copy(111),flip(a)].
+           113 c_branford_college != c_ezra_stiles_college.  [assumption].
+kept:      114 c_ezra_stiles_college != c_branford_college.  [copy(113),flip(a)].
+           115 c_branford_college != c_grace_hopper_college.  [assumption].
+kept:      116 c_grace_hopper_college != c_branford_college.  [copy(115),flip(a)].
+           117 c_branford_college != c_jonathan_edwards_college.  [assumption].
+kept:      118 c_jonathan_edwards_college != c_branford_college.  [copy(117),flip(a)].
+           119 c_branford_college != c_morse_college.  [assumption].
+kept:      120 c_morse_college != c_branford_college.  [copy(119),flip(a)].
+           121 c_branford_college != c_new_haven.  [assumption].
+kept:      122 c_new_haven != c_branford_college.  [copy(121),flip(a)].
+           123 c_branford_college != c_pauli_murray_college.  [assumption].
+kept:      124 c_pauli_murray_college != c_branford_college.  [copy(123),flip(a)].
+           125 c_branford_college != c_pierson_college.  [assumption].
+kept:      126 c_pierson_college != c_branford_college.  [copy(125),flip(a)].
+           127 c_branford_college != c_saybrook_college.  [assumption].
+kept:      128 c_saybrook_college != c_branford_college.  [copy(127),flip(a)].
+           129 c_branford_college != c_silliman_college.  [assumption].
+kept:      130 c_silliman_college != c_branford_college.  [copy(129),flip(a)].
+           131 c_branford_college != c_timothy_dwight_college.  [assumption].
+kept:      132 c_timothy_dwight_college != c_branford_college.  [copy(131),flip(a)].
+           133 c_branford_college != c_trumbull_college.  [assumption].
+kept:      134 c_trumbull_college != c_branford_college.  [copy(133),flip(a)].
+           135 c_branford_college != c_usd42point3billion.  [assumption].
+kept:      136 c_usd42point3billion != c_branford_college.  [copy(135),flip(a)].
+           137 c_branford_college != c_yale_university.  [assumption].
+kept:      138 c_yale_university != c_branford_college.  [copy(137),flip(a)].
+           139 c_branford_college != c_yale_universitys_endowment.  [assumption].
+kept:      140 c_yale_universitys_endowment != c_branford_college.  [copy(139),flip(a)].
+           141 c_branford_college != c_year1716.  [assumption].
+kept:      142 c_year1716 != c_branford_college.  [copy(141),flip(a)].
+           143 c_davenport_college != c_ezra_stiles_college.  [assumption].
+kept:      144 c_ezra_stiles_college != c_davenport_college.  [copy(143),flip(a)].
+           145 c_davenport_college != c_grace_hopper_college.  [assumption].
+kept:      146 c_grace_hopper_college != c_davenport_college.  [copy(145),flip(a)].
+           147 c_davenport_college != c_jonathan_edwards_college.  [assumption].
+kept:      148 c_jonathan_edwards_college != c_davenport_college.  [copy(147),flip(a)].
+           149 c_davenport_college != c_morse_college.  [assumption].
+kept:      150 c_morse_college != c_davenport_college.  [copy(149),flip(a)].
+           151 c_davenport_college != c_new_haven.  [assumption].
+kept:      152 c_new_haven != c_davenport_college.  [copy(151),flip(a)].
+           153 c_davenport_college != c_pauli_murray_college.  [assumption].
+kept:      154 c_pauli_murray_college != c_davenport_college.  [copy(153),flip(a)].
+           155 c_davenport_college != c_pierson_college.  [assumption].
+kept:      156 c_pierson_college != c_davenport_college.  [copy(155),flip(a)].
+           157 c_davenport_college != c_saybrook_college.  [assumption].
+kept:      158 c_saybrook_college != c_davenport_college.  [copy(157),flip(a)].
+           159 c_davenport_college != c_silliman_college.  [assumption].
+kept:      160 c_silliman_college != c_davenport_college.  [copy(159),flip(a)].
+           161 c_davenport_college != c_timothy_dwight_college.  [assumption].
+kept:      162 c_timothy_dwight_college != c_davenport_college.  [copy(161),flip(a)].
+           163 c_davenport_college != c_trumbull_college.  [assumption].
+kept:      164 c_trumbull_college != c_davenport_college.  [copy(163),flip(a)].
+           165 c_davenport_college != c_usd42point3billion.  [assumption].
+kept:      166 c_usd42point3billion != c_davenport_college.  [copy(165),flip(a)].
+           167 c_davenport_college != c_yale_university.  [assumption].
+kept:      168 c_yale_university != c_davenport_college.  [copy(167),flip(a)].
+           169 c_davenport_college != c_yale_universitys_endowment.  [assumption].
+kept:      170 c_yale_universitys_endowment != c_davenport_college.  [copy(169),flip(a)].
+           171 c_davenport_college != c_year1716.  [assumption].
+kept:      172 c_year1716 != c_davenport_college.  [copy(171),flip(a)].
+           173 c_ezra_stiles_college != c_grace_hopper_college.  [assumption].
+kept:      174 c_grace_hopper_college != c_ezra_stiles_college.  [copy(173),flip(a)].
+           175 c_ezra_stiles_college != c_jonathan_edwards_college.  [assumption].
+kept:      176 c_jonathan_edwards_college != c_ezra_stiles_college.  [copy(175),flip(a)].
+           177 c_ezra_stiles_college != c_morse_college.  [assumption].
+kept:      178 c_morse_college != c_ezra_stiles_college.  [copy(177),flip(a)].
+           179 c_ezra_stiles_college != c_new_haven.  [assumption].
+kept:      180 c_new_haven != c_ezra_stiles_college.  [copy(179),flip(a)].
+           181 c_ezra_stiles_college != c_pauli_murray_college.  [assumption].
+kept:      182 c_pauli_murray_college != c_ezra_stiles_college.  [copy(181),flip(a)].
+           183 c_ezra_stiles_college != c_pierson_college.  [assumption].
+kept:      184 c_pierson_college != c_ezra_stiles_college.  [copy(183),flip(a)].
+           185 c_ezra_stiles_college != c_saybrook_college.  [assumption].
+kept:      186 c_saybrook_college != c_ezra_stiles_college.  [copy(185),flip(a)].
+           187 c_ezra_stiles_college != c_silliman_college.  [assumption].
+kept:      188 c_silliman_college != c_ezra_stiles_college.  [copy(187),flip(a)].
+           189 c_ezra_stiles_college != c_timothy_dwight_college.  [assumption].
+kept:      190 c_timothy_dwight_college != c_ezra_stiles_college.  [copy(189),flip(a)].
+           191 c_ezra_stiles_college != c_trumbull_college.  [assumption].
+kept:      192 c_trumbull_college != c_ezra_stiles_college.  [copy(191),flip(a)].
+           193 c_ezra_stiles_college != c_usd42point3billion.  [assumption].
+kept:      194 c_usd42point3billion != c_ezra_stiles_college.  [copy(193),flip(a)].
+           195 c_ezra_stiles_college != c_yale_university.  [assumption].
+kept:      196 c_yale_university != c_ezra_stiles_college.  [copy(195),flip(a)].
+           197 c_ezra_stiles_college != c_yale_universitys_endowment.  [assumption].
+kept:      198 c_yale_universitys_endowment != c_ezra_stiles_college.  [copy(197),flip(a)].
+           199 c_ezra_stiles_college != c_year1716.  [assumption].
+kept:      200 c_year1716 != c_ezra_stiles_college.  [copy(199),flip(a)].
+           201 c_grace_hopper_college != c_jonathan_edwards_college.  [assumption].
+kept:      202 c_jonathan_edwards_college != c_grace_hopper_college.  [copy(201),flip(a)].
+           203 c_grace_hopper_college != c_morse_college.  [assumption].
+kept:      204 c_morse_college != c_grace_hopper_college.  [copy(203),flip(a)].
+           205 c_grace_hopper_college != c_new_haven.  [assumption].
+kept:      206 c_new_haven != c_grace_hopper_college.  [copy(205),flip(a)].
+           207 c_grace_hopper_college != c_pauli_murray_college.  [assumption].
+kept:      208 c_pauli_murray_college != c_grace_hopper_college.  [copy(207),flip(a)].
+           209 c_grace_hopper_college != c_pierson_college.  [assumption].
+kept:      210 c_pierson_college != c_grace_hopper_college.  [copy(209),flip(a)].
+           211 c_grace_hopper_college != c_saybrook_college.  [assumption].
+kept:      212 c_saybrook_college != c_grace_hopper_college.  [copy(211),flip(a)].
+           213 c_grace_hopper_college != c_silliman_college.  [assumption].
+kept:      214 c_silliman_college != c_grace_hopper_college.  [copy(213),flip(a)].
+           215 c_grace_hopper_college != c_timothy_dwight_college.  [assumption].
+kept:      216 c_timothy_dwight_college != c_grace_hopper_college.  [copy(215),flip(a)].
+           217 c_grace_hopper_college != c_trumbull_college.  [assumption].
+kept:      218 c_trumbull_college != c_grace_hopper_college.  [copy(217),flip(a)].
+           219 c_grace_hopper_college != c_usd42point3billion.  [assumption].
+kept:      220 c_usd42point3billion != c_grace_hopper_college.  [copy(219),flip(a)].
+           221 c_grace_hopper_college != c_yale_university.  [assumption].
+kept:      222 c_yale_university != c_grace_hopper_college.  [copy(221),flip(a)].
+           223 c_grace_hopper_college != c_yale_universitys_endowment.  [assumption].
+kept:      224 c_yale_universitys_endowment != c_grace_hopper_college.  [copy(223),flip(a)].
+           225 c_grace_hopper_college != c_year1716.  [assumption].
+kept:      226 c_year1716 != c_grace_hopper_college.  [copy(225),flip(a)].
+           227 c_jonathan_edwards_college != c_morse_college.  [assumption].
+kept:      228 c_morse_college != c_jonathan_edwards_college.  [copy(227),flip(a)].
+           229 c_jonathan_edwards_college != c_new_haven.  [assumption].
+kept:      230 c_new_haven != c_jonathan_edwards_college.  [copy(229),flip(a)].
+           231 c_jonathan_edwards_college != c_pauli_murray_college.  [assumption].
+kept:      232 c_pauli_murray_college != c_jonathan_edwards_college.  [copy(231),flip(a)].
+           233 c_jonathan_edwards_college != c_pierson_college.  [assumption].
+kept:      234 c_pierson_college != c_jonathan_edwards_college.  [copy(233),flip(a)].
+           235 c_jonathan_edwards_college != c_saybrook_college.  [assumption].
+kept:      236 c_saybrook_college != c_jonathan_edwards_college.  [copy(235),flip(a)].
+           237 c_jonathan_edwards_college != c_silliman_college.  [assumption].
+kept:      238 c_silliman_college != c_jonathan_edwards_college.  [copy(237),flip(a)].
+           239 c_jonathan_edwards_college != c_timothy_dwight_college.  [assumption].
+kept:      240 c_timothy_dwight_college != c_jonathan_edwards_college.  [copy(239),flip(a)].
+           241 c_jonathan_edwards_college != c_trumbull_college.  [assumption].
+kept:      242 c_trumbull_college != c_jonathan_edwards_college.  [copy(241),flip(a)].
+           243 c_jonathan_edwards_college != c_usd42point3billion.  [assumption].
+kept:      244 c_usd42point3billion != c_jonathan_edwards_college.  [copy(243),flip(a)].
+           245 c_jonathan_edwards_college != c_yale_university.  [assumption].
+kept:      246 c_yale_university != c_jonathan_edwards_college.  [copy(245),flip(a)].
+           247 c_jonathan_edwards_college != c_yale_universitys_endowment.  [assumption].
+kept:      248 c_yale_universitys_endowment != c_jonathan_edwards_college.  [copy(247),flip(a)].
+           249 c_jonathan_edwards_college != c_year1716.  [assumption].
+kept:      250 c_year1716 != c_jonathan_edwards_college.  [copy(249),flip(a)].
+           251 c_morse_college != c_new_haven.  [assumption].
+kept:      252 c_new_haven != c_morse_college.  [copy(251),flip(a)].
+           253 c_morse_college != c_pauli_murray_college.  [assumption].
+kept:      254 c_pauli_murray_college != c_morse_college.  [copy(253),flip(a)].
+           255 c_morse_college != c_pierson_college.  [assumption].
+kept:      256 c_pierson_college != c_morse_college.  [copy(255),flip(a)].
+           257 c_morse_college != c_saybrook_college.  [assumption].
+kept:      258 c_saybrook_college != c_morse_college.  [copy(257),flip(a)].
+           259 c_morse_college != c_silliman_college.  [assumption].
+kept:      260 c_silliman_college != c_morse_college.  [copy(259),flip(a)].
+           261 c_morse_college != c_timothy_dwight_college.  [assumption].
+kept:      262 c_timothy_dwight_college != c_morse_college.  [copy(261),flip(a)].
+           263 c_morse_college != c_trumbull_college.  [assumption].
+kept:      264 c_trumbull_college != c_morse_college.  [copy(263),flip(a)].
+           265 c_morse_college != c_usd42point3billion.  [assumption].
+kept:      266 c_usd42point3billion != c_morse_college.  [copy(265),flip(a)].
+           267 c_morse_college != c_yale_university.  [assumption].
+kept:      268 c_yale_university != c_morse_college.  [copy(267),flip(a)].
+           269 c_morse_college != c_yale_universitys_endowment.  [assumption].
+kept:      270 c_yale_universitys_endowment != c_morse_college.  [copy(269),flip(a)].
+           271 c_morse_college != c_year1716.  [assumption].
+kept:      272 c_year1716 != c_morse_college.  [copy(271),flip(a)].
+           273 c_new_haven != c_pauli_murray_college.  [assumption].
+kept:      274 c_pauli_murray_college != c_new_haven.  [copy(273),flip(a)].
+           275 c_new_haven != c_pierson_college.  [assumption].
+kept:      276 c_pierson_college != c_new_haven.  [copy(275),flip(a)].
+           277 c_new_haven != c_saybrook_college.  [assumption].
+kept:      278 c_saybrook_college != c_new_haven.  [copy(277),flip(a)].
+           279 c_new_haven != c_silliman_college.  [assumption].
+kept:      280 c_silliman_college != c_new_haven.  [copy(279),flip(a)].
+           281 c_new_haven != c_timothy_dwight_college.  [assumption].
+kept:      282 c_timothy_dwight_college != c_new_haven.  [copy(281),flip(a)].
+           283 c_new_haven != c_trumbull_college.  [assumption].
+kept:      284 c_trumbull_college != c_new_haven.  [copy(283),flip(a)].
+           285 c_new_haven != c_usd42point3billion.  [assumption].
+kept:      286 c_usd42point3billion != c_new_haven.  [copy(285),flip(a)].
+           287 c_new_haven != c_yale_university.  [assumption].
+kept:      288 c_yale_university != c_new_haven.  [copy(287),flip(a)].
+           289 c_new_haven != c_yale_universitys_endowment.  [assumption].
+kept:      290 c_yale_universitys_endowment != c_new_haven.  [copy(289),flip(a)].
+           291 c_new_haven != c_year1716.  [assumption].
+kept:      292 c_year1716 != c_new_haven.  [copy(291),flip(a)].
+           293 c_pauli_murray_college != c_pierson_college.  [assumption].
+kept:      294 c_pierson_college != c_pauli_murray_college.  [copy(293),flip(a)].
+           295 c_pauli_murray_college != c_saybrook_college.  [assumption].
+kept:      296 c_saybrook_college != c_pauli_murray_college.  [copy(295),flip(a)].
+           297 c_pauli_murray_college != c_silliman_college.  [assumption].
+kept:      298 c_silliman_college != c_pauli_murray_college.  [copy(297),flip(a)].
+           299 c_pauli_murray_college != c_timothy_dwight_college.  [assumption].
+kept:      300 c_timothy_dwight_college != c_pauli_murray_college.  [copy(299),flip(a)].
+           301 c_pauli_murray_college != c_trumbull_college.  [assumption].
+kept:      302 c_trumbull_college != c_pauli_murray_college.  [copy(301),flip(a)].
+           303 c_pauli_murray_college != c_usd42point3billion.  [assumption].
+kept:      304 c_usd42point3billion != c_pauli_murray_college.  [copy(303),flip(a)].
+           305 c_pauli_murray_college != c_yale_university.  [assumption].
+kept:      306 c_yale_university != c_pauli_murray_college.  [copy(305),flip(a)].
+           307 c_pauli_murray_college != c_yale_universitys_endowment.  [assumption].
+kept:      308 c_yale_universitys_endowment != c_pauli_murray_college.  [copy(307),flip(a)].
+           309 c_pauli_murray_college != c_year1716.  [assumption].
+kept:      310 c_year1716 != c_pauli_murray_college.  [copy(309),flip(a)].
+           311 c_pierson_college != c_saybrook_college.  [assumption].
+kept:      312 c_saybrook_college != c_pierson_college.  [copy(311),flip(a)].
+           313 c_pierson_college != c_silliman_college.  [assumption].
+kept:      314 c_silliman_college != c_pierson_college.  [copy(313),flip(a)].
+           315 c_pierson_college != c_timothy_dwight_college.  [assumption].
+kept:      316 c_timothy_dwight_college != c_pierson_college.  [copy(315),flip(a)].
+           317 c_pierson_college != c_trumbull_college.  [assumption].
+kept:      318 c_trumbull_college != c_pierson_college.  [copy(317),flip(a)].
+           319 c_pierson_college != c_usd42point3billion.  [assumption].
+kept:      320 c_usd42point3billion != c_pierson_college.  [copy(319),flip(a)].
+           321 c_pierson_college != c_yale_university.  [assumption].
+kept:      322 c_yale_university != c_pierson_college.  [copy(321),flip(a)].
+           323 c_pierson_college != c_yale_universitys_endowment.  [assumption].
+kept:      324 c_yale_universitys_endowment != c_pierson_college.  [copy(323),flip(a)].
+           325 c_pierson_college != c_year1716.  [assumption].
+kept:      326 c_year1716 != c_pierson_college.  [copy(325),flip(a)].
+           327 c_saybrook_college != c_silliman_college.  [assumption].
+kept:      328 c_silliman_college != c_saybrook_college.  [copy(327),flip(a)].
+           329 c_saybrook_college != c_timothy_dwight_college.  [assumption].
+kept:      330 c_timothy_dwight_college != c_saybrook_college.  [copy(329),flip(a)].
+           331 c_saybrook_college != c_trumbull_college.  [assumption].
+kept:      332 c_trumbull_college != c_saybrook_college.  [copy(331),flip(a)].
+           333 c_saybrook_college != c_usd42point3billion.  [assumption].
+kept:      334 c_usd42point3billion != c_saybrook_college.  [copy(333),flip(a)].
+           335 c_saybrook_college != c_yale_university.  [assumption].
+kept:      336 c_yale_university != c_saybrook_college.  [copy(335),flip(a)].
+           337 c_saybrook_college != c_yale_universitys_endowment.  [assumption].
+kept:      338 c_yale_universitys_endowment != c_saybrook_college.  [copy(337),flip(a)].
+           339 c_saybrook_college != c_year1716.  [assumption].
+kept:      340 c_year1716 != c_saybrook_college.  [copy(339),flip(a)].
+           341 c_silliman_college != c_timothy_dwight_college.  [assumption].
+kept:      342 c_timothy_dwight_college != c_silliman_college.  [copy(341),flip(a)].
+           343 c_silliman_college != c_trumbull_college.  [assumption].
+kept:      344 c_trumbull_college != c_silliman_college.  [copy(343),flip(a)].
+           345 c_silliman_college != c_usd42point3billion.  [assumption].
+kept:      346 c_usd42point3billion != c_silliman_college.  [copy(345),flip(a)].
+           347 c_silliman_college != c_yale_university.  [assumption].
+kept:      348 c_yale_university != c_silliman_college.  [copy(347),flip(a)].
+           349 c_silliman_college != c_yale_universitys_endowment.  [assumption].
+kept:      350 c_yale_universitys_endowment != c_silliman_college.  [copy(349),flip(a)].
+           351 c_silliman_college != c_year1716.  [assumption].
+kept:      352 c_year1716 != c_silliman_college.  [copy(351),flip(a)].
+           353 c_timothy_dwight_college != c_trumbull_college.  [assumption].
+kept:      354 c_trumbull_college != c_timothy_dwight_college.  [copy(353),flip(a)].
+           355 c_timothy_dwight_college != c_usd42point3billion.  [assumption].
+kept:      356 c_usd42point3billion != c_timothy_dwight_college.  [copy(355),flip(a)].
+           357 c_timothy_dwight_college != c_yale_university.  [assumption].
+kept:      358 c_yale_university != c_timothy_dwight_college.  [copy(357),flip(a)].
+           359 c_timothy_dwight_college != c_yale_universitys_endowment.  [assumption].
+kept:      360 c_yale_universitys_endowment != c_timothy_dwight_college.  [copy(359),flip(a)].
+           361 c_timothy_dwight_college != c_year1716.  [assumption].
+kept:      362 c_year1716 != c_timothy_dwight_college.  [copy(361),flip(a)].
+           363 c_trumbull_college != c_usd42point3billion.  [assumption].
+kept:      364 c_usd42point3billion != c_trumbull_college.  [copy(363),flip(a)].
+           365 c_trumbull_college != c_yale_university.  [assumption].
+kept:      366 c_yale_university != c_trumbull_college.  [copy(365),flip(a)].
+           367 c_trumbull_college != c_yale_universitys_endowment.  [assumption].
+kept:      368 c_yale_universitys_endowment != c_trumbull_college.  [copy(367),flip(a)].
+           369 c_trumbull_college != c_year1716.  [assumption].
+kept:      370 c_year1716 != c_trumbull_college.  [copy(369),flip(a)].
+           371 c_usd42point3billion != c_yale_university.  [assumption].
+kept:      372 c_yale_university != c_usd42point3billion.  [copy(371),flip(a)].
+           373 c_usd42point3billion != c_yale_universitys_endowment.  [assumption].
+kept:      374 c_yale_universitys_endowment != c_usd42point3billion.  [copy(373),flip(a)].
+           375 c_usd42point3billion != c_year1716.  [assumption].
+kept:      376 c_year1716 != c_usd42point3billion.  [copy(375),flip(a)].
+           377 c_yale_university != c_yale_universitys_endowment.  [assumption].
+kept:      378 c_yale_universitys_endowment != c_yale_university.  [copy(377),flip(a)].
+           379 c_yale_university != c_year1716.  [assumption].
+kept:      380 c_year1716 != c_yale_university.  [copy(379),flip(a)].
+           381 c_yale_universitys_endowment != c_year1716.  [assumption].
+kept:      382 c_year1716 != c_yale_universitys_endowment.  [copy(381),flip(a)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+4 c_benjamin_franklin_college != c_any_educational_institution.  [copy(3),flip(a)].
+6 c_berkeley_college != c_any_educational_institution.  [copy(5),flip(a)].
+8 c_branford_college != c_any_educational_institution.  [copy(7),flip(a)].
+10 c_davenport_college != c_any_educational_institution.  [copy(9),flip(a)].
+12 c_ezra_stiles_college != c_any_educational_institution.  [copy(11),flip(a)].
+14 c_grace_hopper_college != c_any_educational_institution.  [copy(13),flip(a)].
+16 c_jonathan_edwards_college != c_any_educational_institution.  [copy(15),flip(a)].
+18 c_morse_college != c_any_educational_institution.  [copy(17),flip(a)].
+20 c_new_haven != c_any_educational_institution.  [copy(19),flip(a)].
+22 c_pauli_murray_college != c_any_educational_institution.  [copy(21),flip(a)].
+24 c_pierson_college != c_any_educational_institution.  [copy(23),flip(a)].
+26 c_saybrook_college != c_any_educational_institution.  [copy(25),flip(a)].
+28 c_silliman_college != c_any_educational_institution.  [copy(27),flip(a)].
+30 c_timothy_dwight_college != c_any_educational_institution.  [copy(29),flip(a)].
+32 c_trumbull_college != c_any_educational_institution.  [copy(31),flip(a)].
+34 c_usd42point3billion != c_any_educational_institution.  [copy(33),flip(a)].
+36 c_yale_university != c_any_educational_institution.  [copy(35),flip(a)].
+38 c_yale_universitys_endowment != c_any_educational_institution.  [copy(37),flip(a)].
+40 c_year1716 != c_any_educational_institution.  [copy(39),flip(a)].
+42 c_berkeley_college != c_benjamin_franklin_college.  [copy(41),flip(a)].
+44 c_branford_college != c_benjamin_franklin_college.  [copy(43),flip(a)].
+46 c_davenport_college != c_benjamin_franklin_college.  [copy(45),flip(a)].
+48 c_ezra_stiles_college != c_benjamin_franklin_college.  [copy(47),flip(a)].
+50 c_grace_hopper_college != c_benjamin_franklin_college.  [copy(49),flip(a)].
+52 c_jonathan_edwards_college != c_benjamin_franklin_college.  [copy(51),flip(a)].
+54 c_morse_college != c_benjamin_franklin_college.  [copy(53),flip(a)].
+56 c_new_haven != c_benjamin_franklin_college.  [copy(55),flip(a)].
+58 c_pauli_murray_college != c_benjamin_franklin_college.  [copy(57),flip(a)].
+60 c_pierson_college != c_benjamin_franklin_college.  [copy(59),flip(a)].
+62 c_saybrook_college != c_benjamin_franklin_college.  [copy(61),flip(a)].
+64 c_silliman_college != c_benjamin_franklin_college.  [copy(63),flip(a)].
+66 c_timothy_dwight_college != c_benjamin_franklin_college.  [copy(65),flip(a)].
+68 c_trumbull_college != c_benjamin_franklin_college.  [copy(67),flip(a)].
+70 c_usd42point3billion != c_benjamin_franklin_college.  [copy(69),flip(a)].
+72 c_yale_university != c_benjamin_franklin_college.  [copy(71),flip(a)].
+74 c_yale_universitys_endowment != c_benjamin_franklin_college.  [copy(73),flip(a)].
+76 c_year1716 != c_benjamin_franklin_college.  [copy(75),flip(a)].
+78 c_branford_college != c_berkeley_college.  [copy(77),flip(a)].
+80 c_davenport_college != c_berkeley_college.  [copy(79),flip(a)].
+82 c_ezra_stiles_college != c_berkeley_college.  [copy(81),flip(a)].
+84 c_grace_hopper_college != c_berkeley_college.  [copy(83),flip(a)].
+86 c_jonathan_edwards_college != c_berkeley_college.  [copy(85),flip(a)].
+88 c_morse_college != c_berkeley_college.  [copy(87),flip(a)].
+90 c_new_haven != c_berkeley_college.  [copy(89),flip(a)].
+92 c_pauli_murray_college != c_berkeley_college.  [copy(91),flip(a)].
+94 c_pierson_college != c_berkeley_college.  [copy(93),flip(a)].
+96 c_saybrook_college != c_berkeley_college.  [copy(95),flip(a)].
+98 c_silliman_college != c_berkeley_college.  [copy(97),flip(a)].
+100 c_timothy_dwight_college != c_berkeley_college.  [copy(99),flip(a)].
+102 c_trumbull_college != c_berkeley_college.  [copy(101),flip(a)].
+104 c_usd42point3billion != c_berkeley_college.  [copy(103),flip(a)].
+106 c_yale_university != c_berkeley_college.  [copy(105),flip(a)].
+108 c_yale_universitys_endowment != c_berkeley_college.  [copy(107),flip(a)].
+110 c_year1716 != c_berkeley_college.  [copy(109),flip(a)].
+112 c_davenport_college != c_branford_college.  [copy(111),flip(a)].
+114 c_ezra_stiles_college != c_branford_college.  [copy(113),flip(a)].
+116 c_grace_hopper_college != c_branford_college.  [copy(115),flip(a)].
+118 c_jonathan_edwards_college != c_branford_college.  [copy(117),flip(a)].
+120 c_morse_college != c_branford_college.  [copy(119),flip(a)].
+122 c_new_haven != c_branford_college.  [copy(121),flip(a)].
+124 c_pauli_murray_college != c_branford_college.  [copy(123),flip(a)].
+126 c_pierson_college != c_branford_college.  [copy(125),flip(a)].
+128 c_saybrook_college != c_branford_college.  [copy(127),flip(a)].
+130 c_silliman_college != c_branford_college.  [copy(129),flip(a)].
+132 c_timothy_dwight_college != c_branford_college.  [copy(131),flip(a)].
+134 c_trumbull_college != c_branford_college.  [copy(133),flip(a)].
+136 c_usd42point3billion != c_branford_college.  [copy(135),flip(a)].
+138 c_yale_university != c_branford_college.  [copy(137),flip(a)].
+140 c_yale_universitys_endowment != c_branford_college.  [copy(139),flip(a)].
+142 c_year1716 != c_branford_college.  [copy(141),flip(a)].
+144 c_ezra_stiles_college != c_davenport_college.  [copy(143),flip(a)].
+146 c_grace_hopper_college != c_davenport_college.  [copy(145),flip(a)].
+148 c_jonathan_edwards_college != c_davenport_college.  [copy(147),flip(a)].
+150 c_morse_college != c_davenport_college.  [copy(149),flip(a)].
+152 c_new_haven != c_davenport_college.  [copy(151),flip(a)].
+154 c_pauli_murray_college != c_davenport_college.  [copy(153),flip(a)].
+156 c_pierson_college != c_davenport_college.  [copy(155),flip(a)].
+158 c_saybrook_college != c_davenport_college.  [copy(157),flip(a)].
+160 c_silliman_college != c_davenport_college.  [copy(159),flip(a)].
+162 c_timothy_dwight_college != c_davenport_college.  [copy(161),flip(a)].
+164 c_trumbull_college != c_davenport_college.  [copy(163),flip(a)].
+166 c_usd42point3billion != c_davenport_college.  [copy(165),flip(a)].
+168 c_yale_university != c_davenport_college.  [copy(167),flip(a)].
+170 c_yale_universitys_endowment != c_davenport_college.  [copy(169),flip(a)].
+172 c_year1716 != c_davenport_college.  [copy(171),flip(a)].
+174 c_grace_hopper_college != c_ezra_stiles_college.  [copy(173),flip(a)].
+176 c_jonathan_edwards_college != c_ezra_stiles_college.  [copy(175),flip(a)].
+178 c_morse_college != c_ezra_stiles_college.  [copy(177),flip(a)].
+180 c_new_haven != c_ezra_stiles_college.  [copy(179),flip(a)].
+182 c_pauli_murray_college != c_ezra_stiles_college.  [copy(181),flip(a)].
+184 c_pierson_college != c_ezra_stiles_college.  [copy(183),flip(a)].
+186 c_saybrook_college != c_ezra_stiles_college.  [copy(185),flip(a)].
+188 c_silliman_college != c_ezra_stiles_college.  [copy(187),flip(a)].
+190 c_timothy_dwight_college != c_ezra_stiles_college.  [copy(189),flip(a)].
+192 c_trumbull_college != c_ezra_stiles_college.  [copy(191),flip(a)].
+194 c_usd42point3billion != c_ezra_stiles_college.  [copy(193),flip(a)].
+196 c_yale_university != c_ezra_stiles_college.  [copy(195),flip(a)].
+198 c_yale_universitys_endowment != c_ezra_stiles_college.  [copy(197),flip(a)].
+200 c_year1716 != c_ezra_stiles_college.  [copy(199),flip(a)].
+202 c_jonathan_edwards_college != c_grace_hopper_college.  [copy(201),flip(a)].
+204 c_morse_college != c_grace_hopper_college.  [copy(203),flip(a)].
+206 c_new_haven != c_grace_hopper_college.  [copy(205),flip(a)].
+208 c_pauli_murray_college != c_grace_hopper_college.  [copy(207),flip(a)].
+210 c_pierson_college != c_grace_hopper_college.  [copy(209),flip(a)].
+212 c_saybrook_college != c_grace_hopper_college.  [copy(211),flip(a)].
+214 c_silliman_college != c_grace_hopper_college.  [copy(213),flip(a)].
+216 c_timothy_dwight_college != c_grace_hopper_college.  [copy(215),flip(a)].
+218 c_trumbull_college != c_grace_hopper_college.  [copy(217),flip(a)].
+220 c_usd42point3billion != c_grace_hopper_college.  [copy(219),flip(a)].
+222 c_yale_university != c_grace_hopper_college.  [copy(221),flip(a)].
+224 c_yale_universitys_endowment != c_grace_hopper_college.  [copy(223),flip(a)].
+226 c_year1716 != c_grace_hopper_college.  [copy(225),flip(a)].
+228 c_morse_college != c_jonathan_edwards_college.  [copy(227),flip(a)].
+230 c_new_haven != c_jonathan_edwards_college.  [copy(229),flip(a)].
+232 c_pauli_murray_college != c_jonathan_edwards_college.  [copy(231),flip(a)].
+234 c_pierson_college != c_jonathan_edwards_college.  [copy(233),flip(a)].
+236 c_saybrook_college != c_jonathan_edwards_college.  [copy(235),flip(a)].
+238 c_silliman_college != c_jonathan_edwards_college.  [copy(237),flip(a)].
+240 c_timothy_dwight_college != c_jonathan_edwards_college.  [copy(239),flip(a)].
+242 c_trumbull_college != c_jonathan_edwards_college.  [copy(241),flip(a)].
+244 c_usd42point3billion != c_jonathan_edwards_college.  [copy(243),flip(a)].
+246 c_yale_university != c_jonathan_edwards_college.  [copy(245),flip(a)].
+248 c_yale_universitys_endowment != c_jonathan_edwards_college.  [copy(247),flip(a)].
+250 c_year1716 != c_jonathan_edwards_college.  [copy(249),flip(a)].
+252 c_new_haven != c_morse_college.  [copy(251),flip(a)].
+254 c_pauli_murray_college != c_morse_college.  [copy(253),flip(a)].
+256 c_pierson_college != c_morse_college.  [copy(255),flip(a)].
+258 c_saybrook_college != c_morse_college.  [copy(257),flip(a)].
+260 c_silliman_college != c_morse_college.  [copy(259),flip(a)].
+262 c_timothy_dwight_college != c_morse_college.  [copy(261),flip(a)].
+264 c_trumbull_college != c_morse_college.  [copy(263),flip(a)].
+266 c_usd42point3billion != c_morse_college.  [copy(265),flip(a)].
+268 c_yale_university != c_morse_college.  [copy(267),flip(a)].
+270 c_yale_universitys_endowment != c_morse_college.  [copy(269),flip(a)].
+272 c_year1716 != c_morse_college.  [copy(271),flip(a)].
+274 c_pauli_murray_college != c_new_haven.  [copy(273),flip(a)].
+276 c_pierson_college != c_new_haven.  [copy(275),flip(a)].
+278 c_saybrook_college != c_new_haven.  [copy(277),flip(a)].
+280 c_silliman_college != c_new_haven.  [copy(279),flip(a)].
+282 c_timothy_dwight_college != c_new_haven.  [copy(281),flip(a)].
+284 c_trumbull_college != c_new_haven.  [copy(283),flip(a)].
+286 c_usd42point3billion != c_new_haven.  [copy(285),flip(a)].
+288 c_yale_university != c_new_haven.  [copy(287),flip(a)].
+290 c_yale_universitys_endowment != c_new_haven.  [copy(289),flip(a)].
+292 c_year1716 != c_new_haven.  [copy(291),flip(a)].
+294 c_pierson_college != c_pauli_murray_college.  [copy(293),flip(a)].
+296 c_saybrook_college != c_pauli_murray_college.  [copy(295),flip(a)].
+298 c_silliman_college != c_pauli_murray_college.  [copy(297),flip(a)].
+300 c_timothy_dwight_college != c_pauli_murray_college.  [copy(299),flip(a)].
+302 c_trumbull_college != c_pauli_murray_college.  [copy(301),flip(a)].
+304 c_usd42point3billion != c_pauli_murray_college.  [copy(303),flip(a)].
+306 c_yale_university != c_pauli_murray_college.  [copy(305),flip(a)].
+308 c_yale_universitys_endowment != c_pauli_murray_college.  [copy(307),flip(a)].
+310 c_year1716 != c_pauli_murray_college.  [copy(309),flip(a)].
+312 c_saybrook_college != c_pierson_college.  [copy(311),flip(a)].
+314 c_silliman_college != c_pierson_college.  [copy(313),flip(a)].
+316 c_timothy_dwight_college != c_pierson_college.  [copy(315),flip(a)].
+318 c_trumbull_college != c_pierson_college.  [copy(317),flip(a)].
+320 c_usd42point3billion != c_pierson_college.  [copy(319),flip(a)].
+322 c_yale_university != c_pierson_college.  [copy(321),flip(a)].
+324 c_yale_universitys_endowment != c_pierson_college.  [copy(323),flip(a)].
+326 c_year1716 != c_pierson_college.  [copy(325),flip(a)].
+328 c_silliman_college != c_saybrook_college.  [copy(327),flip(a)].
+330 c_timothy_dwight_college != c_saybrook_college.  [copy(329),flip(a)].
+332 c_trumbull_college != c_saybrook_college.  [copy(331),flip(a)].
+334 c_usd42point3billion != c_saybrook_college.  [copy(333),flip(a)].
+336 c_yale_university != c_saybrook_college.  [copy(335),flip(a)].
+338 c_yale_universitys_endowment != c_saybrook_college.  [copy(337),flip(a)].
+340 c_year1716 != c_saybrook_college.  [copy(339),flip(a)].
+342 c_timothy_dwight_college != c_silliman_college.  [copy(341),flip(a)].
+344 c_trumbull_college != c_silliman_college.  [copy(343),flip(a)].
+346 c_usd42point3billion != c_silliman_college.  [copy(345),flip(a)].
+348 c_yale_university != c_silliman_college.  [copy(347),flip(a)].
+350 c_yale_universitys_endowment != c_silliman_college.  [copy(349),flip(a)].
+352 c_year1716 != c_silliman_college.  [copy(351),flip(a)].
+354 c_trumbull_college != c_timothy_dwight_college.  [copy(353),flip(a)].
+356 c_usd42point3billion != c_timothy_dwight_college.  [copy(355),flip(a)].
+358 c_yale_university != c_timothy_dwight_college.  [copy(357),flip(a)].
+360 c_yale_universitys_endowment != c_timothy_dwight_college.  [copy(359),flip(a)].
+362 c_year1716 != c_timothy_dwight_college.  [copy(361),flip(a)].
+364 c_usd42point3billion != c_trumbull_college.  [copy(363),flip(a)].
+366 c_yale_university != c_trumbull_college.  [copy(365),flip(a)].
+368 c_yale_universitys_endowment != c_trumbull_college.  [copy(367),flip(a)].
+370 c_year1716 != c_trumbull_college.  [copy(369),flip(a)].
+372 c_yale_university != c_usd42point3billion.  [copy(371),flip(a)].
+374 c_yale_universitys_endowment != c_usd42point3billion.  [copy(373),flip(a)].
+376 c_year1716 != c_usd42point3billion.  [copy(375),flip(a)].
+378 c_yale_universitys_endowment != c_yale_university.  [copy(377),flip(a)].
+380 c_year1716 != c_yale_university.  [copy(379),flip(a)].
+382 c_year1716 != c_yale_universitys_endowment.  [copy(381),flip(a)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.01 seconds.
+
+given #1 (I,wt=3): 4 c_benjamin_franklin_college != c_any_educational_institution.  [copy(3),flip(a)].
+
+given #2 (I,wt=3): 6 c_berkeley_college != c_any_educational_institution.  [copy(5),flip(a)].
+
+given #3 (I,wt=3): 8 c_branford_college != c_any_educational_institution.  [copy(7),flip(a)].
+
+given #4 (I,wt=3): 10 c_davenport_college != c_any_educational_institution.  [copy(9),flip(a)].
+
+given #5 (I,wt=3): 12 c_ezra_stiles_college != c_any_educational_institution.  [copy(11),flip(a)].
+
+given #6 (I,wt=3): 14 c_grace_hopper_college != c_any_educational_institution.  [copy(13),flip(a)].
+
+given #7 (I,wt=3): 16 c_jonathan_edwards_college != c_any_educational_institution.  [copy(15),flip(a)].
+
+given #8 (I,wt=3): 18 c_morse_college != c_any_educational_institution.  [copy(17),flip(a)].
+
+given #9 (I,wt=3): 20 c_new_haven != c_any_educational_institution.  [copy(19),flip(a)].
+
+given #10 (I,wt=3): 22 c_pauli_murray_college != c_any_educational_institution.  [copy(21),flip(a)].
+
+given #11 (I,wt=3): 24 c_pierson_college != c_any_educational_institution.  [copy(23),flip(a)].
+
+given #12 (I,wt=3): 26 c_saybrook_college != c_any_educational_institution.  [copy(25),flip(a)].
+
+given #13 (I,wt=3): 28 c_silliman_college != c_any_educational_institution.  [copy(27),flip(a)].
+
+given #14 (I,wt=3): 30 c_timothy_dwight_college != c_any_educational_institution.  [copy(29),flip(a)].
+
+given #15 (I,wt=3): 32 c_trumbull_college != c_any_educational_institution.  [copy(31),flip(a)].
+
+given #16 (I,wt=3): 34 c_usd42point3billion != c_any_educational_institution.  [copy(33),flip(a)].
+
+given #17 (I,wt=3): 36 c_yale_university != c_any_educational_institution.  [copy(35),flip(a)].
+
+given #18 (I,wt=3): 38 c_yale_universitys_endowment != c_any_educational_institution.  [copy(37),flip(a)].
+
+given #19 (I,wt=3): 40 c_year1716 != c_any_educational_institution.  [copy(39),flip(a)].
+
+given #20 (I,wt=3): 42 c_berkeley_college != c_benjamin_franklin_college.  [copy(41),flip(a)].
+
+given #21 (I,wt=3): 44 c_branford_college != c_benjamin_franklin_college.  [copy(43),flip(a)].
+
+given #22 (I,wt=3): 46 c_davenport_college != c_benjamin_franklin_college.  [copy(45),flip(a)].
+
+given #23 (I,wt=3): 48 c_ezra_stiles_college != c_benjamin_franklin_college.  [copy(47),flip(a)].
+
+given #24 (I,wt=3): 50 c_grace_hopper_college != c_benjamin_franklin_college.  [copy(49),flip(a)].
+
+given #25 (I,wt=3): 52 c_jonathan_edwards_college != c_benjamin_franklin_college.  [copy(51),flip(a)].
+
+given #26 (I,wt=3): 54 c_morse_college != c_benjamin_franklin_college.  [copy(53),flip(a)].
+
+given #27 (I,wt=3): 56 c_new_haven != c_benjamin_franklin_college.  [copy(55),flip(a)].
+
+given #28 (I,wt=3): 58 c_pauli_murray_college != c_benjamin_franklin_college.  [copy(57),flip(a)].
+
+given #29 (I,wt=3): 60 c_pierson_college != c_benjamin_franklin_college.  [copy(59),flip(a)].
+
+given #30 (I,wt=3): 62 c_saybrook_college != c_benjamin_franklin_college.  [copy(61),flip(a)].
+
+given #31 (I,wt=3): 64 c_silliman_college != c_benjamin_franklin_college.  [copy(63),flip(a)].
+
+given #32 (I,wt=3): 66 c_timothy_dwight_college != c_benjamin_franklin_college.  [copy(65),flip(a)].
+
+given #33 (I,wt=3): 68 c_trumbull_college != c_benjamin_franklin_college.  [copy(67),flip(a)].
+
+given #34 (I,wt=3): 70 c_usd42point3billion != c_benjamin_franklin_college.  [copy(69),flip(a)].
+
+given #35 (I,wt=3): 72 c_yale_university != c_benjamin_franklin_college.  [copy(71),flip(a)].
+
+given #36 (I,wt=3): 74 c_yale_universitys_endowment != c_benjamin_franklin_college.  [copy(73),flip(a)].
+
+given #37 (I,wt=3): 76 c_year1716 != c_benjamin_franklin_college.  [copy(75),flip(a)].
+
+given #38 (I,wt=3): 78 c_branford_college != c_berkeley_college.  [copy(77),flip(a)].
+
+given #39 (I,wt=3): 80 c_davenport_college != c_berkeley_college.  [copy(79),flip(a)].
+
+given #40 (I,wt=3): 82 c_ezra_stiles_college != c_berkeley_college.  [copy(81),flip(a)].
+
+given #41 (I,wt=3): 84 c_grace_hopper_college != c_berkeley_college.  [copy(83),flip(a)].
+
+given #42 (I,wt=3): 86 c_jonathan_edwards_college != c_berkeley_college.  [copy(85),flip(a)].
+
+given #43 (I,wt=3): 88 c_morse_college != c_berkeley_college.  [copy(87),flip(a)].
+
+given #44 (I,wt=3): 90 c_new_haven != c_berkeley_college.  [copy(89),flip(a)].
+
+given #45 (I,wt=3): 92 c_pauli_murray_college != c_berkeley_college.  [copy(91),flip(a)].
+
+given #46 (I,wt=3): 94 c_pierson_college != c_berkeley_college.  [copy(93),flip(a)].
+
+given #47 (I,wt=3): 96 c_saybrook_college != c_berkeley_college.  [copy(95),flip(a)].
+
+given #48 (I,wt=3): 98 c_silliman_college != c_berkeley_college.  [copy(97),flip(a)].
+
+given #49 (I,wt=3): 100 c_timothy_dwight_college != c_berkeley_college.  [copy(99),flip(a)].
+
+given #50 (I,wt=3): 102 c_trumbull_college != c_berkeley_college.  [copy(101),flip(a)].
+
+given #51 (I,wt=3): 104 c_usd42point3billion != c_berkeley_college.  [copy(103),flip(a)].
+
+given #52 (I,wt=3): 106 c_yale_university != c_berkeley_college.  [copy(105),flip(a)].
+
+given #53 (I,wt=3): 108 c_yale_universitys_endowment != c_berkeley_college.  [copy(107),flip(a)].
+
+given #54 (I,wt=3): 110 c_year1716 != c_berkeley_college.  [copy(109),flip(a)].
+
+given #55 (I,wt=3): 112 c_davenport_college != c_branford_college.  [copy(111),flip(a)].
+
+given #56 (I,wt=3): 114 c_ezra_stiles_college != c_branford_college.  [copy(113),flip(a)].
+
+given #57 (I,wt=3): 116 c_grace_hopper_college != c_branford_college.  [copy(115),flip(a)].
+
+given #58 (I,wt=3): 118 c_jonathan_edwards_college != c_branford_college.  [copy(117),flip(a)].
+
+given #59 (I,wt=3): 120 c_morse_college != c_branford_college.  [copy(119),flip(a)].
+
+given #60 (I,wt=3): 122 c_new_haven != c_branford_college.  [copy(121),flip(a)].
+
+given #61 (I,wt=3): 124 c_pauli_murray_college != c_branford_college.  [copy(123),flip(a)].
+
+given #62 (I,wt=3): 126 c_pierson_college != c_branford_college.  [copy(125),flip(a)].
+
+given #63 (I,wt=3): 128 c_saybrook_college != c_branford_college.  [copy(127),flip(a)].
+
+given #64 (I,wt=3): 130 c_silliman_college != c_branford_college.  [copy(129),flip(a)].
+
+given #65 (I,wt=3): 132 c_timothy_dwight_college != c_branford_college.  [copy(131),flip(a)].
+
+given #66 (I,wt=3): 134 c_trumbull_college != c_branford_college.  [copy(133),flip(a)].
+
+given #67 (I,wt=3): 136 c_usd42point3billion != c_branford_college.  [copy(135),flip(a)].
+
+given #68 (I,wt=3): 138 c_yale_university != c_branford_college.  [copy(137),flip(a)].
+
+given #69 (I,wt=3): 140 c_yale_universitys_endowment != c_branford_college.  [copy(139),flip(a)].
+
+given #70 (I,wt=3): 142 c_year1716 != c_branford_college.  [copy(141),flip(a)].
+
+given #71 (I,wt=3): 144 c_ezra_stiles_college != c_davenport_college.  [copy(143),flip(a)].
+
+given #72 (I,wt=3): 146 c_grace_hopper_college != c_davenport_college.  [copy(145),flip(a)].
+
+given #73 (I,wt=3): 148 c_jonathan_edwards_college != c_davenport_college.  [copy(147),flip(a)].
+
+given #74 (I,wt=3): 150 c_morse_college != c_davenport_college.  [copy(149),flip(a)].
+
+given #75 (I,wt=3): 152 c_new_haven != c_davenport_college.  [copy(151),flip(a)].
+
+given #76 (I,wt=3): 154 c_pauli_murray_college != c_davenport_college.  [copy(153),flip(a)].
+
+given #77 (I,wt=3): 156 c_pierson_college != c_davenport_college.  [copy(155),flip(a)].
+
+given #78 (I,wt=3): 158 c_saybrook_college != c_davenport_college.  [copy(157),flip(a)].
+
+given #79 (I,wt=3): 160 c_silliman_college != c_davenport_college.  [copy(159),flip(a)].
+
+given #80 (I,wt=3): 162 c_timothy_dwight_college != c_davenport_college.  [copy(161),flip(a)].
+
+given #81 (I,wt=3): 164 c_trumbull_college != c_davenport_college.  [copy(163),flip(a)].
+
+given #82 (I,wt=3): 166 c_usd42point3billion != c_davenport_college.  [copy(165),flip(a)].
+
+given #83 (I,wt=3): 168 c_yale_university != c_davenport_college.  [copy(167),flip(a)].
+
+given #84 (I,wt=3): 170 c_yale_universitys_endowment != c_davenport_college.  [copy(169),flip(a)].
+
+given #85 (I,wt=3): 172 c_year1716 != c_davenport_college.  [copy(171),flip(a)].
+
+given #86 (I,wt=3): 174 c_grace_hopper_college != c_ezra_stiles_college.  [copy(173),flip(a)].
+
+given #87 (I,wt=3): 176 c_jonathan_edwards_college != c_ezra_stiles_college.  [copy(175),flip(a)].
+
+given #88 (I,wt=3): 178 c_morse_college != c_ezra_stiles_college.  [copy(177),flip(a)].
+
+given #89 (I,wt=3): 180 c_new_haven != c_ezra_stiles_college.  [copy(179),flip(a)].
+
+given #90 (I,wt=3): 182 c_pauli_murray_college != c_ezra_stiles_college.  [copy(181),flip(a)].
+
+given #91 (I,wt=3): 184 c_pierson_college != c_ezra_stiles_college.  [copy(183),flip(a)].
+
+given #92 (I,wt=3): 186 c_saybrook_college != c_ezra_stiles_college.  [copy(185),flip(a)].
+
+given #93 (I,wt=3): 188 c_silliman_college != c_ezra_stiles_college.  [copy(187),flip(a)].
+
+given #94 (I,wt=3): 190 c_timothy_dwight_college != c_ezra_stiles_college.  [copy(189),flip(a)].
+
+given #95 (I,wt=3): 192 c_trumbull_college != c_ezra_stiles_college.  [copy(191),flip(a)].
+
+given #96 (I,wt=3): 194 c_usd42point3billion != c_ezra_stiles_college.  [copy(193),flip(a)].
+
+given #97 (I,wt=3): 196 c_yale_university != c_ezra_stiles_college.  [copy(195),flip(a)].
+
+given #98 (I,wt=3): 198 c_yale_universitys_endowment != c_ezra_stiles_college.  [copy(197),flip(a)].
+
+given #99 (I,wt=3): 200 c_year1716 != c_ezra_stiles_college.  [copy(199),flip(a)].
+
+given #100 (I,wt=3): 202 c_jonathan_edwards_college != c_grace_hopper_college.  [copy(201),flip(a)].
+
+given #101 (I,wt=3): 204 c_morse_college != c_grace_hopper_college.  [copy(203),flip(a)].
+
+given #102 (I,wt=3): 206 c_new_haven != c_grace_hopper_college.  [copy(205),flip(a)].
+
+given #103 (I,wt=3): 208 c_pauli_murray_college != c_grace_hopper_college.  [copy(207),flip(a)].
+
+given #104 (I,wt=3): 210 c_pierson_college != c_grace_hopper_college.  [copy(209),flip(a)].
+
+given #105 (I,wt=3): 212 c_saybrook_college != c_grace_hopper_college.  [copy(211),flip(a)].
+
+given #106 (I,wt=3): 214 c_silliman_college != c_grace_hopper_college.  [copy(213),flip(a)].
+
+given #107 (I,wt=3): 216 c_timothy_dwight_college != c_grace_hopper_college.  [copy(215),flip(a)].
+
+given #108 (I,wt=3): 218 c_trumbull_college != c_grace_hopper_college.  [copy(217),flip(a)].
+
+given #109 (I,wt=3): 220 c_usd42point3billion != c_grace_hopper_college.  [copy(219),flip(a)].
+
+given #110 (I,wt=3): 222 c_yale_university != c_grace_hopper_college.  [copy(221),flip(a)].
+
+given #111 (I,wt=3): 224 c_yale_universitys_endowment != c_grace_hopper_college.  [copy(223),flip(a)].
+
+given #112 (I,wt=3): 226 c_year1716 != c_grace_hopper_college.  [copy(225),flip(a)].
+
+given #113 (I,wt=3): 228 c_morse_college != c_jonathan_edwards_college.  [copy(227),flip(a)].
+
+given #114 (I,wt=3): 230 c_new_haven != c_jonathan_edwards_college.  [copy(229),flip(a)].
+
+given #115 (I,wt=3): 232 c_pauli_murray_college != c_jonathan_edwards_college.  [copy(231),flip(a)].
+
+given #116 (I,wt=3): 234 c_pierson_college != c_jonathan_edwards_college.  [copy(233),flip(a)].
+
+given #117 (I,wt=3): 236 c_saybrook_college != c_jonathan_edwards_college.  [copy(235),flip(a)].
+
+given #118 (I,wt=3): 238 c_silliman_college != c_jonathan_edwards_college.  [copy(237),flip(a)].
+
+given #119 (I,wt=3): 240 c_timothy_dwight_college != c_jonathan_edwards_college.  [copy(239),flip(a)].
+
+given #120 (I,wt=3): 242 c_trumbull_college != c_jonathan_edwards_college.  [copy(241),flip(a)].
+
+given #121 (I,wt=3): 244 c_usd42point3billion != c_jonathan_edwards_college.  [copy(243),flip(a)].
+
+given #122 (I,wt=3): 246 c_yale_university != c_jonathan_edwards_college.  [copy(245),flip(a)].
+
+given #123 (I,wt=3): 248 c_yale_universitys_endowment != c_jonathan_edwards_college.  [copy(247),flip(a)].
+
+given #124 (I,wt=3): 250 c_year1716 != c_jonathan_edwards_college.  [copy(249),flip(a)].
+
+given #125 (I,wt=3): 252 c_new_haven != c_morse_college.  [copy(251),flip(a)].
+
+given #126 (I,wt=3): 254 c_pauli_murray_college != c_morse_college.  [copy(253),flip(a)].
+
+given #127 (I,wt=3): 256 c_pierson_college != c_morse_college.  [copy(255),flip(a)].
+
+given #128 (I,wt=3): 258 c_saybrook_college != c_morse_college.  [copy(257),flip(a)].
+
+given #129 (I,wt=3): 260 c_silliman_college != c_morse_college.  [copy(259),flip(a)].
+
+given #130 (I,wt=3): 262 c_timothy_dwight_college != c_morse_college.  [copy(261),flip(a)].
+
+given #131 (I,wt=3): 264 c_trumbull_college != c_morse_college.  [copy(263),flip(a)].
+
+given #132 (I,wt=3): 266 c_usd42point3billion != c_morse_college.  [copy(265),flip(a)].
+
+given #133 (I,wt=3): 268 c_yale_university != c_morse_college.  [copy(267),flip(a)].
+
+given #134 (I,wt=3): 270 c_yale_universitys_endowment != c_morse_college.  [copy(269),flip(a)].
+
+given #135 (I,wt=3): 272 c_year1716 != c_morse_college.  [copy(271),flip(a)].
+
+given #136 (I,wt=3): 274 c_pauli_murray_college != c_new_haven.  [copy(273),flip(a)].
+
+given #137 (I,wt=3): 276 c_pierson_college != c_new_haven.  [copy(275),flip(a)].
+
+given #138 (I,wt=3): 278 c_saybrook_college != c_new_haven.  [copy(277),flip(a)].
+
+given #139 (I,wt=3): 280 c_silliman_college != c_new_haven.  [copy(279),flip(a)].
+
+given #140 (I,wt=3): 282 c_timothy_dwight_college != c_new_haven.  [copy(281),flip(a)].
+
+given #141 (I,wt=3): 284 c_trumbull_college != c_new_haven.  [copy(283),flip(a)].
+
+given #142 (I,wt=3): 286 c_usd42point3billion != c_new_haven.  [copy(285),flip(a)].
+
+given #143 (I,wt=3): 288 c_yale_university != c_new_haven.  [copy(287),flip(a)].
+
+given #144 (I,wt=3): 290 c_yale_universitys_endowment != c_new_haven.  [copy(289),flip(a)].
+
+given #145 (I,wt=3): 292 c_year1716 != c_new_haven.  [copy(291),flip(a)].
+
+given #146 (I,wt=3): 294 c_pierson_college != c_pauli_murray_college.  [copy(293),flip(a)].
+
+given #147 (I,wt=3): 296 c_saybrook_college != c_pauli_murray_college.  [copy(295),flip(a)].
+
+given #148 (I,wt=3): 298 c_silliman_college != c_pauli_murray_college.  [copy(297),flip(a)].
+
+given #149 (I,wt=3): 300 c_timothy_dwight_college != c_pauli_murray_college.  [copy(299),flip(a)].
+
+given #150 (I,wt=3): 302 c_trumbull_college != c_pauli_murray_college.  [copy(301),flip(a)].
+
+given #151 (I,wt=3): 304 c_usd42point3billion != c_pauli_murray_college.  [copy(303),flip(a)].
+
+given #152 (I,wt=3): 306 c_yale_university != c_pauli_murray_college.  [copy(305),flip(a)].
+
+given #153 (I,wt=3): 308 c_yale_universitys_endowment != c_pauli_murray_college.  [copy(307),flip(a)].
+
+given #154 (I,wt=3): 310 c_year1716 != c_pauli_murray_college.  [copy(309),flip(a)].
+
+given #155 (I,wt=3): 312 c_saybrook_college != c_pierson_college.  [copy(311),flip(a)].
+
+given #156 (I,wt=3): 314 c_silliman_college != c_pierson_college.  [copy(313),flip(a)].
+
+given #157 (I,wt=3): 316 c_timothy_dwight_college != c_pierson_college.  [copy(315),flip(a)].
+
+given #158 (I,wt=3): 318 c_trumbull_college != c_pierson_college.  [copy(317),flip(a)].
+
+given #159 (I,wt=3): 320 c_usd42point3billion != c_pierson_college.  [copy(319),flip(a)].
+
+given #160 (I,wt=3): 322 c_yale_university != c_pierson_college.  [copy(321),flip(a)].
+
+given #161 (I,wt=3): 324 c_yale_universitys_endowment != c_pierson_college.  [copy(323),flip(a)].
+
+given #162 (I,wt=3): 326 c_year1716 != c_pierson_college.  [copy(325),flip(a)].
+
+given #163 (I,wt=3): 328 c_silliman_college != c_saybrook_college.  [copy(327),flip(a)].
+
+given #164 (I,wt=3): 330 c_timothy_dwight_college != c_saybrook_college.  [copy(329),flip(a)].
+
+given #165 (I,wt=3): 332 c_trumbull_college != c_saybrook_college.  [copy(331),flip(a)].
+
+given #166 (I,wt=3): 334 c_usd42point3billion != c_saybrook_college.  [copy(333),flip(a)].
+
+given #167 (I,wt=3): 336 c_yale_university != c_saybrook_college.  [copy(335),flip(a)].
+
+given #168 (I,wt=3): 338 c_yale_universitys_endowment != c_saybrook_college.  [copy(337),flip(a)].
+
+given #169 (I,wt=3): 340 c_year1716 != c_saybrook_college.  [copy(339),flip(a)].
+
+given #170 (I,wt=3): 342 c_timothy_dwight_college != c_silliman_college.  [copy(341),flip(a)].
+
+given #171 (I,wt=3): 344 c_trumbull_college != c_silliman_college.  [copy(343),flip(a)].
+
+given #172 (I,wt=3): 346 c_usd42point3billion != c_silliman_college.  [copy(345),flip(a)].
+
+given #173 (I,wt=3): 348 c_yale_university != c_silliman_college.  [copy(347),flip(a)].
+
+given #174 (I,wt=3): 350 c_yale_universitys_endowment != c_silliman_college.  [copy(349),flip(a)].
+
+given #175 (I,wt=3): 352 c_year1716 != c_silliman_college.  [copy(351),flip(a)].
+
+given #176 (I,wt=3): 354 c_trumbull_college != c_timothy_dwight_college.  [copy(353),flip(a)].
+
+given #177 (I,wt=3): 356 c_usd42point3billion != c_timothy_dwight_college.  [copy(355),flip(a)].
+
+given #178 (I,wt=3): 358 c_yale_university != c_timothy_dwight_college.  [copy(357),flip(a)].
+
+given #179 (I,wt=3): 360 c_yale_universitys_endowment != c_timothy_dwight_college.  [copy(359),flip(a)].
+
+given #180 (I,wt=3): 362 c_year1716 != c_timothy_dwight_college.  [copy(361),flip(a)].
+
+given #181 (I,wt=3): 364 c_usd42point3billion != c_trumbull_college.  [copy(363),flip(a)].
+
+given #182 (I,wt=3): 366 c_yale_university != c_trumbull_college.  [copy(365),flip(a)].
+
+given #183 (I,wt=3): 368 c_yale_universitys_endowment != c_trumbull_college.  [copy(367),flip(a)].
+
+given #184 (I,wt=3): 370 c_year1716 != c_trumbull_college.  [copy(369),flip(a)].
+
+given #185 (I,wt=3): 372 c_yale_university != c_usd42point3billion.  [copy(371),flip(a)].
+
+given #186 (I,wt=3): 374 c_yale_universitys_endowment != c_usd42point3billion.  [copy(373),flip(a)].
+
+given #187 (I,wt=3): 376 c_year1716 != c_usd42point3billion.  [copy(375),flip(a)].
+
+given #188 (I,wt=3): 378 c_yale_universitys_endowment != c_yale_university.  [copy(377),flip(a)].
+
+given #189 (I,wt=3): 380 c_year1716 != c_yale_university.  [copy(379),flip(a)].
+
+given #190 (I,wt=3): 382 c_year1716 != c_yale_universitys_endowment.  [copy(381),flip(a)].
+
+============================== STATISTICS ============================
+
+Given=190. Generated=190. Kept=190. proofs=0.
+Usable=190. Sos=0. Demods=0. Limbo=0, Disabled=223. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=0. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.23.
+User_CPU=0.01, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+SEARCH FAILED
+
+Exiting with failure.
+
+Process 29622 exit (sos_empty) Sat Oct 17 13:01:59 2026
+
+WARNING: denials share constants (see output).
+
+
+SEARCH FAILED
+
+------ process 29622 exit (sos_empty) ------
+

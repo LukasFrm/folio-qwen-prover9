@@ -1,0 +1,163 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 29708 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Sat Oct 17 13:02:00 2026
+The command was "prover9 -t 5".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(assumptions).
+(all v_x (p_deadly_disease(v_x) -> p_come_with(v_x,c_low_survival_rate))) & (all v_x (p_severe_cancer(v_x) -> p_deadly_disease(v_x))) & (all v_x (p_bile_duct_cancer(v_x) -> p_severe_cancer(v_x))) & (all v_x (p_cholangiocarcinoma(v_x) -> p_bile_duct_cancer(v_x))) & (all v_x (p_mild_flu(v_x) -> p_come_with(v_x,c_low_survival_rate))) & -(p_bile_duct_cancer(c_colorectal_cancer) & p_come_with(c_colorectal_cancer,c_low_survival_rate)).
+c_colorectal_cancer != c_low_survival_rate.
+end_of_list.
+
+formulas(goals).
+p_severe_cancer(c_colorectal_cancer).
+end_of_list.
+
+============================== end of input ==========================
+
+% From the command line: assign(max_seconds, 5).
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (all v_x (p_deadly_disease(v_x) -> p_come_with(v_x,c_low_survival_rate))) & (all v_x (p_severe_cancer(v_x) -> p_deadly_disease(v_x))) & (all v_x (p_bile_duct_cancer(v_x) -> p_severe_cancer(v_x))) & (all v_x (p_cholangiocarcinoma(v_x) -> p_bile_duct_cancer(v_x))) & (all v_x (p_mild_flu(v_x) -> p_come_with(v_x,c_low_survival_rate))) & -(p_bile_duct_cancer(c_colorectal_cancer) & p_come_with(c_colorectal_cancer,c_low_survival_rate)) # label(non_clause).  [assumption].
+2 p_severe_cancer(c_colorectal_cancer) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+-p_deadly_disease(x) | p_come_with(x,c_low_survival_rate).  [clausify(1)].
+-p_severe_cancer(x) | p_deadly_disease(x).  [clausify(1)].
+-p_bile_duct_cancer(x) | p_severe_cancer(x).  [clausify(1)].
+-p_cholangiocarcinoma(x) | p_bile_duct_cancer(x).  [clausify(1)].
+-p_mild_flu(x) | p_come_with(x,c_low_survival_rate).  [clausify(1)].
+-p_bile_duct_cancer(c_colorectal_cancer) | -p_come_with(c_colorectal_cancer,c_low_survival_rate).  [clausify(1)].
+c_colorectal_cancer != c_low_survival_rate.  [assumption].
+-p_severe_cancer(c_colorectal_cancer).  [deny(2)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+Eliminating p_deadly_disease/1
+3 -p_severe_cancer(x) | p_deadly_disease(x).  [clausify(1)].
+4 -p_deadly_disease(x) | p_come_with(x,c_low_survival_rate).  [clausify(1)].
+Derived: -p_severe_cancer(x) | p_come_with(x,c_low_survival_rate).  [resolve(3,b,4,a)].
+
+Eliminating p_cholangiocarcinoma/1
+
+Eliminating p_mild_flu/1
+
+============================== end predicate elimination =============
+
+Auto_denials:
+  % assign(max_proofs, 3).  % (Horn set with more than one neg. clause)
+
+WARNING, because some of the denials share constants,
+some of the denials or their descendents may be subsumed,
+preventing the target number of proofs from being found.
+The shared constants are:  c_low_survival_rate, c_colorectal_cancer.
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ =, p_severe_cancer, p_bile_duct_cancer, p_come_with ]).
+Function symbol precedence:  function_order([ c_low_survival_rate, c_colorectal_cancer ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(neg_binary_resolution).  % (HNE depth_diff=0)
+  % clear(ordered_res).  % (HNE depth_diff=0)
+  % set(ur_resolution).  % (HNE depth_diff=0)
+    % set(ur_resolution) -> set(pos_ur_resolution).
+    % set(ur_resolution) -> set(neg_ur_resolution).
+
+Auto_process settings:
+  % set(unit_deletion).  % (Horn set with negative nonunits)
+
+kept:      5 -p_bile_duct_cancer(x) | p_severe_cancer(x).  [clausify(1)].
+kept:      6 -p_bile_duct_cancer(c_colorectal_cancer) | -p_come_with(c_colorectal_cancer,c_low_survival_rate).  [clausify(1)].
+kept:      7 c_colorectal_cancer != c_low_survival_rate.  [assumption].
+kept:      8 -p_severe_cancer(c_colorectal_cancer).  [deny(2)].
+kept:      9 -p_severe_cancer(x) | p_come_with(x,c_low_survival_rate).  [resolve(3,b,4,a)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+5 -p_bile_duct_cancer(x) | p_severe_cancer(x).  [clausify(1)].
+6 -p_bile_duct_cancer(c_colorectal_cancer) | -p_come_with(c_colorectal_cancer,c_low_survival_rate).  [clausify(1)].
+7 c_colorectal_cancer != c_low_survival_rate.  [assumption].
+8 -p_severe_cancer(c_colorectal_cancer).  [deny(2)].
+9 -p_severe_cancer(x) | p_come_with(x,c_low_survival_rate).  [resolve(3,b,4,a)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.00 seconds.
+
+given #1 (I,wt=4): 5 -p_bile_duct_cancer(x) | p_severe_cancer(x).  [clausify(1)].
+
+given #2 (I,wt=5): 6 -p_bile_duct_cancer(c_colorectal_cancer) | -p_come_with(c_colorectal_cancer,c_low_survival_rate).  [clausify(1)].
+
+given #3 (I,wt=3): 7 c_colorectal_cancer != c_low_survival_rate.  [assumption].
+
+given #4 (I,wt=2): 8 -p_severe_cancer(c_colorectal_cancer).  [deny(2)].
+
+given #5 (I,wt=5): 9 -p_severe_cancer(x) | p_come_with(x,c_low_survival_rate).  [resolve(3,b,4,a)].
+
+given #6 (A,wt=2): 10 -p_bile_duct_cancer(c_colorectal_cancer).  [resolve(8,a,5,b)].
+
+============================== STATISTICS ============================
+
+Given=6. Generated=7. Kept=6. proofs=0.
+Usable=5. Sos=0. Demods=0. Limbo=0, Disabled=10. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=1. Back_subsumed=1.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=4.
+Megabytes=0.04.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+SEARCH FAILED
+
+Exiting with failure.
+
+Process 29708 exit (sos_empty) Sat Oct 17 13:02:00 2026
+
+WARNING: denials share constants (see output).
+
+
+SEARCH FAILED
+
+------ process 29708 exit (sos_empty) ------
+

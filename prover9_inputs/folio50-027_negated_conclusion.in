@@ -1,0 +1,52 @@
+formulas(assumptions).
+(((((((p_cost(c_gre, c_u_s_d205) & p_cheaper(c_u_s_d205, c_u_s_d300)) & all v_x (((p_applicant_of(v_x, c_gre) & p_prove(v_x, c_economic_hardship)) -> p_provide_to(c_ets, c_financial_aid, v_x)))) & all v_x (((p_living_in(v_x, c_single_parent_family) | p_available_to(c_few_resources, v_x)) -> p_prove(v_x, c_economic_hardship)))) & p_living_in(c_tom, c_single_parent_family)) & p_out_of_work(c_toms_dad)) & p_available_to(c_few_resources, c_tom)) & p_applicant_of(c_tom, c_gre)).
+-(c_economic_hardship = c_ets).
+-(c_economic_hardship = c_few_resources).
+-(c_economic_hardship = c_financial_aid).
+-(c_economic_hardship = c_gre).
+-(c_economic_hardship = c_single_parent_family).
+-(c_economic_hardship = c_tom).
+-(c_economic_hardship = c_toms_dad).
+-(c_economic_hardship = c_u_s_d205).
+-(c_economic_hardship = c_u_s_d300).
+-(c_ets = c_few_resources).
+-(c_ets = c_financial_aid).
+-(c_ets = c_gre).
+-(c_ets = c_single_parent_family).
+-(c_ets = c_tom).
+-(c_ets = c_toms_dad).
+-(c_ets = c_u_s_d205).
+-(c_ets = c_u_s_d300).
+-(c_few_resources = c_financial_aid).
+-(c_few_resources = c_gre).
+-(c_few_resources = c_single_parent_family).
+-(c_few_resources = c_tom).
+-(c_few_resources = c_toms_dad).
+-(c_few_resources = c_u_s_d205).
+-(c_few_resources = c_u_s_d300).
+-(c_financial_aid = c_gre).
+-(c_financial_aid = c_single_parent_family).
+-(c_financial_aid = c_tom).
+-(c_financial_aid = c_toms_dad).
+-(c_financial_aid = c_u_s_d205).
+-(c_financial_aid = c_u_s_d300).
+-(c_gre = c_single_parent_family).
+-(c_gre = c_tom).
+-(c_gre = c_toms_dad).
+-(c_gre = c_u_s_d205).
+-(c_gre = c_u_s_d300).
+-(c_single_parent_family = c_tom).
+-(c_single_parent_family = c_toms_dad).
+-(c_single_parent_family = c_u_s_d205).
+-(c_single_parent_family = c_u_s_d300).
+-(c_tom = c_toms_dad).
+-(c_tom = c_u_s_d205).
+-(c_tom = c_u_s_d300).
+-(c_toms_dad = c_u_s_d205).
+-(c_toms_dad = c_u_s_d300).
+-(c_u_s_d205 = c_u_s_d300).
+end_of_list.
+
+formulas(goals).
+-(-(exists v_x (exists v_y ((p_applicant_of(v_x, c_gre) & p_provide_to(v_y, c_financial_aid, v_x)))))).
+end_of_list.

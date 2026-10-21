@@ -1,0 +1,180 @@
+============================== Mace4 =================================
+Mace4 (64) version 2009-11A, November 2009.
+Process 29613 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Sat Oct 17 13:01:59 2026
+The command was "mace4 -t 5 -n 2 -N 8".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(assumptions).
+(all v_x (p_romance_language(v_x) -> p_indo_european_language(v_x))) & (all v_x (p_romance_language(v_x) -> p_member_of(v_x,c_romance_family))) & (all v_x all v_y all v_z (p_member_of(v_x,v_z) & p_member_of(v_y,v_z) -> p_related(v_x,v_y) & p_related(v_y,v_x))) & p_romance_language(c_french) & p_romance_language(c_spanish) & p_related(c_german,c_spanish) & (all v_x (v_x != c_basque -> -p_related(c_basque,v_x))).
+c_basque != c_french.
+c_basque != c_german.
+c_basque != c_romance_family.
+c_basque != c_spanish.
+c_french != c_german.
+c_french != c_romance_family.
+c_french != c_spanish.
+c_german != c_romance_family.
+c_german != c_spanish.
+c_romance_family != c_spanish.
+end_of_list.
+
+formulas(goals).
+-p_romance_language(c_german).
+end_of_list.
+
+% From the command line: assign(max_seconds, 5).
+    % assign(domain_size, 2) -> assign(start_size, 2).
+    % assign(domain_size, 2) -> assign(end_size, 2).
+
+% From the command line: assign(domain_size, 2).
+
+% From the command line: assign(end_size, 8).
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (all v_x (p_romance_language(v_x) -> p_indo_european_language(v_x))) & (all v_x (p_romance_language(v_x) -> p_member_of(v_x,c_romance_family))) & (all v_x all v_y all v_z (p_member_of(v_x,v_z) & p_member_of(v_y,v_z) -> p_related(v_x,v_y) & p_related(v_y,v_x))) & p_romance_language(c_french) & p_romance_language(c_spanish) & p_related(c_german,c_spanish) & (all v_x (v_x != c_basque -> -p_related(c_basque,v_x))) # label(non_clause).  [assumption].
+2 -p_romance_language(c_german) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+-p_romance_language(x) | p_indo_european_language(x).
+-p_romance_language(x) | p_member_of(x,c_romance_family).
+-p_member_of(x,y) | -p_member_of(z,y) | p_related(x,z).
+-p_member_of(x,y) | -p_member_of(z,y) | p_related(z,x).
+p_romance_language(c_french).
+p_romance_language(c_spanish).
+p_related(c_german,c_spanish).
+c_basque = x | -p_related(c_basque,x).
+c_basque != c_french.
+c_basque != c_german.
+c_basque != c_romance_family.
+c_basque != c_spanish.
+c_french != c_german.
+c_french != c_romance_family.
+c_french != c_spanish.
+c_german != c_romance_family.
+c_german != c_spanish.
+c_romance_family != c_spanish.
+p_romance_language(c_german).
+end_of_list.
+
+============================== end of clauses for search =============
+
+% There are no natural numbers in the input.
+
+============================== DOMAIN SIZE 2 =========================
+
+============================== STATISTICS ============================
+
+For domain size 2.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=36, kept=36.
+Selections=1, assignments=1, propagations=5, current_models=0.
+Rewrite_terms=9, rewrite_bools=7, indexes=2.
+Rules_from_neg_clauses=4, cross_offs=4.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 3 =========================
+
+============================== STATISTICS ============================
+
+For domain size 3.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=77, kept=77.
+Selections=2, assignments=3, propagations=8, current_models=0.
+Rewrite_terms=21, rewrite_bools=23, indexes=5.
+Rules_from_neg_clauses=3, cross_offs=7.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 4 =========================
+
+============================== STATISTICS ============================
+
+For domain size 4.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=154, kept=154.
+Selections=3, assignments=6, propagations=9, current_models=0.
+Rewrite_terms=37, rewrite_bools=43, indexes=7.
+Rules_from_neg_clauses=2, cross_offs=9.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 5 =========================
+
+============================== MODEL =================================
+
+interpretation( 5, [number=1, seconds=0], [
+
+        function(c_basque, [ 0 ]),
+
+        function(c_french, [ 1 ]),
+
+        function(c_german, [ 2 ]),
+
+        function(c_romance_family, [ 3 ]),
+
+        function(c_spanish, [ 4 ]),
+
+        relation(p_indo_european_language(_), [ 0, 1, 1, 0, 1 ]),
+
+        relation(p_romance_language(_), [ 0, 1, 1, 0, 1 ]),
+
+        relation(p_member_of(_,_), [
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0,
+			   0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0 ]),
+
+        relation(p_related(_,_), [
+			   0, 0, 0, 0, 0,
+			   0, 1, 1, 0, 1,
+			   0, 1, 1, 0, 1,
+			   0, 0, 0, 0, 0,
+			   0, 1, 1, 0, 1 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 5.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=279, kept=279.
+Selections=35, assignments=41, propagations=31, current_models=1.
+Rewrite_terms=62, rewrite_bools=404, indexes=15.
+Rules_from_neg_clauses=1, cross_offs=10.
+
+============================== end of statistics =====================
+
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+Exiting with 1 model.
+
+Process 29613 exit (max_models) Sat Oct 17 13:01:59 2026
+The process finished Sat Oct 17 13:01:59 2026
+
+=== Mace4 starting on domain size 2. ===
+
+=== Mace4 starting on domain size 3. ===
+
+=== Mace4 starting on domain size 4. ===
+
+=== Mace4 starting on domain size 5. ===
+
+------ process 29613 exit (max_models) ------

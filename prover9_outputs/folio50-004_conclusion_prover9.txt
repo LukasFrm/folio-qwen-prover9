@@ -1,0 +1,132 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 29589 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Sat Oct 17 13:01:59 2026
+The command was "prover9 -t 5".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(assumptions).
+(all v_x (p_square(v_x) -> p_four_sided(v_x))) & (all v_x (p_four_sided(v_x) -> p_shape(v_x))).
+end_of_list.
+
+formulas(goals).
+(all v_x (p_square(v_x) -> p_shape(v_x))).
+end_of_list.
+
+============================== end of input ==========================
+
+% From the command line: assign(max_seconds, 5).
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (all v_x (p_square(v_x) -> p_four_sided(v_x))) & (all v_x (p_four_sided(v_x) -> p_shape(v_x))) # label(non_clause).  [assumption].
+2 (all v_x (p_square(v_x) -> p_shape(v_x))) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+-p_square(x) | p_four_sided(x).  [clausify(1)].
+-p_four_sided(x) | p_shape(x).  [clausify(1)].
+p_square(c1).  [deny(2)].
+-p_shape(c1).  [deny(2)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+Eliminating p_square/1
+3 p_square(c1).  [deny(2)].
+4 -p_square(x) | p_four_sided(x).  [clausify(1)].
+Derived: p_four_sided(c1).  [resolve(3,a,4,a)].
+
+Eliminating p_four_sided/1
+5 p_four_sided(c1).  [resolve(3,a,4,a)].
+6 -p_four_sided(x) | p_shape(x).  [clausify(1)].
+Derived: p_shape(c1).  [resolve(5,a,6,a)].
+
+Eliminating p_shape/1
+7 p_shape(c1).  [resolve(5,a,6,a)].
+8 -p_shape(c1).  [deny(2)].
+Derived: $F.  [resolve(7,a,8,a)].
+
+============================== end predicate elimination =============
+
+Auto_denials:  (no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ ]).
+Function symbol precedence:  function_order([ ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(neg_binary_resolution).  % (HNE depth_diff=0)
+  % clear(ordered_res).  % (HNE depth_diff=0)
+  % set(ur_resolution).  % (HNE depth_diff=0)
+    % set(ur_resolution) -> set(pos_ur_resolution).
+    % set(ur_resolution) -> set(neg_ur_resolution).
+
+Auto_process settings:  (no changes).
+
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 9.
+% Level of proof is 4.
+% Maximum clause weight is 0.000.
+% Given clauses 0.
+
+1 (all v_x (p_square(v_x) -> p_four_sided(v_x))) & (all v_x (p_four_sided(v_x) -> p_shape(v_x))) # label(non_clause).  [assumption].
+2 (all v_x (p_square(v_x) -> p_shape(v_x))) # label(non_clause) # label(goal).  [goal].
+3 p_square(c1).  [deny(2)].
+4 -p_square(x) | p_four_sided(x).  [clausify(1)].
+5 p_four_sided(c1).  [resolve(3,a,4,a)].
+6 -p_four_sided(x) | p_shape(x).  [clausify(1)].
+7 p_shape(c1).  [resolve(5,a,6,a)].
+8 -p_shape(c1).  [deny(2)].
+9 $F.  [resolve(7,a,8,a)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=1. Kept=0. proofs=1.
+Usable=0. Sos=0. Demods=0. Limbo=0, Disabled=7. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=0. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.03.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 29589 exit (max_proofs) Sat Oct 17 13:01:59 2026
+-------- Proof 1 -------- 
+
+THEOREM PROVED
+
+------ process 29589 exit (max_proofs) ------
+

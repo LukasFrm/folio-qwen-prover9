@@ -1,0 +1,464 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 29663 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Sat Oct 17 13:02:00 2026
+The command was "prover9 -t 5".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(assumptions).
+p_cost(c_gre,c_u_s_d205) & p_cheaper(c_u_s_d205,c_u_s_d300) & (all v_x (p_applicant_of(v_x,c_gre) & p_prove(v_x,c_economic_hardship) -> p_provide_to(c_ets,c_financial_aid,v_x))) & (all v_x (p_living_in(v_x,c_single_parent_family) | p_available_to(c_few_resources,v_x) -> p_prove(v_x,c_economic_hardship))) & p_living_in(c_tom,c_single_parent_family) & p_out_of_work(c_toms_dad) & p_available_to(c_few_resources,c_tom) & p_applicant_of(c_tom,c_gre).
+c_economic_hardship != c_ets.
+c_economic_hardship != c_few_resources.
+c_economic_hardship != c_financial_aid.
+c_economic_hardship != c_gre.
+c_economic_hardship != c_single_parent_family.
+c_economic_hardship != c_tom.
+c_economic_hardship != c_toms_dad.
+c_economic_hardship != c_u_s_d205.
+c_economic_hardship != c_u_s_d300.
+c_ets != c_few_resources.
+c_ets != c_financial_aid.
+c_ets != c_gre.
+c_ets != c_single_parent_family.
+c_ets != c_tom.
+c_ets != c_toms_dad.
+c_ets != c_u_s_d205.
+c_ets != c_u_s_d300.
+c_few_resources != c_financial_aid.
+c_few_resources != c_gre.
+c_few_resources != c_single_parent_family.
+c_few_resources != c_tom.
+c_few_resources != c_toms_dad.
+c_few_resources != c_u_s_d205.
+c_few_resources != c_u_s_d300.
+c_financial_aid != c_gre.
+c_financial_aid != c_single_parent_family.
+c_financial_aid != c_tom.
+c_financial_aid != c_toms_dad.
+c_financial_aid != c_u_s_d205.
+c_financial_aid != c_u_s_d300.
+c_gre != c_single_parent_family.
+c_gre != c_tom.
+c_gre != c_toms_dad.
+c_gre != c_u_s_d205.
+c_gre != c_u_s_d300.
+c_single_parent_family != c_tom.
+c_single_parent_family != c_toms_dad.
+c_single_parent_family != c_u_s_d205.
+c_single_parent_family != c_u_s_d300.
+c_tom != c_toms_dad.
+c_tom != c_u_s_d205.
+c_tom != c_u_s_d300.
+c_toms_dad != c_u_s_d205.
+c_toms_dad != c_u_s_d300.
+c_u_s_d205 != c_u_s_d300.
+end_of_list.
+
+formulas(goals).
+-(exists v_x (p_cost(c_gre,v_x) & p_cheaper(v_x,c_u_s_d300))).
+end_of_list.
+
+============================== end of input ==========================
+
+% From the command line: assign(max_seconds, 5).
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 p_cost(c_gre,c_u_s_d205) & p_cheaper(c_u_s_d205,c_u_s_d300) & (all v_x (p_applicant_of(v_x,c_gre) & p_prove(v_x,c_economic_hardship) -> p_provide_to(c_ets,c_financial_aid,v_x))) & (all v_x (p_living_in(v_x,c_single_parent_family) | p_available_to(c_few_resources,v_x) -> p_prove(v_x,c_economic_hardship))) & p_living_in(c_tom,c_single_parent_family) & p_out_of_work(c_toms_dad) & p_available_to(c_few_resources,c_tom) & p_applicant_of(c_tom,c_gre) # label(non_clause).  [assumption].
+2 -(exists v_x (p_cost(c_gre,v_x) & p_cheaper(v_x,c_u_s_d300))) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p_cost(c_gre,c_u_s_d205).  [clausify(1)].
+p_cheaper(c_u_s_d205,c_u_s_d300).  [clausify(1)].
+-p_applicant_of(x,c_gre) | -p_prove(x,c_economic_hardship) | p_provide_to(c_ets,c_financial_aid,x).  [clausify(1)].
+-p_living_in(x,c_single_parent_family) | p_prove(x,c_economic_hardship).  [clausify(1)].
+-p_available_to(c_few_resources,x) | p_prove(x,c_economic_hardship).  [clausify(1)].
+p_living_in(c_tom,c_single_parent_family).  [clausify(1)].
+p_out_of_work(c_toms_dad).  [clausify(1)].
+p_available_to(c_few_resources,c_tom).  [clausify(1)].
+p_applicant_of(c_tom,c_gre).  [clausify(1)].
+c_economic_hardship != c_ets.  [assumption].
+c_economic_hardship != c_few_resources.  [assumption].
+c_economic_hardship != c_financial_aid.  [assumption].
+c_economic_hardship != c_gre.  [assumption].
+c_economic_hardship != c_single_parent_family.  [assumption].
+c_economic_hardship != c_tom.  [assumption].
+c_economic_hardship != c_toms_dad.  [assumption].
+c_economic_hardship != c_u_s_d205.  [assumption].
+c_economic_hardship != c_u_s_d300.  [assumption].
+c_ets != c_few_resources.  [assumption].
+c_ets != c_financial_aid.  [assumption].
+c_ets != c_gre.  [assumption].
+c_ets != c_single_parent_family.  [assumption].
+c_ets != c_tom.  [assumption].
+c_ets != c_toms_dad.  [assumption].
+c_ets != c_u_s_d205.  [assumption].
+c_ets != c_u_s_d300.  [assumption].
+c_few_resources != c_financial_aid.  [assumption].
+c_few_resources != c_gre.  [assumption].
+c_few_resources != c_single_parent_family.  [assumption].
+c_few_resources != c_tom.  [assumption].
+c_few_resources != c_toms_dad.  [assumption].
+c_few_resources != c_u_s_d205.  [assumption].
+c_few_resources != c_u_s_d300.  [assumption].
+c_financial_aid != c_gre.  [assumption].
+c_financial_aid != c_single_parent_family.  [assumption].
+c_financial_aid != c_tom.  [assumption].
+c_financial_aid != c_toms_dad.  [assumption].
+c_financial_aid != c_u_s_d205.  [assumption].
+c_financial_aid != c_u_s_d300.  [assumption].
+c_gre != c_single_parent_family.  [assumption].
+c_gre != c_tom.  [assumption].
+c_gre != c_toms_dad.  [assumption].
+c_gre != c_u_s_d205.  [assumption].
+c_gre != c_u_s_d300.  [assumption].
+c_single_parent_family != c_tom.  [assumption].
+c_single_parent_family != c_toms_dad.  [assumption].
+c_single_parent_family != c_u_s_d205.  [assumption].
+c_single_parent_family != c_u_s_d300.  [assumption].
+c_tom != c_toms_dad.  [assumption].
+c_tom != c_u_s_d205.  [assumption].
+c_tom != c_u_s_d300.  [assumption].
+c_toms_dad != c_u_s_d205.  [assumption].
+c_toms_dad != c_u_s_d300.  [assumption].
+c_u_s_d205 != c_u_s_d300.  [assumption].
+p_cost(c_gre,c1).  [deny(2)].
+p_cheaper(c1,c_u_s_d300).  [deny(2)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+Eliminating p_cost/2
+
+Eliminating p_cheaper/2
+
+Eliminating p_provide_to/3
+
+Eliminating p_prove/2
+
+Eliminating p_living_in/2
+
+Eliminating p_out_of_work/1
+
+Eliminating p_available_to/2
+
+Eliminating p_applicant_of/2
+
+============================== end predicate elimination =============
+
+Auto_denials:
+  % assign(max_proofs, 45).  % (Horn set with more than one neg. clause)
+
+WARNING, because some of the denials share constants,
+some of the denials or their descendents may be subsumed,
+preventing the target number of proofs from being found.
+The shared constants are:  c_u_s_d300, c_u_s_d205, c_toms_dad, c_tom, c_single_parent_family, c_gre, c_financial_aid, c_few_resources, c_ets, c_economic_hardship.
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ = ]).
+Function symbol precedence:  function_order([ c_economic_hardship, c_ets, c_few_resources, c_financial_aid, c_gre, c_single_parent_family, c_tom, c_toms_dad, c_u_s_d205, c_u_s_d300 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(neg_binary_resolution).  % (HNE depth_diff=0)
+  % clear(ordered_res).  % (HNE depth_diff=0)
+  % set(ur_resolution).  % (HNE depth_diff=0)
+    % set(ur_resolution) -> set(pos_ur_resolution).
+    % set(ur_resolution) -> set(neg_ur_resolution).
+
+Auto_process settings:  (no changes).
+
+           3 c_economic_hardship != c_ets.  [assumption].
+kept:      4 c_ets != c_economic_hardship.  [copy(3),flip(a)].
+           5 c_economic_hardship != c_few_resources.  [assumption].
+kept:      6 c_few_resources != c_economic_hardship.  [copy(5),flip(a)].
+           7 c_economic_hardship != c_financial_aid.  [assumption].
+kept:      8 c_financial_aid != c_economic_hardship.  [copy(7),flip(a)].
+           9 c_economic_hardship != c_gre.  [assumption].
+kept:      10 c_gre != c_economic_hardship.  [copy(9),flip(a)].
+           11 c_economic_hardship != c_single_parent_family.  [assumption].
+kept:      12 c_single_parent_family != c_economic_hardship.  [copy(11),flip(a)].
+           13 c_economic_hardship != c_tom.  [assumption].
+kept:      14 c_tom != c_economic_hardship.  [copy(13),flip(a)].
+           15 c_economic_hardship != c_toms_dad.  [assumption].
+kept:      16 c_toms_dad != c_economic_hardship.  [copy(15),flip(a)].
+           17 c_economic_hardship != c_u_s_d205.  [assumption].
+kept:      18 c_u_s_d205 != c_economic_hardship.  [copy(17),flip(a)].
+           19 c_economic_hardship != c_u_s_d300.  [assumption].
+kept:      20 c_u_s_d300 != c_economic_hardship.  [copy(19),flip(a)].
+           21 c_ets != c_few_resources.  [assumption].
+kept:      22 c_few_resources != c_ets.  [copy(21),flip(a)].
+           23 c_ets != c_financial_aid.  [assumption].
+kept:      24 c_financial_aid != c_ets.  [copy(23),flip(a)].
+           25 c_ets != c_gre.  [assumption].
+kept:      26 c_gre != c_ets.  [copy(25),flip(a)].
+           27 c_ets != c_single_parent_family.  [assumption].
+kept:      28 c_single_parent_family != c_ets.  [copy(27),flip(a)].
+           29 c_ets != c_tom.  [assumption].
+kept:      30 c_tom != c_ets.  [copy(29),flip(a)].
+           31 c_ets != c_toms_dad.  [assumption].
+kept:      32 c_toms_dad != c_ets.  [copy(31),flip(a)].
+           33 c_ets != c_u_s_d205.  [assumption].
+kept:      34 c_u_s_d205 != c_ets.  [copy(33),flip(a)].
+           35 c_ets != c_u_s_d300.  [assumption].
+kept:      36 c_u_s_d300 != c_ets.  [copy(35),flip(a)].
+           37 c_few_resources != c_financial_aid.  [assumption].
+kept:      38 c_financial_aid != c_few_resources.  [copy(37),flip(a)].
+           39 c_few_resources != c_gre.  [assumption].
+kept:      40 c_gre != c_few_resources.  [copy(39),flip(a)].
+           41 c_few_resources != c_single_parent_family.  [assumption].
+kept:      42 c_single_parent_family != c_few_resources.  [copy(41),flip(a)].
+           43 c_few_resources != c_tom.  [assumption].
+kept:      44 c_tom != c_few_resources.  [copy(43),flip(a)].
+           45 c_few_resources != c_toms_dad.  [assumption].
+kept:      46 c_toms_dad != c_few_resources.  [copy(45),flip(a)].
+           47 c_few_resources != c_u_s_d205.  [assumption].
+kept:      48 c_u_s_d205 != c_few_resources.  [copy(47),flip(a)].
+           49 c_few_resources != c_u_s_d300.  [assumption].
+kept:      50 c_u_s_d300 != c_few_resources.  [copy(49),flip(a)].
+           51 c_financial_aid != c_gre.  [assumption].
+kept:      52 c_gre != c_financial_aid.  [copy(51),flip(a)].
+           53 c_financial_aid != c_single_parent_family.  [assumption].
+kept:      54 c_single_parent_family != c_financial_aid.  [copy(53),flip(a)].
+           55 c_financial_aid != c_tom.  [assumption].
+kept:      56 c_tom != c_financial_aid.  [copy(55),flip(a)].
+           57 c_financial_aid != c_toms_dad.  [assumption].
+kept:      58 c_toms_dad != c_financial_aid.  [copy(57),flip(a)].
+           59 c_financial_aid != c_u_s_d205.  [assumption].
+kept:      60 c_u_s_d205 != c_financial_aid.  [copy(59),flip(a)].
+           61 c_financial_aid != c_u_s_d300.  [assumption].
+kept:      62 c_u_s_d300 != c_financial_aid.  [copy(61),flip(a)].
+           63 c_gre != c_single_parent_family.  [assumption].
+kept:      64 c_single_parent_family != c_gre.  [copy(63),flip(a)].
+           65 c_gre != c_tom.  [assumption].
+kept:      66 c_tom != c_gre.  [copy(65),flip(a)].
+           67 c_gre != c_toms_dad.  [assumption].
+kept:      68 c_toms_dad != c_gre.  [copy(67),flip(a)].
+           69 c_gre != c_u_s_d205.  [assumption].
+kept:      70 c_u_s_d205 != c_gre.  [copy(69),flip(a)].
+           71 c_gre != c_u_s_d300.  [assumption].
+kept:      72 c_u_s_d300 != c_gre.  [copy(71),flip(a)].
+           73 c_single_parent_family != c_tom.  [assumption].
+kept:      74 c_tom != c_single_parent_family.  [copy(73),flip(a)].
+           75 c_single_parent_family != c_toms_dad.  [assumption].
+kept:      76 c_toms_dad != c_single_parent_family.  [copy(75),flip(a)].
+           77 c_single_parent_family != c_u_s_d205.  [assumption].
+kept:      78 c_u_s_d205 != c_single_parent_family.  [copy(77),flip(a)].
+           79 c_single_parent_family != c_u_s_d300.  [assumption].
+kept:      80 c_u_s_d300 != c_single_parent_family.  [copy(79),flip(a)].
+           81 c_tom != c_toms_dad.  [assumption].
+kept:      82 c_toms_dad != c_tom.  [copy(81),flip(a)].
+           83 c_tom != c_u_s_d205.  [assumption].
+kept:      84 c_u_s_d205 != c_tom.  [copy(83),flip(a)].
+           85 c_tom != c_u_s_d300.  [assumption].
+kept:      86 c_u_s_d300 != c_tom.  [copy(85),flip(a)].
+           87 c_toms_dad != c_u_s_d205.  [assumption].
+kept:      88 c_u_s_d205 != c_toms_dad.  [copy(87),flip(a)].
+           89 c_toms_dad != c_u_s_d300.  [assumption].
+kept:      90 c_u_s_d300 != c_toms_dad.  [copy(89),flip(a)].
+           91 c_u_s_d205 != c_u_s_d300.  [assumption].
+kept:      92 c_u_s_d300 != c_u_s_d205.  [copy(91),flip(a)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+4 c_ets != c_economic_hardship.  [copy(3),flip(a)].
+6 c_few_resources != c_economic_hardship.  [copy(5),flip(a)].
+8 c_financial_aid != c_economic_hardship.  [copy(7),flip(a)].
+10 c_gre != c_economic_hardship.  [copy(9),flip(a)].
+12 c_single_parent_family != c_economic_hardship.  [copy(11),flip(a)].
+14 c_tom != c_economic_hardship.  [copy(13),flip(a)].
+16 c_toms_dad != c_economic_hardship.  [copy(15),flip(a)].
+18 c_u_s_d205 != c_economic_hardship.  [copy(17),flip(a)].
+20 c_u_s_d300 != c_economic_hardship.  [copy(19),flip(a)].
+22 c_few_resources != c_ets.  [copy(21),flip(a)].
+24 c_financial_aid != c_ets.  [copy(23),flip(a)].
+26 c_gre != c_ets.  [copy(25),flip(a)].
+28 c_single_parent_family != c_ets.  [copy(27),flip(a)].
+30 c_tom != c_ets.  [copy(29),flip(a)].
+32 c_toms_dad != c_ets.  [copy(31),flip(a)].
+34 c_u_s_d205 != c_ets.  [copy(33),flip(a)].
+36 c_u_s_d300 != c_ets.  [copy(35),flip(a)].
+38 c_financial_aid != c_few_resources.  [copy(37),flip(a)].
+40 c_gre != c_few_resources.  [copy(39),flip(a)].
+42 c_single_parent_family != c_few_resources.  [copy(41),flip(a)].
+44 c_tom != c_few_resources.  [copy(43),flip(a)].
+46 c_toms_dad != c_few_resources.  [copy(45),flip(a)].
+48 c_u_s_d205 != c_few_resources.  [copy(47),flip(a)].
+50 c_u_s_d300 != c_few_resources.  [copy(49),flip(a)].
+52 c_gre != c_financial_aid.  [copy(51),flip(a)].
+54 c_single_parent_family != c_financial_aid.  [copy(53),flip(a)].
+56 c_tom != c_financial_aid.  [copy(55),flip(a)].
+58 c_toms_dad != c_financial_aid.  [copy(57),flip(a)].
+60 c_u_s_d205 != c_financial_aid.  [copy(59),flip(a)].
+62 c_u_s_d300 != c_financial_aid.  [copy(61),flip(a)].
+64 c_single_parent_family != c_gre.  [copy(63),flip(a)].
+66 c_tom != c_gre.  [copy(65),flip(a)].
+68 c_toms_dad != c_gre.  [copy(67),flip(a)].
+70 c_u_s_d205 != c_gre.  [copy(69),flip(a)].
+72 c_u_s_d300 != c_gre.  [copy(71),flip(a)].
+74 c_tom != c_single_parent_family.  [copy(73),flip(a)].
+76 c_toms_dad != c_single_parent_family.  [copy(75),flip(a)].
+78 c_u_s_d205 != c_single_parent_family.  [copy(77),flip(a)].
+80 c_u_s_d300 != c_single_parent_family.  [copy(79),flip(a)].
+82 c_toms_dad != c_tom.  [copy(81),flip(a)].
+84 c_u_s_d205 != c_tom.  [copy(83),flip(a)].
+86 c_u_s_d300 != c_tom.  [copy(85),flip(a)].
+88 c_u_s_d205 != c_toms_dad.  [copy(87),flip(a)].
+90 c_u_s_d300 != c_toms_dad.  [copy(89),flip(a)].
+92 c_u_s_d300 != c_u_s_d205.  [copy(91),flip(a)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.00 seconds.
+
+given #1 (I,wt=3): 4 c_ets != c_economic_hardship.  [copy(3),flip(a)].
+
+given #2 (I,wt=3): 6 c_few_resources != c_economic_hardship.  [copy(5),flip(a)].
+
+given #3 (I,wt=3): 8 c_financial_aid != c_economic_hardship.  [copy(7),flip(a)].
+
+given #4 (I,wt=3): 10 c_gre != c_economic_hardship.  [copy(9),flip(a)].
+
+given #5 (I,wt=3): 12 c_single_parent_family != c_economic_hardship.  [copy(11),flip(a)].
+
+given #6 (I,wt=3): 14 c_tom != c_economic_hardship.  [copy(13),flip(a)].
+
+given #7 (I,wt=3): 16 c_toms_dad != c_economic_hardship.  [copy(15),flip(a)].
+
+given #8 (I,wt=3): 18 c_u_s_d205 != c_economic_hardship.  [copy(17),flip(a)].
+
+given #9 (I,wt=3): 20 c_u_s_d300 != c_economic_hardship.  [copy(19),flip(a)].
+
+given #10 (I,wt=3): 22 c_few_resources != c_ets.  [copy(21),flip(a)].
+
+given #11 (I,wt=3): 24 c_financial_aid != c_ets.  [copy(23),flip(a)].
+
+given #12 (I,wt=3): 26 c_gre != c_ets.  [copy(25),flip(a)].
+
+given #13 (I,wt=3): 28 c_single_parent_family != c_ets.  [copy(27),flip(a)].
+
+given #14 (I,wt=3): 30 c_tom != c_ets.  [copy(29),flip(a)].
+
+given #15 (I,wt=3): 32 c_toms_dad != c_ets.  [copy(31),flip(a)].
+
+given #16 (I,wt=3): 34 c_u_s_d205 != c_ets.  [copy(33),flip(a)].
+
+given #17 (I,wt=3): 36 c_u_s_d300 != c_ets.  [copy(35),flip(a)].
+
+given #18 (I,wt=3): 38 c_financial_aid != c_few_resources.  [copy(37),flip(a)].
+
+given #19 (I,wt=3): 40 c_gre != c_few_resources.  [copy(39),flip(a)].
+
+given #20 (I,wt=3): 42 c_single_parent_family != c_few_resources.  [copy(41),flip(a)].
+
+given #21 (I,wt=3): 44 c_tom != c_few_resources.  [copy(43),flip(a)].
+
+given #22 (I,wt=3): 46 c_toms_dad != c_few_resources.  [copy(45),flip(a)].
+
+given #23 (I,wt=3): 48 c_u_s_d205 != c_few_resources.  [copy(47),flip(a)].
+
+given #24 (I,wt=3): 50 c_u_s_d300 != c_few_resources.  [copy(49),flip(a)].
+
+given #25 (I,wt=3): 52 c_gre != c_financial_aid.  [copy(51),flip(a)].
+
+given #26 (I,wt=3): 54 c_single_parent_family != c_financial_aid.  [copy(53),flip(a)].
+
+given #27 (I,wt=3): 56 c_tom != c_financial_aid.  [copy(55),flip(a)].
+
+given #28 (I,wt=3): 58 c_toms_dad != c_financial_aid.  [copy(57),flip(a)].
+
+given #29 (I,wt=3): 60 c_u_s_d205 != c_financial_aid.  [copy(59),flip(a)].
+
+given #30 (I,wt=3): 62 c_u_s_d300 != c_financial_aid.  [copy(61),flip(a)].
+
+given #31 (I,wt=3): 64 c_single_parent_family != c_gre.  [copy(63),flip(a)].
+
+given #32 (I,wt=3): 66 c_tom != c_gre.  [copy(65),flip(a)].
+
+given #33 (I,wt=3): 68 c_toms_dad != c_gre.  [copy(67),flip(a)].
+
+given #34 (I,wt=3): 70 c_u_s_d205 != c_gre.  [copy(69),flip(a)].
+
+given #35 (I,wt=3): 72 c_u_s_d300 != c_gre.  [copy(71),flip(a)].
+
+given #36 (I,wt=3): 74 c_tom != c_single_parent_family.  [copy(73),flip(a)].
+
+given #37 (I,wt=3): 76 c_toms_dad != c_single_parent_family.  [copy(75),flip(a)].
+
+given #38 (I,wt=3): 78 c_u_s_d205 != c_single_parent_family.  [copy(77),flip(a)].
+
+given #39 (I,wt=3): 80 c_u_s_d300 != c_single_parent_family.  [copy(79),flip(a)].
+
+given #40 (I,wt=3): 82 c_toms_dad != c_tom.  [copy(81),flip(a)].
+
+given #41 (I,wt=3): 84 c_u_s_d205 != c_tom.  [copy(83),flip(a)].
+
+given #42 (I,wt=3): 86 c_u_s_d300 != c_tom.  [copy(85),flip(a)].
+
+given #43 (I,wt=3): 88 c_u_s_d205 != c_toms_dad.  [copy(87),flip(a)].
+
+given #44 (I,wt=3): 90 c_u_s_d300 != c_toms_dad.  [copy(89),flip(a)].
+
+given #45 (I,wt=3): 92 c_u_s_d300 != c_u_s_d205.  [copy(91),flip(a)].
+
+============================== STATISTICS ============================
+
+Given=45. Generated=45. Kept=45. proofs=0.
+Usable=45. Sos=0. Demods=0. Limbo=0, Disabled=56. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=0. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.08.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+SEARCH FAILED
+
+Exiting with failure.
+
+Process 29663 exit (sos_empty) Sat Oct 17 13:02:00 2026
+
+WARNING: denials share constants (see output).
+
+
+SEARCH FAILED
+
+------ process 29663 exit (sos_empty) ------
+

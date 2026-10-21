@@ -1,0 +1,10 @@
+formulas(assumptions).
+((p_sporting_event(c_olympics) & p_last_summer_olympics(c_tokyoolympics)) & p_most_medals(c_united_states, c_tokyoolympics)).
+-(c_olympics = c_tokyoolympics).
+-(c_olympics = c_united_states).
+-(c_tokyoolympics = c_united_states).
+end_of_list.
+
+formulas(goals).
+-(p_last_summer_olympics(c_tokyoolympics)).
+end_of_list.

@@ -1,0 +1,7 @@
+formulas(assumptions).
+(((((all v_x ((p_business_organization(v_x) -> p_legal_entity(v_x))) & all v_x ((p_company(v_x) -> p_business_organization(v_x)))) & all v_x ((p_private_company(v_x) -> p_company(v_x)))) & all v_x ((p_legal_entity(v_x) -> p_created_under_law(v_x)))) & all v_x ((p_legal_entity(v_x) -> p_legal_obligation(v_x)))) & (p_created_under_law(c_harvard_weekly_book_club) -> -(p_private_company(c_harvard_weekly_book_club)))).
+end_of_list.
+
+formulas(goals).
+p_legal_obligation(c_harvard_weekly_book_club).
+end_of_list.

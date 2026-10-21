@@ -1,0 +1,8 @@
+formulas(assumptions).
+((((((((all v_x ((p_at(v_x, c_mixer) -> (p_grand_slam_champion(v_x) | (p_oscar_nominated(v_x) & p_actor(v_x))))) & all v_x ((p_at(v_x, c_mixer) -> (p_grand_slam_champion(v_x) -> (p_professional(v_x) & p_tennis_player(v_x)))))) & all v_x ((p_at(v_x, c_mixer) -> ((p_oscar_nominated(v_x) & p_actor(v_x)) -> p_celebrity(v_x))))) & all v_x ((((p_at(v_x, c_mixer) & p_professional(v_x)) & p_tennis_player(v_x)) -> p_athlete(v_x)))) & all v_x (((p_at(v_x, c_mixer) & p_celebrity(v_x)) -> p_well_paid(v_x)))) & all v_x (((p_at(v_x, c_mixer) & p_athlete(v_x)) -> p_famous(v_x)))) & all v_x (((p_at(v_x, c_mixer) & p_well_paid(v_x)) -> exists v_y ((p_tax_haven(v_y) & p_live_in(v_x, v_y)))))) & p_at(c_djokovic, c_mixer)) & ((p_famous(c_djokovic) & p_athlete(c_djokovic)) -> p_well_paid(c_djokovic))).
+-(c_djokovic = c_mixer).
+end_of_list.
+
+formulas(goals).
+-(-(exists v_x ((p_tax_haven(v_x) & p_live_in(c_djokovic, v_x))))).
+end_of_list.

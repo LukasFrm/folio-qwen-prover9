@@ -1,0 +1,98 @@
+============================== Mace4 =================================
+Mace4 (64) version 2009-11A, November 2009.
+Process 29687 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Sat Oct 17 13:02:00 2026
+The command was "mace4 -t 5 -n 2 -N 8".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(assumptions).
+(all v_x (p_plunger(v_x) -> p_suck(v_x))) & (all v_x (p_vacuum(v_x) -> p_suck(v_x))) & (all v_x (p_vampire(v_x) -> p_suck(v_x))) & p_vacuum(c_space) & p_household_appliance(c_duster) & -p_suck(c_duster).
+c_duster != c_space.
+end_of_list.
+
+formulas(goals).
+-p_vampire(c_space).
+end_of_list.
+
+% From the command line: assign(max_seconds, 5).
+    % assign(domain_size, 2) -> assign(start_size, 2).
+    % assign(domain_size, 2) -> assign(end_size, 2).
+
+% From the command line: assign(domain_size, 2).
+
+% From the command line: assign(end_size, 8).
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (all v_x (p_plunger(v_x) -> p_suck(v_x))) & (all v_x (p_vacuum(v_x) -> p_suck(v_x))) & (all v_x (p_vampire(v_x) -> p_suck(v_x))) & p_vacuum(c_space) & p_household_appliance(c_duster) & -p_suck(c_duster) # label(non_clause).  [assumption].
+2 -p_vampire(c_space) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+-p_plunger(x) | p_suck(x).
+-p_vacuum(x) | p_suck(x).
+-p_vampire(x) | p_suck(x).
+p_vacuum(c_space).
+p_household_appliance(c_duster).
+-p_suck(c_duster).
+c_duster != c_space.
+p_vampire(c_space).
+end_of_list.
+
+============================== end of clauses for search =============
+
+% There are no natural numbers in the input.
+
+============================== DOMAIN SIZE 2 =========================
+
+============================== MODEL =================================
+
+interpretation( 2, [number=1, seconds=0], [
+
+        function(c_duster, [ 0 ]),
+
+        function(c_space, [ 1 ]),
+
+        relation(p_household_appliance(_), [ 1, 0 ]),
+
+        relation(p_plunger(_), [ 0, 0 ]),
+
+        relation(p_suck(_), [ 0, 1 ]),
+
+        relation(p_vacuum(_), [ 0, 1 ]),
+
+        relation(p_vampire(_), [ 0, 1 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 2.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=11, kept=11.
+Selections=3, assignments=3, propagations=9, current_models=1.
+Rewrite_terms=6, rewrite_bools=15, indexes=4.
+Rules_from_neg_clauses=1, cross_offs=1.
+
+============================== end of statistics =====================
+
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+Exiting with 1 model.
+
+Process 29687 exit (max_models) Sat Oct 17 13:02:00 2026
+The process finished Sat Oct 17 13:02:00 2026
+
+=== Mace4 starting on domain size 2. ===
+
+------ process 29687 exit (max_models) ------

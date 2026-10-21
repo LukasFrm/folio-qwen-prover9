@@ -1,0 +1,124 @@
+============================== Mace4 =================================
+Mace4 (64) version 2009-11A, November 2009.
+Process 29595 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Sat Oct 17 13:01:59 2026
+The command was "mace4 -t 5 -n 2 -N 8".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(assumptions).
+(all v_x (p_at(v_x,c_mixer) -> p_grand_slam_champion(v_x) | p_oscar_nominated(v_x) & p_actor(v_x))) & (all v_x (p_at(v_x,c_mixer) -> (p_grand_slam_champion(v_x) -> p_professional(v_x) & p_tennis_player(v_x)))) & (all v_x (p_at(v_x,c_mixer) -> (p_oscar_nominated(v_x) & p_actor(v_x) -> p_celebrity(v_x)))) & (all v_x (p_at(v_x,c_mixer) & p_professional(v_x) & p_tennis_player(v_x) -> p_athlete(v_x))) & (all v_x (p_at(v_x,c_mixer) & p_celebrity(v_x) -> p_well_paid(v_x))) & (all v_x (p_at(v_x,c_mixer) & p_athlete(v_x) -> p_famous(v_x))) & (all v_x (p_at(v_x,c_mixer) & p_well_paid(v_x) -> (exists v_y (p_tax_haven(v_y) & p_live_in(v_x,v_y))))) & p_at(c_djokovic,c_mixer) & (p_famous(c_djokovic) & p_athlete(c_djokovic) -> p_well_paid(c_djokovic)).
+c_djokovic != c_mixer.
+end_of_list.
+
+formulas(goals).
+-p_grand_slam_champion(c_djokovic).
+end_of_list.
+
+% From the command line: assign(max_seconds, 5).
+    % assign(domain_size, 2) -> assign(start_size, 2).
+    % assign(domain_size, 2) -> assign(end_size, 2).
+
+% From the command line: assign(domain_size, 2).
+
+% From the command line: assign(end_size, 8).
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (all v_x (p_at(v_x,c_mixer) -> p_grand_slam_champion(v_x) | p_oscar_nominated(v_x) & p_actor(v_x))) & (all v_x (p_at(v_x,c_mixer) -> (p_grand_slam_champion(v_x) -> p_professional(v_x) & p_tennis_player(v_x)))) & (all v_x (p_at(v_x,c_mixer) -> (p_oscar_nominated(v_x) & p_actor(v_x) -> p_celebrity(v_x)))) & (all v_x (p_at(v_x,c_mixer) & p_professional(v_x) & p_tennis_player(v_x) -> p_athlete(v_x))) & (all v_x (p_at(v_x,c_mixer) & p_celebrity(v_x) -> p_well_paid(v_x))) & (all v_x (p_at(v_x,c_mixer) & p_athlete(v_x) -> p_famous(v_x))) & (all v_x (p_at(v_x,c_mixer) & p_well_paid(v_x) -> (exists v_y (p_tax_haven(v_y) & p_live_in(v_x,v_y))))) & p_at(c_djokovic,c_mixer) & (p_famous(c_djokovic) & p_athlete(c_djokovic) -> p_well_paid(c_djokovic)) # label(non_clause).  [assumption].
+2 -p_grand_slam_champion(c_djokovic) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+-p_at(x,c_mixer) | p_grand_slam_champion(x) | p_oscar_nominated(x).
+-p_at(x,c_mixer) | p_grand_slam_champion(x) | p_actor(x).
+-p_at(x,c_mixer) | -p_grand_slam_champion(x) | p_professional(x).
+-p_at(x,c_mixer) | -p_grand_slam_champion(x) | p_tennis_player(x).
+-p_at(x,c_mixer) | -p_oscar_nominated(x) | -p_actor(x) | p_celebrity(x).
+-p_at(x,c_mixer) | -p_professional(x) | -p_tennis_player(x) | p_athlete(x).
+-p_at(x,c_mixer) | -p_celebrity(x) | p_well_paid(x).
+-p_at(x,c_mixer) | -p_athlete(x) | p_famous(x).
+-p_at(x,c_mixer) | -p_well_paid(x) | p_tax_haven(f1(x)).
+-p_at(x,c_mixer) | -p_well_paid(x) | p_live_in(x,f1(x)).
+p_at(c_djokovic,c_mixer).
+-p_famous(c_djokovic) | -p_athlete(c_djokovic) | p_well_paid(c_djokovic).
+c_djokovic != c_mixer.
+p_grand_slam_champion(c_djokovic).
+end_of_list.
+
+============================== end of clauses for search =============
+
+% There are no natural numbers in the input.
+
+============================== DOMAIN SIZE 2 =========================
+
+============================== MODEL =================================
+
+interpretation( 2, [number=1, seconds=0], [
+
+        function(c_djokovic, [ 0 ]),
+
+        function(c_mixer, [ 1 ]),
+
+        function(f1(_), [ 0, 0 ]),
+
+        relation(p_actor(_), [ 0, 0 ]),
+
+        relation(p_athlete(_), [ 1, 0 ]),
+
+        relation(p_celebrity(_), [ 0, 0 ]),
+
+        relation(p_famous(_), [ 1, 0 ]),
+
+        relation(p_grand_slam_champion(_), [ 1, 0 ]),
+
+        relation(p_oscar_nominated(_), [ 0, 0 ]),
+
+        relation(p_professional(_), [ 1, 0 ]),
+
+        relation(p_tax_haven(_), [ 1, 0 ]),
+
+        relation(p_tennis_player(_), [ 1, 0 ]),
+
+        relation(p_well_paid(_), [ 1, 0 ]),
+
+        relation(p_at(_,_), [
+			   0, 1,
+			   0, 0 ]),
+
+        relation(p_live_in(_,_), [
+			   1, 0,
+			   0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 2.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=24, kept=24.
+Selections=21, assignments=21, propagations=11, current_models=1.
+Rewrite_terms=32, rewrite_bools=47, indexes=18.
+Rules_from_neg_clauses=1, cross_offs=1.
+
+============================== end of statistics =====================
+
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+Exiting with 1 model.
+
+Process 29595 exit (max_models) Sat Oct 17 13:01:59 2026
+The process finished Sat Oct 17 13:01:59 2026
+
+=== Mace4 starting on domain size 2. ===
+
+------ process 29595 exit (max_models) ------

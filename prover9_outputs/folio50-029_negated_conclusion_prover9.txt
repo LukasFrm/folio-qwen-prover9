@@ -1,0 +1,181 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 29673 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Sat Oct 17 13:02:00 2026
+The command was "prover9 -t 5".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(assumptions).
+p_mountain_range(c_the_picuris_mountains) & (p_in(c_the_picuris_mountains,c_new_mexico) | p_in(c_the_picuris_mountains,c_texas)) & p_visited(c_juan_de_onate,c_the_picuris_mountains) & p_in(c_harding_pegmatite_mine,c_the_picuris_mountains) & p_mine(c_harding_pegmatite_mine) & p_donated(c_harding_pegmatite_mine) & (all v_x all v_y (p_mine(v_x) & p_donated(v_x) & p_in(v_x,v_y) & p_mountain_range(v_y) -> -p_in(v_y,c_texas))).
+c_harding_pegmatite_mine != c_juan_de_onate.
+c_harding_pegmatite_mine != c_new_mexico.
+c_harding_pegmatite_mine != c_texas.
+c_harding_pegmatite_mine != c_the_picuris_mountains.
+c_juan_de_onate != c_new_mexico.
+c_juan_de_onate != c_texas.
+c_juan_de_onate != c_the_picuris_mountains.
+c_new_mexico != c_texas.
+c_new_mexico != c_the_picuris_mountains.
+c_texas != c_the_picuris_mountains.
+end_of_list.
+
+formulas(goals).
+-(all v_x (p_in(c_harding_pegmatite_mine,v_x) -> -(p_mountain_range(v_x) & p_in(v_x,c_new_mexico)))).
+end_of_list.
+
+============================== end of input ==========================
+
+% From the command line: assign(max_seconds, 5).
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 p_mountain_range(c_the_picuris_mountains) & (p_in(c_the_picuris_mountains,c_new_mexico) | p_in(c_the_picuris_mountains,c_texas)) & p_visited(c_juan_de_onate,c_the_picuris_mountains) & p_in(c_harding_pegmatite_mine,c_the_picuris_mountains) & p_mine(c_harding_pegmatite_mine) & p_donated(c_harding_pegmatite_mine) & (all v_x all v_y (p_mine(v_x) & p_donated(v_x) & p_in(v_x,v_y) & p_mountain_range(v_y) -> -p_in(v_y,c_texas))) # label(non_clause).  [assumption].
+2 -(all v_x (p_in(c_harding_pegmatite_mine,v_x) -> -(p_mountain_range(v_x) & p_in(v_x,c_new_mexico)))) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p_mountain_range(c_the_picuris_mountains).  [clausify(1)].
+p_in(c_the_picuris_mountains,c_new_mexico) | p_in(c_the_picuris_mountains,c_texas).  [clausify(1)].
+p_visited(c_juan_de_onate,c_the_picuris_mountains).  [clausify(1)].
+p_in(c_harding_pegmatite_mine,c_the_picuris_mountains).  [clausify(1)].
+p_mine(c_harding_pegmatite_mine).  [clausify(1)].
+p_donated(c_harding_pegmatite_mine).  [clausify(1)].
+-p_mine(x) | -p_donated(x) | -p_in(x,y) | -p_mountain_range(y) | -p_in(y,c_texas).  [clausify(1)].
+c_harding_pegmatite_mine != c_juan_de_onate.  [assumption].
+c_harding_pegmatite_mine != c_new_mexico.  [assumption].
+c_harding_pegmatite_mine != c_texas.  [assumption].
+c_harding_pegmatite_mine != c_the_picuris_mountains.  [assumption].
+c_juan_de_onate != c_new_mexico.  [assumption].
+c_juan_de_onate != c_texas.  [assumption].
+c_juan_de_onate != c_the_picuris_mountains.  [assumption].
+c_new_mexico != c_texas.  [assumption].
+c_new_mexico != c_the_picuris_mountains.  [assumption].
+c_texas != c_the_picuris_mountains.  [assumption].
+-p_in(c_harding_pegmatite_mine,x) | -p_mountain_range(x) | -p_in(x,c_new_mexico).  [deny(2)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+Eliminating p_mountain_range/1
+3 -p_mine(x) | -p_donated(x) | -p_in(x,y) | -p_mountain_range(y) | -p_in(y,c_texas).  [clausify(1)].
+4 p_mountain_range(c_the_picuris_mountains).  [clausify(1)].
+Derived: -p_mine(x) | -p_donated(x) | -p_in(x,c_the_picuris_mountains) | -p_in(c_the_picuris_mountains,c_texas).  [resolve(3,d,4,a)].
+5 -p_in(c_harding_pegmatite_mine,x) | -p_mountain_range(x) | -p_in(x,c_new_mexico).  [deny(2)].
+Derived: -p_in(c_harding_pegmatite_mine,c_the_picuris_mountains) | -p_in(c_the_picuris_mountains,c_new_mexico).  [resolve(5,b,4,a)].
+
+Eliminating p_visited/2
+
+Eliminating p_mine/1
+6 -p_mine(x) | -p_donated(x) | -p_in(x,c_the_picuris_mountains) | -p_in(c_the_picuris_mountains,c_texas).  [resolve(3,d,4,a)].
+7 p_mine(c_harding_pegmatite_mine).  [clausify(1)].
+Derived: -p_donated(c_harding_pegmatite_mine) | -p_in(c_harding_pegmatite_mine,c_the_picuris_mountains) | -p_in(c_the_picuris_mountains,c_texas).  [resolve(6,a,7,a)].
+
+============================== end predicate elimination =============
+
+Auto_denials:  (non-Horn, no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ =, p_donated, p_in ]).
+Function symbol precedence:  function_order([ c_the_picuris_mountains, c_harding_pegmatite_mine, c_new_mexico, c_texas, c_juan_de_onate ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      8 p_in(c_the_picuris_mountains,c_new_mexico) | p_in(c_the_picuris_mountains,c_texas).  [clausify(1)].
+kept:      9 p_in(c_harding_pegmatite_mine,c_the_picuris_mountains).  [clausify(1)].
+kept:      10 p_donated(c_harding_pegmatite_mine).  [clausify(1)].
+           11 c_harding_pegmatite_mine != c_juan_de_onate.  [assumption].
+kept:      12 c_juan_de_onate != c_harding_pegmatite_mine.  [copy(11),flip(a)].
+           13 c_harding_pegmatite_mine != c_new_mexico.  [assumption].
+kept:      14 c_new_mexico != c_harding_pegmatite_mine.  [copy(13),flip(a)].
+           15 c_harding_pegmatite_mine != c_texas.  [assumption].
+kept:      16 c_texas != c_harding_pegmatite_mine.  [copy(15),flip(a)].
+kept:      17 c_harding_pegmatite_mine != c_the_picuris_mountains.  [assumption].
+kept:      18 c_juan_de_onate != c_new_mexico.  [assumption].
+kept:      19 c_juan_de_onate != c_texas.  [assumption].
+kept:      20 c_juan_de_onate != c_the_picuris_mountains.  [assumption].
+           21 c_new_mexico != c_texas.  [assumption].
+kept:      22 c_texas != c_new_mexico.  [copy(21),flip(a)].
+kept:      23 c_new_mexico != c_the_picuris_mountains.  [assumption].
+kept:      24 c_texas != c_the_picuris_mountains.  [assumption].
+           25 -p_in(c_harding_pegmatite_mine,c_the_picuris_mountains) | -p_in(c_the_picuris_mountains,c_new_mexico).  [resolve(5,b,4,a)].
+kept:      26 -p_in(c_the_picuris_mountains,c_new_mexico).  [copy(25),unit_del(a,9)].
+           27 -p_donated(c_harding_pegmatite_mine) | -p_in(c_harding_pegmatite_mine,c_the_picuris_mountains) | -p_in(c_the_picuris_mountains,c_texas).  [resolve(6,a,7,a)].
+kept:      28 -p_in(c_the_picuris_mountains,c_texas).  [copy(27),unit_del(a,10),unit_del(b,9)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 15.
+% Level of proof is 5.
+% Maximum clause weight is 6.000.
+% Given clauses 0.
+
+1 p_mountain_range(c_the_picuris_mountains) & (p_in(c_the_picuris_mountains,c_new_mexico) | p_in(c_the_picuris_mountains,c_texas)) & p_visited(c_juan_de_onate,c_the_picuris_mountains) & p_in(c_harding_pegmatite_mine,c_the_picuris_mountains) & p_mine(c_harding_pegmatite_mine) & p_donated(c_harding_pegmatite_mine) & (all v_x all v_y (p_mine(v_x) & p_donated(v_x) & p_in(v_x,v_y) & p_mountain_range(v_y) -> -p_in(v_y,c_texas))) # label(non_clause).  [assumption].
+2 -(all v_x (p_in(c_harding_pegmatite_mine,v_x) -> -(p_mountain_range(v_x) & p_in(v_x,c_new_mexico)))) # label(non_clause) # label(goal).  [goal].
+3 -p_mine(x) | -p_donated(x) | -p_in(x,y) | -p_mountain_range(y) | -p_in(y,c_texas).  [clausify(1)].
+4 p_mountain_range(c_the_picuris_mountains).  [clausify(1)].
+5 -p_in(c_harding_pegmatite_mine,x) | -p_mountain_range(x) | -p_in(x,c_new_mexico).  [deny(2)].
+6 -p_mine(x) | -p_donated(x) | -p_in(x,c_the_picuris_mountains) | -p_in(c_the_picuris_mountains,c_texas).  [resolve(3,d,4,a)].
+7 p_mine(c_harding_pegmatite_mine).  [clausify(1)].
+8 p_in(c_the_picuris_mountains,c_new_mexico) | p_in(c_the_picuris_mountains,c_texas).  [clausify(1)].
+9 p_in(c_harding_pegmatite_mine,c_the_picuris_mountains).  [clausify(1)].
+10 p_donated(c_harding_pegmatite_mine).  [clausify(1)].
+25 -p_in(c_harding_pegmatite_mine,c_the_picuris_mountains) | -p_in(c_the_picuris_mountains,c_new_mexico).  [resolve(5,b,4,a)].
+26 -p_in(c_the_picuris_mountains,c_new_mexico).  [copy(25),unit_del(a,9)].
+27 -p_donated(c_harding_pegmatite_mine) | -p_in(c_harding_pegmatite_mine,c_the_picuris_mountains) | -p_in(c_the_picuris_mountains,c_texas).  [resolve(6,a,7,a)].
+28 -p_in(c_the_picuris_mountains,c_texas).  [copy(27),unit_del(a,10),unit_del(b,9)].
+29 $F.  [back_unit_del(8),unit_del(a,26),unit_del(b,28)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=16. Kept=15. proofs=1.
+Usable=0. Sos=12. Demods=0. Limbo=2, Disabled=22. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=0. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=1.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=1.
+Megabytes=0.05.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 29673 exit (max_proofs) Sat Oct 17 13:02:00 2026
+-------- Proof 1 -------- 
+
+THEOREM PROVED
+
+------ process 29673 exit (max_proofs) ------
+

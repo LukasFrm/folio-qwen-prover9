@@ -1,0 +1,8 @@
+formulas(assumptions).
+(((p_striker(c_robert_lewandowski) & all v_x ((p_striker(v_x) -> p_soccer_player(v_x)))) & p_left(c_robert_lewandowski, c_bayern_munchen)) & all v_x (all v_y ((((p_player(v_x) & p_team(v_y)) & p_left(v_x, v_y)) -> -(p_plays_for(v_x, v_y)))))).
+-(c_bayern_munchen = c_robert_lewandowski).
+end_of_list.
+
+formulas(goals).
+p_soccer_player(c_robert_lewandowski).
+end_of_list.

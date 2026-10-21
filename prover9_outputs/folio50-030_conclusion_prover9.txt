@@ -1,0 +1,212 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 29674 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Sat Oct 17 13:02:00 2026
+The command was "prover9 -t 5".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(assumptions).
+(all v_x all v_y (p_man(v_x) & p_man(v_y) & p_taller(v_x,v_y) -> p_can_block(v_x,v_y))) & p_man(c_michael) & p_same_class(c_michael,c_michael) & (all v_x (p_man(v_x) & p_same_class(v_x,c_michael) & v_x != c_michael -> p_taller(c_michael,v_x))) & (all v_x all v_y all v_z (p_taller(v_x,v_y) & p_taller(v_y,v_z) -> p_taller(v_x,v_z))) & p_man(c_peter) & p_taller(c_peter,c_michael) & (all v_x (-p_jump_when_shooting(v_x) -> p_can_block(c_michael,v_x))) & -p_can_block(c_michael,c_windy) & (all v_x (p_jump_when_shooting(v_x) -> p_great_shooter(v_x))).
+c_michael != c_peter.
+c_michael != c_windy.
+c_peter != c_windy.
+end_of_list.
+
+formulas(goals).
+p_great_shooter(c_windy).
+end_of_list.
+
+============================== end of input ==========================
+
+% From the command line: assign(max_seconds, 5).
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (all v_x all v_y (p_man(v_x) & p_man(v_y) & p_taller(v_x,v_y) -> p_can_block(v_x,v_y))) & p_man(c_michael) & p_same_class(c_michael,c_michael) & (all v_x (p_man(v_x) & p_same_class(v_x,c_michael) & v_x != c_michael -> p_taller(c_michael,v_x))) & (all v_x all v_y all v_z (p_taller(v_x,v_y) & p_taller(v_y,v_z) -> p_taller(v_x,v_z))) & p_man(c_peter) & p_taller(c_peter,c_michael) & (all v_x (-p_jump_when_shooting(v_x) -> p_can_block(c_michael,v_x))) & -p_can_block(c_michael,c_windy) & (all v_x (p_jump_when_shooting(v_x) -> p_great_shooter(v_x))) # label(non_clause).  [assumption].
+2 p_great_shooter(c_windy) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+-p_man(x) | -p_man(y) | -p_taller(x,y) | p_can_block(x,y).  [clausify(1)].
+p_man(c_michael).  [clausify(1)].
+p_same_class(c_michael,c_michael).  [clausify(1)].
+-p_man(x) | -p_same_class(x,c_michael) | c_michael = x | p_taller(c_michael,x).  [clausify(1)].
+-p_taller(x,y) | -p_taller(y,z) | p_taller(x,z).  [clausify(1)].
+p_man(c_peter).  [clausify(1)].
+p_taller(c_peter,c_michael).  [clausify(1)].
+p_jump_when_shooting(x) | p_can_block(c_michael,x).  [clausify(1)].
+-p_can_block(c_michael,c_windy).  [clausify(1)].
+-p_jump_when_shooting(x) | p_great_shooter(x).  [clausify(1)].
+c_michael != c_peter.  [assumption].
+c_michael != c_windy.  [assumption].
+c_peter != c_windy.  [assumption].
+-p_great_shooter(c_windy).  [deny(2)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+Eliminating p_jump_when_shooting/1
+3 -p_jump_when_shooting(x) | p_great_shooter(x).  [clausify(1)].
+4 p_jump_when_shooting(x) | p_can_block(c_michael,x).  [clausify(1)].
+Derived: p_great_shooter(x) | p_can_block(c_michael,x).  [resolve(3,a,4,a)].
+
+============================== end predicate elimination =============
+
+Auto_denials:  (non-Horn, no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ =, p_man, p_great_shooter, p_taller, p_can_block, p_same_class ]).
+Function symbol precedence:  function_order([ c_michael, c_peter, c_windy ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      5 -p_man(x) | -p_man(y) | -p_taller(x,y) | p_can_block(x,y).  [clausify(1)].
+kept:      6 p_man(c_michael).  [clausify(1)].
+kept:      7 p_same_class(c_michael,c_michael).  [clausify(1)].
+kept:      8 -p_man(x) | -p_same_class(x,c_michael) | c_michael = x | p_taller(c_michael,x).  [clausify(1)].
+kept:      9 -p_taller(x,y) | -p_taller(y,z) | p_taller(x,z).  [clausify(1)].
+kept:      10 p_man(c_peter).  [clausify(1)].
+kept:      11 p_taller(c_peter,c_michael).  [clausify(1)].
+kept:      12 -p_can_block(c_michael,c_windy).  [clausify(1)].
+           13 c_michael != c_peter.  [assumption].
+kept:      14 c_peter != c_michael.  [copy(13),flip(a)].
+           15 c_michael != c_windy.  [assumption].
+kept:      16 c_windy != c_michael.  [copy(15),flip(a)].
+           17 c_peter != c_windy.  [assumption].
+kept:      18 c_windy != c_peter.  [copy(17),flip(a)].
+kept:      19 -p_great_shooter(c_windy).  [deny(2)].
+kept:      20 p_great_shooter(x) | p_can_block(c_michael,x).  [resolve(3,a,4,a)].
+kept:      21 -p_man(x) | -p_taller(x,x) | p_can_block(x,x).  [factor(5,a,b)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+5 -p_man(x) | -p_man(y) | -p_taller(x,y) | p_can_block(x,y).  [clausify(1)].
+6 p_man(c_michael).  [clausify(1)].
+7 p_same_class(c_michael,c_michael).  [clausify(1)].
+8 -p_man(x) | -p_same_class(x,c_michael) | c_michael = x | p_taller(c_michael,x).  [clausify(1)].
+9 -p_taller(x,y) | -p_taller(y,z) | p_taller(x,z).  [clausify(1)].
+10 p_man(c_peter).  [clausify(1)].
+11 p_taller(c_peter,c_michael).  [clausify(1)].
+12 -p_can_block(c_michael,c_windy).  [clausify(1)].
+14 c_peter != c_michael.  [copy(13),flip(a)].
+16 c_windy != c_michael.  [copy(15),flip(a)].
+18 c_windy != c_peter.  [copy(17),flip(a)].
+19 -p_great_shooter(c_windy).  [deny(2)].
+20 p_great_shooter(x) | p_can_block(c_michael,x).  [resolve(3,a,4,a)].
+21 -p_man(x) | -p_taller(x,x) | p_can_block(x,x).  [factor(5,a,b)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.00 seconds.
+
+given #1 (I,wt=10): 5 -p_man(x) | -p_man(y) | -p_taller(x,y) | p_can_block(x,y).  [clausify(1)].
+
+given #2 (I,wt=2): 6 p_man(c_michael).  [clausify(1)].
+
+given #3 (I,wt=3): 7 p_same_class(c_michael,c_michael).  [clausify(1)].
+
+given #4 (I,wt=11): 8 -p_man(x) | -p_same_class(x,c_michael) | c_michael = x | p_taller(c_michael,x).  [clausify(1)].
+
+given #5 (I,wt=9): 9 -p_taller(x,y) | -p_taller(y,z) | p_taller(x,z).  [clausify(1)].
+
+given #6 (I,wt=2): 10 p_man(c_peter).  [clausify(1)].
+
+given #7 (I,wt=3): 11 p_taller(c_peter,c_michael).  [clausify(1)].
+
+given #8 (I,wt=3): 12 -p_can_block(c_michael,c_windy).  [clausify(1)].
+
+given #9 (I,wt=3): 14 c_peter != c_michael.  [copy(13),flip(a)].
+
+given #10 (I,wt=3): 16 c_windy != c_michael.  [copy(15),flip(a)].
+
+given #11 (I,wt=3): 18 c_windy != c_peter.  [copy(17),flip(a)].
+
+given #12 (I,wt=2): 19 -p_great_shooter(c_windy).  [deny(2)].
+
+given #13 (I,wt=5): 20 p_great_shooter(x) | p_can_block(c_michael,x).  [resolve(3,a,4,a)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 8.
+% Level of proof is 3.
+% Maximum clause weight is 5.000.
+% Given clauses 13.
+
+1 (all v_x all v_y (p_man(v_x) & p_man(v_y) & p_taller(v_x,v_y) -> p_can_block(v_x,v_y))) & p_man(c_michael) & p_same_class(c_michael,c_michael) & (all v_x (p_man(v_x) & p_same_class(v_x,c_michael) & v_x != c_michael -> p_taller(c_michael,v_x))) & (all v_x all v_y all v_z (p_taller(v_x,v_y) & p_taller(v_y,v_z) -> p_taller(v_x,v_z))) & p_man(c_peter) & p_taller(c_peter,c_michael) & (all v_x (-p_jump_when_shooting(v_x) -> p_can_block(c_michael,v_x))) & -p_can_block(c_michael,c_windy) & (all v_x (p_jump_when_shooting(v_x) -> p_great_shooter(v_x))) # label(non_clause).  [assumption].
+2 p_great_shooter(c_windy) # label(non_clause) # label(goal).  [goal].
+3 -p_jump_when_shooting(x) | p_great_shooter(x).  [clausify(1)].
+4 p_jump_when_shooting(x) | p_can_block(c_michael,x).  [clausify(1)].
+12 -p_can_block(c_michael,c_windy).  [clausify(1)].
+19 -p_great_shooter(c_windy).  [deny(2)].
+20 p_great_shooter(x) | p_can_block(c_michael,x).  [resolve(3,a,4,a)].
+25 $F.  [resolve(20,b,12,a),unit_del(a,19)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=13. Generated=20. Kept=17. proofs=1.
+Usable=13. Sos=4. Demods=0. Limbo=0, Disabled=15. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=2. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=8.
+Megabytes=0.08.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 29674 exit (max_proofs) Sat Oct 17 13:02:00 2026
+-------- Proof 1 -------- 
+
+THEOREM PROVED
+
+------ process 29674 exit (max_proofs) ------
+

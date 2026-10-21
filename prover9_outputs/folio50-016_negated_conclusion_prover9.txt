@@ -1,0 +1,416 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 29631 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Sat Oct 17 13:02:00 2026
+The command was "prover9 -t 5".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(assumptions).
+(all v_x (p_at(v_x,c_marys_school) & p_work_in(v_x,c_student_job,c_campus) -> p_need_to_earn_money_to_help_pay_for(v_x,c_college_tuition))) & (all v_x (p_at(v_x,c_marys_school) & p_order_frequently(v_x,c_takeout) -> p_work_in(v_x,c_student_job,c_campus))) & (all v_x (p_at(v_x,c_marys_school) -> p_order_frequently(v_x,c_takeout) | p_enjoy(v_x,c_dining_hall_meal))) & (all v_x (p_at(v_x,c_marys_school) & p_enjoy(v_x,c_dining_hall_meal) -> -p_picky_eater(v_x))) & (all v_x (p_at(v_x,c_marys_school) & p_enjoy(v_x,c_dining_hall_meal) -> p_spend(v_x,c_a_lot_of_time,c_eating,c_dining_hall) & p_spend(v_x,c_a_lot_of_time,c_catching_up_with_friends,c_dining_hall))) & p_at(c_hannah,c_marys_school) & p_work_in(c_hannah,c_student_job,c_campus) & (p_need_to_earn_money_to_help_pay_for(c_hannah,c_college_tuition) -> -p_picky_eater(c_hannah) & -p_need_to_earn_money_to_help_pay_for(c_hannah,c_college_tuition)).
+c_a_lot_of_time != c_campus.
+c_a_lot_of_time != c_catching_up_with_friends.
+c_a_lot_of_time != c_college_tuition.
+c_a_lot_of_time != c_dining_hall.
+c_a_lot_of_time != c_dining_hall_meal.
+c_a_lot_of_time != c_eating.
+c_a_lot_of_time != c_hannah.
+c_a_lot_of_time != c_marys_school.
+c_a_lot_of_time != c_student_job.
+c_a_lot_of_time != c_takeout.
+c_campus != c_catching_up_with_friends.
+c_campus != c_college_tuition.
+c_campus != c_dining_hall.
+c_campus != c_dining_hall_meal.
+c_campus != c_eating.
+c_campus != c_hannah.
+c_campus != c_marys_school.
+c_campus != c_student_job.
+c_campus != c_takeout.
+c_catching_up_with_friends != c_college_tuition.
+c_catching_up_with_friends != c_dining_hall.
+c_catching_up_with_friends != c_dining_hall_meal.
+c_catching_up_with_friends != c_eating.
+c_catching_up_with_friends != c_hannah.
+c_catching_up_with_friends != c_marys_school.
+c_catching_up_with_friends != c_student_job.
+c_catching_up_with_friends != c_takeout.
+c_college_tuition != c_dining_hall.
+c_college_tuition != c_dining_hall_meal.
+c_college_tuition != c_eating.
+c_college_tuition != c_hannah.
+c_college_tuition != c_marys_school.
+c_college_tuition != c_student_job.
+c_college_tuition != c_takeout.
+c_dining_hall != c_dining_hall_meal.
+c_dining_hall != c_eating.
+c_dining_hall != c_hannah.
+c_dining_hall != c_marys_school.
+c_dining_hall != c_student_job.
+c_dining_hall != c_takeout.
+c_dining_hall_meal != c_eating.
+c_dining_hall_meal != c_hannah.
+c_dining_hall_meal != c_marys_school.
+c_dining_hall_meal != c_student_job.
+c_dining_hall_meal != c_takeout.
+c_eating != c_hannah.
+c_eating != c_marys_school.
+c_eating != c_student_job.
+c_eating != c_takeout.
+c_hannah != c_marys_school.
+c_hannah != c_student_job.
+c_hannah != c_takeout.
+c_marys_school != c_student_job.
+c_marys_school != c_takeout.
+c_student_job != c_takeout.
+end_of_list.
+
+formulas(goals).
+-(p_at(c_hannah,c_marys_school) & -p_picky_eater(c_hannah) & p_spend(c_hannah,c_a_lot_of_time,c_eating,c_dining_hall) & p_spend(c_hannah,c_a_lot_of_time,c_catching_up_with_friends,c_dining_hall)).
+end_of_list.
+
+============================== end of input ==========================
+
+% From the command line: assign(max_seconds, 5).
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (all v_x (p_at(v_x,c_marys_school) & p_work_in(v_x,c_student_job,c_campus) -> p_need_to_earn_money_to_help_pay_for(v_x,c_college_tuition))) & (all v_x (p_at(v_x,c_marys_school) & p_order_frequently(v_x,c_takeout) -> p_work_in(v_x,c_student_job,c_campus))) & (all v_x (p_at(v_x,c_marys_school) -> p_order_frequently(v_x,c_takeout) | p_enjoy(v_x,c_dining_hall_meal))) & (all v_x (p_at(v_x,c_marys_school) & p_enjoy(v_x,c_dining_hall_meal) -> -p_picky_eater(v_x))) & (all v_x (p_at(v_x,c_marys_school) & p_enjoy(v_x,c_dining_hall_meal) -> p_spend(v_x,c_a_lot_of_time,c_eating,c_dining_hall) & p_spend(v_x,c_a_lot_of_time,c_catching_up_with_friends,c_dining_hall))) & p_at(c_hannah,c_marys_school) & p_work_in(c_hannah,c_student_job,c_campus) & (p_need_to_earn_money_to_help_pay_for(c_hannah,c_college_tuition) -> -p_picky_eater(c_hannah) & -p_need_to_earn_money_to_help_pay_for(c_hannah,c_college_tuition)) # label(non_clause).  [assumption].
+2 -(p_at(c_hannah,c_marys_school) & -p_picky_eater(c_hannah) & p_spend(c_hannah,c_a_lot_of_time,c_eating,c_dining_hall) & p_spend(c_hannah,c_a_lot_of_time,c_catching_up_with_friends,c_dining_hall)) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+-p_at(x,c_marys_school) | -p_work_in(x,c_student_job,c_campus) | p_need_to_earn_money_to_help_pay_for(x,c_college_tuition).  [clausify(1)].
+-p_at(x,c_marys_school) | -p_order_frequently(x,c_takeout) | p_work_in(x,c_student_job,c_campus).  [clausify(1)].
+-p_at(x,c_marys_school) | p_order_frequently(x,c_takeout) | p_enjoy(x,c_dining_hall_meal).  [clausify(1)].
+-p_at(x,c_marys_school) | -p_enjoy(x,c_dining_hall_meal) | -p_picky_eater(x).  [clausify(1)].
+-p_at(x,c_marys_school) | -p_enjoy(x,c_dining_hall_meal) | p_spend(x,c_a_lot_of_time,c_eating,c_dining_hall).  [clausify(1)].
+-p_at(x,c_marys_school) | -p_enjoy(x,c_dining_hall_meal) | p_spend(x,c_a_lot_of_time,c_catching_up_with_friends,c_dining_hall).  [clausify(1)].
+p_at(c_hannah,c_marys_school).  [clausify(1)].
+p_work_in(c_hannah,c_student_job,c_campus).  [clausify(1)].
+-p_need_to_earn_money_to_help_pay_for(c_hannah,c_college_tuition).  [clausify(1)].
+c_a_lot_of_time != c_campus.  [assumption].
+c_a_lot_of_time != c_catching_up_with_friends.  [assumption].
+c_a_lot_of_time != c_college_tuition.  [assumption].
+c_a_lot_of_time != c_dining_hall.  [assumption].
+c_a_lot_of_time != c_dining_hall_meal.  [assumption].
+c_a_lot_of_time != c_eating.  [assumption].
+c_a_lot_of_time != c_hannah.  [assumption].
+c_a_lot_of_time != c_marys_school.  [assumption].
+c_a_lot_of_time != c_student_job.  [assumption].
+c_a_lot_of_time != c_takeout.  [assumption].
+c_campus != c_catching_up_with_friends.  [assumption].
+c_campus != c_college_tuition.  [assumption].
+c_campus != c_dining_hall.  [assumption].
+c_campus != c_dining_hall_meal.  [assumption].
+c_campus != c_eating.  [assumption].
+c_campus != c_hannah.  [assumption].
+c_campus != c_marys_school.  [assumption].
+c_campus != c_student_job.  [assumption].
+c_campus != c_takeout.  [assumption].
+c_catching_up_with_friends != c_college_tuition.  [assumption].
+c_catching_up_with_friends != c_dining_hall.  [assumption].
+c_catching_up_with_friends != c_dining_hall_meal.  [assumption].
+c_catching_up_with_friends != c_eating.  [assumption].
+c_catching_up_with_friends != c_hannah.  [assumption].
+c_catching_up_with_friends != c_marys_school.  [assumption].
+c_catching_up_with_friends != c_student_job.  [assumption].
+c_catching_up_with_friends != c_takeout.  [assumption].
+c_college_tuition != c_dining_hall.  [assumption].
+c_college_tuition != c_dining_hall_meal.  [assumption].
+c_college_tuition != c_eating.  [assumption].
+c_college_tuition != c_hannah.  [assumption].
+c_college_tuition != c_marys_school.  [assumption].
+c_college_tuition != c_student_job.  [assumption].
+c_college_tuition != c_takeout.  [assumption].
+c_dining_hall != c_dining_hall_meal.  [assumption].
+c_dining_hall != c_eating.  [assumption].
+c_dining_hall != c_hannah.  [assumption].
+c_dining_hall != c_marys_school.  [assumption].
+c_dining_hall != c_student_job.  [assumption].
+c_dining_hall != c_takeout.  [assumption].
+c_dining_hall_meal != c_eating.  [assumption].
+c_dining_hall_meal != c_hannah.  [assumption].
+c_dining_hall_meal != c_marys_school.  [assumption].
+c_dining_hall_meal != c_student_job.  [assumption].
+c_dining_hall_meal != c_takeout.  [assumption].
+c_eating != c_hannah.  [assumption].
+c_eating != c_marys_school.  [assumption].
+c_eating != c_student_job.  [assumption].
+c_eating != c_takeout.  [assumption].
+c_hannah != c_marys_school.  [assumption].
+c_hannah != c_student_job.  [assumption].
+c_hannah != c_takeout.  [assumption].
+c_marys_school != c_student_job.  [assumption].
+c_marys_school != c_takeout.  [assumption].
+c_student_job != c_takeout.  [assumption].
+p_at(c_hannah,c_marys_school).  [deny(2)].
+-p_picky_eater(c_hannah).  [deny(2)].
+p_spend(c_hannah,c_a_lot_of_time,c_eating,c_dining_hall).  [deny(2)].
+p_spend(c_hannah,c_a_lot_of_time,c_catching_up_with_friends,c_dining_hall).  [deny(2)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+Eliminating p_spend/4
+
+============================== end predicate elimination =============
+
+Auto_denials:  (non-Horn, no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ =, p_picky_eater, p_at, p_order_frequently, p_enjoy, p_need_to_earn_money_to_help_pay_for, p_work_in ]).
+Function symbol precedence:  function_order([ c_marys_school, c_campus, c_hannah, c_student_job, c_takeout, c_college_tuition, c_dining_hall_meal, c_a_lot_of_time, c_catching_up_with_friends, c_dining_hall, c_eating ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      3 -p_at(x,c_marys_school) | -p_work_in(x,c_student_job,c_campus) | p_need_to_earn_money_to_help_pay_for(x,c_college_tuition).  [clausify(1)].
+kept:      4 -p_at(x,c_marys_school) | -p_order_frequently(x,c_takeout) | p_work_in(x,c_student_job,c_campus).  [clausify(1)].
+kept:      5 -p_at(x,c_marys_school) | p_order_frequently(x,c_takeout) | p_enjoy(x,c_dining_hall_meal).  [clausify(1)].
+kept:      6 -p_at(x,c_marys_school) | -p_enjoy(x,c_dining_hall_meal) | -p_picky_eater(x).  [clausify(1)].
+kept:      7 p_at(c_hannah,c_marys_school).  [clausify(1)].
+kept:      8 p_work_in(c_hannah,c_student_job,c_campus).  [clausify(1)].
+kept:      9 -p_need_to_earn_money_to_help_pay_for(c_hannah,c_college_tuition).  [clausify(1)].
+kept:      10 c_a_lot_of_time != c_campus.  [assumption].
+           11 c_a_lot_of_time != c_catching_up_with_friends.  [assumption].
+kept:      12 c_catching_up_with_friends != c_a_lot_of_time.  [copy(11),flip(a)].
+kept:      13 c_a_lot_of_time != c_college_tuition.  [assumption].
+           14 c_a_lot_of_time != c_dining_hall.  [assumption].
+kept:      15 c_dining_hall != c_a_lot_of_time.  [copy(14),flip(a)].
+kept:      16 c_a_lot_of_time != c_dining_hall_meal.  [assumption].
+           17 c_a_lot_of_time != c_eating.  [assumption].
+kept:      18 c_eating != c_a_lot_of_time.  [copy(17),flip(a)].
+kept:      19 c_a_lot_of_time != c_hannah.  [assumption].
+kept:      20 c_a_lot_of_time != c_marys_school.  [assumption].
+kept:      21 c_a_lot_of_time != c_student_job.  [assumption].
+kept:      22 c_a_lot_of_time != c_takeout.  [assumption].
+           23 c_campus != c_catching_up_with_friends.  [assumption].
+kept:      24 c_catching_up_with_friends != c_campus.  [copy(23),flip(a)].
+           25 c_campus != c_college_tuition.  [assumption].
+kept:      26 c_college_tuition != c_campus.  [copy(25),flip(a)].
+           27 c_campus != c_dining_hall.  [assumption].
+kept:      28 c_dining_hall != c_campus.  [copy(27),flip(a)].
+           29 c_campus != c_dining_hall_meal.  [assumption].
+kept:      30 c_dining_hall_meal != c_campus.  [copy(29),flip(a)].
+           31 c_campus != c_eating.  [assumption].
+kept:      32 c_eating != c_campus.  [copy(31),flip(a)].
+           33 c_campus != c_hannah.  [assumption].
+kept:      34 c_hannah != c_campus.  [copy(33),flip(a)].
+kept:      35 c_campus != c_marys_school.  [assumption].
+           36 c_campus != c_student_job.  [assumption].
+kept:      37 c_student_job != c_campus.  [copy(36),flip(a)].
+           38 c_campus != c_takeout.  [assumption].
+kept:      39 c_takeout != c_campus.  [copy(38),flip(a)].
+kept:      40 c_catching_up_with_friends != c_college_tuition.  [assumption].
+           41 c_catching_up_with_friends != c_dining_hall.  [assumption].
+kept:      42 c_dining_hall != c_catching_up_with_friends.  [copy(41),flip(a)].
+kept:      43 c_catching_up_with_friends != c_dining_hall_meal.  [assumption].
+           44 c_catching_up_with_friends != c_eating.  [assumption].
+kept:      45 c_eating != c_catching_up_with_friends.  [copy(44),flip(a)].
+kept:      46 c_catching_up_with_friends != c_hannah.  [assumption].
+kept:      47 c_catching_up_with_friends != c_marys_school.  [assumption].
+kept:      48 c_catching_up_with_friends != c_student_job.  [assumption].
+kept:      49 c_catching_up_with_friends != c_takeout.  [assumption].
+           50 c_college_tuition != c_dining_hall.  [assumption].
+kept:      51 c_dining_hall != c_college_tuition.  [copy(50),flip(a)].
+           52 c_college_tuition != c_dining_hall_meal.  [assumption].
+kept:      53 c_dining_hall_meal != c_college_tuition.  [copy(52),flip(a)].
+           54 c_college_tuition != c_eating.  [assumption].
+kept:      55 c_eating != c_college_tuition.  [copy(54),flip(a)].
+kept:      56 c_college_tuition != c_hannah.  [assumption].
+kept:      57 c_college_tuition != c_marys_school.  [assumption].
+kept:      58 c_college_tuition != c_student_job.  [assumption].
+kept:      59 c_college_tuition != c_takeout.  [assumption].
+kept:      60 c_dining_hall != c_dining_hall_meal.  [assumption].
+           61 c_dining_hall != c_eating.  [assumption].
+kept:      62 c_eating != c_dining_hall.  [copy(61),flip(a)].
+kept:      63 c_dining_hall != c_hannah.  [assumption].
+kept:      64 c_dining_hall != c_marys_school.  [assumption].
+kept:      65 c_dining_hall != c_student_job.  [assumption].
+kept:      66 c_dining_hall != c_takeout.  [assumption].
+           67 c_dining_hall_meal != c_eating.  [assumption].
+kept:      68 c_eating != c_dining_hall_meal.  [copy(67),flip(a)].
+kept:      69 c_dining_hall_meal != c_hannah.  [assumption].
+kept:      70 c_dining_hall_meal != c_marys_school.  [assumption].
+kept:      71 c_dining_hall_meal != c_student_job.  [assumption].
+kept:      72 c_dining_hall_meal != c_takeout.  [assumption].
+kept:      73 c_eating != c_hannah.  [assumption].
+kept:      74 c_eating != c_marys_school.  [assumption].
+kept:      75 c_eating != c_student_job.  [assumption].
+kept:      76 c_eating != c_takeout.  [assumption].
+kept:      77 c_hannah != c_marys_school.  [assumption].
+           78 c_hannah != c_student_job.  [assumption].
+kept:      79 c_student_job != c_hannah.  [copy(78),flip(a)].
+           80 c_hannah != c_takeout.  [assumption].
+kept:      81 c_takeout != c_hannah.  [copy(80),flip(a)].
+           82 c_marys_school != c_student_job.  [assumption].
+kept:      83 c_student_job != c_marys_school.  [copy(82),flip(a)].
+           84 c_marys_school != c_takeout.  [assumption].
+kept:      85 c_takeout != c_marys_school.  [copy(84),flip(a)].
+           86 c_student_job != c_takeout.  [assumption].
+kept:      87 c_takeout != c_student_job.  [copy(86),flip(a)].
+kept:      88 -p_picky_eater(c_hannah).  [deny(2)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+3 -p_at(x,c_marys_school) | -p_work_in(x,c_student_job,c_campus) | p_need_to_earn_money_to_help_pay_for(x,c_college_tuition).  [clausify(1)].
+4 -p_at(x,c_marys_school) | -p_order_frequently(x,c_takeout) | p_work_in(x,c_student_job,c_campus).  [clausify(1)].
+5 -p_at(x,c_marys_school) | p_order_frequently(x,c_takeout) | p_enjoy(x,c_dining_hall_meal).  [clausify(1)].
+6 -p_at(x,c_marys_school) | -p_enjoy(x,c_dining_hall_meal) | -p_picky_eater(x).  [clausify(1)].
+7 p_at(c_hannah,c_marys_school).  [clausify(1)].
+8 p_work_in(c_hannah,c_student_job,c_campus).  [clausify(1)].
+9 -p_need_to_earn_money_to_help_pay_for(c_hannah,c_college_tuition).  [clausify(1)].
+10 c_a_lot_of_time != c_campus.  [assumption].
+12 c_catching_up_with_friends != c_a_lot_of_time.  [copy(11),flip(a)].
+13 c_a_lot_of_time != c_college_tuition.  [assumption].
+15 c_dining_hall != c_a_lot_of_time.  [copy(14),flip(a)].
+16 c_a_lot_of_time != c_dining_hall_meal.  [assumption].
+18 c_eating != c_a_lot_of_time.  [copy(17),flip(a)].
+19 c_a_lot_of_time != c_hannah.  [assumption].
+20 c_a_lot_of_time != c_marys_school.  [assumption].
+21 c_a_lot_of_time != c_student_job.  [assumption].
+22 c_a_lot_of_time != c_takeout.  [assumption].
+24 c_catching_up_with_friends != c_campus.  [copy(23),flip(a)].
+26 c_college_tuition != c_campus.  [copy(25),flip(a)].
+28 c_dining_hall != c_campus.  [copy(27),flip(a)].
+30 c_dining_hall_meal != c_campus.  [copy(29),flip(a)].
+32 c_eating != c_campus.  [copy(31),flip(a)].
+34 c_hannah != c_campus.  [copy(33),flip(a)].
+35 c_campus != c_marys_school.  [assumption].
+37 c_student_job != c_campus.  [copy(36),flip(a)].
+39 c_takeout != c_campus.  [copy(38),flip(a)].
+40 c_catching_up_with_friends != c_college_tuition.  [assumption].
+42 c_dining_hall != c_catching_up_with_friends.  [copy(41),flip(a)].
+43 c_catching_up_with_friends != c_dining_hall_meal.  [assumption].
+45 c_eating != c_catching_up_with_friends.  [copy(44),flip(a)].
+46 c_catching_up_with_friends != c_hannah.  [assumption].
+47 c_catching_up_with_friends != c_marys_school.  [assumption].
+48 c_catching_up_with_friends != c_student_job.  [assumption].
+49 c_catching_up_with_friends != c_takeout.  [assumption].
+51 c_dining_hall != c_college_tuition.  [copy(50),flip(a)].
+53 c_dining_hall_meal != c_college_tuition.  [copy(52),flip(a)].
+55 c_eating != c_college_tuition.  [copy(54),flip(a)].
+56 c_college_tuition != c_hannah.  [assumption].
+57 c_college_tuition != c_marys_school.  [assumption].
+58 c_college_tuition != c_student_job.  [assumption].
+59 c_college_tuition != c_takeout.  [assumption].
+60 c_dining_hall != c_dining_hall_meal.  [assumption].
+62 c_eating != c_dining_hall.  [copy(61),flip(a)].
+63 c_dining_hall != c_hannah.  [assumption].
+64 c_dining_hall != c_marys_school.  [assumption].
+65 c_dining_hall != c_student_job.  [assumption].
+66 c_dining_hall != c_takeout.  [assumption].
+68 c_eating != c_dining_hall_meal.  [copy(67),flip(a)].
+69 c_dining_hall_meal != c_hannah.  [assumption].
+70 c_dining_hall_meal != c_marys_school.  [assumption].
+71 c_dining_hall_meal != c_student_job.  [assumption].
+72 c_dining_hall_meal != c_takeout.  [assumption].
+73 c_eating != c_hannah.  [assumption].
+74 c_eating != c_marys_school.  [assumption].
+75 c_eating != c_student_job.  [assumption].
+76 c_eating != c_takeout.  [assumption].
+77 c_hannah != c_marys_school.  [assumption].
+79 c_student_job != c_hannah.  [copy(78),flip(a)].
+81 c_takeout != c_hannah.  [copy(80),flip(a)].
+83 c_student_job != c_marys_school.  [copy(82),flip(a)].
+85 c_takeout != c_marys_school.  [copy(84),flip(a)].
+87 c_takeout != c_student_job.  [copy(86),flip(a)].
+88 -p_picky_eater(c_hannah).  [deny(2)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.00 seconds.
+
+given #1 (I,wt=10): 3 -p_at(x,c_marys_school) | -p_work_in(x,c_student_job,c_campus) | p_need_to_earn_money_to_help_pay_for(x,c_college_tuition).  [clausify(1)].
+
+given #2 (I,wt=10): 4 -p_at(x,c_marys_school) | -p_order_frequently(x,c_takeout) | p_work_in(x,c_student_job,c_campus).  [clausify(1)].
+
+given #3 (I,wt=9): 5 -p_at(x,c_marys_school) | p_order_frequently(x,c_takeout) | p_enjoy(x,c_dining_hall_meal).  [clausify(1)].
+
+given #4 (I,wt=8): 6 -p_at(x,c_marys_school) | -p_enjoy(x,c_dining_hall_meal) | -p_picky_eater(x).  [clausify(1)].
+
+given #5 (I,wt=3): 7 p_at(c_hannah,c_marys_school).  [clausify(1)].
+
+given #6 (I,wt=4): 8 p_work_in(c_hannah,c_student_job,c_campus).  [clausify(1)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 6.
+% Level of proof is 2.
+% Maximum clause weight is 10.000.
+% Given clauses 6.
+
+1 (all v_x (p_at(v_x,c_marys_school) & p_work_in(v_x,c_student_job,c_campus) -> p_need_to_earn_money_to_help_pay_for(v_x,c_college_tuition))) & (all v_x (p_at(v_x,c_marys_school) & p_order_frequently(v_x,c_takeout) -> p_work_in(v_x,c_student_job,c_campus))) & (all v_x (p_at(v_x,c_marys_school) -> p_order_frequently(v_x,c_takeout) | p_enjoy(v_x,c_dining_hall_meal))) & (all v_x (p_at(v_x,c_marys_school) & p_enjoy(v_x,c_dining_hall_meal) -> -p_picky_eater(v_x))) & (all v_x (p_at(v_x,c_marys_school) & p_enjoy(v_x,c_dining_hall_meal) -> p_spend(v_x,c_a_lot_of_time,c_eating,c_dining_hall) & p_spend(v_x,c_a_lot_of_time,c_catching_up_with_friends,c_dining_hall))) & p_at(c_hannah,c_marys_school) & p_work_in(c_hannah,c_student_job,c_campus) & (p_need_to_earn_money_to_help_pay_for(c_hannah,c_college_tuition) -> -p_picky_eater(c_hannah) & -p_need_to_earn_money_to_help_pay_for(c_hannah,c_college_tuition)) # label(non_clause).  [assumption].
+3 -p_at(x,c_marys_school) | -p_work_in(x,c_student_job,c_campus) | p_need_to_earn_money_to_help_pay_for(x,c_college_tuition).  [clausify(1)].
+7 p_at(c_hannah,c_marys_school).  [clausify(1)].
+8 p_work_in(c_hannah,c_student_job,c_campus).  [clausify(1)].
+9 -p_need_to_earn_money_to_help_pay_for(c_hannah,c_college_tuition).  [clausify(1)].
+90 $F.  [resolve(8,a,3,b),unit_del(a,7),unit_del(b,9)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=6. Generated=66. Kept=64. proofs=1.
+Usable=6. Sos=58. Demods=0. Limbo=0, Disabled=68. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=1. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=5.
+Megabytes=0.13.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 29631 exit (max_proofs) Sat Oct 17 13:02:00 2026
+-------- Proof 1 -------- 
+
+THEOREM PROVED
+
+------ process 29631 exit (max_proofs) ------
+

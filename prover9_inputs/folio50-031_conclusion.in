@@ -1,0 +1,7 @@
+formulas(assumptions).
+(((((all v_x ((exists v_y (exists v_z (((((p_passenger(v_y) & p_passenger(v_z)) & p_transport(v_x, v_y)) & p_transport(v_x, v_z)) & -((v_y = v_z))))) -> -(p_one_seater(v_x)))) & all v_x ((p_tesla_model3(v_x) -> exists v_y (exists v_z (((((p_passenger(v_y) & p_passenger(v_z)) & p_transport(v_x, v_y)) & p_transport(v_x, v_z)) & -((v_y = v_z)))))))) & all v_x (((p_single_seat(v_x) & p_electric_car(v_x)) -> p_one_seater(v_x)))) & all v_x (((p_solo_e_v(v_x) & p_car(v_x)) -> (p_single_seat(v_x) & p_electric_car(v_x))))) & (-(p_tesla_model3(c_johns_car)) -> (-(p_tesla_model3(c_johns_car)) & -((p_single_seat(c_johns_car) & p_electric_car(c_johns_car)))))) & p_car(c_johns_car)).
+end_of_list.
+
+formulas(goals).
+(p_tesla_model3(c_johns_car) & p_car(c_johns_car)).
+end_of_list.

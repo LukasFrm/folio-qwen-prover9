@@ -1,0 +1,8 @@
+formulas(assumptions).
+(((((all v_x ((p_plunger(v_x) -> p_suck(v_x))) & all v_x ((p_vacuum(v_x) -> p_suck(v_x)))) & all v_x ((p_vampire(v_x) -> p_suck(v_x)))) & p_vacuum(c_space)) & p_household_appliance(c_duster)) & -(p_suck(c_duster))).
+-(c_duster = c_space).
+end_of_list.
+
+formulas(goals).
+p_vampire(c_space).
+end_of_list.

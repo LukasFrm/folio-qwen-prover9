@@ -1,0 +1,17 @@
+formulas(assumptions).
+((((((all v_x ((p_romance_language(v_x) -> p_indo_european_language(v_x))) & all v_x ((p_romance_language(v_x) -> p_member_of(v_x, c_romance_family)))) & all v_x (all v_y (all v_z (((p_member_of(v_x, v_z) & p_member_of(v_y, v_z)) -> (p_related(v_x, v_y) & p_related(v_y, v_x))))))) & p_romance_language(c_french)) & p_romance_language(c_spanish)) & p_related(c_german, c_spanish)) & all v_x ((-(v_x = c_basque) -> -(p_related(c_basque, v_x))))).
+-(c_basque = c_french).
+-(c_basque = c_german).
+-(c_basque = c_romance_family).
+-(c_basque = c_spanish).
+-(c_french = c_german).
+-(c_french = c_romance_family).
+-(c_french = c_spanish).
+-(c_german = c_romance_family).
+-(c_german = c_spanish).
+-(c_romance_family = c_spanish).
+end_of_list.
+
+formulas(goals).
+-(p_romance_language(c_basque)).
+end_of_list.

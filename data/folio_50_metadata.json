@@ -1,0 +1,21 @@
+{
+  "source_dataset": "benlipkin/folio",
+  "source_split": "validation",
+  "source_size": 204,
+  "benchmark_size": 50,
+  "random_seed": 42,
+  "label_quotas": {
+    "True": 17,
+    "False": 17,
+    "Uncertain": 16
+  },
+  "hard_premise_threshold": 5,
+  "minimum_hard_examples": 10,
+  "actual_hard_examples": 40,
+  "label_distribution": {
+    "False": 17,
+    "Uncertain": 16,
+    "True": 17
+  },
+  "sha256": "ae422d101ffe198e13cdf64f7069ac3a72304cddf4fed5268c62e9d3998fae59"
+}

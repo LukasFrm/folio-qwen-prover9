@@ -1,0 +1,260 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 29741 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Sat Oct 17 13:02:00 2026
+The command was "prover9 -t 5".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(assumptions).
+p_born_in(c_ailton_silva,c_year1995) & p_commonly_known_as(c_ailton_silva,c_ailton) & c_ailton = c_ailton_silva & p_football_player(c_ailton) & p_loaned_to(c_ailton,c_braga) & p_brazilian(c_ailton_silva) & p_football_player(c_ailton_silva) & p_play_for(c_ailton_silva,c_nautico) & p_football_club(c_nautico) & p_football_club(c_braga) & p_football_club(c_fluminense).
+c_ailton != c_braga.
+c_ailton != c_fluminense.
+c_ailton != c_nautico.
+c_ailton != c_year1995.
+c_braga != c_fluminense.
+c_braga != c_nautico.
+c_braga != c_year1995.
+c_fluminense != c_nautico.
+c_fluminense != c_year1995.
+c_nautico != c_year1995.
+end_of_list.
+
+formulas(goals).
+(exists v_x (p_football_club(v_x) & p_loaned_to(c_ailton_silva,v_x))).
+end_of_list.
+
+============================== end of input ==========================
+
+% From the command line: assign(max_seconds, 5).
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 p_born_in(c_ailton_silva,c_year1995) & p_commonly_known_as(c_ailton_silva,c_ailton) & c_ailton = c_ailton_silva & p_football_player(c_ailton) & p_loaned_to(c_ailton,c_braga) & p_brazilian(c_ailton_silva) & p_football_player(c_ailton_silva) & p_play_for(c_ailton_silva,c_nautico) & p_football_club(c_nautico) & p_football_club(c_braga) & p_football_club(c_fluminense) # label(non_clause).  [assumption].
+2 (exists v_x (p_football_club(v_x) & p_loaned_to(c_ailton_silva,v_x))) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p_born_in(c_ailton_silva,c_year1995).  [clausify(1)].
+p_commonly_known_as(c_ailton_silva,c_ailton).  [clausify(1)].
+c_ailton = c_ailton_silva.  [clausify(1)].
+p_football_player(c_ailton).  [clausify(1)].
+p_loaned_to(c_ailton,c_braga).  [clausify(1)].
+p_brazilian(c_ailton_silva).  [clausify(1)].
+p_football_player(c_ailton_silva).  [clausify(1)].
+p_play_for(c_ailton_silva,c_nautico).  [clausify(1)].
+p_football_club(c_nautico).  [clausify(1)].
+p_football_club(c_braga).  [clausify(1)].
+p_football_club(c_fluminense).  [clausify(1)].
+c_ailton != c_braga.  [assumption].
+c_ailton != c_fluminense.  [assumption].
+c_ailton != c_nautico.  [assumption].
+c_ailton != c_year1995.  [assumption].
+c_braga != c_fluminense.  [assumption].
+c_braga != c_nautico.  [assumption].
+c_braga != c_year1995.  [assumption].
+c_fluminense != c_nautico.  [assumption].
+c_fluminense != c_year1995.  [assumption].
+c_nautico != c_year1995.  [assumption].
+-p_football_club(x) | -p_loaned_to(c_ailton_silva,x).  [deny(2)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+Eliminating p_born_in/2
+
+Eliminating p_commonly_known_as/2
+
+Eliminating p_football_player/1
+
+Eliminating p_brazilian/1
+
+Eliminating p_play_for/2
+
+Eliminating p_football_club/1
+3 -p_football_club(x) | -p_loaned_to(c_ailton_silva,x).  [deny(2)].
+4 p_football_club(c_nautico).  [clausify(1)].
+5 p_football_club(c_braga).  [clausify(1)].
+6 p_football_club(c_fluminense).  [clausify(1)].
+Derived: -p_loaned_to(c_ailton_silva,c_nautico).  [resolve(3,a,4,a)].
+Derived: -p_loaned_to(c_ailton_silva,c_braga).  [resolve(3,a,5,a)].
+Derived: -p_loaned_to(c_ailton_silva,c_fluminense).  [resolve(3,a,6,a)].
+
+============================== end predicate elimination =============
+
+Auto_denials:
+  % assign(max_proofs, 13).  % (Horn set with more than one neg. clause)
+
+WARNING, because some of the denials share constants,
+some of the denials or their descendents may be subsumed,
+preventing the target number of proofs from being found.
+The shared constants are:  c_ailton_silva, c_year1995, c_nautico, c_fluminense, c_braga, c_ailton.
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ =, p_loaned_to ]).
+Function symbol precedence:  function_order([ c_ailton, c_ailton_silva, c_braga, c_fluminense, c_nautico, c_year1995 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+
+Auto_process settings:  (no changes).
+
+           7 c_ailton = c_ailton_silva.  [clausify(1)].
+kept:      8 c_ailton_silva = c_ailton.  [copy(7),flip(a)].
+kept:      9 p_loaned_to(c_ailton,c_braga).  [clausify(1)].
+           10 c_ailton != c_braga.  [assumption].
+kept:      11 c_braga != c_ailton.  [copy(10),flip(a)].
+           12 c_ailton != c_fluminense.  [assumption].
+kept:      13 c_fluminense != c_ailton.  [copy(12),flip(a)].
+           14 c_ailton != c_nautico.  [assumption].
+kept:      15 c_nautico != c_ailton.  [copy(14),flip(a)].
+           16 c_ailton != c_year1995.  [assumption].
+kept:      17 c_year1995 != c_ailton.  [copy(16),flip(a)].
+           18 c_braga != c_fluminense.  [assumption].
+kept:      19 c_fluminense != c_braga.  [copy(18),flip(a)].
+           20 c_braga != c_nautico.  [assumption].
+kept:      21 c_nautico != c_braga.  [copy(20),flip(a)].
+           22 c_braga != c_year1995.  [assumption].
+kept:      23 c_year1995 != c_braga.  [copy(22),flip(a)].
+           24 c_fluminense != c_nautico.  [assumption].
+kept:      25 c_nautico != c_fluminense.  [copy(24),flip(a)].
+           26 c_fluminense != c_year1995.  [assumption].
+kept:      27 c_year1995 != c_fluminense.  [copy(26),flip(a)].
+           28 c_nautico != c_year1995.  [assumption].
+kept:      29 c_year1995 != c_nautico.  [copy(28),flip(a)].
+           30 -p_loaned_to(c_ailton_silva,c_nautico).  [resolve(3,a,4,a)].
+kept:      31 -p_loaned_to(c_ailton,c_nautico).  [copy(30),rewrite([8(1)])].
+           32 -p_loaned_to(c_ailton_silva,c_braga).  [resolve(3,a,5,a)].
+kept:      33 -p_loaned_to(c_ailton,c_braga).  [copy(32),rewrite([8(1)])].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 10.
+% Level of proof is 4.
+% Maximum clause weight is 3.000.
+% Given clauses 0.
+
+1 p_born_in(c_ailton_silva,c_year1995) & p_commonly_known_as(c_ailton_silva,c_ailton) & c_ailton = c_ailton_silva & p_football_player(c_ailton) & p_loaned_to(c_ailton,c_braga) & p_brazilian(c_ailton_silva) & p_football_player(c_ailton_silva) & p_play_for(c_ailton_silva,c_nautico) & p_football_club(c_nautico) & p_football_club(c_braga) & p_football_club(c_fluminense) # label(non_clause).  [assumption].
+2 (exists v_x (p_football_club(v_x) & p_loaned_to(c_ailton_silva,v_x))) # label(non_clause) # label(goal).  [goal].
+3 -p_football_club(x) | -p_loaned_to(c_ailton_silva,x).  [deny(2)].
+5 p_football_club(c_braga).  [clausify(1)].
+7 c_ailton = c_ailton_silva.  [clausify(1)].
+8 c_ailton_silva = c_ailton.  [copy(7),flip(a)].
+9 p_loaned_to(c_ailton,c_braga).  [clausify(1)].
+32 -p_loaned_to(c_ailton_silva,c_braga).  [resolve(3,a,5,a)].
+33 -p_loaned_to(c_ailton,c_braga).  [copy(32),rewrite([8(1)])].
+34 $F.  [resolve(33,a,9,a)].
+
+============================== end of proof ==========================
+           35 -p_loaned_to(c_ailton_silva,c_fluminense).  [resolve(3,a,6,a)].
+kept:      36 -p_loaned_to(c_ailton,c_fluminense).  [copy(35),rewrite([8(1)])].
+
+% Disable descendants (x means already disabled):
+ 3x 30x 31 32x 33 35x 36
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+8 c_ailton_silva = c_ailton.  [copy(7),flip(a)].
+9 p_loaned_to(c_ailton,c_braga).  [clausify(1)].
+11 c_braga != c_ailton.  [copy(10),flip(a)].
+13 c_fluminense != c_ailton.  [copy(12),flip(a)].
+15 c_nautico != c_ailton.  [copy(14),flip(a)].
+17 c_year1995 != c_ailton.  [copy(16),flip(a)].
+19 c_fluminense != c_braga.  [copy(18),flip(a)].
+21 c_nautico != c_braga.  [copy(20),flip(a)].
+23 c_year1995 != c_braga.  [copy(22),flip(a)].
+25 c_nautico != c_fluminense.  [copy(24),flip(a)].
+27 c_year1995 != c_fluminense.  [copy(26),flip(a)].
+29 c_year1995 != c_nautico.  [copy(28),flip(a)].
+end_of_list.
+
+formulas(demodulators).
+8 c_ailton_silva = c_ailton.  [copy(7),flip(a)].
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.00 seconds.
+
+given #1 (I,wt=3): 8 c_ailton_silva = c_ailton.  [copy(7),flip(a)].
+
+given #2 (I,wt=3): 9 p_loaned_to(c_ailton,c_braga).  [clausify(1)].
+
+given #3 (I,wt=3): 11 c_braga != c_ailton.  [copy(10),flip(a)].
+
+given #4 (I,wt=3): 13 c_fluminense != c_ailton.  [copy(12),flip(a)].
+
+given #5 (I,wt=3): 15 c_nautico != c_ailton.  [copy(14),flip(a)].
+
+given #6 (I,wt=3): 17 c_year1995 != c_ailton.  [copy(16),flip(a)].
+
+given #7 (I,wt=3): 19 c_fluminense != c_braga.  [copy(18),flip(a)].
+
+given #8 (I,wt=3): 21 c_nautico != c_braga.  [copy(20),flip(a)].
+
+given #9 (I,wt=3): 23 c_year1995 != c_braga.  [copy(22),flip(a)].
+
+given #10 (I,wt=3): 25 c_nautico != c_fluminense.  [copy(24),flip(a)].
+
+given #11 (I,wt=3): 27 c_year1995 != c_fluminense.  [copy(26),flip(a)].
+
+given #12 (I,wt=3): 29 c_year1995 != c_nautico.  [copy(28),flip(a)].
+
+============================== STATISTICS ============================
+
+Given=12. Generated=16. Kept=15. proofs=1.
+Usable=12. Sos=0. Demods=1. Limbo=0, Disabled=28. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=1. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=1 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=90. Demod_rewrites=3.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.05.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+SEARCH FAILED
+
+Exiting with 1 proof.
+
+Process 29741 exit (sos_empty) Sat Oct 17 13:02:00 2026
+
+WARNING: denials share constants (see output).
+
+-------- Proof 1 -------- 
+
+SEARCH FAILED
+
+------ process 29741 exit (sos_empty) ------
+

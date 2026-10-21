@@ -1,0 +1,10 @@
+formulas(assumptions).
+(((((((((all v_x (all v_y ((((p_man(v_x) & p_man(v_y)) & p_taller(v_x, v_y)) -> p_can_block(v_x, v_y)))) & p_man(c_michael)) & p_same_class(c_michael, c_michael)) & all v_x ((((p_man(v_x) & p_same_class(v_x, c_michael)) & -((v_x = c_michael))) -> p_taller(c_michael, v_x)))) & all v_x (all v_y (all v_z (((p_taller(v_x, v_y) & p_taller(v_y, v_z)) -> p_taller(v_x, v_z)))))) & p_man(c_peter)) & p_taller(c_peter, c_michael)) & all v_x ((-(p_jump_when_shooting(v_x)) -> p_can_block(c_michael, v_x)))) & -(p_can_block(c_michael, c_windy))) & all v_x ((p_jump_when_shooting(v_x) -> p_great_shooter(v_x)))).
+-(c_michael = c_peter).
+-(c_michael = c_windy).
+-(c_peter = c_windy).
+end_of_list.
+
+formulas(goals).
+p_great_shooter(c_windy).
+end_of_list.

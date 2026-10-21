@@ -1,0 +1,194 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 29681 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Sat Oct 17 13:02:00 2026
+The command was "prover9 -t 5".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(assumptions).
+(all v_x ((exists v_y exists v_z (p_passenger(v_y) & p_passenger(v_z) & p_transport(v_x,v_y) & p_transport(v_x,v_z) & v_y != v_z)) -> -p_one_seater(v_x))) & (all v_x (p_tesla_model3(v_x) -> (exists v_y exists v_z (p_passenger(v_y) & p_passenger(v_z) & p_transport(v_x,v_y) & p_transport(v_x,v_z) & v_y != v_z)))) & (all v_x (p_single_seat(v_x) & p_electric_car(v_x) -> p_one_seater(v_x))) & (all v_x (p_solo_e_v(v_x) & p_car(v_x) -> p_single_seat(v_x) & p_electric_car(v_x))) & (-p_tesla_model3(c_johns_car) -> -p_tesla_model3(c_johns_car) & -(p_single_seat(c_johns_car) & p_electric_car(c_johns_car))) & p_car(c_johns_car).
+end_of_list.
+
+formulas(goals).
+p_solo_e_v(c_johns_car) & p_car(c_johns_car).
+end_of_list.
+
+============================== end of input ==========================
+
+% From the command line: assign(max_seconds, 5).
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (all v_x ((exists v_y exists v_z (p_passenger(v_y) & p_passenger(v_z) & p_transport(v_x,v_y) & p_transport(v_x,v_z) & v_y != v_z)) -> -p_one_seater(v_x))) & (all v_x (p_tesla_model3(v_x) -> (exists v_y exists v_z (p_passenger(v_y) & p_passenger(v_z) & p_transport(v_x,v_y) & p_transport(v_x,v_z) & v_y != v_z)))) & (all v_x (p_single_seat(v_x) & p_electric_car(v_x) -> p_one_seater(v_x))) & (all v_x (p_solo_e_v(v_x) & p_car(v_x) -> p_single_seat(v_x) & p_electric_car(v_x))) & (-p_tesla_model3(c_johns_car) -> -p_tesla_model3(c_johns_car) & -(p_single_seat(c_johns_car) & p_electric_car(c_johns_car))) & p_car(c_johns_car) # label(non_clause).  [assumption].
+2 p_solo_e_v(c_johns_car) & p_car(c_johns_car) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+-p_passenger(x) | -p_passenger(y) | -p_transport(z,x) | -p_transport(z,y) | y = x | -p_one_seater(z).  [clausify(1)].
+-p_tesla_model3(x) | p_passenger(f1(x)).  [clausify(1)].
+-p_tesla_model3(x) | p_passenger(f2(x)).  [clausify(1)].
+-p_tesla_model3(x) | p_transport(x,f1(x)).  [clausify(1)].
+-p_tesla_model3(x) | p_transport(x,f2(x)).  [clausify(1)].
+-p_tesla_model3(x) | f2(x) != f1(x).  [clausify(1)].
+-p_single_seat(x) | -p_electric_car(x) | p_one_seater(x).  [clausify(1)].
+-p_solo_e_v(x) | -p_car(x) | p_single_seat(x).  [clausify(1)].
+-p_solo_e_v(x) | -p_car(x) | p_electric_car(x).  [clausify(1)].
+p_tesla_model3(c_johns_car) | -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car).  [clausify(1)].
+p_car(c_johns_car).  [clausify(1)].
+-p_solo_e_v(c_johns_car) | -p_car(c_johns_car).  [deny(2)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+Eliminating p_one_seater/1
+3 -p_single_seat(x) | -p_electric_car(x) | p_one_seater(x).  [clausify(1)].
+4 -p_passenger(x) | -p_passenger(y) | -p_transport(z,x) | -p_transport(z,y) | y = x | -p_one_seater(z).  [clausify(1)].
+Derived: -p_single_seat(x) | -p_electric_car(x) | -p_passenger(y) | -p_passenger(z) | -p_transport(x,y) | -p_transport(x,z) | z = y.  [resolve(3,c,4,f)].
+
+Eliminating p_tesla_model3/1
+5 p_tesla_model3(c_johns_car) | -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car).  [clausify(1)].
+6 -p_tesla_model3(x) | p_passenger(f1(x)).  [clausify(1)].
+7 -p_tesla_model3(x) | p_passenger(f2(x)).  [clausify(1)].
+8 -p_tesla_model3(x) | p_transport(x,f1(x)).  [clausify(1)].
+9 -p_tesla_model3(x) | p_transport(x,f2(x)).  [clausify(1)].
+10 -p_tesla_model3(x) | f2(x) != f1(x).  [clausify(1)].
+Derived: -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | p_passenger(f1(c_johns_car)).  [resolve(5,a,6,a)].
+Derived: -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | p_passenger(f2(c_johns_car)).  [resolve(5,a,7,a)].
+Derived: -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | p_transport(c_johns_car,f1(c_johns_car)).  [resolve(5,a,8,a)].
+Derived: -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | p_transport(c_johns_car,f2(c_johns_car)).  [resolve(5,a,9,a)].
+Derived: -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | f2(c_johns_car) != f1(c_johns_car).  [resolve(5,a,10,a)].
+
+============================== end predicate elimination =============
+
+Auto_denials:
+  % assign(max_proofs, 2).  % (Horn set with more than one neg. clause)
+
+WARNING, because some of the denials share constants,
+some of the denials or their descendents may be subsumed,
+preventing the target number of proofs from being found.
+The shared constants are:  c_johns_car.
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ =, p_electric_car, p_single_seat, p_passenger, p_car, p_solo_e_v, p_transport ]).
+Function symbol precedence:  function_order([ c_johns_car, f1, f2 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+  % set(hyper_resolution).  % (nonunit Horn with equality)
+    % set(hyper_resolution) -> set(pos_hyper_resolution).
+  % set(neg_ur_resolution).  % (nonunit Horn with equality)
+  % assign(para_lit_limit, 7).  % (nonunit Horn with equality)
+
+Auto_process settings:
+  % set(unit_deletion).  % (Horn set with negative nonunits)
+
+kept:      11 -p_solo_e_v(x) | -p_car(x) | p_single_seat(x).  [clausify(1)].
+kept:      12 -p_solo_e_v(x) | -p_car(x) | p_electric_car(x).  [clausify(1)].
+kept:      13 p_car(c_johns_car).  [clausify(1)].
+           14 -p_solo_e_v(c_johns_car) | -p_car(c_johns_car).  [deny(2)].
+kept:      15 -p_solo_e_v(c_johns_car).  [copy(14),unit_del(b,13)].
+kept:      16 -p_single_seat(x) | -p_electric_car(x) | -p_passenger(y) | -p_passenger(z) | -p_transport(x,y) | -p_transport(x,z) | z = y.  [resolve(3,c,4,f)].
+kept:      17 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | p_passenger(f1(c_johns_car)).  [resolve(5,a,6,a)].
+kept:      18 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | p_passenger(f2(c_johns_car)).  [resolve(5,a,7,a)].
+kept:      19 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | p_transport(c_johns_car,f1(c_johns_car)).  [resolve(5,a,8,a)].
+kept:      20 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | p_transport(c_johns_car,f2(c_johns_car)).  [resolve(5,a,9,a)].
+kept:      21 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | f2(c_johns_car) != f1(c_johns_car).  [resolve(5,a,10,a)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+11 -p_solo_e_v(x) | -p_car(x) | p_single_seat(x).  [clausify(1)].
+12 -p_solo_e_v(x) | -p_car(x) | p_electric_car(x).  [clausify(1)].
+13 p_car(c_johns_car).  [clausify(1)].
+15 -p_solo_e_v(c_johns_car).  [copy(14),unit_del(b,13)].
+16 -p_single_seat(x) | -p_electric_car(x) | -p_passenger(y) | -p_passenger(z) | -p_transport(x,y) | -p_transport(x,z) | z = y.  [resolve(3,c,4,f)].
+17 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | p_passenger(f1(c_johns_car)).  [resolve(5,a,6,a)].
+18 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | p_passenger(f2(c_johns_car)).  [resolve(5,a,7,a)].
+19 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | p_transport(c_johns_car,f1(c_johns_car)).  [resolve(5,a,8,a)].
+20 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | p_transport(c_johns_car,f2(c_johns_car)).  [resolve(5,a,9,a)].
+21 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | f2(c_johns_car) != f1(c_johns_car).  [resolve(5,a,10,a)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.00 seconds.
+
+given #1 (I,wt=6): 11 -p_solo_e_v(x) | -p_car(x) | p_single_seat(x).  [clausify(1)].
+
+given #2 (I,wt=6): 12 -p_solo_e_v(x) | -p_car(x) | p_electric_car(x).  [clausify(1)].
+
+given #3 (I,wt=2): 13 p_car(c_johns_car).  [clausify(1)].
+
+given #4 (I,wt=2): 15 -p_solo_e_v(c_johns_car).  [copy(14),unit_del(b,13)].
+
+given #5 (I,wt=17): 16 -p_single_seat(x) | -p_electric_car(x) | -p_passenger(y) | -p_passenger(z) | -p_transport(x,y) | -p_transport(x,z) | z = y.  [resolve(3,c,4,f)].
+
+given #6 (I,wt=7): 17 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | p_passenger(f1(c_johns_car)).  [resolve(5,a,6,a)].
+
+given #7 (I,wt=7): 18 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | p_passenger(f2(c_johns_car)).  [resolve(5,a,7,a)].
+
+given #8 (I,wt=8): 19 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | p_transport(c_johns_car,f1(c_johns_car)).  [resolve(5,a,8,a)].
+
+given #9 (I,wt=8): 20 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | p_transport(c_johns_car,f2(c_johns_car)).  [resolve(5,a,9,a)].
+
+given #10 (I,wt=9): 21 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | f2(c_johns_car) != f1(c_johns_car).  [resolve(5,a,10,a)].
+
+============================== STATISTICS ============================
+
+Given=10. Generated=10. Kept=10. proofs=0.
+Usable=10. Sos=0. Demods=0. Limbo=0, Disabled=18. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=0. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=8.
+Megabytes=0.08.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+SEARCH FAILED
+
+Exiting with failure.
+
+Process 29681 exit (sos_empty) Sat Oct 17 13:02:00 2026
+
+WARNING: denials share constants (see output).
+
+
+SEARCH FAILED
+
+------ process 29681 exit (sos_empty) ------
+

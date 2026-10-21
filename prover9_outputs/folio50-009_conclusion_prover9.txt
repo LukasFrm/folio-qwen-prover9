@@ -1,0 +1,250 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 29607 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Sat Oct 17 13:01:59 2026
+The command was "prover9 -t 5".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(assumptions).
+(all v_x (p_romance_language(v_x) -> p_indo_european_language(v_x))) & (all v_x (p_romance_language(v_x) -> p_member_of(v_x,c_romance_family))) & (all v_x all v_y all v_z (p_member_of(v_x,v_z) & p_member_of(v_y,v_z) -> p_related(v_x,v_y) & p_related(v_y,v_x))) & p_romance_language(c_french) & p_romance_language(c_spanish) & p_related(c_german,c_spanish) & (all v_x (v_x != c_basque -> -p_related(c_basque,v_x))).
+c_basque != c_french.
+c_basque != c_german.
+c_basque != c_romance_family.
+c_basque != c_spanish.
+c_french != c_german.
+c_french != c_romance_family.
+c_french != c_spanish.
+c_german != c_romance_family.
+c_german != c_spanish.
+c_romance_family != c_spanish.
+end_of_list.
+
+formulas(goals).
+p_romance_language(c_basque).
+end_of_list.
+
+============================== end of input ==========================
+
+% From the command line: assign(max_seconds, 5).
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (all v_x (p_romance_language(v_x) -> p_indo_european_language(v_x))) & (all v_x (p_romance_language(v_x) -> p_member_of(v_x,c_romance_family))) & (all v_x all v_y all v_z (p_member_of(v_x,v_z) & p_member_of(v_y,v_z) -> p_related(v_x,v_y) & p_related(v_y,v_x))) & p_romance_language(c_french) & p_romance_language(c_spanish) & p_related(c_german,c_spanish) & (all v_x (v_x != c_basque -> -p_related(c_basque,v_x))) # label(non_clause).  [assumption].
+2 p_romance_language(c_basque) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+-p_romance_language(x) | p_indo_european_language(x).  [clausify(1)].
+-p_romance_language(x) | p_member_of(x,c_romance_family).  [clausify(1)].
+-p_member_of(x,y) | -p_member_of(z,y) | p_related(x,z).  [clausify(1)].
+-p_member_of(x,y) | -p_member_of(z,y) | p_related(z,x).  [clausify(1)].
+p_romance_language(c_french).  [clausify(1)].
+p_romance_language(c_spanish).  [clausify(1)].
+p_related(c_german,c_spanish).  [clausify(1)].
+c_basque = x | -p_related(c_basque,x).  [clausify(1)].
+c_basque != c_french.  [assumption].
+c_basque != c_german.  [assumption].
+c_basque != c_romance_family.  [assumption].
+c_basque != c_spanish.  [assumption].
+c_french != c_german.  [assumption].
+c_french != c_romance_family.  [assumption].
+c_french != c_spanish.  [assumption].
+c_german != c_romance_family.  [assumption].
+c_german != c_spanish.  [assumption].
+c_romance_family != c_spanish.  [assumption].
+-p_romance_language(c_basque).  [deny(2)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+Eliminating p_indo_european_language/1
+
+============================== end predicate elimination =============
+
+Auto_denials:
+  % assign(max_proofs, 11).  % (Horn set with more than one neg. clause)
+
+WARNING, because some of the denials share constants,
+some of the denials or their descendents may be subsumed,
+preventing the target number of proofs from being found.
+The shared constants are:  c_spanish, c_romance_family, c_german, c_french, c_basque.
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ =, p_romance_language, p_member_of, p_related ]).
+Function symbol precedence:  function_order([ c_basque, c_spanish, c_french, c_german, c_romance_family ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+  % set(hyper_resolution).  % (nonunit Horn with equality)
+    % set(hyper_resolution) -> set(pos_hyper_resolution).
+  % set(neg_ur_resolution).  % (nonunit Horn with equality)
+  % assign(para_lit_limit, 3).  % (nonunit Horn with equality)
+
+Auto_process settings:  (no changes).
+
+kept:      3 -p_romance_language(x) | p_member_of(x,c_romance_family).  [clausify(1)].
+kept:      4 -p_member_of(x,y) | -p_member_of(z,y) | p_related(x,z).  [clausify(1)].
+kept:      5 p_romance_language(c_french).  [clausify(1)].
+kept:      6 p_romance_language(c_spanish).  [clausify(1)].
+kept:      7 p_related(c_german,c_spanish).  [clausify(1)].
+kept:      8 c_basque = x | -p_related(c_basque,x).  [clausify(1)].
+           9 c_basque != c_french.  [assumption].
+kept:      10 c_french != c_basque.  [copy(9),flip(a)].
+           11 c_basque != c_german.  [assumption].
+kept:      12 c_german != c_basque.  [copy(11),flip(a)].
+           13 c_basque != c_romance_family.  [assumption].
+kept:      14 c_romance_family != c_basque.  [copy(13),flip(a)].
+           15 c_basque != c_spanish.  [assumption].
+kept:      16 c_spanish != c_basque.  [copy(15),flip(a)].
+           17 c_french != c_german.  [assumption].
+kept:      18 c_german != c_french.  [copy(17),flip(a)].
+           19 c_french != c_romance_family.  [assumption].
+kept:      20 c_romance_family != c_french.  [copy(19),flip(a)].
+kept:      21 c_french != c_spanish.  [assumption].
+           22 c_german != c_romance_family.  [assumption].
+kept:      23 c_romance_family != c_german.  [copy(22),flip(a)].
+kept:      24 c_german != c_spanish.  [assumption].
+kept:      25 c_romance_family != c_spanish.  [assumption].
+kept:      26 -p_romance_language(c_basque).  [deny(2)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+3 -p_romance_language(x) | p_member_of(x,c_romance_family).  [clausify(1)].
+4 -p_member_of(x,y) | -p_member_of(z,y) | p_related(x,z).  [clausify(1)].
+5 p_romance_language(c_french).  [clausify(1)].
+6 p_romance_language(c_spanish).  [clausify(1)].
+7 p_related(c_german,c_spanish).  [clausify(1)].
+8 c_basque = x | -p_related(c_basque,x).  [clausify(1)].
+10 c_french != c_basque.  [copy(9),flip(a)].
+12 c_german != c_basque.  [copy(11),flip(a)].
+14 c_romance_family != c_basque.  [copy(13),flip(a)].
+16 c_spanish != c_basque.  [copy(15),flip(a)].
+18 c_german != c_french.  [copy(17),flip(a)].
+20 c_romance_family != c_french.  [copy(19),flip(a)].
+21 c_french != c_spanish.  [assumption].
+23 c_romance_family != c_german.  [copy(22),flip(a)].
+24 c_german != c_spanish.  [assumption].
+25 c_romance_family != c_spanish.  [assumption].
+26 -p_romance_language(c_basque).  [deny(2)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.00 seconds.
+
+given #1 (I,wt=5): 3 -p_romance_language(x) | p_member_of(x,c_romance_family).  [clausify(1)].
+
+given #2 (I,wt=9): 4 -p_member_of(x,y) | -p_member_of(z,y) | p_related(x,z).  [clausify(1)].
+
+given #3 (I,wt=2): 5 p_romance_language(c_french).  [clausify(1)].
+
+given #4 (I,wt=2): 6 p_romance_language(c_spanish).  [clausify(1)].
+
+given #5 (I,wt=3): 7 p_related(c_german,c_spanish).  [clausify(1)].
+
+given #6 (I,wt=6): 8 c_basque = x | -p_related(c_basque,x).  [clausify(1)].
+
+given #7 (I,wt=3): 10 c_french != c_basque.  [copy(9),flip(a)].
+
+given #8 (I,wt=3): 12 c_german != c_basque.  [copy(11),flip(a)].
+
+given #9 (I,wt=3): 14 c_romance_family != c_basque.  [copy(13),flip(a)].
+
+given #10 (I,wt=3): 16 c_spanish != c_basque.  [copy(15),flip(a)].
+
+given #11 (I,wt=3): 18 c_german != c_french.  [copy(17),flip(a)].
+
+given #12 (I,wt=3): 20 c_romance_family != c_french.  [copy(19),flip(a)].
+
+given #13 (I,wt=3): 21 c_french != c_spanish.  [assumption].
+
+given #14 (I,wt=3): 23 c_romance_family != c_german.  [copy(22),flip(a)].
+
+given #15 (I,wt=3): 24 c_german != c_spanish.  [assumption].
+
+given #16 (I,wt=3): 25 c_romance_family != c_spanish.  [assumption].
+
+given #17 (I,wt=2): 26 -p_romance_language(c_basque).  [deny(2)].
+
+given #18 (A,wt=3): 27 p_member_of(c_french,c_romance_family).  [hyper(3,a,5,a)].
+
+given #19 (F,wt=3): 29 -p_related(c_basque,c_french).  [ur(8,a,10,a(flip))].
+
+given #20 (F,wt=3): 30 -p_related(c_basque,c_german).  [ur(8,a,12,a(flip))].
+
+given #21 (F,wt=3): 31 -p_related(c_basque,c_romance_family).  [ur(8,a,14,a(flip))].
+
+given #22 (F,wt=3): 32 -p_related(c_basque,c_spanish).  [ur(8,a,16,a(flip))].
+
+given #23 (T,wt=3): 28 p_member_of(c_spanish,c_romance_family).  [hyper(3,a,6,a)].
+
+given #24 (T,wt=3): 33 p_related(c_french,c_french).  [hyper(4,a,27,a,b,27,a)].
+
+given #25 (T,wt=3): 35 p_related(c_spanish,c_spanish).  [hyper(4,a,28,a,b,28,a)].
+
+given #26 (T,wt=3): 36 p_related(c_french,c_spanish).  [hyper(4,a,27,a,b,28,a)].
+
+given #27 (A,wt=3): 34 -p_member_of(c_basque,c_romance_family).  [ur(4,b,27,a,c,29,a)].
+
+given #28 (T,wt=3): 37 p_related(c_spanish,c_french).  [hyper(4,a,28,a,b,27,a)].
+
+============================== STATISTICS ============================
+
+Given=28. Generated=33. Kept=28. proofs=0.
+Usable=28. Sos=0. Demods=0. Limbo=0, Disabled=19. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=5. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=1. Nonunit_bsub_feature_tests=3.
+Megabytes=0.07.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+SEARCH FAILED
+
+Exiting with failure.
+
+Process 29607 exit (sos_empty) Sat Oct 17 13:01:59 2026
+
+WARNING: denials share constants (see output).
+
+
+SEARCH FAILED
+
+------ process 29607 exit (sos_empty) ------
+

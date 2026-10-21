@@ -1,0 +1,219 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 29701 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Sat Oct 17 13:02:00 2026
+The command was "prover9 -t 5".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(assumptions).
+(exists v_x (p_show(v_x) & p_airing_at(v_x,c_eight_p_m_monday) & p_gives_out_on_t_v(v_x,c_rose))) & (all v_x (p_show(v_x) & p_gives_out_on_t_v(v_x,c_rose) -> p_the_bachelor(v_x))) & (all v_x (p_the_bachelor(v_x) -> p_portray(v_x,c_lives_of_real_people))) & (all v_x (p_portray(v_x,c_lives_of_real_people) -> p_reality_t_v_show(v_x))) & p_show(c_breaking_bad) & -p_reality_t_v_show(c_breaking_bad).
+c_breaking_bad != c_eight_p_m_monday.
+c_breaking_bad != c_lives_of_real_people.
+c_breaking_bad != c_rose.
+c_eight_p_m_monday != c_lives_of_real_people.
+c_eight_p_m_monday != c_rose.
+c_lives_of_real_people != c_rose.
+end_of_list.
+
+formulas(goals).
+p_airing_at(c_breaking_bad,c_eight_p_m_monday).
+end_of_list.
+
+============================== end of input ==========================
+
+% From the command line: assign(max_seconds, 5).
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (exists v_x (p_show(v_x) & p_airing_at(v_x,c_eight_p_m_monday) & p_gives_out_on_t_v(v_x,c_rose))) & (all v_x (p_show(v_x) & p_gives_out_on_t_v(v_x,c_rose) -> p_the_bachelor(v_x))) & (all v_x (p_the_bachelor(v_x) -> p_portray(v_x,c_lives_of_real_people))) & (all v_x (p_portray(v_x,c_lives_of_real_people) -> p_reality_t_v_show(v_x))) & p_show(c_breaking_bad) & -p_reality_t_v_show(c_breaking_bad) # label(non_clause).  [assumption].
+2 p_airing_at(c_breaking_bad,c_eight_p_m_monday) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p_show(c1).  [clausify(1)].
+p_airing_at(c1,c_eight_p_m_monday).  [clausify(1)].
+p_gives_out_on_t_v(c1,c_rose).  [clausify(1)].
+-p_show(x) | -p_gives_out_on_t_v(x,c_rose) | p_the_bachelor(x).  [clausify(1)].
+-p_the_bachelor(x) | p_portray(x,c_lives_of_real_people).  [clausify(1)].
+-p_portray(x,c_lives_of_real_people) | p_reality_t_v_show(x).  [clausify(1)].
+p_show(c_breaking_bad).  [clausify(1)].
+-p_reality_t_v_show(c_breaking_bad).  [clausify(1)].
+c_breaking_bad != c_eight_p_m_monday.  [assumption].
+c_breaking_bad != c_lives_of_real_people.  [assumption].
+c_breaking_bad != c_rose.  [assumption].
+c_eight_p_m_monday != c_lives_of_real_people.  [assumption].
+c_eight_p_m_monday != c_rose.  [assumption].
+c_lives_of_real_people != c_rose.  [assumption].
+-p_airing_at(c_breaking_bad,c_eight_p_m_monday).  [deny(2)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+Eliminating p_show/1
+3 -p_show(x) | -p_gives_out_on_t_v(x,c_rose) | p_the_bachelor(x).  [clausify(1)].
+4 p_show(c1).  [clausify(1)].
+Derived: -p_gives_out_on_t_v(c1,c_rose) | p_the_bachelor(c1).  [resolve(3,a,4,a)].
+5 p_show(c_breaking_bad).  [clausify(1)].
+Derived: -p_gives_out_on_t_v(c_breaking_bad,c_rose) | p_the_bachelor(c_breaking_bad).  [resolve(5,a,3,a)].
+
+Eliminating p_the_bachelor/1
+6 -p_gives_out_on_t_v(c1,c_rose) | p_the_bachelor(c1).  [resolve(3,a,4,a)].
+7 -p_the_bachelor(x) | p_portray(x,c_lives_of_real_people).  [clausify(1)].
+Derived: -p_gives_out_on_t_v(c1,c_rose) | p_portray(c1,c_lives_of_real_people).  [resolve(6,b,7,a)].
+8 -p_gives_out_on_t_v(c_breaking_bad,c_rose) | p_the_bachelor(c_breaking_bad).  [resolve(5,a,3,a)].
+Derived: -p_gives_out_on_t_v(c_breaking_bad,c_rose) | p_portray(c_breaking_bad,c_lives_of_real_people).  [resolve(8,b,7,a)].
+
+============================== end predicate elimination =============
+
+Auto_denials:
+  % assign(max_proofs, 8).  % (Horn set with more than one neg. clause)
+
+WARNING, because some of the denials share constants,
+some of the denials or their descendents may be subsumed,
+preventing the target number of proofs from being found.
+The shared constants are:  c_rose, c_lives_of_real_people, c_eight_p_m_monday, c_breaking_bad.
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ =, p_reality_t_v_show, p_gives_out_on_t_v, p_portray, p_airing_at ]).
+Function symbol precedence:  function_order([ c_lives_of_real_people, c_rose, c_breaking_bad, c_eight_p_m_monday, c1 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(neg_binary_resolution).  % (HNE depth_diff=0)
+  % clear(ordered_res).  % (HNE depth_diff=0)
+  % set(ur_resolution).  % (HNE depth_diff=0)
+    % set(ur_resolution) -> set(pos_ur_resolution).
+    % set(ur_resolution) -> set(neg_ur_resolution).
+
+Auto_process settings:  (no changes).
+
+kept:      9 p_airing_at(c1,c_eight_p_m_monday).  [clausify(1)].
+kept:      10 p_gives_out_on_t_v(c1,c_rose).  [clausify(1)].
+kept:      11 -p_portray(x,c_lives_of_real_people) | p_reality_t_v_show(x).  [clausify(1)].
+kept:      12 -p_reality_t_v_show(c_breaking_bad).  [clausify(1)].
+           13 c_breaking_bad != c_eight_p_m_monday.  [assumption].
+kept:      14 c_eight_p_m_monday != c_breaking_bad.  [copy(13),flip(a)].
+kept:      15 c_breaking_bad != c_lives_of_real_people.  [assumption].
+kept:      16 c_breaking_bad != c_rose.  [assumption].
+kept:      17 c_eight_p_m_monday != c_lives_of_real_people.  [assumption].
+kept:      18 c_eight_p_m_monday != c_rose.  [assumption].
+           19 c_lives_of_real_people != c_rose.  [assumption].
+kept:      20 c_rose != c_lives_of_real_people.  [copy(19),flip(a)].
+kept:      21 -p_airing_at(c_breaking_bad,c_eight_p_m_monday).  [deny(2)].
+kept:      22 -p_gives_out_on_t_v(c1,c_rose) | p_portray(c1,c_lives_of_real_people).  [resolve(6,b,7,a)].
+kept:      23 -p_gives_out_on_t_v(c_breaking_bad,c_rose) | p_portray(c_breaking_bad,c_lives_of_real_people).  [resolve(8,b,7,a)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+9 p_airing_at(c1,c_eight_p_m_monday).  [clausify(1)].
+10 p_gives_out_on_t_v(c1,c_rose).  [clausify(1)].
+11 -p_portray(x,c_lives_of_real_people) | p_reality_t_v_show(x).  [clausify(1)].
+12 -p_reality_t_v_show(c_breaking_bad).  [clausify(1)].
+14 c_eight_p_m_monday != c_breaking_bad.  [copy(13),flip(a)].
+15 c_breaking_bad != c_lives_of_real_people.  [assumption].
+16 c_breaking_bad != c_rose.  [assumption].
+17 c_eight_p_m_monday != c_lives_of_real_people.  [assumption].
+18 c_eight_p_m_monday != c_rose.  [assumption].
+20 c_rose != c_lives_of_real_people.  [copy(19),flip(a)].
+21 -p_airing_at(c_breaking_bad,c_eight_p_m_monday).  [deny(2)].
+22 -p_gives_out_on_t_v(c1,c_rose) | p_portray(c1,c_lives_of_real_people).  [resolve(6,b,7,a)].
+23 -p_gives_out_on_t_v(c_breaking_bad,c_rose) | p_portray(c_breaking_bad,c_lives_of_real_people).  [resolve(8,b,7,a)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.00 seconds.
+
+given #1 (I,wt=3): 9 p_airing_at(c1,c_eight_p_m_monday).  [clausify(1)].
+
+given #2 (I,wt=3): 10 p_gives_out_on_t_v(c1,c_rose).  [clausify(1)].
+
+given #3 (I,wt=5): 11 -p_portray(x,c_lives_of_real_people) | p_reality_t_v_show(x).  [clausify(1)].
+
+given #4 (I,wt=2): 12 -p_reality_t_v_show(c_breaking_bad).  [clausify(1)].
+
+given #5 (I,wt=3): 14 c_eight_p_m_monday != c_breaking_bad.  [copy(13),flip(a)].
+
+given #6 (I,wt=3): 15 c_breaking_bad != c_lives_of_real_people.  [assumption].
+
+given #7 (I,wt=3): 16 c_breaking_bad != c_rose.  [assumption].
+
+given #8 (I,wt=3): 17 c_eight_p_m_monday != c_lives_of_real_people.  [assumption].
+
+given #9 (I,wt=3): 18 c_eight_p_m_monday != c_rose.  [assumption].
+
+given #10 (I,wt=3): 20 c_rose != c_lives_of_real_people.  [copy(19),flip(a)].
+
+given #11 (I,wt=3): 21 -p_airing_at(c_breaking_bad,c_eight_p_m_monday).  [deny(2)].
+
+given #12 (I,wt=6): 22 -p_gives_out_on_t_v(c1,c_rose) | p_portray(c1,c_lives_of_real_people).  [resolve(6,b,7,a)].
+
+given #13 (I,wt=6): 23 -p_gives_out_on_t_v(c_breaking_bad,c_rose) | p_portray(c_breaking_bad,c_lives_of_real_people).  [resolve(8,b,7,a)].
+
+given #14 (A,wt=3): 24 -p_portray(c_breaking_bad,c_lives_of_real_people).  [resolve(12,a,11,b)].
+
+given #15 (F,wt=3): 26 -p_gives_out_on_t_v(c_breaking_bad,c_rose).  [resolve(24,a,23,b)].
+
+given #16 (T,wt=3): 25 p_portray(c1,c_lives_of_real_people).  [ur(22,a,10,a)].
+
+given #17 (T,wt=2): 27 p_reality_t_v_show(c1).  [ur(11,a,25,a)].
+
+============================== STATISTICS ============================
+
+Given=17. Generated=19. Kept=17. proofs=0.
+Usable=15. Sos=0. Demods=0. Limbo=0, Disabled=21. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=2. Back_subsumed=2.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=5.
+Megabytes=0.06.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+SEARCH FAILED
+
+Exiting with failure.
+
+Process 29701 exit (sos_empty) Sat Oct 17 13:02:00 2026
+
+WARNING: denials share constants (see output).
+
+
+SEARCH FAILED
+
+------ process 29701 exit (sos_empty) ------
+

@@ -1,0 +1,181 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 29690 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Sat Oct 17 13:02:00 2026
+The command was "prover9 -t 5".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(assumptions).
+(all v_x (p_plunger(v_x) -> p_suck(v_x))) & (all v_x (p_vacuum(v_x) -> p_suck(v_x))) & (all v_x (p_vampire(v_x) -> p_suck(v_x))) & p_vacuum(c_space) & p_household_appliance(c_duster) & -p_suck(c_duster).
+c_duster != c_space.
+end_of_list.
+
+formulas(goals).
+-(all v_x (p_household_appliance(v_x) -> p_suck(v_x))).
+end_of_list.
+
+============================== end of input ==========================
+
+% From the command line: assign(max_seconds, 5).
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (all v_x (p_plunger(v_x) -> p_suck(v_x))) & (all v_x (p_vacuum(v_x) -> p_suck(v_x))) & (all v_x (p_vampire(v_x) -> p_suck(v_x))) & p_vacuum(c_space) & p_household_appliance(c_duster) & -p_suck(c_duster) # label(non_clause).  [assumption].
+2 -(all v_x (p_household_appliance(v_x) -> p_suck(v_x))) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+-p_plunger(x) | p_suck(x).  [clausify(1)].
+-p_vacuum(x) | p_suck(x).  [clausify(1)].
+-p_vampire(x) | p_suck(x).  [clausify(1)].
+p_vacuum(c_space).  [clausify(1)].
+p_household_appliance(c_duster).  [clausify(1)].
+-p_suck(c_duster).  [clausify(1)].
+c_duster != c_space.  [assumption].
+-p_household_appliance(x) | p_suck(x).  [deny(2)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+Eliminating p_plunger/1
+
+Eliminating p_vacuum/1
+3 p_vacuum(c_space).  [clausify(1)].
+4 -p_vacuum(x) | p_suck(x).  [clausify(1)].
+Derived: p_suck(c_space).  [resolve(3,a,4,a)].
+
+Eliminating p_vampire/1
+
+Eliminating p_household_appliance/1
+5 -p_household_appliance(x) | p_suck(x).  [deny(2)].
+6 p_household_appliance(c_duster).  [clausify(1)].
+Derived: p_suck(c_duster).  [resolve(5,a,6,a)].
+
+============================== end predicate elimination =============
+
+Auto_denials:
+  % assign(max_proofs, 2).  % (Horn set with more than one neg. clause)
+
+WARNING, because some of the denials share constants,
+some of the denials or their descendents may be subsumed,
+preventing the target number of proofs from being found.
+The shared constants are:  c_duster.
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ =, p_suck ]).
+Function symbol precedence:  function_order([ c_duster, c_space ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(neg_binary_resolution).  % (HNE depth_diff=0)
+  % clear(ordered_res).  % (HNE depth_diff=0)
+  % set(ur_resolution).  % (HNE depth_diff=0)
+    % set(ur_resolution) -> set(pos_ur_resolution).
+    % set(ur_resolution) -> set(neg_ur_resolution).
+
+Auto_process settings:  (no changes).
+
+kept:      7 -p_suck(c_duster).  [clausify(1)].
+           8 c_duster != c_space.  [assumption].
+kept:      9 c_space != c_duster.  [copy(8),flip(a)].
+kept:      10 p_suck(c_space).  [resolve(3,a,4,a)].
+kept:      11 p_suck(c_duster).  [resolve(5,a,6,a)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 7.
+% Level of proof is 3.
+% Maximum clause weight is 2.000.
+% Given clauses 0.
+
+1 (all v_x (p_plunger(v_x) -> p_suck(v_x))) & (all v_x (p_vacuum(v_x) -> p_suck(v_x))) & (all v_x (p_vampire(v_x) -> p_suck(v_x))) & p_vacuum(c_space) & p_household_appliance(c_duster) & -p_suck(c_duster) # label(non_clause).  [assumption].
+2 -(all v_x (p_household_appliance(v_x) -> p_suck(v_x))) # label(non_clause) # label(goal).  [goal].
+5 -p_household_appliance(x) | p_suck(x).  [deny(2)].
+6 p_household_appliance(c_duster).  [clausify(1)].
+7 -p_suck(c_duster).  [clausify(1)].
+11 p_suck(c_duster).  [resolve(5,a,6,a)].
+12 $F.  [resolve(11,a,7,a)].
+
+============================== end of proof ==========================
+
+% Disable descendants (x means already disabled):
+ 7
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+9 c_space != c_duster.  [copy(8),flip(a)].
+10 p_suck(c_space).  [resolve(3,a,4,a)].
+11 p_suck(c_duster).  [resolve(5,a,6,a)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.00 seconds.
+
+given #1 (I,wt=3): 9 c_space != c_duster.  [copy(8),flip(a)].
+
+given #2 (I,wt=2): 10 p_suck(c_space).  [resolve(3,a,4,a)].
+
+given #3 (I,wt=2): 11 p_suck(c_duster).  [resolve(5,a,6,a)].
+
+============================== STATISTICS ============================
+
+Given=3. Generated=4. Kept=4. proofs=1.
+Usable=3. Sos=0. Demods=0. Limbo=0, Disabled=11. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=0. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.04.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+SEARCH FAILED
+
+Exiting with 1 proof.
+
+Process 29690 exit (sos_empty) Sat Oct 17 13:02:00 2026
+
+WARNING: denials share constants (see output).
+
+-------- Proof 1 -------- 
+
+SEARCH FAILED
+
+------ process 29690 exit (sos_empty) ------
+

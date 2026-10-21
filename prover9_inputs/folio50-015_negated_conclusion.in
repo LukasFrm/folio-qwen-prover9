@@ -1,0 +1,17 @@
+formulas(assumptions).
+((((all v_x ((p_vehicle_registration_plate_in(v_x, c_istanbul) -> p_begin_with(v_x, c_num34))) & all v_x ((-(p_begin_with(v_x, c_num34)) -> -(p_vehicle_registration_plate_in(v_x, c_istanbul))))) & exists v_x ((p_owns(c_joe, v_x) & p_vehicle_registration_plate_in(v_x, c_istanbul)))) & exists v_x (exists v_y (((p_owns(c_tom, v_x) & p_vehicle_registration_plate_in(v_x, v_y)) & p_begin_with(v_x, c_num35))))) & all v_x ((p_begin_with(v_x, c_num35) -> -(p_begin_with(v_x, c_num34))))).
+-(c_istanbul = c_joe).
+-(c_istanbul = c_num34).
+-(c_istanbul = c_num35).
+-(c_istanbul = c_tom).
+-(c_joe = c_num34).
+-(c_joe = c_num35).
+-(c_joe = c_tom).
+-(c_num34 = c_num35).
+-(c_num34 = c_tom).
+-(c_num35 = c_tom).
+end_of_list.
+
+formulas(goals).
+-(exists v_x (((p_owns(c_joe, v_x) & p_begin_with(v_x, c_num34)) & exists v_y (p_vehicle_registration_plate_in(v_x, v_y))))).
+end_of_list.

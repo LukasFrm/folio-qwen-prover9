@@ -1,0 +1,22 @@
+formulas(assumptions).
+(((((all v_x ((p_born_in(v_x, c_multiple_birth) -> p_spend_time_playing_with(v_x, c_siblings))) & all v_x ((exists v_y ((p_sibling(v_x, v_y) & p_born_together(v_x, v_y))) -> p_born_in(v_x, c_multiple_birth)))) & all v_x ((p_complain_about_often(v_x, c_annoying_siblings) -> exists v_y ((p_sibling(v_x, v_y) & p_born_together(v_x, v_y)))))) & all v_x ((p_live_at(v_x, c_home) -> -(p_live_with(v_x, c_strangers))))) & all v_x ((p_spend_time_playing_with(v_x, c_siblings) -> p_live_at(v_x, c_home)))) & -(((p_born_in(c_luke, c_multiple_birth) | p_live_with(c_luke, c_strangers)) & -(p_born_in(c_luke, c_multiple_birth) & p_live_with(c_luke, c_strangers))))).
+-(c_annoying_siblings = c_home).
+-(c_annoying_siblings = c_luke).
+-(c_annoying_siblings = c_multiple_birth).
+-(c_annoying_siblings = c_siblings).
+-(c_annoying_siblings = c_strangers).
+-(c_home = c_luke).
+-(c_home = c_multiple_birth).
+-(c_home = c_siblings).
+-(c_home = c_strangers).
+-(c_luke = c_multiple_birth).
+-(c_luke = c_siblings).
+-(c_luke = c_strangers).
+-(c_multiple_birth = c_siblings).
+-(c_multiple_birth = c_strangers).
+-(c_siblings = c_strangers).
+end_of_list.
+
+formulas(goals).
+-(p_spend_time_playing_with(c_luke, c_siblings)).
+end_of_list.

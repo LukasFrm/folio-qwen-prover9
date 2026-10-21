@@ -1,0 +1,135 @@
+============================== Mace4 =================================
+Mace4 (64) version 2009-11A, November 2009.
+Process 29676 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Sat Oct 17 13:02:00 2026
+The command was "mace4 -t 5 -n 2 -N 8".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(assumptions).
+(all v_x all v_y (p_man(v_x) & p_man(v_y) & p_taller(v_x,v_y) -> p_can_block(v_x,v_y))) & p_man(c_michael) & p_same_class(c_michael,c_michael) & (all v_x (p_man(v_x) & p_same_class(v_x,c_michael) & v_x != c_michael -> p_taller(c_michael,v_x))) & (all v_x all v_y all v_z (p_taller(v_x,v_y) & p_taller(v_y,v_z) -> p_taller(v_x,v_z))) & p_man(c_peter) & p_taller(c_peter,c_michael) & (all v_x (-p_jump_when_shooting(v_x) -> p_can_block(c_michael,v_x))) & -p_can_block(c_michael,c_windy) & (all v_x (p_jump_when_shooting(v_x) -> p_great_shooter(v_x))).
+c_michael != c_peter.
+c_michael != c_windy.
+c_peter != c_windy.
+end_of_list.
+
+formulas(goals).
+-p_great_shooter(c_windy).
+end_of_list.
+
+% From the command line: assign(max_seconds, 5).
+    % assign(domain_size, 2) -> assign(start_size, 2).
+    % assign(domain_size, 2) -> assign(end_size, 2).
+
+% From the command line: assign(domain_size, 2).
+
+% From the command line: assign(end_size, 8).
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (all v_x all v_y (p_man(v_x) & p_man(v_y) & p_taller(v_x,v_y) -> p_can_block(v_x,v_y))) & p_man(c_michael) & p_same_class(c_michael,c_michael) & (all v_x (p_man(v_x) & p_same_class(v_x,c_michael) & v_x != c_michael -> p_taller(c_michael,v_x))) & (all v_x all v_y all v_z (p_taller(v_x,v_y) & p_taller(v_y,v_z) -> p_taller(v_x,v_z))) & p_man(c_peter) & p_taller(c_peter,c_michael) & (all v_x (-p_jump_when_shooting(v_x) -> p_can_block(c_michael,v_x))) & -p_can_block(c_michael,c_windy) & (all v_x (p_jump_when_shooting(v_x) -> p_great_shooter(v_x))) # label(non_clause).  [assumption].
+2 -p_great_shooter(c_windy) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+-p_man(x) | -p_man(y) | -p_taller(x,y) | p_can_block(x,y).
+p_man(c_michael).
+p_same_class(c_michael,c_michael).
+-p_man(x) | -p_same_class(x,c_michael) | c_michael = x | p_taller(c_michael,x).
+-p_taller(x,y) | -p_taller(y,z) | p_taller(x,z).
+p_man(c_peter).
+p_taller(c_peter,c_michael).
+p_jump_when_shooting(x) | p_can_block(c_michael,x).
+-p_can_block(c_michael,c_windy).
+-p_jump_when_shooting(x) | p_great_shooter(x).
+c_michael != c_peter.
+c_michael != c_windy.
+c_peter != c_windy.
+p_great_shooter(c_windy).
+end_of_list.
+
+============================== end of clauses for search =============
+
+% There are no natural numbers in the input.
+
+============================== DOMAIN SIZE 2 =========================
+
+============================== STATISTICS ============================
+
+For domain size 2.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=27, kept=27.
+Selections=1, assignments=1, propagations=4, current_models=0.
+Rewrite_terms=16, rewrite_bools=7, indexes=8.
+Rules_from_neg_clauses=2, cross_offs=2.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 3 =========================
+
+============================== MODEL =================================
+
+interpretation( 3, [number=1, seconds=0], [
+
+        function(c_michael, [ 0 ]),
+
+        function(c_peter, [ 1 ]),
+
+        function(c_windy, [ 2 ]),
+
+        relation(p_great_shooter(_), [ 0, 0, 1 ]),
+
+        relation(p_jump_when_shooting(_), [ 0, 0, 1 ]),
+
+        relation(p_man(_), [ 1, 1, 0 ]),
+
+        relation(p_can_block(_,_), [
+			   1, 1, 0,
+			   1, 0, 0,
+			   0, 0, 0 ]),
+
+        relation(p_same_class(_,_), [
+			   1, 0, 0,
+			   0, 0, 0,
+			   0, 0, 0 ]),
+
+        relation(p_taller(_,_), [
+			   0, 0, 0,
+			   1, 0, 0,
+			   0, 0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 3.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=54, kept=54.
+Selections=22, assignments=23, propagations=17, current_models=1.
+Rewrite_terms=29, rewrite_bools=95, indexes=15.
+Rules_from_neg_clauses=1, cross_offs=3.
+
+============================== end of statistics =====================
+
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+Exiting with 1 model.
+
+Process 29676 exit (max_models) Sat Oct 17 13:02:00 2026
+The process finished Sat Oct 17 13:02:00 2026
+
+=== Mace4 starting on domain size 2. ===
+
+=== Mace4 starting on domain size 3. ===
+
+------ process 29676 exit (max_models) ------

@@ -1,0 +1,185 @@
+============================== Mace4 =================================
+Mace4 (64) version 2009-11A, November 2009.
+Process 29670 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Sat Oct 17 13:02:00 2026
+The command was "mace4 -t 5 -n 2 -N 8".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(assumptions).
+p_mountain_range(c_the_picuris_mountains) & (p_in(c_the_picuris_mountains,c_new_mexico) | p_in(c_the_picuris_mountains,c_texas)) & p_visited(c_juan_de_onate,c_the_picuris_mountains) & p_in(c_harding_pegmatite_mine,c_the_picuris_mountains) & p_mine(c_harding_pegmatite_mine) & p_donated(c_harding_pegmatite_mine) & (all v_x all v_y (p_mine(v_x) & p_donated(v_x) & p_in(v_x,v_y) & p_mountain_range(v_y) -> -p_in(v_y,c_texas))).
+c_harding_pegmatite_mine != c_juan_de_onate.
+c_harding_pegmatite_mine != c_new_mexico.
+c_harding_pegmatite_mine != c_texas.
+c_harding_pegmatite_mine != c_the_picuris_mountains.
+c_juan_de_onate != c_new_mexico.
+c_juan_de_onate != c_texas.
+c_juan_de_onate != c_the_picuris_mountains.
+c_new_mexico != c_texas.
+c_new_mexico != c_the_picuris_mountains.
+c_texas != c_the_picuris_mountains.
+end_of_list.
+
+formulas(goals).
+-(exists v_x (p_visited(c_juan_de_onate,v_x) & p_mountain_range(v_x) & p_in(v_x,c_new_mexico))).
+end_of_list.
+
+% From the command line: assign(max_seconds, 5).
+    % assign(domain_size, 2) -> assign(start_size, 2).
+    % assign(domain_size, 2) -> assign(end_size, 2).
+
+% From the command line: assign(domain_size, 2).
+
+% From the command line: assign(end_size, 8).
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 p_mountain_range(c_the_picuris_mountains) & (p_in(c_the_picuris_mountains,c_new_mexico) | p_in(c_the_picuris_mountains,c_texas)) & p_visited(c_juan_de_onate,c_the_picuris_mountains) & p_in(c_harding_pegmatite_mine,c_the_picuris_mountains) & p_mine(c_harding_pegmatite_mine) & p_donated(c_harding_pegmatite_mine) & (all v_x all v_y (p_mine(v_x) & p_donated(v_x) & p_in(v_x,v_y) & p_mountain_range(v_y) -> -p_in(v_y,c_texas))) # label(non_clause).  [assumption].
+2 -(exists v_x (p_visited(c_juan_de_onate,v_x) & p_mountain_range(v_x) & p_in(v_x,c_new_mexico))) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+p_mountain_range(c_the_picuris_mountains).
+p_in(c_the_picuris_mountains,c_new_mexico) | p_in(c_the_picuris_mountains,c_texas).
+p_visited(c_juan_de_onate,c_the_picuris_mountains).
+p_in(c_harding_pegmatite_mine,c_the_picuris_mountains).
+p_mine(c_harding_pegmatite_mine).
+p_donated(c_harding_pegmatite_mine).
+-p_mine(x) | -p_donated(x) | -p_in(x,y) | -p_mountain_range(y) | -p_in(y,c_texas).
+c_harding_pegmatite_mine != c_juan_de_onate.
+c_harding_pegmatite_mine != c_new_mexico.
+c_harding_pegmatite_mine != c_texas.
+c_harding_pegmatite_mine != c_the_picuris_mountains.
+c_juan_de_onate != c_new_mexico.
+c_juan_de_onate != c_texas.
+c_juan_de_onate != c_the_picuris_mountains.
+c_new_mexico != c_texas.
+c_new_mexico != c_the_picuris_mountains.
+c_texas != c_the_picuris_mountains.
+p_visited(c_juan_de_onate,c1).
+p_mountain_range(c1).
+p_in(c1,c_new_mexico).
+end_of_list.
+
+============================== end of clauses for search =============
+
+% There are no natural numbers in the input.
+
+============================== DOMAIN SIZE 2 =========================
+
+============================== STATISTICS ============================
+
+For domain size 2.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=23, kept=23.
+Selections=1, assignments=1, propagations=6, current_models=0.
+Rewrite_terms=9, rewrite_bools=6, indexes=2.
+Rules_from_neg_clauses=4, cross_offs=4.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 3 =========================
+
+============================== STATISTICS ============================
+
+For domain size 3.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=28, kept=28.
+Selections=2, assignments=3, propagations=5, current_models=0.
+Rewrite_terms=20, rewrite_bools=10, indexes=2.
+Rules_from_neg_clauses=3, cross_offs=7.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 4 =========================
+
+============================== STATISTICS ============================
+
+For domain size 4.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=35, kept=35.
+Selections=3, assignments=6, propagations=4, current_models=0.
+Rewrite_terms=34, rewrite_bools=17, indexes=2.
+Rules_from_neg_clauses=2, cross_offs=9.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 5 =========================
+
+============================== MODEL =================================
+
+interpretation( 5, [number=1, seconds=0], [
+
+        function(c_harding_pegmatite_mine, [ 0 ]),
+
+        function(c_juan_de_onate, [ 1 ]),
+
+        function(c_new_mexico, [ 2 ]),
+
+        function(c_texas, [ 3 ]),
+
+        function(c_the_picuris_mountains, [ 4 ]),
+
+        function(c1, [ 0 ]),
+
+        relation(p_donated(_), [ 1, 0, 0, 0, 0 ]),
+
+        relation(p_mine(_), [ 1, 0, 0, 0, 0 ]),
+
+        relation(p_mountain_range(_), [ 1, 0, 0, 0, 1 ]),
+
+        relation(p_in(_,_), [
+			   0, 0, 1, 0, 1,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0 ]),
+
+        relation(p_visited(_,_), [
+			   0, 0, 0, 0, 0,
+			   1, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 5.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=44, kept=44.
+Selections=60, assignments=66, propagations=11, current_models=1.
+Rewrite_terms=84, rewrite_bools=78, indexes=35.
+Rules_from_neg_clauses=1, cross_offs=10.
+
+============================== end of statistics =====================
+
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+Exiting with 1 model.
+
+Process 29670 exit (max_models) Sat Oct 17 13:02:00 2026
+The process finished Sat Oct 17 13:02:00 2026
+
+=== Mace4 starting on domain size 2. ===
+
+=== Mace4 starting on domain size 3. ===
+
+=== Mace4 starting on domain size 4. ===
+
+=== Mace4 starting on domain size 5. ===
+
+------ process 29670 exit (max_models) ------

@@ -1,0 +1,398 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 29718 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Sat Oct 17 13:02:00 2026
+The command was "prover9 -t 5".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(assumptions).
+(all v_x (p_regularly_eat(v_x,c_salad) -> p_conscious_about(v_x,c_health) & p_conscious_about(v_x,c_eating_habit))) & (all v_x (p_grew_up_in(v_x,c_health_conscious_childhood_home) -> p_regularly_eat(v_x,c_salad))) & (all v_x (p_fulfill(v_x,c_daily_nutritional_intake) -> p_grew_up_in(v_x,c_health_conscious_childhood_home))) & (all v_x (p_disregard(v_x,c_physical_wellbeing) -> -(p_conscious_about(v_x,c_health) & p_conscious_about(v_x,c_eating_habit)))) & (all v_x (p_visit_daily(v_x,c_gym) -> p_fulfill(v_x,c_daily_nutritional_intake))) & -((p_grew_up_in(c_taylor,c_health_conscious_childhood_home) | p_disregard(c_taylor,c_physical_wellbeing)) & -(p_grew_up_in(c_taylor,c_health_conscious_childhood_home) & p_disregard(c_taylor,c_physical_wellbeing))).
+c_daily_nutritional_intake != c_eating_habit.
+c_daily_nutritional_intake != c_gym.
+c_daily_nutritional_intake != c_health.
+c_daily_nutritional_intake != c_health_conscious_childhood_home.
+c_daily_nutritional_intake != c_physical_wellbeing.
+c_daily_nutritional_intake != c_salad.
+c_daily_nutritional_intake != c_taylor.
+c_eating_habit != c_gym.
+c_eating_habit != c_health.
+c_eating_habit != c_health_conscious_childhood_home.
+c_eating_habit != c_physical_wellbeing.
+c_eating_habit != c_salad.
+c_eating_habit != c_taylor.
+c_gym != c_health.
+c_gym != c_health_conscious_childhood_home.
+c_gym != c_physical_wellbeing.
+c_gym != c_salad.
+c_gym != c_taylor.
+c_health != c_health_conscious_childhood_home.
+c_health != c_physical_wellbeing.
+c_health != c_salad.
+c_health != c_taylor.
+c_health_conscious_childhood_home != c_physical_wellbeing.
+c_health_conscious_childhood_home != c_salad.
+c_health_conscious_childhood_home != c_taylor.
+c_physical_wellbeing != c_salad.
+c_physical_wellbeing != c_taylor.
+c_salad != c_taylor.
+end_of_list.
+
+formulas(goals).
+-p_visit_daily(c_taylor,c_gym).
+end_of_list.
+
+============================== end of input ==========================
+
+% From the command line: assign(max_seconds, 5).
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (all v_x (p_regularly_eat(v_x,c_salad) -> p_conscious_about(v_x,c_health) & p_conscious_about(v_x,c_eating_habit))) & (all v_x (p_grew_up_in(v_x,c_health_conscious_childhood_home) -> p_regularly_eat(v_x,c_salad))) & (all v_x (p_fulfill(v_x,c_daily_nutritional_intake) -> p_grew_up_in(v_x,c_health_conscious_childhood_home))) & (all v_x (p_disregard(v_x,c_physical_wellbeing) -> -(p_conscious_about(v_x,c_health) & p_conscious_about(v_x,c_eating_habit)))) & (all v_x (p_visit_daily(v_x,c_gym) -> p_fulfill(v_x,c_daily_nutritional_intake))) & -((p_grew_up_in(c_taylor,c_health_conscious_childhood_home) | p_disregard(c_taylor,c_physical_wellbeing)) & -(p_grew_up_in(c_taylor,c_health_conscious_childhood_home) & p_disregard(c_taylor,c_physical_wellbeing))) # label(non_clause).  [assumption].
+2 -p_visit_daily(c_taylor,c_gym) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+-p_regularly_eat(x,c_salad) | p_conscious_about(x,c_health).  [clausify(1)].
+-p_regularly_eat(x,c_salad) | p_conscious_about(x,c_eating_habit).  [clausify(1)].
+-p_grew_up_in(x,c_health_conscious_childhood_home) | p_regularly_eat(x,c_salad).  [clausify(1)].
+-p_fulfill(x,c_daily_nutritional_intake) | p_grew_up_in(x,c_health_conscious_childhood_home).  [clausify(1)].
+-p_disregard(x,c_physical_wellbeing) | -p_conscious_about(x,c_health) | -p_conscious_about(x,c_eating_habit).  [clausify(1)].
+-p_visit_daily(x,c_gym) | p_fulfill(x,c_daily_nutritional_intake).  [clausify(1)].
+-p_grew_up_in(c_taylor,c_health_conscious_childhood_home) | p_disregard(c_taylor,c_physical_wellbeing).  [clausify(1)].
+-p_disregard(c_taylor,c_physical_wellbeing) | p_grew_up_in(c_taylor,c_health_conscious_childhood_home).  [clausify(1)].
+c_daily_nutritional_intake != c_eating_habit.  [assumption].
+c_daily_nutritional_intake != c_gym.  [assumption].
+c_daily_nutritional_intake != c_health.  [assumption].
+c_daily_nutritional_intake != c_health_conscious_childhood_home.  [assumption].
+c_daily_nutritional_intake != c_physical_wellbeing.  [assumption].
+c_daily_nutritional_intake != c_salad.  [assumption].
+c_daily_nutritional_intake != c_taylor.  [assumption].
+c_eating_habit != c_gym.  [assumption].
+c_eating_habit != c_health.  [assumption].
+c_eating_habit != c_health_conscious_childhood_home.  [assumption].
+c_eating_habit != c_physical_wellbeing.  [assumption].
+c_eating_habit != c_salad.  [assumption].
+c_eating_habit != c_taylor.  [assumption].
+c_gym != c_health.  [assumption].
+c_gym != c_health_conscious_childhood_home.  [assumption].
+c_gym != c_physical_wellbeing.  [assumption].
+c_gym != c_salad.  [assumption].
+c_gym != c_taylor.  [assumption].
+c_health != c_health_conscious_childhood_home.  [assumption].
+c_health != c_physical_wellbeing.  [assumption].
+c_health != c_salad.  [assumption].
+c_health != c_taylor.  [assumption].
+c_health_conscious_childhood_home != c_physical_wellbeing.  [assumption].
+c_health_conscious_childhood_home != c_salad.  [assumption].
+c_health_conscious_childhood_home != c_taylor.  [assumption].
+c_physical_wellbeing != c_salad.  [assumption].
+c_physical_wellbeing != c_taylor.  [assumption].
+c_salad != c_taylor.  [assumption].
+p_visit_daily(c_taylor,c_gym).  [deny(2)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+No predicates eliminated.
+
+============================== end predicate elimination =============
+
+Auto_denials:
+  % assign(max_proofs, 29).  % (Horn set with more than one neg. clause)
+
+WARNING, because some of the denials share constants,
+some of the denials or their descendents may be subsumed,
+preventing the target number of proofs from being found.
+The shared constants are:  c_taylor, c_salad, c_health_conscious_childhood_home, c_gym, c_daily_nutritional_intake, c_physical_wellbeing, c_health, c_eating_habit.
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ =, p_grew_up_in, p_regularly_eat, p_conscious_about, p_disregard, p_fulfill, p_visit_daily ]).
+Function symbol precedence:  function_order([ c_taylor, c_health_conscious_childhood_home, c_salad, c_daily_nutritional_intake, c_gym, c_physical_wellbeing, c_eating_habit, c_health ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(neg_binary_resolution).  % (HNE depth_diff=0)
+  % clear(ordered_res).  % (HNE depth_diff=0)
+  % set(ur_resolution).  % (HNE depth_diff=0)
+    % set(ur_resolution) -> set(pos_ur_resolution).
+    % set(ur_resolution) -> set(neg_ur_resolution).
+
+Auto_process settings:
+  % set(unit_deletion).  % (Horn set with negative nonunits)
+
+kept:      3 -p_regularly_eat(x,c_salad) | p_conscious_about(x,c_health).  [clausify(1)].
+kept:      4 -p_regularly_eat(x,c_salad) | p_conscious_about(x,c_eating_habit).  [clausify(1)].
+kept:      5 -p_grew_up_in(x,c_health_conscious_childhood_home) | p_regularly_eat(x,c_salad).  [clausify(1)].
+kept:      6 -p_fulfill(x,c_daily_nutritional_intake) | p_grew_up_in(x,c_health_conscious_childhood_home).  [clausify(1)].
+kept:      7 -p_disregard(x,c_physical_wellbeing) | -p_conscious_about(x,c_health) | -p_conscious_about(x,c_eating_habit).  [clausify(1)].
+kept:      8 -p_visit_daily(x,c_gym) | p_fulfill(x,c_daily_nutritional_intake).  [clausify(1)].
+kept:      9 -p_grew_up_in(c_taylor,c_health_conscious_childhood_home) | p_disregard(c_taylor,c_physical_wellbeing).  [clausify(1)].
+kept:      10 -p_disregard(c_taylor,c_physical_wellbeing) | p_grew_up_in(c_taylor,c_health_conscious_childhood_home).  [clausify(1)].
+           11 c_daily_nutritional_intake != c_eating_habit.  [assumption].
+kept:      12 c_eating_habit != c_daily_nutritional_intake.  [copy(11),flip(a)].
+           13 c_daily_nutritional_intake != c_gym.  [assumption].
+kept:      14 c_gym != c_daily_nutritional_intake.  [copy(13),flip(a)].
+           15 c_daily_nutritional_intake != c_health.  [assumption].
+kept:      16 c_health != c_daily_nutritional_intake.  [copy(15),flip(a)].
+kept:      17 c_daily_nutritional_intake != c_health_conscious_childhood_home.  [assumption].
+           18 c_daily_nutritional_intake != c_physical_wellbeing.  [assumption].
+kept:      19 c_physical_wellbeing != c_daily_nutritional_intake.  [copy(18),flip(a)].
+kept:      20 c_daily_nutritional_intake != c_salad.  [assumption].
+kept:      21 c_daily_nutritional_intake != c_taylor.  [assumption].
+kept:      22 c_eating_habit != c_gym.  [assumption].
+           23 c_eating_habit != c_health.  [assumption].
+kept:      24 c_health != c_eating_habit.  [copy(23),flip(a)].
+kept:      25 c_eating_habit != c_health_conscious_childhood_home.  [assumption].
+kept:      26 c_eating_habit != c_physical_wellbeing.  [assumption].
+kept:      27 c_eating_habit != c_salad.  [assumption].
+kept:      28 c_eating_habit != c_taylor.  [assumption].
+           29 c_gym != c_health.  [assumption].
+kept:      30 c_health != c_gym.  [copy(29),flip(a)].
+kept:      31 c_gym != c_health_conscious_childhood_home.  [assumption].
+           32 c_gym != c_physical_wellbeing.  [assumption].
+kept:      33 c_physical_wellbeing != c_gym.  [copy(32),flip(a)].
+kept:      34 c_gym != c_salad.  [assumption].
+kept:      35 c_gym != c_taylor.  [assumption].
+kept:      36 c_health != c_health_conscious_childhood_home.  [assumption].
+kept:      37 c_health != c_physical_wellbeing.  [assumption].
+kept:      38 c_health != c_salad.  [assumption].
+kept:      39 c_health != c_taylor.  [assumption].
+           40 c_health_conscious_childhood_home != c_physical_wellbeing.  [assumption].
+kept:      41 c_physical_wellbeing != c_health_conscious_childhood_home.  [copy(40),flip(a)].
+           42 c_health_conscious_childhood_home != c_salad.  [assumption].
+kept:      43 c_salad != c_health_conscious_childhood_home.  [copy(42),flip(a)].
+kept:      44 c_health_conscious_childhood_home != c_taylor.  [assumption].
+kept:      45 c_physical_wellbeing != c_salad.  [assumption].
+kept:      46 c_physical_wellbeing != c_taylor.  [assumption].
+kept:      47 c_salad != c_taylor.  [assumption].
+kept:      48 p_visit_daily(c_taylor,c_gym).  [deny(2)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+3 -p_regularly_eat(x,c_salad) | p_conscious_about(x,c_health).  [clausify(1)].
+4 -p_regularly_eat(x,c_salad) | p_conscious_about(x,c_eating_habit).  [clausify(1)].
+5 -p_grew_up_in(x,c_health_conscious_childhood_home) | p_regularly_eat(x,c_salad).  [clausify(1)].
+6 -p_fulfill(x,c_daily_nutritional_intake) | p_grew_up_in(x,c_health_conscious_childhood_home).  [clausify(1)].
+7 -p_disregard(x,c_physical_wellbeing) | -p_conscious_about(x,c_health) | -p_conscious_about(x,c_eating_habit).  [clausify(1)].
+8 -p_visit_daily(x,c_gym) | p_fulfill(x,c_daily_nutritional_intake).  [clausify(1)].
+9 -p_grew_up_in(c_taylor,c_health_conscious_childhood_home) | p_disregard(c_taylor,c_physical_wellbeing).  [clausify(1)].
+10 -p_disregard(c_taylor,c_physical_wellbeing) | p_grew_up_in(c_taylor,c_health_conscious_childhood_home).  [clausify(1)].
+12 c_eating_habit != c_daily_nutritional_intake.  [copy(11),flip(a)].
+14 c_gym != c_daily_nutritional_intake.  [copy(13),flip(a)].
+16 c_health != c_daily_nutritional_intake.  [copy(15),flip(a)].
+17 c_daily_nutritional_intake != c_health_conscious_childhood_home.  [assumption].
+19 c_physical_wellbeing != c_daily_nutritional_intake.  [copy(18),flip(a)].
+20 c_daily_nutritional_intake != c_salad.  [assumption].
+21 c_daily_nutritional_intake != c_taylor.  [assumption].
+22 c_eating_habit != c_gym.  [assumption].
+24 c_health != c_eating_habit.  [copy(23),flip(a)].
+25 c_eating_habit != c_health_conscious_childhood_home.  [assumption].
+26 c_eating_habit != c_physical_wellbeing.  [assumption].
+27 c_eating_habit != c_salad.  [assumption].
+28 c_eating_habit != c_taylor.  [assumption].
+30 c_health != c_gym.  [copy(29),flip(a)].
+31 c_gym != c_health_conscious_childhood_home.  [assumption].
+33 c_physical_wellbeing != c_gym.  [copy(32),flip(a)].
+34 c_gym != c_salad.  [assumption].
+35 c_gym != c_taylor.  [assumption].
+36 c_health != c_health_conscious_childhood_home.  [assumption].
+37 c_health != c_physical_wellbeing.  [assumption].
+38 c_health != c_salad.  [assumption].
+39 c_health != c_taylor.  [assumption].
+41 c_physical_wellbeing != c_health_conscious_childhood_home.  [copy(40),flip(a)].
+43 c_salad != c_health_conscious_childhood_home.  [copy(42),flip(a)].
+44 c_health_conscious_childhood_home != c_taylor.  [assumption].
+45 c_physical_wellbeing != c_salad.  [assumption].
+46 c_physical_wellbeing != c_taylor.  [assumption].
+47 c_salad != c_taylor.  [assumption].
+48 p_visit_daily(c_taylor,c_gym).  [deny(2)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.00 seconds.
+
+given #1 (I,wt=6): 3 -p_regularly_eat(x,c_salad) | p_conscious_about(x,c_health).  [clausify(1)].
+
+given #2 (I,wt=6): 4 -p_regularly_eat(x,c_salad) | p_conscious_about(x,c_eating_habit).  [clausify(1)].
+
+given #3 (I,wt=6): 5 -p_grew_up_in(x,c_health_conscious_childhood_home) | p_regularly_eat(x,c_salad).  [clausify(1)].
+
+given #4 (I,wt=6): 6 -p_fulfill(x,c_daily_nutritional_intake) | p_grew_up_in(x,c_health_conscious_childhood_home).  [clausify(1)].
+
+given #5 (I,wt=9): 7 -p_disregard(x,c_physical_wellbeing) | -p_conscious_about(x,c_health) | -p_conscious_about(x,c_eating_habit).  [clausify(1)].
+
+given #6 (I,wt=6): 8 -p_visit_daily(x,c_gym) | p_fulfill(x,c_daily_nutritional_intake).  [clausify(1)].
+
+given #7 (I,wt=6): 9 -p_grew_up_in(c_taylor,c_health_conscious_childhood_home) | p_disregard(c_taylor,c_physical_wellbeing).  [clausify(1)].
+
+given #8 (I,wt=6): 10 -p_disregard(c_taylor,c_physical_wellbeing) | p_grew_up_in(c_taylor,c_health_conscious_childhood_home).  [clausify(1)].
+
+given #9 (I,wt=3): 12 c_eating_habit != c_daily_nutritional_intake.  [copy(11),flip(a)].
+
+given #10 (I,wt=3): 14 c_gym != c_daily_nutritional_intake.  [copy(13),flip(a)].
+
+given #11 (I,wt=3): 16 c_health != c_daily_nutritional_intake.  [copy(15),flip(a)].
+
+given #12 (I,wt=3): 17 c_daily_nutritional_intake != c_health_conscious_childhood_home.  [assumption].
+
+given #13 (I,wt=3): 19 c_physical_wellbeing != c_daily_nutritional_intake.  [copy(18),flip(a)].
+
+given #14 (I,wt=3): 20 c_daily_nutritional_intake != c_salad.  [assumption].
+
+given #15 (I,wt=3): 21 c_daily_nutritional_intake != c_taylor.  [assumption].
+
+given #16 (I,wt=3): 22 c_eating_habit != c_gym.  [assumption].
+
+given #17 (I,wt=3): 24 c_health != c_eating_habit.  [copy(23),flip(a)].
+
+given #18 (I,wt=3): 25 c_eating_habit != c_health_conscious_childhood_home.  [assumption].
+
+given #19 (I,wt=3): 26 c_eating_habit != c_physical_wellbeing.  [assumption].
+
+given #20 (I,wt=3): 27 c_eating_habit != c_salad.  [assumption].
+
+given #21 (I,wt=3): 28 c_eating_habit != c_taylor.  [assumption].
+
+given #22 (I,wt=3): 30 c_health != c_gym.  [copy(29),flip(a)].
+
+given #23 (I,wt=3): 31 c_gym != c_health_conscious_childhood_home.  [assumption].
+
+given #24 (I,wt=3): 33 c_physical_wellbeing != c_gym.  [copy(32),flip(a)].
+
+given #25 (I,wt=3): 34 c_gym != c_salad.  [assumption].
+
+given #26 (I,wt=3): 35 c_gym != c_taylor.  [assumption].
+
+given #27 (I,wt=3): 36 c_health != c_health_conscious_childhood_home.  [assumption].
+
+given #28 (I,wt=3): 37 c_health != c_physical_wellbeing.  [assumption].
+
+given #29 (I,wt=3): 38 c_health != c_salad.  [assumption].
+
+given #30 (I,wt=3): 39 c_health != c_taylor.  [assumption].
+
+given #31 (I,wt=3): 41 c_physical_wellbeing != c_health_conscious_childhood_home.  [copy(40),flip(a)].
+
+given #32 (I,wt=3): 43 c_salad != c_health_conscious_childhood_home.  [copy(42),flip(a)].
+
+given #33 (I,wt=3): 44 c_health_conscious_childhood_home != c_taylor.  [assumption].
+
+given #34 (I,wt=3): 45 c_physical_wellbeing != c_salad.  [assumption].
+
+given #35 (I,wt=3): 46 c_physical_wellbeing != c_taylor.  [assumption].
+
+given #36 (I,wt=3): 47 c_salad != c_taylor.  [assumption].
+
+given #37 (I,wt=3): 48 p_visit_daily(c_taylor,c_gym).  [deny(2)].
+
+given #38 (A,wt=9): 49 -p_disregard(x,c_physical_wellbeing) | -p_conscious_about(x,c_eating_habit) | -p_regularly_eat(x,c_salad).  [resolve(7,b,3,b)].
+
+given #39 (F,wt=6): 54 -p_disregard(x,c_physical_wellbeing) | -p_regularly_eat(x,c_salad).  [resolve(49,b,4,b),merge(c)].
+
+given #40 (F,wt=6): 56 -p_regularly_eat(c_taylor,c_salad) | -p_grew_up_in(c_taylor,c_health_conscious_childhood_home).  [resolve(54,a,9,b)].
+
+given #41 (F,wt=3): 58 -p_grew_up_in(c_taylor,c_health_conscious_childhood_home).  [resolve(56,a,5,b),merge(b)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 16.
+% Level of proof is 6.
+% Maximum clause weight is 9.000.
+% Given clauses 41.
+
+1 (all v_x (p_regularly_eat(v_x,c_salad) -> p_conscious_about(v_x,c_health) & p_conscious_about(v_x,c_eating_habit))) & (all v_x (p_grew_up_in(v_x,c_health_conscious_childhood_home) -> p_regularly_eat(v_x,c_salad))) & (all v_x (p_fulfill(v_x,c_daily_nutritional_intake) -> p_grew_up_in(v_x,c_health_conscious_childhood_home))) & (all v_x (p_disregard(v_x,c_physical_wellbeing) -> -(p_conscious_about(v_x,c_health) & p_conscious_about(v_x,c_eating_habit)))) & (all v_x (p_visit_daily(v_x,c_gym) -> p_fulfill(v_x,c_daily_nutritional_intake))) & -((p_grew_up_in(c_taylor,c_health_conscious_childhood_home) | p_disregard(c_taylor,c_physical_wellbeing)) & -(p_grew_up_in(c_taylor,c_health_conscious_childhood_home) & p_disregard(c_taylor,c_physical_wellbeing))) # label(non_clause).  [assumption].
+2 -p_visit_daily(c_taylor,c_gym) # label(non_clause) # label(goal).  [goal].
+3 -p_regularly_eat(x,c_salad) | p_conscious_about(x,c_health).  [clausify(1)].
+4 -p_regularly_eat(x,c_salad) | p_conscious_about(x,c_eating_habit).  [clausify(1)].
+5 -p_grew_up_in(x,c_health_conscious_childhood_home) | p_regularly_eat(x,c_salad).  [clausify(1)].
+6 -p_fulfill(x,c_daily_nutritional_intake) | p_grew_up_in(x,c_health_conscious_childhood_home).  [clausify(1)].
+7 -p_disregard(x,c_physical_wellbeing) | -p_conscious_about(x,c_health) | -p_conscious_about(x,c_eating_habit).  [clausify(1)].
+8 -p_visit_daily(x,c_gym) | p_fulfill(x,c_daily_nutritional_intake).  [clausify(1)].
+9 -p_grew_up_in(c_taylor,c_health_conscious_childhood_home) | p_disregard(c_taylor,c_physical_wellbeing).  [clausify(1)].
+48 p_visit_daily(c_taylor,c_gym).  [deny(2)].
+49 -p_disregard(x,c_physical_wellbeing) | -p_conscious_about(x,c_eating_habit) | -p_regularly_eat(x,c_salad).  [resolve(7,b,3,b)].
+52 p_fulfill(c_taylor,c_daily_nutritional_intake).  [ur(8,a,48,a)].
+54 -p_disregard(x,c_physical_wellbeing) | -p_regularly_eat(x,c_salad).  [resolve(49,b,4,b),merge(c)].
+56 -p_regularly_eat(c_taylor,c_salad) | -p_grew_up_in(c_taylor,c_health_conscious_childhood_home).  [resolve(54,a,9,b)].
+58 -p_grew_up_in(c_taylor,c_health_conscious_childhood_home).  [resolve(56,a,5,b),merge(b)].
+61 $F.  [resolve(58,a,6,b),unit_del(a,52)].
+
+============================== end of proof ==========================
+% Redundant proof: 62 $F.  [ur(6,b,58,a),unit_del(a,52)].
+
+% Disable descendants (x means already disabled):
+ 7 49x 50x 51x 53x 54 55x 56x 57 58
+ 59 60
+
+given #42 (T,wt=3): 52 p_fulfill(c_taylor,c_daily_nutritional_intake).  [ur(8,a,48,a)].
+
+given #43 (T,wt=3): 63 p_grew_up_in(c_taylor,c_health_conscious_childhood_home).  [ur(6,a,52,a)].
+
+given #44 (T,wt=3): 64 p_regularly_eat(c_taylor,c_salad).  [ur(5,a,63,a)].
+
+given #45 (T,wt=3): 65 p_conscious_about(c_taylor,c_eating_habit).  [ur(4,a,64,a)].
+
+given #46 (A,wt=3): 66 p_conscious_about(c_taylor,c_health).  [ur(3,a,64,a)].
+
+============================== STATISTICS ============================
+
+Given=46. Generated=56. Kept=53. proofs=1.
+Usable=39. Sos=0. Demods=0. Limbo=0, Disabled=51. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=1. Back_subsumed=7.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=1.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=1. Nonunit_bsub_feature_tests=23.
+Megabytes=0.12.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+SEARCH FAILED
+
+Exiting with 1 proof.
+
+Process 29718 exit (sos_empty) Sat Oct 17 13:02:00 2026
+
+WARNING: denials share constants (see output).
+
+-------- Proof 1 -------- 
+
+SEARCH FAILED
+
+------ process 29718 exit (sos_empty) ------
+

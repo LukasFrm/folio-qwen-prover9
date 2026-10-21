@@ -1,0 +1,191 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 29736 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Sat Oct 17 13:02:00 2026
+The command was "prover9 -t 5".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(assumptions).
+(all v_x (p_animal(v_x) & p_bark(v_x) -> -p_like(c_jane,v_x))) & (all v_x (p_dog(v_x) -> p_animal(v_x) & p_bark(v_x))) & (all v_x (p_animal(v_x) & p_jump(v_x) -> p_like(c_jane,v_x))) & (all v_x (p_animal(v_x) & p_has_legs(v_x) -> p_jump(v_x))) & (all v_x (p_animal(v_x) & p_terricolous(v_x) -> p_has_legs(v_x))) & p_animal(c_kiki) & (-p_jump(c_kiki) & -p_has_legs(c_kiki) -> p_terricolous(c_kiki) | p_has_legs(c_kiki)).
+c_jane != c_kiki.
+end_of_list.
+
+formulas(goals).
+-(-p_bark(c_kiki) & -p_dog(c_kiki)).
+end_of_list.
+
+============================== end of input ==========================
+
+% From the command line: assign(max_seconds, 5).
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (all v_x (p_animal(v_x) & p_bark(v_x) -> -p_like(c_jane,v_x))) & (all v_x (p_dog(v_x) -> p_animal(v_x) & p_bark(v_x))) & (all v_x (p_animal(v_x) & p_jump(v_x) -> p_like(c_jane,v_x))) & (all v_x (p_animal(v_x) & p_has_legs(v_x) -> p_jump(v_x))) & (all v_x (p_animal(v_x) & p_terricolous(v_x) -> p_has_legs(v_x))) & p_animal(c_kiki) & (-p_jump(c_kiki) & -p_has_legs(c_kiki) -> p_terricolous(c_kiki) | p_has_legs(c_kiki)) # label(non_clause).  [assumption].
+2 -(-p_bark(c_kiki) & -p_dog(c_kiki)) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+-p_animal(x) | -p_bark(x) | -p_like(c_jane,x).  [clausify(1)].
+-p_dog(x) | p_animal(x).  [clausify(1)].
+-p_dog(x) | p_bark(x).  [clausify(1)].
+-p_animal(x) | -p_jump(x) | p_like(c_jane,x).  [clausify(1)].
+-p_animal(x) | -p_has_legs(x) | p_jump(x).  [clausify(1)].
+-p_animal(x) | -p_terricolous(x) | p_has_legs(x).  [clausify(1)].
+p_animal(c_kiki).  [clausify(1)].
+p_jump(c_kiki) | p_has_legs(c_kiki) | p_terricolous(c_kiki).  [clausify(1)].
+c_jane != c_kiki.  [assumption].
+-p_bark(c_kiki).  [deny(2)].
+-p_dog(c_kiki).  [deny(2)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+Eliminating p_animal/1
+3 -p_dog(x) | p_animal(x).  [clausify(1)].
+4 -p_animal(x) | -p_bark(x) | -p_like(c_jane,x).  [clausify(1)].
+Derived: -p_dog(x) | -p_bark(x) | -p_like(c_jane,x).  [resolve(3,b,4,a)].
+5 -p_animal(x) | -p_jump(x) | p_like(c_jane,x).  [clausify(1)].
+Derived: -p_jump(x) | p_like(c_jane,x) | -p_dog(x).  [resolve(5,a,3,b)].
+6 -p_animal(x) | -p_has_legs(x) | p_jump(x).  [clausify(1)].
+Derived: -p_has_legs(x) | p_jump(x) | -p_dog(x).  [resolve(6,a,3,b)].
+7 -p_animal(x) | -p_terricolous(x) | p_has_legs(x).  [clausify(1)].
+Derived: -p_terricolous(x) | p_has_legs(x) | -p_dog(x).  [resolve(7,a,3,b)].
+8 p_animal(c_kiki).  [clausify(1)].
+Derived: -p_jump(c_kiki) | p_like(c_jane,c_kiki).  [resolve(8,a,5,a)].
+Derived: -p_has_legs(c_kiki) | p_jump(c_kiki).  [resolve(8,a,6,a)].
+Derived: -p_terricolous(c_kiki) | p_has_legs(c_kiki).  [resolve(8,a,7,a)].
+
+============================== end predicate elimination =============
+
+Auto_denials:  (non-Horn, no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ =, p_has_legs, p_jump, p_dog, p_terricolous, p_bark, p_like ]).
+Function symbol precedence:  function_order([ c_kiki, c_jane ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      9 -p_dog(x) | p_bark(x).  [clausify(1)].
+kept:      10 p_jump(c_kiki) | p_has_legs(c_kiki) | p_terricolous(c_kiki).  [clausify(1)].
+kept:      11 c_jane != c_kiki.  [assumption].
+kept:      12 -p_bark(c_kiki).  [deny(2)].
+kept:      13 -p_dog(c_kiki).  [deny(2)].
+kept:      14 -p_dog(x) | -p_bark(x) | -p_like(c_jane,x).  [resolve(3,b,4,a)].
+kept:      15 -p_jump(x) | p_like(c_jane,x) | -p_dog(x).  [resolve(5,a,3,b)].
+kept:      16 -p_has_legs(x) | p_jump(x) | -p_dog(x).  [resolve(6,a,3,b)].
+kept:      17 -p_terricolous(x) | p_has_legs(x) | -p_dog(x).  [resolve(7,a,3,b)].
+kept:      18 -p_jump(c_kiki) | p_like(c_jane,c_kiki).  [resolve(8,a,5,a)].
+kept:      19 -p_has_legs(c_kiki) | p_jump(c_kiki).  [resolve(8,a,6,a)].
+kept:      20 -p_terricolous(c_kiki) | p_has_legs(c_kiki).  [resolve(8,a,7,a)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+9 -p_dog(x) | p_bark(x).  [clausify(1)].
+10 p_jump(c_kiki) | p_has_legs(c_kiki) | p_terricolous(c_kiki).  [clausify(1)].
+11 c_jane != c_kiki.  [assumption].
+12 -p_bark(c_kiki).  [deny(2)].
+13 -p_dog(c_kiki).  [deny(2)].
+14 -p_dog(x) | -p_bark(x) | -p_like(c_jane,x).  [resolve(3,b,4,a)].
+15 -p_jump(x) | p_like(c_jane,x) | -p_dog(x).  [resolve(5,a,3,b)].
+16 -p_has_legs(x) | p_jump(x) | -p_dog(x).  [resolve(6,a,3,b)].
+17 -p_terricolous(x) | p_has_legs(x) | -p_dog(x).  [resolve(7,a,3,b)].
+18 -p_jump(c_kiki) | p_like(c_jane,c_kiki).  [resolve(8,a,5,a)].
+19 -p_has_legs(c_kiki) | p_jump(c_kiki).  [resolve(8,a,6,a)].
+20 -p_terricolous(c_kiki) | p_has_legs(c_kiki).  [resolve(8,a,7,a)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.00 seconds.
+
+given #1 (I,wt=4): 9 -p_dog(x) | p_bark(x).  [clausify(1)].
+
+given #2 (I,wt=6): 10 p_jump(c_kiki) | p_has_legs(c_kiki) | p_terricolous(c_kiki).  [clausify(1)].
+
+given #3 (I,wt=3): 11 c_jane != c_kiki.  [assumption].
+
+given #4 (I,wt=2): 12 -p_bark(c_kiki).  [deny(2)].
+
+given #5 (I,wt=2): 13 -p_dog(c_kiki).  [deny(2)].
+
+given #6 (I,wt=7): 14 -p_dog(x) | -p_bark(x) | -p_like(c_jane,x).  [resolve(3,b,4,a)].
+
+given #7 (I,wt=7): 15 -p_jump(x) | p_like(c_jane,x) | -p_dog(x).  [resolve(5,a,3,b)].
+
+given #8 (I,wt=6): 16 -p_has_legs(x) | p_jump(x) | -p_dog(x).  [resolve(6,a,3,b)].
+
+given #9 (I,wt=6): 17 -p_terricolous(x) | p_has_legs(x) | -p_dog(x).  [resolve(7,a,3,b)].
+
+given #10 (I,wt=5): 18 -p_jump(c_kiki) | p_like(c_jane,c_kiki).  [resolve(8,a,5,a)].
+
+given #11 (I,wt=4): 19 -p_has_legs(c_kiki) | p_jump(c_kiki).  [resolve(8,a,6,a)].
+
+given #12 (I,wt=4): 20 -p_terricolous(c_kiki) | p_has_legs(c_kiki).  [resolve(8,a,7,a)].
+
+given #13 (A,wt=4): 21 p_has_legs(c_kiki) | p_jump(c_kiki).  [resolve(20,a,10,c),merge(c)].
+
+given #14 (T,wt=5): 22 p_has_legs(c_kiki) | p_like(c_jane,c_kiki).  [resolve(21,b,18,a)].
+
+============================== STATISTICS ============================
+
+Given=14. Generated=17. Kept=14. proofs=0.
+Usable=13. Sos=0. Demods=0. Limbo=0, Disabled=19. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=3. Back_subsumed=1.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=12.
+Megabytes=0.07.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+SEARCH FAILED
+
+Exiting with failure.
+
+Process 29736 exit (sos_empty) Sat Oct 17 13:02:00 2026
+
+SEARCH FAILED
+
+------ process 29736 exit (sos_empty) ------
+

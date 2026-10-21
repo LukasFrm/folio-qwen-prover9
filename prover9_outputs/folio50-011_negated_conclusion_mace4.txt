@@ -1,0 +1,102 @@
+============================== Mace4 =================================
+Mace4 (64) version 2009-11A, November 2009.
+Process 29616 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Sat Oct 17 13:01:59 2026
+The command was "mace4 -t 5 -n 2 -N 8".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(assumptions).
+p_striker(c_robert_lewandowski) & (all v_x (p_striker(v_x) -> p_soccer_player(v_x))) & p_left(c_robert_lewandowski,c_bayern_munchen) & (all v_x all v_y (p_player(v_x) & p_team(v_y) & p_left(v_x,v_y) -> -p_plays_for(v_x,v_y))).
+c_bayern_munchen != c_robert_lewandowski.
+end_of_list.
+
+formulas(goals).
+-p_soccer_player(c_robert_lewandowski).
+end_of_list.
+
+% From the command line: assign(max_seconds, 5).
+    % assign(domain_size, 2) -> assign(start_size, 2).
+    % assign(domain_size, 2) -> assign(end_size, 2).
+
+% From the command line: assign(domain_size, 2).
+
+% From the command line: assign(end_size, 8).
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 p_striker(c_robert_lewandowski) & (all v_x (p_striker(v_x) -> p_soccer_player(v_x))) & p_left(c_robert_lewandowski,c_bayern_munchen) & (all v_x all v_y (p_player(v_x) & p_team(v_y) & p_left(v_x,v_y) -> -p_plays_for(v_x,v_y))) # label(non_clause).  [assumption].
+2 -p_soccer_player(c_robert_lewandowski) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+p_striker(c_robert_lewandowski).
+-p_striker(x) | p_soccer_player(x).
+p_left(c_robert_lewandowski,c_bayern_munchen).
+-p_player(x) | -p_team(y) | -p_left(x,y) | -p_plays_for(x,y).
+c_bayern_munchen != c_robert_lewandowski.
+p_soccer_player(c_robert_lewandowski).
+end_of_list.
+
+============================== end of clauses for search =============
+
+% There are no natural numbers in the input.
+
+============================== DOMAIN SIZE 2 =========================
+
+============================== MODEL =================================
+
+interpretation( 2, [number=1, seconds=0], [
+
+        function(c_bayern_munchen, [ 0 ]),
+
+        function(c_robert_lewandowski, [ 1 ]),
+
+        relation(p_player(_), [ 0, 0 ]),
+
+        relation(p_soccer_player(_), [ 0, 1 ]),
+
+        relation(p_striker(_), [ 0, 1 ]),
+
+        relation(p_team(_), [ 0, 0 ]),
+
+        relation(p_left(_,_), [
+			   0, 0,
+			   1, 0 ]),
+
+        relation(p_plays_for(_,_), [
+			   0, 0,
+			   0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 2.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=10, kept=10.
+Selections=13, assignments=13, propagations=5, current_models=1.
+Rewrite_terms=6, rewrite_bools=13, indexes=3.
+Rules_from_neg_clauses=1, cross_offs=1.
+
+============================== end of statistics =====================
+
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+Exiting with 1 model.
+
+Process 29616 exit (max_models) Sat Oct 17 13:01:59 2026
+The process finished Sat Oct 17 13:01:59 2026
+
+=== Mace4 starting on domain size 2. ===
+
+------ process 29616 exit (max_models) ------

@@ -1,0 +1,221 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 29738 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Sat Oct 17 13:02:00 2026
+The command was "prover9 -t 5".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(assumptions).
+p_born_in(c_ailton_silva,c_year1995) & p_commonly_known_as(c_ailton_silva,c_ailton) & c_ailton = c_ailton_silva & p_football_player(c_ailton) & p_loaned_to(c_ailton,c_braga) & p_brazilian(c_ailton_silva) & p_football_player(c_ailton_silva) & p_play_for(c_ailton_silva,c_nautico) & p_football_club(c_nautico) & p_football_club(c_braga) & p_football_club(c_fluminense).
+c_ailton != c_braga.
+c_ailton != c_fluminense.
+c_ailton != c_nautico.
+c_ailton != c_year1995.
+c_braga != c_fluminense.
+c_braga != c_nautico.
+c_braga != c_year1995.
+c_fluminense != c_nautico.
+c_fluminense != c_year1995.
+c_nautico != c_year1995.
+end_of_list.
+
+formulas(goals).
+(all v_x (p_play_for(v_x,c_nautico) -> -p_brazilian(v_x))).
+end_of_list.
+
+============================== end of input ==========================
+
+% From the command line: assign(max_seconds, 5).
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 p_born_in(c_ailton_silva,c_year1995) & p_commonly_known_as(c_ailton_silva,c_ailton) & c_ailton = c_ailton_silva & p_football_player(c_ailton) & p_loaned_to(c_ailton,c_braga) & p_brazilian(c_ailton_silva) & p_football_player(c_ailton_silva) & p_play_for(c_ailton_silva,c_nautico) & p_football_club(c_nautico) & p_football_club(c_braga) & p_football_club(c_fluminense) # label(non_clause).  [assumption].
+2 (all v_x (p_play_for(v_x,c_nautico) -> -p_brazilian(v_x))) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p_born_in(c_ailton_silva,c_year1995).  [clausify(1)].
+p_commonly_known_as(c_ailton_silva,c_ailton).  [clausify(1)].
+c_ailton = c_ailton_silva.  [clausify(1)].
+p_football_player(c_ailton).  [clausify(1)].
+p_loaned_to(c_ailton,c_braga).  [clausify(1)].
+p_brazilian(c_ailton_silva).  [clausify(1)].
+p_football_player(c_ailton_silva).  [clausify(1)].
+p_play_for(c_ailton_silva,c_nautico).  [clausify(1)].
+p_football_club(c_nautico).  [clausify(1)].
+p_football_club(c_braga).  [clausify(1)].
+p_football_club(c_fluminense).  [clausify(1)].
+c_ailton != c_braga.  [assumption].
+c_ailton != c_fluminense.  [assumption].
+c_ailton != c_nautico.  [assumption].
+c_ailton != c_year1995.  [assumption].
+c_braga != c_fluminense.  [assumption].
+c_braga != c_nautico.  [assumption].
+c_braga != c_year1995.  [assumption].
+c_fluminense != c_nautico.  [assumption].
+c_fluminense != c_year1995.  [assumption].
+c_nautico != c_year1995.  [assumption].
+p_play_for(c1,c_nautico).  [deny(2)].
+p_brazilian(c1).  [deny(2)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+Eliminating p_born_in/2
+
+Eliminating p_commonly_known_as/2
+
+Eliminating p_football_player/1
+
+Eliminating p_loaned_to/2
+
+Eliminating p_brazilian/1
+
+Eliminating p_play_for/2
+
+Eliminating p_football_club/1
+
+============================== end predicate elimination =============
+
+Auto_denials:
+  % assign(max_proofs, 10).  % (Horn set with more than one neg. clause)
+
+WARNING, because some of the denials share constants,
+some of the denials or their descendents may be subsumed,
+preventing the target number of proofs from being found.
+The shared constants are:  c_year1995, c_nautico, c_fluminense, c_braga, c_ailton.
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ = ]).
+Function symbol precedence:  function_order([ c_ailton, c_ailton_silva, c_braga, c_fluminense, c_nautico, c_year1995 ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(paramodulation).  % (positive equality literals)
+
+Auto_process settings:  (no changes).
+
+           3 c_ailton = c_ailton_silva.  [clausify(1)].
+kept:      4 c_ailton_silva = c_ailton.  [copy(3),flip(a)].
+           5 c_ailton != c_braga.  [assumption].
+kept:      6 c_braga != c_ailton.  [copy(5),flip(a)].
+           7 c_ailton != c_fluminense.  [assumption].
+kept:      8 c_fluminense != c_ailton.  [copy(7),flip(a)].
+           9 c_ailton != c_nautico.  [assumption].
+kept:      10 c_nautico != c_ailton.  [copy(9),flip(a)].
+           11 c_ailton != c_year1995.  [assumption].
+kept:      12 c_year1995 != c_ailton.  [copy(11),flip(a)].
+           13 c_braga != c_fluminense.  [assumption].
+kept:      14 c_fluminense != c_braga.  [copy(13),flip(a)].
+           15 c_braga != c_nautico.  [assumption].
+kept:      16 c_nautico != c_braga.  [copy(15),flip(a)].
+           17 c_braga != c_year1995.  [assumption].
+kept:      18 c_year1995 != c_braga.  [copy(17),flip(a)].
+           19 c_fluminense != c_nautico.  [assumption].
+kept:      20 c_nautico != c_fluminense.  [copy(19),flip(a)].
+           21 c_fluminense != c_year1995.  [assumption].
+kept:      22 c_year1995 != c_fluminense.  [copy(21),flip(a)].
+           23 c_nautico != c_year1995.  [assumption].
+kept:      24 c_year1995 != c_nautico.  [copy(23),flip(a)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+4 c_ailton_silva = c_ailton.  [copy(3),flip(a)].
+6 c_braga != c_ailton.  [copy(5),flip(a)].
+8 c_fluminense != c_ailton.  [copy(7),flip(a)].
+10 c_nautico != c_ailton.  [copy(9),flip(a)].
+12 c_year1995 != c_ailton.  [copy(11),flip(a)].
+14 c_fluminense != c_braga.  [copy(13),flip(a)].
+16 c_nautico != c_braga.  [copy(15),flip(a)].
+18 c_year1995 != c_braga.  [copy(17),flip(a)].
+20 c_nautico != c_fluminense.  [copy(19),flip(a)].
+22 c_year1995 != c_fluminense.  [copy(21),flip(a)].
+24 c_year1995 != c_nautico.  [copy(23),flip(a)].
+end_of_list.
+
+formulas(demodulators).
+4 c_ailton_silva = c_ailton.  [copy(3),flip(a)].
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.00 seconds.
+
+given #1 (I,wt=3): 4 c_ailton_silva = c_ailton.  [copy(3),flip(a)].
+
+given #2 (I,wt=3): 6 c_braga != c_ailton.  [copy(5),flip(a)].
+
+given #3 (I,wt=3): 8 c_fluminense != c_ailton.  [copy(7),flip(a)].
+
+given #4 (I,wt=3): 10 c_nautico != c_ailton.  [copy(9),flip(a)].
+
+given #5 (I,wt=3): 12 c_year1995 != c_ailton.  [copy(11),flip(a)].
+
+given #6 (I,wt=3): 14 c_fluminense != c_braga.  [copy(13),flip(a)].
+
+given #7 (I,wt=3): 16 c_nautico != c_braga.  [copy(15),flip(a)].
+
+given #8 (I,wt=3): 18 c_year1995 != c_braga.  [copy(17),flip(a)].
+
+given #9 (I,wt=3): 20 c_nautico != c_fluminense.  [copy(19),flip(a)].
+
+given #10 (I,wt=3): 22 c_year1995 != c_fluminense.  [copy(21),flip(a)].
+
+given #11 (I,wt=3): 24 c_year1995 != c_nautico.  [copy(23),flip(a)].
+
+============================== STATISTICS ============================
+
+Given=11. Generated=12. Kept=11. proofs=0.
+Usable=11. Sos=0. Demods=1. Limbo=0, Disabled=23. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=1. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=1 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=63. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.04.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+SEARCH FAILED
+
+Exiting with failure.
+
+Process 29738 exit (sos_empty) Sat Oct 17 13:02:00 2026
+
+WARNING: denials share constants (see output).
+
+
+SEARCH FAILED
+
+------ process 29738 exit (sos_empty) ------
+

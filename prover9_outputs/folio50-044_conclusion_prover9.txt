@@ -1,0 +1,159 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 29722 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Sat Oct 17 13:02:00 2026
+The command was "prover9 -t 5".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(assumptions).
+p_fly_to(c_susan,c_lga_airport) & (all v_x all v_y -(p_fly_from(v_x,v_y) & p_fly_to(v_x,v_y))) & p_fly_from(c_john,c_lga_airport).
+c_john != c_lga_airport.
+c_john != c_susan.
+c_lga_airport != c_susan.
+end_of_list.
+
+formulas(goals).
+p_fly_from(c_susan,c_lga_airport).
+end_of_list.
+
+============================== end of input ==========================
+
+% From the command line: assign(max_seconds, 5).
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 p_fly_to(c_susan,c_lga_airport) & (all v_x all v_y -(p_fly_from(v_x,v_y) & p_fly_to(v_x,v_y))) & p_fly_from(c_john,c_lga_airport) # label(non_clause).  [assumption].
+2 p_fly_from(c_susan,c_lga_airport) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p_fly_to(c_susan,c_lga_airport).  [clausify(1)].
+-p_fly_from(x,y) | -p_fly_to(x,y).  [clausify(1)].
+p_fly_from(c_john,c_lga_airport).  [clausify(1)].
+c_john != c_lga_airport.  [assumption].
+c_john != c_susan.  [assumption].
+c_lga_airport != c_susan.  [assumption].
+-p_fly_from(c_susan,c_lga_airport).  [deny(2)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+Eliminating p_fly_to/2
+3 -p_fly_from(x,y) | -p_fly_to(x,y).  [clausify(1)].
+4 p_fly_to(c_susan,c_lga_airport).  [clausify(1)].
+
+============================== end predicate elimination =============
+
+Auto_denials:
+  % assign(max_proofs, 4).  % (Horn set with more than one neg. clause)
+
+WARNING, because some of the denials share constants,
+some of the denials or their descendents may be subsumed,
+preventing the target number of proofs from being found.
+The shared constants are:  c_susan, c_lga_airport, c_john.
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ =, p_fly_from ]).
+Function symbol precedence:  function_order([ c_john, c_lga_airport, c_susan ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(neg_binary_resolution).  % (HNE depth_diff=0)
+  % clear(ordered_res).  % (HNE depth_diff=0)
+  % set(ur_resolution).  % (HNE depth_diff=0)
+    % set(ur_resolution) -> set(pos_ur_resolution).
+    % set(ur_resolution) -> set(neg_ur_resolution).
+
+Auto_process settings:  (no changes).
+
+kept:      5 p_fly_from(c_john,c_lga_airport).  [clausify(1)].
+           6 c_john != c_lga_airport.  [assumption].
+kept:      7 c_lga_airport != c_john.  [copy(6),flip(a)].
+           8 c_john != c_susan.  [assumption].
+kept:      9 c_susan != c_john.  [copy(8),flip(a)].
+           10 c_lga_airport != c_susan.  [assumption].
+kept:      11 c_susan != c_lga_airport.  [copy(10),flip(a)].
+kept:      12 -p_fly_from(c_susan,c_lga_airport).  [deny(2)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+5 p_fly_from(c_john,c_lga_airport).  [clausify(1)].
+7 c_lga_airport != c_john.  [copy(6),flip(a)].
+9 c_susan != c_john.  [copy(8),flip(a)].
+11 c_susan != c_lga_airport.  [copy(10),flip(a)].
+12 -p_fly_from(c_susan,c_lga_airport).  [deny(2)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.00 seconds.
+
+given #1 (I,wt=3): 5 p_fly_from(c_john,c_lga_airport).  [clausify(1)].
+
+given #2 (I,wt=3): 7 c_lga_airport != c_john.  [copy(6),flip(a)].
+
+given #3 (I,wt=3): 9 c_susan != c_john.  [copy(8),flip(a)].
+
+given #4 (I,wt=3): 11 c_susan != c_lga_airport.  [copy(10),flip(a)].
+
+given #5 (I,wt=3): 12 -p_fly_from(c_susan,c_lga_airport).  [deny(2)].
+
+============================== STATISTICS ============================
+
+Given=5. Generated=5. Kept=5. proofs=0.
+Usable=5. Sos=0. Demods=0. Limbo=0, Disabled=7. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=0. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.03.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+SEARCH FAILED
+
+Exiting with failure.
+
+Process 29722 exit (sos_empty) Sat Oct 17 13:02:00 2026
+
+WARNING: denials share constants (see output).
+
+
+SEARCH FAILED
+
+------ process 29722 exit (sos_empty) ------
+

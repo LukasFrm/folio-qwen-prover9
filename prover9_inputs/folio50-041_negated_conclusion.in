@@ -1,0 +1,35 @@
+formulas(assumptions).
+(((((all v_x ((p_regularly_eat(v_x, c_salad) -> (p_conscious_about(v_x, c_health) & p_conscious_about(v_x, c_eating_habit)))) & all v_x ((p_grew_up_in(v_x, c_health_conscious_childhood_home) -> p_regularly_eat(v_x, c_salad)))) & all v_x ((p_fulfill(v_x, c_daily_nutritional_intake) -> p_grew_up_in(v_x, c_health_conscious_childhood_home)))) & all v_x ((p_disregard(v_x, c_physical_wellbeing) -> -((p_conscious_about(v_x, c_health) & p_conscious_about(v_x, c_eating_habit)))))) & all v_x ((p_visit_daily(v_x, c_gym) -> p_fulfill(v_x, c_daily_nutritional_intake)))) & -(((p_grew_up_in(c_taylor, c_health_conscious_childhood_home) | p_disregard(c_taylor, c_physical_wellbeing)) & -(p_grew_up_in(c_taylor, c_health_conscious_childhood_home) & p_disregard(c_taylor, c_physical_wellbeing))))).
+-(c_daily_nutritional_intake = c_eating_habit).
+-(c_daily_nutritional_intake = c_gym).
+-(c_daily_nutritional_intake = c_health).
+-(c_daily_nutritional_intake = c_health_conscious_childhood_home).
+-(c_daily_nutritional_intake = c_physical_wellbeing).
+-(c_daily_nutritional_intake = c_salad).
+-(c_daily_nutritional_intake = c_taylor).
+-(c_eating_habit = c_gym).
+-(c_eating_habit = c_health).
+-(c_eating_habit = c_health_conscious_childhood_home).
+-(c_eating_habit = c_physical_wellbeing).
+-(c_eating_habit = c_salad).
+-(c_eating_habit = c_taylor).
+-(c_gym = c_health).
+-(c_gym = c_health_conscious_childhood_home).
+-(c_gym = c_physical_wellbeing).
+-(c_gym = c_salad).
+-(c_gym = c_taylor).
+-(c_health = c_health_conscious_childhood_home).
+-(c_health = c_physical_wellbeing).
+-(c_health = c_salad).
+-(c_health = c_taylor).
+-(c_health_conscious_childhood_home = c_physical_wellbeing).
+-(c_health_conscious_childhood_home = c_salad).
+-(c_health_conscious_childhood_home = c_taylor).
+-(c_physical_wellbeing = c_salad).
+-(c_physical_wellbeing = c_taylor).
+-(c_salad = c_taylor).
+end_of_list.
+
+formulas(goals).
+-(p_regularly_eat(c_taylor, c_salad)).
+end_of_list.

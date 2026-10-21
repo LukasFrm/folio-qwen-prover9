@@ -1,0 +1,155 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 29705 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Sat Oct 17 13:02:00 2026
+The command was "prover9 -t 5".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(assumptions).
+p_german(c_heinrich_schmidt) & p_politician(c_heinrich_schmidt) & p_member(c_heinrich_schmidt,c_prussian_state_parliament) & p_member(c_heinrich_schmidt,c_nazi_reichstag).
+c_heinrich_schmidt != c_nazi_reichstag.
+c_heinrich_schmidt != c_prussian_state_parliament.
+c_nazi_reichstag != c_prussian_state_parliament.
+end_of_list.
+
+formulas(goals).
+(all v_x (p_politician(v_x) -> -p_member(v_x,c_nazi_reichstag))).
+end_of_list.
+
+============================== end of input ==========================
+
+% From the command line: assign(max_seconds, 5).
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 p_german(c_heinrich_schmidt) & p_politician(c_heinrich_schmidt) & p_member(c_heinrich_schmidt,c_prussian_state_parliament) & p_member(c_heinrich_schmidt,c_nazi_reichstag) # label(non_clause).  [assumption].
+2 (all v_x (p_politician(v_x) -> -p_member(v_x,c_nazi_reichstag))) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+p_german(c_heinrich_schmidt).  [clausify(1)].
+p_politician(c_heinrich_schmidt).  [clausify(1)].
+p_member(c_heinrich_schmidt,c_prussian_state_parliament).  [clausify(1)].
+p_member(c_heinrich_schmidt,c_nazi_reichstag).  [clausify(1)].
+c_heinrich_schmidt != c_nazi_reichstag.  [assumption].
+c_heinrich_schmidt != c_prussian_state_parliament.  [assumption].
+c_nazi_reichstag != c_prussian_state_parliament.  [assumption].
+p_politician(c1).  [deny(2)].
+p_member(c1,c_nazi_reichstag).  [deny(2)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+Eliminating p_german/1
+
+Eliminating p_politician/1
+
+Eliminating p_member/2
+
+============================== end predicate elimination =============
+
+Auto_denials:
+  % assign(max_proofs, 3).  % (Horn set with more than one neg. clause)
+
+WARNING, because some of the denials share constants,
+some of the denials or their descendents may be subsumed,
+preventing the target number of proofs from being found.
+The shared constants are:  c_prussian_state_parliament, c_nazi_reichstag, c_heinrich_schmidt.
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ = ]).
+Function symbol precedence:  function_order([ c_heinrich_schmidt, c_nazi_reichstag, c_prussian_state_parliament ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(neg_binary_resolution).  % (HNE depth_diff=0)
+  % clear(ordered_res).  % (HNE depth_diff=0)
+  % set(ur_resolution).  % (HNE depth_diff=0)
+    % set(ur_resolution) -> set(pos_ur_resolution).
+    % set(ur_resolution) -> set(neg_ur_resolution).
+
+Auto_process settings:  (no changes).
+
+           3 c_heinrich_schmidt != c_nazi_reichstag.  [assumption].
+kept:      4 c_nazi_reichstag != c_heinrich_schmidt.  [copy(3),flip(a)].
+           5 c_heinrich_schmidt != c_prussian_state_parliament.  [assumption].
+kept:      6 c_prussian_state_parliament != c_heinrich_schmidt.  [copy(5),flip(a)].
+           7 c_nazi_reichstag != c_prussian_state_parliament.  [assumption].
+kept:      8 c_prussian_state_parliament != c_nazi_reichstag.  [copy(7),flip(a)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+4 c_nazi_reichstag != c_heinrich_schmidt.  [copy(3),flip(a)].
+6 c_prussian_state_parliament != c_heinrich_schmidt.  [copy(5),flip(a)].
+8 c_prussian_state_parliament != c_nazi_reichstag.  [copy(7),flip(a)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.00 seconds.
+
+given #1 (I,wt=3): 4 c_nazi_reichstag != c_heinrich_schmidt.  [copy(3),flip(a)].
+
+given #2 (I,wt=3): 6 c_prussian_state_parliament != c_heinrich_schmidt.  [copy(5),flip(a)].
+
+given #3 (I,wt=3): 8 c_prussian_state_parliament != c_nazi_reichstag.  [copy(7),flip(a)].
+
+============================== STATISTICS ============================
+
+Given=3. Generated=3. Kept=3. proofs=0.
+Usable=3. Sos=0. Demods=0. Limbo=0, Disabled=9. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=0. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.03.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+SEARCH FAILED
+
+Exiting with failure.
+
+Process 29705 exit (sos_empty) Sat Oct 17 13:02:00 2026
+
+WARNING: denials share constants (see output).
+
+
+SEARCH FAILED
+
+------ process 29705 exit (sos_empty) ------
+

@@ -1,0 +1,10 @@
+formulas(assumptions).
+(((p_german(c_heinrich_schmidt) & p_politician(c_heinrich_schmidt)) & p_member(c_heinrich_schmidt, c_prussian_state_parliament)) & p_member(c_heinrich_schmidt, c_nazi_reichstag)).
+-(c_heinrich_schmidt = c_nazi_reichstag).
+-(c_heinrich_schmidt = c_prussian_state_parliament).
+-(c_nazi_reichstag = c_prussian_state_parliament).
+end_of_list.
+
+formulas(goals).
+-(all v_x ((p_politician(v_x) -> -(p_member(v_x, c_nazi_reichstag))))).
+end_of_list.

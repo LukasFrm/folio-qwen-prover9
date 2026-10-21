@@ -1,0 +1,296 @@
+============================== Mace4 =================================
+Mace4 (64) version 2009-11A, November 2009.
+Process 29625 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Sat Oct 17 13:01:59 2026
+The command was "mace4 -t 5 -n 2 -N 8".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(assumptions).
+(exists v_x (p_british_sitcom(c_badults) & p_series(c_badults) & p_member_of(v_x,c_pappys) & p_star(v_x,c_badults))) & p_piloted_in(c_badults,c_july2013) & p_piloted_on(c_badults,c_b_b_c_three) & p_working_title(c_the_secret_dude_society,c_badults) & p_used_for(c_the_secret_dude_society,c_badults) & p_script_editor_for(c_andrew_collins,c_badults).
+c_andrew_collins != c_b_b_c_three.
+c_andrew_collins != c_b_b_c_two.
+c_andrew_collins != c_badults.
+c_andrew_collins != c_july2013.
+c_andrew_collins != c_pappys.
+c_andrew_collins != c_the_secret_dude_society.
+c_b_b_c_three != c_b_b_c_two.
+c_b_b_c_three != c_badults.
+c_b_b_c_three != c_july2013.
+c_b_b_c_three != c_pappys.
+c_b_b_c_three != c_the_secret_dude_society.
+c_b_b_c_two != c_badults.
+c_b_b_c_two != c_july2013.
+c_b_b_c_two != c_pappys.
+c_b_b_c_two != c_the_secret_dude_society.
+c_badults != c_july2013.
+c_badults != c_pappys.
+c_badults != c_the_secret_dude_society.
+c_july2013 != c_pappys.
+c_july2013 != c_the_secret_dude_society.
+c_pappys != c_the_secret_dude_society.
+end_of_list.
+
+formulas(goals).
+(all v_x all v_y (p_member_of(v_x,c_pappys) & p_star(v_x,v_y) -> -(p_piloted_on(v_y,c_b_b_c_two) | p_piloted_on(v_y,c_b_b_c_three)))).
+end_of_list.
+
+% From the command line: assign(max_seconds, 5).
+    % assign(domain_size, 2) -> assign(start_size, 2).
+    % assign(domain_size, 2) -> assign(end_size, 2).
+
+% From the command line: assign(domain_size, 2).
+
+% From the command line: assign(end_size, 8).
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (exists v_x (p_british_sitcom(c_badults) & p_series(c_badults) & p_member_of(v_x,c_pappys) & p_star(v_x,c_badults))) & p_piloted_in(c_badults,c_july2013) & p_piloted_on(c_badults,c_b_b_c_three) & p_working_title(c_the_secret_dude_society,c_badults) & p_used_for(c_the_secret_dude_society,c_badults) & p_script_editor_for(c_andrew_collins,c_badults) # label(non_clause).  [assumption].
+2 (all v_x all v_y (p_member_of(v_x,c_pappys) & p_star(v_x,v_y) -> -(p_piloted_on(v_y,c_b_b_c_two) | p_piloted_on(v_y,c_b_b_c_three)))) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+p_british_sitcom(c_badults).
+p_series(c_badults).
+p_member_of(c1,c_pappys).
+p_star(c1,c_badults).
+p_piloted_in(c_badults,c_july2013).
+p_piloted_on(c_badults,c_b_b_c_three).
+p_working_title(c_the_secret_dude_society,c_badults).
+p_used_for(c_the_secret_dude_society,c_badults).
+p_script_editor_for(c_andrew_collins,c_badults).
+c_andrew_collins != c_b_b_c_three.
+c_andrew_collins != c_b_b_c_two.
+c_andrew_collins != c_badults.
+c_andrew_collins != c_july2013.
+c_andrew_collins != c_pappys.
+c_andrew_collins != c_the_secret_dude_society.
+c_b_b_c_three != c_b_b_c_two.
+c_b_b_c_three != c_badults.
+c_b_b_c_three != c_july2013.
+c_b_b_c_three != c_pappys.
+c_b_b_c_three != c_the_secret_dude_society.
+c_b_b_c_two != c_badults.
+c_b_b_c_two != c_july2013.
+c_b_b_c_two != c_pappys.
+c_b_b_c_two != c_the_secret_dude_society.
+c_badults != c_july2013.
+c_badults != c_pappys.
+c_badults != c_the_secret_dude_society.
+c_july2013 != c_pappys.
+c_july2013 != c_the_secret_dude_society.
+c_pappys != c_the_secret_dude_society.
+p_member_of(c2,c_pappys).
+p_star(c2,c3).
+p_piloted_on(c3,c_b_b_c_two) | p_piloted_on(c3,c_b_b_c_three).
+end_of_list.
+
+============================== end of clauses for search =============
+
+% There are no natural numbers in the input.
+
+============================== DOMAIN SIZE 2 =========================
+
+============================== STATISTICS ============================
+
+For domain size 2.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=33, kept=33.
+Selections=1, assignments=1, propagations=6, current_models=0.
+Rewrite_terms=9, rewrite_bools=0, indexes=0.
+Rules_from_neg_clauses=6, cross_offs=6.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 3 =========================
+
+============================== STATISTICS ============================
+
+For domain size 3.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=33, kept=33.
+Selections=2, assignments=3, propagations=5, current_models=0.
+Rewrite_terms=24, rewrite_bools=2, indexes=0.
+Rules_from_neg_clauses=5, cross_offs=11.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 4 =========================
+
+============================== STATISTICS ============================
+
+For domain size 4.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=33, kept=33.
+Selections=3, assignments=6, propagations=4, current_models=0.
+Rewrite_terms=43, rewrite_bools=7, indexes=0.
+Rules_from_neg_clauses=4, cross_offs=15.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 5 =========================
+
+============================== STATISTICS ============================
+
+For domain size 5.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=33, kept=33.
+Selections=4, assignments=10, propagations=7, current_models=0.
+Rewrite_terms=72, rewrite_bools=20, indexes=4.
+Rules_from_neg_clauses=3, cross_offs=18.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 6 =========================
+
+============================== STATISTICS ============================
+
+For domain size 6.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=33, kept=33.
+Selections=5, assignments=15, propagations=7, current_models=0.
+Rewrite_terms=98, rewrite_bools=35, indexes=5.
+Rules_from_neg_clauses=2, cross_offs=20.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 7 =========================
+
+============================== MODEL =================================
+
+interpretation( 7, [number=1, seconds=0], [
+
+        function(c_andrew_collins, [ 0 ]),
+
+        function(c_b_b_c_three, [ 1 ]),
+
+        function(c_b_b_c_two, [ 2 ]),
+
+        function(c_badults, [ 3 ]),
+
+        function(c_july2013, [ 4 ]),
+
+        function(c_pappys, [ 5 ]),
+
+        function(c_the_secret_dude_society, [ 6 ]),
+
+        function(c1, [ 0 ]),
+
+        function(c2, [ 0 ]),
+
+        function(c3, [ 0 ]),
+
+        relation(p_british_sitcom(_), [ 0, 0, 0, 1, 0, 0, 0 ]),
+
+        relation(p_series(_), [ 0, 0, 0, 1, 0, 0, 0 ]),
+
+        relation(p_member_of(_,_), [
+			   0, 0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(p_piloted_in(_,_), [
+			   0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(p_piloted_on(_,_), [
+			   0, 0, 1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0,
+			   0, 1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(p_script_editor_for(_,_), [
+			   0, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(p_star(_,_), [
+			   1, 0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(p_used_for(_,_), [
+			   0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0 ]),
+
+        relation(p_working_title(_,_), [
+			   0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 1, 0, 0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 7.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=33, kept=33.
+Selections=355, assignments=370, propagations=12, current_models=1.
+Rewrite_terms=144, rewrite_bools=69, indexes=12.
+Rules_from_neg_clauses=1, cross_offs=21.
+
+============================== end of statistics =====================
+
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+Exiting with 1 model.
+
+Process 29625 exit (max_models) Sat Oct 17 13:01:59 2026
+The process finished Sat Oct 17 13:01:59 2026
+
+=== Mace4 starting on domain size 2. ===
+
+=== Mace4 starting on domain size 3. ===
+
+=== Mace4 starting on domain size 4. ===
+
+=== Mace4 starting on domain size 5. ===
+
+=== Mace4 starting on domain size 6. ===
+
+=== Mace4 starting on domain size 7. ===
+
+------ process 29625 exit (max_models) ------

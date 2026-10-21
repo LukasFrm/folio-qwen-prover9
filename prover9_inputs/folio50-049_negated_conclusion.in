@@ -1,0 +1,17 @@
+formulas(assumptions).
+((((((((((p_born_in(c_ailton_silva, c_year1995) & p_commonly_known_as(c_ailton_silva, c_ailton)) & (c_ailton = c_ailton_silva)) & p_football_player(c_ailton)) & p_loaned_to(c_ailton, c_braga)) & p_brazilian(c_ailton_silva)) & p_football_player(c_ailton_silva)) & p_play_for(c_ailton_silva, c_nautico)) & p_football_club(c_nautico)) & p_football_club(c_braga)) & p_football_club(c_fluminense)).
+-(c_ailton = c_braga).
+-(c_ailton = c_fluminense).
+-(c_ailton = c_nautico).
+-(c_ailton = c_year1995).
+-(c_braga = c_fluminense).
+-(c_braga = c_nautico).
+-(c_braga = c_year1995).
+-(c_fluminense = c_nautico).
+-(c_fluminense = c_year1995).
+-(c_nautico = c_year1995).
+end_of_list.
+
+formulas(goals).
+-(all v_x ((p_play_for(v_x, c_nautico) -> -(p_brazilian(v_x))))).
+end_of_list.

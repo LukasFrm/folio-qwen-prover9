@@ -1,0 +1,17 @@
+formulas(assumptions).
+((((((p_mountain_range(c_the_picuris_mountains) & (p_in(c_the_picuris_mountains, c_new_mexico) | p_in(c_the_picuris_mountains, c_texas))) & p_visited(c_juan_de_onate, c_the_picuris_mountains)) & p_in(c_harding_pegmatite_mine, c_the_picuris_mountains)) & p_mine(c_harding_pegmatite_mine)) & p_donated(c_harding_pegmatite_mine)) & all v_x (all v_y (((((p_mine(v_x) & p_donated(v_x)) & p_in(v_x, v_y)) & p_mountain_range(v_y)) -> -(p_in(v_y, c_texas)))))).
+-(c_harding_pegmatite_mine = c_juan_de_onate).
+-(c_harding_pegmatite_mine = c_new_mexico).
+-(c_harding_pegmatite_mine = c_texas).
+-(c_harding_pegmatite_mine = c_the_picuris_mountains).
+-(c_juan_de_onate = c_new_mexico).
+-(c_juan_de_onate = c_texas).
+-(c_juan_de_onate = c_the_picuris_mountains).
+-(c_new_mexico = c_texas).
+-(c_new_mexico = c_the_picuris_mountains).
+-(c_texas = c_the_picuris_mountains).
+end_of_list.
+
+formulas(goals).
+-(all v_x ((p_in(c_harding_pegmatite_mine, v_x) -> -((p_mountain_range(v_x) & p_in(v_x, c_new_mexico)))))).
+end_of_list.

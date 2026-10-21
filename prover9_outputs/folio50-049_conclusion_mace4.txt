@@ -1,0 +1,204 @@
+============================== Mace4 =================================
+Mace4 (64) version 2009-11A, November 2009.
+Process 29739 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Sat Oct 17 13:02:00 2026
+The command was "mace4 -t 5 -n 2 -N 8".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(assumptions).
+p_born_in(c_ailton_silva,c_year1995) & p_commonly_known_as(c_ailton_silva,c_ailton) & c_ailton = c_ailton_silva & p_football_player(c_ailton) & p_loaned_to(c_ailton,c_braga) & p_brazilian(c_ailton_silva) & p_football_player(c_ailton_silva) & p_play_for(c_ailton_silva,c_nautico) & p_football_club(c_nautico) & p_football_club(c_braga) & p_football_club(c_fluminense).
+c_ailton != c_braga.
+c_ailton != c_fluminense.
+c_ailton != c_nautico.
+c_ailton != c_year1995.
+c_braga != c_fluminense.
+c_braga != c_nautico.
+c_braga != c_year1995.
+c_fluminense != c_nautico.
+c_fluminense != c_year1995.
+c_nautico != c_year1995.
+end_of_list.
+
+formulas(goals).
+(all v_x (p_play_for(v_x,c_nautico) -> -p_brazilian(v_x))).
+end_of_list.
+
+% From the command line: assign(max_seconds, 5).
+    % assign(domain_size, 2) -> assign(start_size, 2).
+    % assign(domain_size, 2) -> assign(end_size, 2).
+
+% From the command line: assign(domain_size, 2).
+
+% From the command line: assign(end_size, 8).
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 p_born_in(c_ailton_silva,c_year1995) & p_commonly_known_as(c_ailton_silva,c_ailton) & c_ailton = c_ailton_silva & p_football_player(c_ailton) & p_loaned_to(c_ailton,c_braga) & p_brazilian(c_ailton_silva) & p_football_player(c_ailton_silva) & p_play_for(c_ailton_silva,c_nautico) & p_football_club(c_nautico) & p_football_club(c_braga) & p_football_club(c_fluminense) # label(non_clause).  [assumption].
+2 (all v_x (p_play_for(v_x,c_nautico) -> -p_brazilian(v_x))) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+p_born_in(c_ailton_silva,c_year1995).
+p_commonly_known_as(c_ailton_silva,c_ailton).
+c_ailton = c_ailton_silva.
+p_football_player(c_ailton).
+p_loaned_to(c_ailton,c_braga).
+p_brazilian(c_ailton_silva).
+p_football_player(c_ailton_silva).
+p_play_for(c_ailton_silva,c_nautico).
+p_football_club(c_nautico).
+p_football_club(c_braga).
+p_football_club(c_fluminense).
+c_ailton != c_braga.
+c_ailton != c_fluminense.
+c_ailton != c_nautico.
+c_ailton != c_year1995.
+c_braga != c_fluminense.
+c_braga != c_nautico.
+c_braga != c_year1995.
+c_fluminense != c_nautico.
+c_fluminense != c_year1995.
+c_nautico != c_year1995.
+p_play_for(c1,c_nautico).
+p_brazilian(c1).
+end_of_list.
+
+============================== end of clauses for search =============
+
+% There are no natural numbers in the input.
+
+============================== DOMAIN SIZE 2 =========================
+
+============================== STATISTICS ============================
+
+For domain size 2.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=23, kept=23.
+Selections=1, assignments=1, propagations=8, current_models=0.
+Rewrite_terms=15, rewrite_bools=5, indexes=3.
+Rules_from_neg_clauses=4, cross_offs=4.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 3 =========================
+
+============================== STATISTICS ============================
+
+For domain size 3.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=23, kept=23.
+Selections=2, assignments=3, propagations=9, current_models=0.
+Rewrite_terms=25, rewrite_bools=9, indexes=5.
+Rules_from_neg_clauses=3, cross_offs=7.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 4 =========================
+
+============================== STATISTICS ============================
+
+For domain size 4.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=23, kept=23.
+Selections=3, assignments=6, propagations=9, current_models=0.
+Rewrite_terms=38, rewrite_bools=15, indexes=6.
+Rules_from_neg_clauses=2, cross_offs=9.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 5 =========================
+
+============================== MODEL =================================
+
+interpretation( 5, [number=1, seconds=0], [
+
+        function(c_ailton, [ 0 ]),
+
+        function(c_ailton_silva, [ 0 ]),
+
+        function(c_braga, [ 1 ]),
+
+        function(c_fluminense, [ 2 ]),
+
+        function(c_nautico, [ 3 ]),
+
+        function(c_year1995, [ 4 ]),
+
+        function(c1, [ 0 ]),
+
+        relation(p_brazilian(_), [ 1, 0, 0, 0, 0 ]),
+
+        relation(p_football_club(_), [ 0, 1, 1, 1, 0 ]),
+
+        relation(p_football_player(_), [ 1, 0, 0, 0, 0 ]),
+
+        relation(p_born_in(_,_), [
+			   0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0 ]),
+
+        relation(p_commonly_known_as(_,_), [
+			   1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0 ]),
+
+        relation(p_loaned_to(_,_), [
+			   0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0 ]),
+
+        relation(p_play_for(_,_), [
+			   0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 5.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=23, kept=23.
+Selections=111, assignments=117, propagations=11, current_models=1.
+Rewrite_terms=62, rewrite_bools=33, indexes=9.
+Rules_from_neg_clauses=1, cross_offs=10.
+
+============================== end of statistics =====================
+
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+Exiting with 1 model.
+
+Process 29739 exit (max_models) Sat Oct 17 13:02:00 2026
+The process finished Sat Oct 17 13:02:00 2026
+
+=== Mace4 starting on domain size 2. ===
+
+=== Mace4 starting on domain size 3. ===
+
+=== Mace4 starting on domain size 4. ===
+
+=== Mace4 starting on domain size 5. ===
+
+------ process 29739 exit (max_models) ------

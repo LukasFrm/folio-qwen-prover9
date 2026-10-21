@@ -1,0 +1,8 @@
+formulas(assumptions).
+((((all v_x ((p_baked_sweet(v_x) -> -(p_spicy(v_x)))) & all v_x ((p_cupcake(v_x) -> p_baked_sweet(v_x)))) & all v_x ((p_mala_hotpot(v_x) -> p_spicy(v_x)))) & all v_x (((p_product(v_x) & p_from(v_x, c_baked_by_melissa)) -> p_cupcake(v_x)))) & ((p_spicy(c_dried_thai_chili) | p_mala_hotpot(c_dried_thai_chili)) | -(p_baked_sweet(c_dried_thai_chili)))).
+-(c_baked_by_melissa = c_dried_thai_chili).
+end_of_list.
+
+formulas(goals).
+-(-((p_product(c_dried_thai_chili) & p_from(c_dried_thai_chili, c_baked_by_melissa)))).
+end_of_list.

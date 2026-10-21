@@ -1,0 +1,116 @@
+============================== Mace4 =================================
+Mace4 (64) version 2009-11A, November 2009.
+Process 29692 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Sat Oct 17 13:02:00 2026
+The command was "mace4 -t 5 -n 2 -N 8".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(assumptions).
+(all v_x (p_hydrocarbon(v_x) -> p_organic_compound(v_x))) & (all v_x (p_alkane(v_x) -> p_hydrocarbon(v_x))) & (all v_x (p_organic_compound(v_x) -> p_chemical_compound(v_x))) & (all v_x (p_organic_compound(v_x) -> p_contain(v_x,c_carbon))) & (all v_x (p_chemical_compound(v_x) -> -(exists v_y (p_contain(v_x,v_y) & (all v_z (p_contain(v_x,v_z) -> v_z = v_y)))))) & -((p_chemical_compound(c_mixture) | (exists v_y (p_contain(c_mixture,v_y) & (all v_z (p_contain(c_mixture,v_z) -> v_z = v_y))))) & -(p_chemical_compound(c_mixture) & (exists v_y (p_contain(c_mixture,v_y) & (all v_z (p_contain(c_mixture,v_z) -> v_z = v_y)))))).
+c_carbon != c_mixture.
+end_of_list.
+
+formulas(goals).
+p_alkane(c_mixture) & p_contain(c_mixture,c_carbon).
+end_of_list.
+
+% From the command line: assign(max_seconds, 5).
+    % assign(domain_size, 2) -> assign(start_size, 2).
+    % assign(domain_size, 2) -> assign(end_size, 2).
+
+% From the command line: assign(domain_size, 2).
+
+% From the command line: assign(end_size, 8).
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (all v_x (p_hydrocarbon(v_x) -> p_organic_compound(v_x))) & (all v_x (p_alkane(v_x) -> p_hydrocarbon(v_x))) & (all v_x (p_organic_compound(v_x) -> p_chemical_compound(v_x))) & (all v_x (p_organic_compound(v_x) -> p_contain(v_x,c_carbon))) & (all v_x (p_chemical_compound(v_x) -> -(exists v_y (p_contain(v_x,v_y) & (all v_z (p_contain(v_x,v_z) -> v_z = v_y)))))) & -((p_chemical_compound(c_mixture) | (exists v_y (p_contain(c_mixture,v_y) & (all v_z (p_contain(c_mixture,v_z) -> v_z = v_y))))) & -(p_chemical_compound(c_mixture) & (exists v_y (p_contain(c_mixture,v_y) & (all v_z (p_contain(c_mixture,v_z) -> v_z = v_y)))))) # label(non_clause).  [assumption].
+2 p_alkane(c_mixture) & p_contain(c_mixture,c_carbon) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+-p_hydrocarbon(x) | p_organic_compound(x).
+-p_alkane(x) | p_hydrocarbon(x).
+-p_organic_compound(x) | p_chemical_compound(x).
+-p_organic_compound(x) | p_contain(x,c_carbon).
+-p_chemical_compound(x) | -p_contain(x,y) | p_contain(x,f1(x,y)).
+-p_chemical_compound(x) | -p_contain(x,y) | f1(x,y) != y.
+-p_chemical_compound(c_mixture) | p_contain(c_mixture,c1).
+-p_chemical_compound(c_mixture) | -p_contain(c_mixture,x) | x = c1.
+-p_contain(c_mixture,x) | p_contain(c_mixture,f2(x)) | p_chemical_compound(c_mixture).
+-p_contain(c_mixture,x) | p_contain(c_mixture,f2(x)) | p_contain(c_mixture,c1).
+-p_contain(c_mixture,x) | p_contain(c_mixture,f2(x)) | -p_contain(c_mixture,y) | y = c1.
+-p_contain(c_mixture,x) | f2(x) != x | p_chemical_compound(c_mixture).
+-p_contain(c_mixture,x) | f2(x) != x | p_contain(c_mixture,c1).
+-p_contain(c_mixture,x) | f2(x) != x | -p_contain(c_mixture,y) | y = c1.
+c_carbon != c_mixture.
+-p_alkane(c_mixture) | -p_contain(c_mixture,c_carbon).
+end_of_list.
+
+============================== end of clauses for search =============
+
+% There are no natural numbers in the input.
+
+============================== DOMAIN SIZE 2 =========================
+
+============================== MODEL =================================
+
+interpretation( 2, [number=1, seconds=0], [
+
+        function(c_carbon, [ 0 ]),
+
+        function(c_mixture, [ 1 ]),
+
+        function(c1, [ 0 ]),
+
+        function(f2(_), [ 0, 0 ]),
+
+        function(f1(_,_), [
+			   0, 0,
+			   0, 0 ]),
+
+        relation(p_alkane(_), [ 0, 0 ]),
+
+        relation(p_chemical_compound(_), [ 0, 0 ]),
+
+        relation(p_hydrocarbon(_), [ 0, 0 ]),
+
+        relation(p_organic_compound(_), [ 0, 0 ]),
+
+        relation(p_contain(_,_), [
+			   0, 0,
+			   0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 2.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=37, kept=37.
+Selections=14, assignments=14, propagations=7, current_models=1.
+Rewrite_terms=88, rewrite_bools=63, indexes=49.
+Rules_from_neg_clauses=1, cross_offs=1.
+
+============================== end of statistics =====================
+
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+Exiting with 1 model.
+
+Process 29692 exit (max_models) Sat Oct 17 13:02:00 2026
+The process finished Sat Oct 17 13:02:00 2026
+
+=== Mace4 starting on domain size 2. ===
+
+------ process 29692 exit (max_models) ------

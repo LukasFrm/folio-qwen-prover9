@@ -1,0 +1,8 @@
+formulas(assumptions).
+(((((all v_x ((p_hydrocarbon(v_x) -> p_organic_compound(v_x))) & all v_x ((p_alkane(v_x) -> p_hydrocarbon(v_x)))) & all v_x ((p_organic_compound(v_x) -> p_chemical_compound(v_x)))) & all v_x ((p_organic_compound(v_x) -> p_contain(v_x, c_carbon)))) & all v_x ((p_chemical_compound(v_x) -> -(exists v_y ((p_contain(v_x, v_y) & all v_z ((p_contain(v_x, v_z) -> (v_z = v_y))))))))) & -(((p_chemical_compound(c_mixture) | exists v_y ((p_contain(c_mixture, v_y) & all v_z ((p_contain(c_mixture, v_z) -> (v_z = v_y)))))) & -(p_chemical_compound(c_mixture) & exists v_y ((p_contain(c_mixture, v_y) & all v_z ((p_contain(c_mixture, v_z) -> (v_z = v_y))))))))).
+-(c_carbon = c_mixture).
+end_of_list.
+
+formulas(goals).
+-((p_alkane(c_mixture) & p_contain(c_mixture, c_carbon))).
+end_of_list.

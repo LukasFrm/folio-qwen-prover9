@@ -1,0 +1,169 @@
+============================== Prover9 ===============================
+Prover9 (64) version 2009-11A, November 2009.
+Process 29734 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Sat Oct 17 13:02:00 2026
+The command was "prover9 -t 5".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(assumptions).
+(all v_x (p_animal(v_x) & p_bark(v_x) -> -p_like(c_jane,v_x))) & (all v_x (p_dog(v_x) -> p_animal(v_x) & p_bark(v_x))) & (all v_x (p_animal(v_x) & p_jump(v_x) -> p_like(c_jane,v_x))) & (all v_x (p_animal(v_x) & p_has_legs(v_x) -> p_jump(v_x))) & (all v_x (p_animal(v_x) & p_terricolous(v_x) -> p_has_legs(v_x))) & p_animal(c_kiki) & (-p_jump(c_kiki) & -p_has_legs(c_kiki) -> p_terricolous(c_kiki) | p_has_legs(c_kiki)).
+c_jane != c_kiki.
+end_of_list.
+
+formulas(goals).
+-(p_bark(c_kiki) & p_dog(c_kiki)).
+end_of_list.
+
+============================== end of input ==========================
+
+% From the command line: assign(max_seconds, 5).
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 (all v_x (p_animal(v_x) & p_bark(v_x) -> -p_like(c_jane,v_x))) & (all v_x (p_dog(v_x) -> p_animal(v_x) & p_bark(v_x))) & (all v_x (p_animal(v_x) & p_jump(v_x) -> p_like(c_jane,v_x))) & (all v_x (p_animal(v_x) & p_has_legs(v_x) -> p_jump(v_x))) & (all v_x (p_animal(v_x) & p_terricolous(v_x) -> p_has_legs(v_x))) & p_animal(c_kiki) & (-p_jump(c_kiki) & -p_has_legs(c_kiki) -> p_terricolous(c_kiki) | p_has_legs(c_kiki)) # label(non_clause).  [assumption].
+2 -(p_bark(c_kiki) & p_dog(c_kiki)) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== PROCESS INITIAL CLAUSES ===============
+
+% Clauses before input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+-p_animal(x) | -p_bark(x) | -p_like(c_jane,x).  [clausify(1)].
+-p_dog(x) | p_animal(x).  [clausify(1)].
+-p_dog(x) | p_bark(x).  [clausify(1)].
+-p_animal(x) | -p_jump(x) | p_like(c_jane,x).  [clausify(1)].
+-p_animal(x) | -p_has_legs(x) | p_jump(x).  [clausify(1)].
+-p_animal(x) | -p_terricolous(x) | p_has_legs(x).  [clausify(1)].
+p_animal(c_kiki).  [clausify(1)].
+p_jump(c_kiki) | p_has_legs(c_kiki) | p_terricolous(c_kiki).  [clausify(1)].
+c_jane != c_kiki.  [assumption].
+p_bark(c_kiki).  [deny(2)].
+p_dog(c_kiki).  [deny(2)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== PREDICATE ELIMINATION =================
+
+Eliminating p_animal/1
+3 -p_dog(x) | p_animal(x).  [clausify(1)].
+4 -p_animal(x) | -p_bark(x) | -p_like(c_jane,x).  [clausify(1)].
+Derived: -p_dog(x) | -p_bark(x) | -p_like(c_jane,x).  [resolve(3,b,4,a)].
+5 -p_animal(x) | -p_jump(x) | p_like(c_jane,x).  [clausify(1)].
+Derived: -p_jump(x) | p_like(c_jane,x) | -p_dog(x).  [resolve(5,a,3,b)].
+6 -p_animal(x) | -p_has_legs(x) | p_jump(x).  [clausify(1)].
+Derived: -p_has_legs(x) | p_jump(x) | -p_dog(x).  [resolve(6,a,3,b)].
+7 -p_animal(x) | -p_terricolous(x) | p_has_legs(x).  [clausify(1)].
+Derived: -p_terricolous(x) | p_has_legs(x) | -p_dog(x).  [resolve(7,a,3,b)].
+8 p_animal(c_kiki).  [clausify(1)].
+Derived: -p_bark(c_kiki) | -p_like(c_jane,c_kiki).  [resolve(8,a,4,a)].
+Derived: -p_jump(c_kiki) | p_like(c_jane,c_kiki).  [resolve(8,a,5,a)].
+Derived: -p_has_legs(c_kiki) | p_jump(c_kiki).  [resolve(8,a,6,a)].
+Derived: -p_terricolous(c_kiki) | p_has_legs(c_kiki).  [resolve(8,a,7,a)].
+
+Eliminating p_dog/1
+9 p_dog(c_kiki).  [deny(2)].
+10 -p_dog(x) | p_bark(x).  [clausify(1)].
+Derived: p_bark(c_kiki).  [resolve(9,a,10,a)].
+11 -p_dog(x) | -p_bark(x) | -p_like(c_jane,x).  [resolve(3,b,4,a)].
+12 -p_jump(x) | p_like(c_jane,x) | -p_dog(x).  [resolve(5,a,3,b)].
+13 -p_has_legs(x) | p_jump(x) | -p_dog(x).  [resolve(6,a,3,b)].
+14 -p_terricolous(x) | p_has_legs(x) | -p_dog(x).  [resolve(7,a,3,b)].
+
+============================== end predicate elimination =============
+
+Auto_denials:  (non-Horn, no changes).
+
+Term ordering decisions:
+Predicate symbol precedence:  predicate_order([ =, p_has_legs, p_jump, p_bark, p_terricolous, p_like ]).
+Function symbol precedence:  function_order([ c_kiki, c_jane ]).
+After inverse_order:  (no changes).
+Unfolding symbols: (none).
+
+Auto_inference settings:
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
+
+kept:      15 p_jump(c_kiki) | p_has_legs(c_kiki) | p_terricolous(c_kiki).  [clausify(1)].
+kept:      16 c_jane != c_kiki.  [assumption].
+kept:      17 p_bark(c_kiki).  [deny(2)].
+           18 -p_bark(c_kiki) | -p_like(c_jane,c_kiki).  [resolve(8,a,4,a)].
+kept:      19 -p_like(c_jane,c_kiki).  [copy(18),unit_del(a,17)].
+           20 -p_jump(c_kiki) | p_like(c_jane,c_kiki).  [resolve(8,a,5,a)].
+kept:      21 -p_jump(c_kiki).  [copy(20),unit_del(b,19)].
+           22 -p_has_legs(c_kiki) | p_jump(c_kiki).  [resolve(8,a,6,a)].
+kept:      23 -p_has_legs(c_kiki).  [copy(22),unit_del(b,21)].
+           24 -p_terricolous(c_kiki) | p_has_legs(c_kiki).  [resolve(8,a,7,a)].
+kept:      25 -p_terricolous(c_kiki).  [copy(24),unit_del(b,23)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 18.
+% Level of proof is 7.
+% Maximum clause weight is 6.000.
+% Given clauses 0.
+
+1 (all v_x (p_animal(v_x) & p_bark(v_x) -> -p_like(c_jane,v_x))) & (all v_x (p_dog(v_x) -> p_animal(v_x) & p_bark(v_x))) & (all v_x (p_animal(v_x) & p_jump(v_x) -> p_like(c_jane,v_x))) & (all v_x (p_animal(v_x) & p_has_legs(v_x) -> p_jump(v_x))) & (all v_x (p_animal(v_x) & p_terricolous(v_x) -> p_has_legs(v_x))) & p_animal(c_kiki) & (-p_jump(c_kiki) & -p_has_legs(c_kiki) -> p_terricolous(c_kiki) | p_has_legs(c_kiki)) # label(non_clause).  [assumption].
+2 -(p_bark(c_kiki) & p_dog(c_kiki)) # label(non_clause) # label(goal).  [goal].
+4 -p_animal(x) | -p_bark(x) | -p_like(c_jane,x).  [clausify(1)].
+5 -p_animal(x) | -p_jump(x) | p_like(c_jane,x).  [clausify(1)].
+6 -p_animal(x) | -p_has_legs(x) | p_jump(x).  [clausify(1)].
+7 -p_animal(x) | -p_terricolous(x) | p_has_legs(x).  [clausify(1)].
+8 p_animal(c_kiki).  [clausify(1)].
+15 p_jump(c_kiki) | p_has_legs(c_kiki) | p_terricolous(c_kiki).  [clausify(1)].
+17 p_bark(c_kiki).  [deny(2)].
+18 -p_bark(c_kiki) | -p_like(c_jane,c_kiki).  [resolve(8,a,4,a)].
+19 -p_like(c_jane,c_kiki).  [copy(18),unit_del(a,17)].
+20 -p_jump(c_kiki) | p_like(c_jane,c_kiki).  [resolve(8,a,5,a)].
+21 -p_jump(c_kiki).  [copy(20),unit_del(b,19)].
+22 -p_has_legs(c_kiki) | p_jump(c_kiki).  [resolve(8,a,6,a)].
+23 -p_has_legs(c_kiki).  [copy(22),unit_del(b,21)].
+24 -p_terricolous(c_kiki) | p_has_legs(c_kiki).  [resolve(8,a,7,a)].
+25 -p_terricolous(c_kiki).  [copy(24),unit_del(b,23)].
+26 $F.  [back_unit_del(15),unit_del(a,21),unit_del(b,23),unit_del(c,25)].
+
+============================== end of proof ==========================
+
+============================== STATISTICS ============================
+
+Given=0. Generated=9. Kept=7. proofs=1.
+Usable=0. Sos=3. Demods=0. Limbo=3, Disabled=21. Hints=0.
+Kept_by_rule=0, Deleted_by_rule=0.
+Forward_subsumed=1. Back_subsumed=0.
+Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=1.
+Demod_attempts=0. Demod_rewrites=0.
+Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=1.
+Megabytes=0.06.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+============================== end of statistics =====================
+
+============================== end of search =========================
+
+THEOREM PROVED
+
+Exiting with 1 proof.
+
+Process 29734 exit (max_proofs) Sat Oct 17 13:02:00 2026
+-------- Proof 1 -------- 
+
+THEOREM PROVED
+
+------ process 29734 exit (max_proofs) ------
+

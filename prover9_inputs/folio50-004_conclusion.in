@@ -1,0 +1,7 @@
+formulas(assumptions).
+(all v_x ((p_square(v_x) -> p_four_sided(v_x))) & all v_x ((p_four_sided(v_x) -> p_shape(v_x)))).
+end_of_list.
+
+formulas(goals).
+all v_x ((p_square(v_x) -> p_shape(v_x))).
+end_of_list.
