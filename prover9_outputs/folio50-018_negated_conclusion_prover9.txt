@@ -1,19 +1,28 @@
 ============================== Prover9 ===============================
 Prover9 (64) version 2009-11A, November 2009.
-Process 29636 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
-Sat Oct 17 13:02:00 2026
+Process 47210 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:08 2026
 The command was "prover9 -t 5".
 ============================== end of head ===========================
 
 ============================== INPUT =================================
 
 formulas(assumptions).
-(all v_x (p_baked_sweet(v_x) -> -p_spicy(v_x))) & (all v_x (p_cupcake(v_x) -> p_baked_sweet(v_x))) & (all v_x (p_mala_hotpot(v_x) -> p_spicy(v_x))) & (all v_x (p_product(v_x) & p_from(v_x,c_baked_by_melissa) -> p_cupcake(v_x))) & (p_spicy(c_dried_thai_chili) | p_mala_hotpot(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili)).
-c_baked_by_melissa != c_dried_thai_chili.
+(all v_x (p_listed_in(v_x,c_yelp_recommendation) -> -p_receive_many_negative_reviews(v_x))) & (all v_x ((exists v_y (p_have_rating(v_x,v_y) & p_greater_than(v_y,c_four))) -> p_listed_in(v_x,c_yelp_recommendation))) & (exists v_x (-p_provide(v_x,c_take_out_service) & p_receive_many_negative_reviews(v_x))) & (all v_x (p_popular_among(v_x,c_local_residents) -> (exists v_y (p_have_rating(v_x,v_y) & p_greater_than(v_y,c_four))))) & ((exists v_y (p_have_rating(c_hamden_plaza_subway,v_y) & p_greater_than(v_y,c_four))) | p_popular_among(c_hamden_plaza_subway,c_local_residents)).
+c_four != c_hamden_plaza_subway.
+c_four != c_local_residents.
+c_four != c_take_out_service.
+c_four != c_yelp_recommendation.
+c_hamden_plaza_subway != c_local_residents.
+c_hamden_plaza_subway != c_take_out_service.
+c_hamden_plaza_subway != c_yelp_recommendation.
+c_local_residents != c_take_out_service.
+c_local_residents != c_yelp_recommendation.
+c_take_out_service != c_yelp_recommendation.
 end_of_list.
 
 formulas(goals).
---(p_product(c_dried_thai_chili) & p_from(c_dried_thai_chili,c_baked_by_melissa)).
+-(p_provide(c_hamden_plaza_subway,c_take_out_service) & p_receive_many_negative_reviews(c_hamden_plaza_subway) -> (exists v_y (p_have_rating(c_hamden_plaza_subway,v_y) & p_greater_than(v_y,c_four))) & -p_provide(c_hamden_plaza_subway,c_take_out_service)).
 end_of_list.
 
 ============================== end of input ==========================
@@ -23,8 +32,8 @@ end_of_list.
 ============================== PROCESS NON-CLAUSAL FORMULAS ==========
 
 % Formulas that are not ordinary clauses:
-1 (all v_x (p_baked_sweet(v_x) -> -p_spicy(v_x))) & (all v_x (p_cupcake(v_x) -> p_baked_sweet(v_x))) & (all v_x (p_mala_hotpot(v_x) -> p_spicy(v_x))) & (all v_x (p_product(v_x) & p_from(v_x,c_baked_by_melissa) -> p_cupcake(v_x))) & (p_spicy(c_dried_thai_chili) | p_mala_hotpot(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili)) # label(non_clause).  [assumption].
-2 --(p_product(c_dried_thai_chili) & p_from(c_dried_thai_chili,c_baked_by_melissa)) # label(non_clause) # label(goal).  [goal].
+1 (all v_x (p_listed_in(v_x,c_yelp_recommendation) -> -p_receive_many_negative_reviews(v_x))) & (all v_x ((exists v_y (p_have_rating(v_x,v_y) & p_greater_than(v_y,c_four))) -> p_listed_in(v_x,c_yelp_recommendation))) & (exists v_x (-p_provide(v_x,c_take_out_service) & p_receive_many_negative_reviews(v_x))) & (all v_x (p_popular_among(v_x,c_local_residents) -> (exists v_y (p_have_rating(v_x,v_y) & p_greater_than(v_y,c_four))))) & ((exists v_y (p_have_rating(c_hamden_plaza_subway,v_y) & p_greater_than(v_y,c_four))) | p_popular_among(c_hamden_plaza_subway,c_local_residents)) # label(non_clause).  [assumption].
+2 -(p_provide(c_hamden_plaza_subway,c_take_out_service) & p_receive_many_negative_reviews(c_hamden_plaza_subway) -> (exists v_y (p_have_rating(c_hamden_plaza_subway,v_y) & p_greater_than(v_y,c_four))) & -p_provide(c_hamden_plaza_subway,c_take_out_service)) # label(non_clause) # label(goal).  [goal].
 
 ============================== end of process non-clausal formulas ===
 
@@ -36,13 +45,25 @@ formulas(usable).
 end_of_list.
 
 formulas(sos).
--p_baked_sweet(x) | -p_spicy(x).  [clausify(1)].
--p_cupcake(x) | p_baked_sweet(x).  [clausify(1)].
--p_mala_hotpot(x) | p_spicy(x).  [clausify(1)].
--p_product(x) | -p_from(x,c_baked_by_melissa) | p_cupcake(x).  [clausify(1)].
-p_spicy(c_dried_thai_chili) | p_mala_hotpot(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili).  [clausify(1)].
-c_baked_by_melissa != c_dried_thai_chili.  [assumption].
--p_product(c_dried_thai_chili) | -p_from(c_dried_thai_chili,c_baked_by_melissa).  [deny(2)].
+-p_listed_in(x,c_yelp_recommendation) | -p_receive_many_negative_reviews(x).  [clausify(1)].
+-p_have_rating(x,y) | -p_greater_than(y,c_four) | p_listed_in(x,c_yelp_recommendation).  [clausify(1)].
+-p_provide(c1,c_take_out_service).  [clausify(1)].
+p_receive_many_negative_reviews(c1).  [clausify(1)].
+-p_popular_among(x,c_local_residents) | p_have_rating(x,f1(x)).  [clausify(1)].
+-p_popular_among(x,c_local_residents) | p_greater_than(f1(x),c_four).  [clausify(1)].
+p_have_rating(c_hamden_plaza_subway,c2) | p_popular_among(c_hamden_plaza_subway,c_local_residents).  [clausify(1)].
+p_greater_than(c2,c_four) | p_popular_among(c_hamden_plaza_subway,c_local_residents).  [clausify(1)].
+c_four != c_hamden_plaza_subway.  [assumption].
+c_four != c_local_residents.  [assumption].
+c_four != c_take_out_service.  [assumption].
+c_four != c_yelp_recommendation.  [assumption].
+c_hamden_plaza_subway != c_local_residents.  [assumption].
+c_hamden_plaza_subway != c_take_out_service.  [assumption].
+c_hamden_plaza_subway != c_yelp_recommendation.  [assumption].
+c_local_residents != c_take_out_service.  [assumption].
+c_local_residents != c_yelp_recommendation.  [assumption].
+c_take_out_service != c_yelp_recommendation.  [assumption].
+-p_provide(c_hamden_plaza_subway,c_take_out_service) | -p_receive_many_negative_reviews(c_hamden_plaza_subway).  [deny(2)].
 end_of_list.
 
 formulas(demodulators).
@@ -50,55 +71,57 @@ end_of_list.
 
 ============================== PREDICATE ELIMINATION =================
 
-Eliminating p_spicy/1
-3 -p_mala_hotpot(x) | p_spicy(x).  [clausify(1)].
-4 -p_baked_sweet(x) | -p_spicy(x).  [clausify(1)].
-Derived: -p_mala_hotpot(x) | -p_baked_sweet(x).  [resolve(3,b,4,b)].
-5 p_spicy(c_dried_thai_chili) | p_mala_hotpot(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili).  [clausify(1)].
-Derived: p_mala_hotpot(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili).  [resolve(5,a,4,b)].
-
-Eliminating p_cupcake/1
-6 -p_product(x) | -p_from(x,c_baked_by_melissa) | p_cupcake(x).  [clausify(1)].
-7 -p_cupcake(x) | p_baked_sweet(x).  [clausify(1)].
-Derived: -p_product(x) | -p_from(x,c_baked_by_melissa) | p_baked_sweet(x).  [resolve(6,c,7,a)].
-
-Eliminating p_mala_hotpot/1
-8 p_mala_hotpot(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili).  [resolve(5,a,4,b)].
-9 -p_mala_hotpot(x) | -p_baked_sweet(x).  [resolve(3,b,4,b)].
-Derived: -p_baked_sweet(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili).  [resolve(8,a,9,a)].
+Eliminating p_have_rating/2
+3 -p_popular_among(x,c_local_residents) | p_have_rating(x,f1(x)).  [clausify(1)].
+4 -p_have_rating(x,y) | -p_greater_than(y,c_four) | p_listed_in(x,c_yelp_recommendation).  [clausify(1)].
+Derived: -p_popular_among(x,c_local_residents) | -p_greater_than(f1(x),c_four) | p_listed_in(x,c_yelp_recommendation).  [resolve(3,b,4,a)].
+5 p_have_rating(c_hamden_plaza_subway,c2) | p_popular_among(c_hamden_plaza_subway,c_local_residents).  [clausify(1)].
+Derived: p_popular_among(c_hamden_plaza_subway,c_local_residents) | -p_greater_than(c2,c_four) | p_listed_in(c_hamden_plaza_subway,c_yelp_recommendation).  [resolve(5,a,4,a)].
 
 ============================== end predicate elimination =============
 
-Auto_denials:
-  % assign(max_proofs, 3).  % (Horn set with more than one neg. clause)
-
-WARNING, because some of the denials share constants,
-some of the denials or their descendents may be subsumed,
-preventing the target number of proofs from being found.
-The shared constants are:  c_dried_thai_chili, c_baked_by_melissa.
+Auto_denials:  (non-Horn, no changes).
 
 Term ordering decisions:
-Predicate symbol precedence:  predicate_order([ =, p_baked_sweet, p_product, p_from ]).
-Function symbol precedence:  function_order([ c_baked_by_melissa, c_dried_thai_chili ]).
+Predicate symbol precedence:  predicate_order([ =, p_receive_many_negative_reviews, p_greater_than, p_popular_among, p_listed_in, p_provide ]).
+Function symbol precedence:  function_order([ c_four, c_local_residents, c_hamden_plaza_subway, c_yelp_recommendation, c_take_out_service, c1, c2, f1 ]).
 After inverse_order:  (no changes).
 Unfolding symbols: (none).
 
 Auto_inference settings:
-  % set(neg_binary_resolution).  % (HNE depth_diff=0)
-  % clear(ordered_res).  % (HNE depth_diff=0)
-  % set(ur_resolution).  % (HNE depth_diff=0)
-    % set(ur_resolution) -> set(pos_ur_resolution).
-    % set(ur_resolution) -> set(neg_ur_resolution).
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
 
 Auto_process settings:
-  % set(unit_deletion).  % (Horn set with negative nonunits)
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
 
-           10 c_baked_by_melissa != c_dried_thai_chili.  [assumption].
-kept:      11 c_dried_thai_chili != c_baked_by_melissa.  [copy(10),flip(a)].
-kept:      12 -p_product(c_dried_thai_chili) | -p_from(c_dried_thai_chili,c_baked_by_melissa).  [deny(2)].
-kept:      13 -p_product(x) | -p_from(x,c_baked_by_melissa) | p_baked_sweet(x).  [resolve(6,c,7,a)].
-           14 -p_baked_sweet(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili).  [resolve(8,a,9,a)].
-kept:      15 -p_baked_sweet(c_dried_thai_chili).  [copy(14),merge(b),merge(c)].
+kept:      6 -p_listed_in(x,c_yelp_recommendation) | -p_receive_many_negative_reviews(x).  [clausify(1)].
+kept:      7 -p_provide(c1,c_take_out_service).  [clausify(1)].
+kept:      8 p_receive_many_negative_reviews(c1).  [clausify(1)].
+kept:      9 -p_popular_among(x,c_local_residents) | p_greater_than(f1(x),c_four).  [clausify(1)].
+kept:      10 p_greater_than(c2,c_four) | p_popular_among(c_hamden_plaza_subway,c_local_residents).  [clausify(1)].
+           11 c_four != c_hamden_plaza_subway.  [assumption].
+kept:      12 c_hamden_plaza_subway != c_four.  [copy(11),flip(a)].
+           13 c_four != c_local_residents.  [assumption].
+kept:      14 c_local_residents != c_four.  [copy(13),flip(a)].
+           15 c_four != c_take_out_service.  [assumption].
+kept:      16 c_take_out_service != c_four.  [copy(15),flip(a)].
+           17 c_four != c_yelp_recommendation.  [assumption].
+kept:      18 c_yelp_recommendation != c_four.  [copy(17),flip(a)].
+kept:      19 c_hamden_plaza_subway != c_local_residents.  [assumption].
+           20 c_hamden_plaza_subway != c_take_out_service.  [assumption].
+kept:      21 c_take_out_service != c_hamden_plaza_subway.  [copy(20),flip(a)].
+           22 c_hamden_plaza_subway != c_yelp_recommendation.  [assumption].
+kept:      23 c_yelp_recommendation != c_hamden_plaza_subway.  [copy(22),flip(a)].
+           24 c_local_residents != c_take_out_service.  [assumption].
+kept:      25 c_take_out_service != c_local_residents.  [copy(24),flip(a)].
+           26 c_local_residents != c_yelp_recommendation.  [assumption].
+kept:      27 c_yelp_recommendation != c_local_residents.  [copy(26),flip(a)].
+kept:      28 c_take_out_service != c_yelp_recommendation.  [assumption].
+kept:      29 -p_provide(c_hamden_plaza_subway,c_take_out_service) | -p_receive_many_negative_reviews(c_hamden_plaza_subway).  [deny(2)].
+kept:      30 -p_popular_among(x,c_local_residents) | -p_greater_than(f1(x),c_four) | p_listed_in(x,c_yelp_recommendation).  [resolve(3,b,4,a)].
+kept:      31 p_popular_among(c_hamden_plaza_subway,c_local_residents) | -p_greater_than(c2,c_four) | p_listed_in(c_hamden_plaza_subway,c_yelp_recommendation).  [resolve(5,a,4,a)].
 
 ============================== end of process initial clauses ========
 
@@ -110,10 +133,24 @@ formulas(usable).
 end_of_list.
 
 formulas(sos).
-11 c_dried_thai_chili != c_baked_by_melissa.  [copy(10),flip(a)].
-12 -p_product(c_dried_thai_chili) | -p_from(c_dried_thai_chili,c_baked_by_melissa).  [deny(2)].
-13 -p_product(x) | -p_from(x,c_baked_by_melissa) | p_baked_sweet(x).  [resolve(6,c,7,a)].
-15 -p_baked_sweet(c_dried_thai_chili).  [copy(14),merge(b),merge(c)].
+6 -p_listed_in(x,c_yelp_recommendation) | -p_receive_many_negative_reviews(x).  [clausify(1)].
+7 -p_provide(c1,c_take_out_service).  [clausify(1)].
+8 p_receive_many_negative_reviews(c1).  [clausify(1)].
+9 -p_popular_among(x,c_local_residents) | p_greater_than(f1(x),c_four).  [clausify(1)].
+10 p_greater_than(c2,c_four) | p_popular_among(c_hamden_plaza_subway,c_local_residents).  [clausify(1)].
+12 c_hamden_plaza_subway != c_four.  [copy(11),flip(a)].
+14 c_local_residents != c_four.  [copy(13),flip(a)].
+16 c_take_out_service != c_four.  [copy(15),flip(a)].
+18 c_yelp_recommendation != c_four.  [copy(17),flip(a)].
+19 c_hamden_plaza_subway != c_local_residents.  [assumption].
+21 c_take_out_service != c_hamden_plaza_subway.  [copy(20),flip(a)].
+23 c_yelp_recommendation != c_hamden_plaza_subway.  [copy(22),flip(a)].
+25 c_take_out_service != c_local_residents.  [copy(24),flip(a)].
+27 c_yelp_recommendation != c_local_residents.  [copy(26),flip(a)].
+28 c_take_out_service != c_yelp_recommendation.  [assumption].
+29 -p_provide(c_hamden_plaza_subway,c_take_out_service) | -p_receive_many_negative_reviews(c_hamden_plaza_subway).  [deny(2)].
+30 -p_popular_among(x,c_local_residents) | -p_greater_than(f1(x),c_four) | p_listed_in(x,c_yelp_recommendation).  [resolve(3,b,4,a)].
+31 p_popular_among(c_hamden_plaza_subway,c_local_residents) | -p_greater_than(c2,c_four) | p_listed_in(c_hamden_plaza_subway,c_yelp_recommendation).  [resolve(5,a,4,a)].
 end_of_list.
 
 formulas(demodulators).
@@ -125,26 +162,64 @@ end_of_list.
 
 % Starting search at 0.00 seconds.
 
-given #1 (I,wt=3): 11 c_dried_thai_chili != c_baked_by_melissa.  [copy(10),flip(a)].
+given #1 (I,wt=5): 6 -p_listed_in(x,c_yelp_recommendation) | -p_receive_many_negative_reviews(x).  [clausify(1)].
 
-given #2 (I,wt=5): 12 -p_product(c_dried_thai_chili) | -p_from(c_dried_thai_chili,c_baked_by_melissa).  [deny(2)].
+given #2 (I,wt=3): 7 -p_provide(c1,c_take_out_service).  [clausify(1)].
 
-given #3 (I,wt=7): 13 -p_product(x) | -p_from(x,c_baked_by_melissa) | p_baked_sweet(x).  [resolve(6,c,7,a)].
+given #3 (I,wt=2): 8 p_receive_many_negative_reviews(c1).  [clausify(1)].
 
-given #4 (I,wt=2): 15 -p_baked_sweet(c_dried_thai_chili).  [copy(14),merge(b),merge(c)].
+given #4 (I,wt=7): 9 -p_popular_among(x,c_local_residents) | p_greater_than(f1(x),c_four).  [clausify(1)].
+
+given #5 (I,wt=6): 10 p_greater_than(c2,c_four) | p_popular_among(c_hamden_plaza_subway,c_local_residents).  [clausify(1)].
+
+given #6 (I,wt=3): 12 c_hamden_plaza_subway != c_four.  [copy(11),flip(a)].
+
+given #7 (I,wt=3): 14 c_local_residents != c_four.  [copy(13),flip(a)].
+
+given #8 (I,wt=3): 16 c_take_out_service != c_four.  [copy(15),flip(a)].
+
+given #9 (I,wt=3): 18 c_yelp_recommendation != c_four.  [copy(17),flip(a)].
+
+given #10 (I,wt=3): 19 c_hamden_plaza_subway != c_local_residents.  [assumption].
+
+given #11 (I,wt=3): 21 c_take_out_service != c_hamden_plaza_subway.  [copy(20),flip(a)].
+
+given #12 (I,wt=3): 23 c_yelp_recommendation != c_hamden_plaza_subway.  [copy(22),flip(a)].
+
+given #13 (I,wt=3): 25 c_take_out_service != c_local_residents.  [copy(24),flip(a)].
+
+given #14 (I,wt=3): 27 c_yelp_recommendation != c_local_residents.  [copy(26),flip(a)].
+
+given #15 (I,wt=3): 28 c_take_out_service != c_yelp_recommendation.  [assumption].
+
+given #16 (I,wt=5): 29 -p_provide(c_hamden_plaza_subway,c_take_out_service) | -p_receive_many_negative_reviews(c_hamden_plaza_subway).  [deny(2)].
+
+given #17 (I,wt=10): 30 -p_popular_among(x,c_local_residents) | -p_greater_than(f1(x),c_four) | p_listed_in(x,c_yelp_recommendation).  [resolve(3,b,4,a)].
+
+given #18 (I,wt=9): 31 p_popular_among(c_hamden_plaza_subway,c_local_residents) | -p_greater_than(c2,c_four) | p_listed_in(c_hamden_plaza_subway,c_yelp_recommendation).  [resolve(5,a,4,a)].
+
+given #19 (A,wt=3): 32 -p_listed_in(c1,c_yelp_recommendation).  [ur(6,b,8,a)].
+
+given #20 (T,wt=7): 33 p_greater_than(c2,c_four) | p_greater_than(f1(c_hamden_plaza_subway),c_four).  [resolve(10,b,9,a)].
+
+given #21 (T,wt=10): 34 -p_greater_than(f1(c_hamden_plaza_subway),c_four) | p_listed_in(c_hamden_plaza_subway,c_yelp_recommendation) | p_greater_than(c2,c_four).  [resolve(30,a,10,b)].
+
+given #22 (T,wt=6): 35 p_listed_in(c_hamden_plaza_subway,c_yelp_recommendation) | p_greater_than(c2,c_four).  [resolve(34,a,33,b),merge(c)].
+
+given #23 (T,wt=5): 36 p_greater_than(c2,c_four) | -p_receive_many_negative_reviews(c_hamden_plaza_subway).  [resolve(35,a,6,a)].
 
 ============================== STATISTICS ============================
 
-Given=4. Generated=5. Kept=4. proofs=0.
-Usable=4. Sos=0. Demods=0. Limbo=0, Disabled=11. Hints=0.
+Given=23. Generated=23. Kept=23. proofs=0.
+Usable=22. Sos=0. Demods=0. Limbo=0, Disabled=22. Hints=0.
 Kept_by_rule=0, Deleted_by_rule=0.
-Forward_subsumed=1. Back_subsumed=0.
+Forward_subsumed=0. Back_subsumed=1.
 Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
 New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
 Demod_attempts=0. Demod_rewrites=0.
 Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
-Nonunit_fsub_feature_tests=1. Nonunit_bsub_feature_tests=2.
-Megabytes=0.04.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=11.
+Megabytes=0.08.
 User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
 
 ============================== end of statistics =====================
@@ -155,12 +230,9 @@ SEARCH FAILED
 
 Exiting with failure.
 
-Process 29636 exit (sos_empty) Sat Oct 17 13:02:00 2026
-
-WARNING: denials share constants (see output).
-
+Process 47210 exit (sos_empty) Fri Oct 23 14:35:08 2026
 
 SEARCH FAILED
 
------- process 29636 exit (sos_empty) ------
+------ process 47210 exit (sos_empty) ------
 

@@ -1,7 +1,7 @@
 ============================== Mace4 =================================
 Mace4 (64) version 2009-11A, November 2009.
-Process 29670 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
-Sat Oct 17 13:02:00 2026
+Process 47256 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:08 2026
 The command was "mace4 -t 5 -n 2 -N 8".
 ============================== end of head ===========================
 
@@ -171,8 +171,8 @@ User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
 
 Exiting with 1 model.
 
-Process 29670 exit (max_models) Sat Oct 17 13:02:00 2026
-The process finished Sat Oct 17 13:02:00 2026
+Process 47256 exit (max_models) Fri Oct 23 14:35:08 2026
+The process finished Fri Oct 23 14:35:08 2026
 
 === Mace4 starting on domain size 2. ===
 
@@ -182,4 +182,4 @@ The process finished Sat Oct 17 13:02:00 2026
 
 === Mace4 starting on domain size 5. ===
 
------- process 29670 exit (max_models) ------
+------ process 47256 exit (max_models) ------

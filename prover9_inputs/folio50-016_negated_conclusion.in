@@ -1,62 +1,8 @@
 formulas(assumptions).
-(((((((all v_x (((p_at(v_x, c_marys_school) & p_work_in(v_x, c_student_job, c_campus)) -> p_need_to_earn_money_to_help_pay_for(v_x, c_college_tuition))) & all v_x (((p_at(v_x, c_marys_school) & p_order_frequently(v_x, c_takeout)) -> p_work_in(v_x, c_student_job, c_campus)))) & all v_x ((p_at(v_x, c_marys_school) -> (p_order_frequently(v_x, c_takeout) | p_enjoy(v_x, c_dining_hall_meal))))) & all v_x (((p_at(v_x, c_marys_school) & p_enjoy(v_x, c_dining_hall_meal)) -> -(p_picky_eater(v_x))))) & all v_x (((p_at(v_x, c_marys_school) & p_enjoy(v_x, c_dining_hall_meal)) -> (p_spend(v_x, c_a_lot_of_time, c_eating, c_dining_hall) & p_spend(v_x, c_a_lot_of_time, c_catching_up_with_friends, c_dining_hall))))) & p_at(c_hannah, c_marys_school)) & p_work_in(c_hannah, c_student_job, c_campus)) & (p_need_to_earn_money_to_help_pay_for(c_hannah, c_college_tuition) -> (-(p_picky_eater(c_hannah)) & -(p_need_to_earn_money_to_help_pay_for(c_hannah, c_college_tuition))))).
--(c_a_lot_of_time = c_campus).
--(c_a_lot_of_time = c_catching_up_with_friends).
--(c_a_lot_of_time = c_college_tuition).
--(c_a_lot_of_time = c_dining_hall).
--(c_a_lot_of_time = c_dining_hall_meal).
--(c_a_lot_of_time = c_eating).
--(c_a_lot_of_time = c_hannah).
--(c_a_lot_of_time = c_marys_school).
--(c_a_lot_of_time = c_student_job).
--(c_a_lot_of_time = c_takeout).
--(c_campus = c_catching_up_with_friends).
--(c_campus = c_college_tuition).
--(c_campus = c_dining_hall).
--(c_campus = c_dining_hall_meal).
--(c_campus = c_eating).
--(c_campus = c_hannah).
--(c_campus = c_marys_school).
--(c_campus = c_student_job).
--(c_campus = c_takeout).
--(c_catching_up_with_friends = c_college_tuition).
--(c_catching_up_with_friends = c_dining_hall).
--(c_catching_up_with_friends = c_dining_hall_meal).
--(c_catching_up_with_friends = c_eating).
--(c_catching_up_with_friends = c_hannah).
--(c_catching_up_with_friends = c_marys_school).
--(c_catching_up_with_friends = c_student_job).
--(c_catching_up_with_friends = c_takeout).
--(c_college_tuition = c_dining_hall).
--(c_college_tuition = c_dining_hall_meal).
--(c_college_tuition = c_eating).
--(c_college_tuition = c_hannah).
--(c_college_tuition = c_marys_school).
--(c_college_tuition = c_student_job).
--(c_college_tuition = c_takeout).
--(c_dining_hall = c_dining_hall_meal).
--(c_dining_hall = c_eating).
--(c_dining_hall = c_hannah).
--(c_dining_hall = c_marys_school).
--(c_dining_hall = c_student_job).
--(c_dining_hall = c_takeout).
--(c_dining_hall_meal = c_eating).
--(c_dining_hall_meal = c_hannah).
--(c_dining_hall_meal = c_marys_school).
--(c_dining_hall_meal = c_student_job).
--(c_dining_hall_meal = c_takeout).
--(c_eating = c_hannah).
--(c_eating = c_marys_school).
--(c_eating = c_student_job).
--(c_eating = c_takeout).
--(c_hannah = c_marys_school).
--(c_hannah = c_student_job).
--(c_hannah = c_takeout).
--(c_marys_school = c_student_job).
--(c_marys_school = c_takeout).
--(c_student_job = c_takeout).
+((((all v_x ((p_baked_sweet(v_x) -> -(p_spicy(v_x)))) & all v_x ((p_cupcake(v_x) -> p_baked_sweet(v_x)))) & all v_x ((p_mala_hotpot(v_x) -> p_spicy(v_x)))) & all v_x (((p_product(v_x) & p_from(v_x, c_baked_by_melissa)) -> p_cupcake(v_x)))) & ((p_spicy(c_dried_thai_chili) | p_mala_hotpot(c_dried_thai_chili)) | -(p_baked_sweet(c_dried_thai_chili)))).
+-(c_baked_by_melissa = c_dried_thai_chili).
 end_of_list.
 
 formulas(goals).
--((((p_at(c_hannah, c_marys_school) & -(p_picky_eater(c_hannah))) & p_spend(c_hannah, c_a_lot_of_time, c_eating, c_dining_hall)) & p_spend(c_hannah, c_a_lot_of_time, c_catching_up_with_friends, c_dining_hall))).
+-((-((p_product(c_dried_thai_chili) & p_from(c_dried_thai_chili, c_baked_by_melissa))) & -(p_baked_sweet(c_dried_thai_chili)))).
 end_of_list.

@@ -6,5 +6,5 @@ formulas(assumptions).
 end_of_list.
 
 formulas(goals).
-p_fly_from(c_susan, c_lga_airport).
+p_fly_to(c_john, c_lga_airport).
 end_of_list.

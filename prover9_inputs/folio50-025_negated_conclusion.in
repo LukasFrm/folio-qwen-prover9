@@ -48,5 +48,5 @@ formulas(assumptions).
 end_of_list.
 
 formulas(goals).
--(p_provide_to(c_ets, c_financial_aid, c_tom)).
+-(exists v_x ((p_cost(c_gre, v_x) & p_cheaper(v_x, c_u_s_d300)))).
 end_of_list.

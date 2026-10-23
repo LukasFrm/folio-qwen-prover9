@@ -1,21 +1,21 @@
 ============================== Mace4 =================================
 Mace4 (64) version 2009-11A, November 2009.
-Process 29720 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
-Sat Oct 17 13:02:00 2026
+Process 47302 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:08 2026
 The command was "mace4 -t 5 -n 2 -N 8".
 ============================== end of head ===========================
 
 ============================== INPUT =================================
 
 formulas(assumptions).
-p_sporting_event(c_olympics) & p_last_summer_olympics(c_tokyoolympics) & p_most_medals(c_united_states,c_tokyoolympics).
-c_olympics != c_tokyoolympics.
-c_olympics != c_united_states.
-c_tokyoolympics != c_united_states.
+p_fly_to(c_susan,c_lga_airport) & (all v_x all v_y -(p_fly_from(v_x,v_y) & p_fly_to(v_x,v_y))) & p_fly_from(c_john,c_lga_airport).
+c_john != c_lga_airport.
+c_john != c_susan.
+c_lga_airport != c_susan.
 end_of_list.
 
 formulas(goals).
--p_last_summer_olympics(c_tokyoolympics).
+p_fly_from(c_susan,c_lga_airport).
 end_of_list.
 
 % From the command line: assign(max_seconds, 5).
@@ -31,21 +31,21 @@ end_of_list.
 ============================== PROCESS NON-CLAUSAL FORMULAS ==========
 
 % Formulas that are not ordinary clauses:
-1 p_sporting_event(c_olympics) & p_last_summer_olympics(c_tokyoolympics) & p_most_medals(c_united_states,c_tokyoolympics) # label(non_clause).  [assumption].
-2 -p_last_summer_olympics(c_tokyoolympics) # label(non_clause) # label(goal).  [goal].
+1 p_fly_to(c_susan,c_lga_airport) & (all v_x all v_y -(p_fly_from(v_x,v_y) & p_fly_to(v_x,v_y))) & p_fly_from(c_john,c_lga_airport) # label(non_clause).  [assumption].
+2 p_fly_from(c_susan,c_lga_airport) # label(non_clause) # label(goal).  [goal].
 
 ============================== end of process non-clausal formulas ===
 
 ============================== CLAUSES FOR SEARCH ====================
 
 formulas(mace4_clauses).
-p_sporting_event(c_olympics).
-p_last_summer_olympics(c_tokyoolympics).
-p_most_medals(c_united_states,c_tokyoolympics).
-c_olympics != c_tokyoolympics.
-c_olympics != c_united_states.
-c_tokyoolympics != c_united_states.
-p_last_summer_olympics(c_tokyoolympics).
+p_fly_to(c_susan,c_lga_airport).
+-p_fly_from(x,y) | -p_fly_to(x,y).
+p_fly_from(c_john,c_lga_airport).
+c_john != c_lga_airport.
+c_john != c_susan.
+c_lga_airport != c_susan.
+-p_fly_from(c_susan,c_lga_airport).
 end_of_list.
 
 ============================== end of clauses for search =============
@@ -59,9 +59,9 @@ end_of_list.
 For domain size 2.
 
 Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
-Ground clauses: seen=7, kept=7.
-Selections=1, assignments=1, propagations=4, current_models=0.
-Rewrite_terms=5, rewrite_bools=1, indexes=2.
+Ground clauses: seen=10, kept=10.
+Selections=1, assignments=1, propagations=2, current_models=0.
+Rewrite_terms=5, rewrite_bools=0, indexes=0.
 Rules_from_neg_clauses=2, cross_offs=2.
 
 ============================== end of statistics =====================
@@ -72,17 +72,18 @@ Rules_from_neg_clauses=2, cross_offs=2.
 
 interpretation( 3, [number=1, seconds=0], [
 
-        function(c_olympics, [ 0 ]),
+        function(c_john, [ 0 ]),
 
-        function(c_tokyoolympics, [ 1 ]),
+        function(c_lga_airport, [ 1 ]),
 
-        function(c_united_states, [ 2 ]),
+        function(c_susan, [ 2 ]),
 
-        relation(p_last_summer_olympics(_), [ 0, 1, 0 ]),
+        relation(p_fly_from(_,_), [
+			   0, 1, 0,
+			   0, 0, 0,
+			   0, 0, 0 ]),
 
-        relation(p_sporting_event(_), [ 1, 0, 0 ]),
-
-        relation(p_most_medals(_,_), [
+        relation(p_fly_to(_,_), [
 			   0, 0, 0,
 			   0, 0, 0,
 			   0, 1, 0 ])
@@ -95,9 +96,9 @@ interpretation( 3, [number=1, seconds=0], [
 For domain size 3.
 
 Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
-Ground clauses: seen=7, kept=7.
-Selections=14, assignments=15, propagations=5, current_models=1.
-Rewrite_terms=14, rewrite_bools=8, indexes=4.
+Ground clauses: seen=15, kept=15.
+Selections=16, assignments=17, propagations=5, current_models=1.
+Rewrite_terms=15, rewrite_bools=18, indexes=3.
 Rules_from_neg_clauses=1, cross_offs=3.
 
 ============================== end of statistics =====================
@@ -106,11 +107,11 @@ User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
 
 Exiting with 1 model.
 
-Process 29720 exit (max_models) Sat Oct 17 13:02:00 2026
-The process finished Sat Oct 17 13:02:00 2026
+Process 47302 exit (max_models) Fri Oct 23 14:35:08 2026
+The process finished Fri Oct 23 14:35:08 2026
 
 === Mace4 starting on domain size 2. ===
 
 === Mace4 starting on domain size 3. ===
 
------- process 29720 exit (max_models) ------
+------ process 47302 exit (max_models) ------

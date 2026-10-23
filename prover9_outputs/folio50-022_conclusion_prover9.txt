@@ -1,7 +1,7 @@
 ============================== Prover9 ===============================
 Prover9 (64) version 2009-11A, November 2009.
-Process 29649 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
-Sat Oct 17 13:02:00 2026
+Process 47221 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:08 2026
 The command was "prover9 -t 5".
 ============================== end of head ===========================
 
@@ -27,7 +27,7 @@ c_siblings != c_strangers.
 end_of_list.
 
 formulas(goals).
-p_spend_time_playing_with(c_luke,c_siblings).
+p_complain_about_often(c_luke,c_annoying_siblings).
 end_of_list.
 
 ============================== end of input ==========================
@@ -38,7 +38,7 @@ end_of_list.
 
 % Formulas that are not ordinary clauses:
 1 (all v_x (p_born_in(v_x,c_multiple_birth) -> p_spend_time_playing_with(v_x,c_siblings))) & (all v_x ((exists v_y (p_sibling(v_x,v_y) & p_born_together(v_x,v_y))) -> p_born_in(v_x,c_multiple_birth))) & (all v_x (p_complain_about_often(v_x,c_annoying_siblings) -> (exists v_y (p_sibling(v_x,v_y) & p_born_together(v_x,v_y))))) & (all v_x (p_live_at(v_x,c_home) -> -p_live_with(v_x,c_strangers))) & (all v_x (p_spend_time_playing_with(v_x,c_siblings) -> p_live_at(v_x,c_home))) & -((p_born_in(c_luke,c_multiple_birth) | p_live_with(c_luke,c_strangers)) & -(p_born_in(c_luke,c_multiple_birth) & p_live_with(c_luke,c_strangers))) # label(non_clause).  [assumption].
-2 p_spend_time_playing_with(c_luke,c_siblings) # label(non_clause) # label(goal).  [goal].
+2 p_complain_about_often(c_luke,c_annoying_siblings) # label(non_clause) # label(goal).  [goal].
 
 ============================== end of process non-clausal formulas ===
 
@@ -73,7 +73,7 @@ c_luke != c_strangers.  [assumption].
 c_multiple_birth != c_siblings.  [assumption].
 c_multiple_birth != c_strangers.  [assumption].
 c_siblings != c_strangers.  [assumption].
--p_spend_time_playing_with(c_luke,c_siblings).  [deny(2)].
+-p_complain_about_often(c_luke,c_annoying_siblings).  [deny(2)].
 end_of_list.
 
 formulas(demodulators).
@@ -142,7 +142,7 @@ kept:      30 c_siblings != c_multiple_birth.  [copy(29),flip(a)].
 kept:      32 c_strangers != c_multiple_birth.  [copy(31),flip(a)].
            33 c_siblings != c_strangers.  [assumption].
 kept:      34 c_strangers != c_siblings.  [copy(33),flip(a)].
-kept:      35 -p_spend_time_playing_with(c_luke,c_siblings).  [deny(2)].
+kept:      35 -p_complain_about_often(c_luke,c_annoying_siblings).  [deny(2)].
 kept:      36 -p_complain_about_often(x,c_annoying_siblings) | -p_born_together(x,f1(x)) | p_born_in(x,c_multiple_birth).  [resolve(3,b,4,a)].
 
 ============================== end of process initial clauses ========
@@ -176,7 +176,7 @@ formulas(sos).
 30 c_siblings != c_multiple_birth.  [copy(29),flip(a)].
 32 c_strangers != c_multiple_birth.  [copy(31),flip(a)].
 34 c_strangers != c_siblings.  [copy(33),flip(a)].
-35 -p_spend_time_playing_with(c_luke,c_siblings).  [deny(2)].
+35 -p_complain_about_often(c_luke,c_annoying_siblings).  [deny(2)].
 36 -p_complain_about_often(x,c_annoying_siblings) | -p_born_together(x,f1(x)) | p_born_in(x,c_multiple_birth).  [resolve(3,b,4,a)].
 end_of_list.
 
@@ -231,37 +231,35 @@ given #20 (I,wt=3): 32 c_strangers != c_multiple_birth.  [copy(31),flip(a)].
 
 given #21 (I,wt=3): 34 c_strangers != c_siblings.  [copy(33),flip(a)].
 
-given #22 (I,wt=3): 35 -p_spend_time_playing_with(c_luke,c_siblings).  [deny(2)].
+given #22 (I,wt=3): 35 -p_complain_about_often(c_luke,c_annoying_siblings).  [deny(2)].
 
 given #23 (I,wt=10): 36 -p_complain_about_often(x,c_annoying_siblings) | -p_born_together(x,f1(x)) | p_born_in(x,c_multiple_birth).  [resolve(3,b,4,a)].
 
 given #24 (A,wt=6): 37 -p_spend_time_playing_with(x,c_siblings) | -p_live_with(x,c_strangers).  [resolve(8,b,7,a)].
 
-given #25 (F,wt=3): 39 -p_born_in(c_luke,c_multiple_birth).  [resolve(35,a,5,b)].
+given #25 (F,wt=6): 38 -p_born_in(c_luke,c_multiple_birth) | -p_live_at(c_luke,c_home).  [resolve(9,b,7,b)].
 
-given #26 (F,wt=3): 40 -p_live_with(c_luke,c_strangers).  [back_unit_del(10),unit_del(b,39)].
+given #26 (F,wt=6): 39 -p_live_with(x,c_strangers) | -p_born_in(x,c_multiple_birth).  [resolve(37,a,5,b)].
 
-given #27 (F,wt=6): 41 -p_live_with(x,c_strangers) | -p_born_in(x,c_multiple_birth).  [resolve(37,a,5,b)].
+given #27 (F,wt=3): 41 -p_born_in(c_luke,c_multiple_birth).  [resolve(39,a,9,b),merge(b)].
 
-given #28 (F,wt=7): 42 -p_complain_about_often(c_luke,c_annoying_siblings) | -p_born_together(c_luke,f1(c_luke)).  [resolve(39,a,36,c)].
+given #28 (F,wt=3): 43 -p_live_with(c_luke,c_strangers).  [resolve(39,b,10,b),merge(b)].
 
-given #29 (A,wt=10): 43 -p_live_with(x,c_strangers) | -p_complain_about_often(x,c_annoying_siblings) | -p_born_together(x,f1(x)).  [resolve(41,b,36,c)].
+given #29 (A,wt=10): 42 -p_live_with(x,c_strangers) | -p_complain_about_often(x,c_annoying_siblings) | -p_born_together(x,f1(x)).  [resolve(39,b,36,c)].
 
-given #30 (F,wt=3): 44 -p_complain_about_often(c_luke,c_annoying_siblings).  [resolve(42,b,6,b),merge(b)].
-
-given #31 (F,wt=6): 45 -p_live_with(x,c_strangers) | -p_complain_about_often(x,c_annoying_siblings).  [resolve(43,c,6,b),merge(c)].
+given #30 (F,wt=6): 44 -p_live_with(x,c_strangers) | -p_complain_about_often(x,c_annoying_siblings).  [resolve(42,c,6,b),merge(c)].
 
 ============================== STATISTICS ============================
 
-Given=31. Generated=33. Kept=32. proofs=0.
-Usable=27. Sos=0. Demods=0. Limbo=0, Disabled=30. Hints=0.
+Given=30. Generated=36. Kept=31. proofs=0.
+Usable=26. Sos=0. Demods=0. Limbo=0, Disabled=30. Hints=0.
 Kept_by_rule=0, Deleted_by_rule=0.
-Forward_subsumed=1. Back_subsumed=4.
+Forward_subsumed=5. Back_subsumed=4.
 Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
 New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=1.
 Demod_attempts=0. Demod_rewrites=0.
 Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
-Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=17.
+Nonunit_fsub_feature_tests=2. Nonunit_bsub_feature_tests=17.
 Megabytes=0.09.
 User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
 
@@ -273,12 +271,12 @@ SEARCH FAILED
 
 Exiting with failure.
 
-Process 29649 exit (sos_empty) Sat Oct 17 13:02:00 2026
+Process 47221 exit (sos_empty) Fri Oct 23 14:35:08 2026
 
 WARNING: denials share constants (see output).
 
 
 SEARCH FAILED
 
------- process 29649 exit (sos_empty) ------
+------ process 47221 exit (sos_empty) ------
 

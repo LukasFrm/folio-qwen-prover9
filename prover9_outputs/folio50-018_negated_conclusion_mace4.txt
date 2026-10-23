@@ -1,19 +1,28 @@
 ============================== Mace4 =================================
 Mace4 (64) version 2009-11A, November 2009.
-Process 29637 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
-Sat Oct 17 13:02:00 2026
+Process 47211 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:08 2026
 The command was "mace4 -t 5 -n 2 -N 8".
 ============================== end of head ===========================
 
 ============================== INPUT =================================
 
 formulas(assumptions).
-(all v_x (p_baked_sweet(v_x) -> -p_spicy(v_x))) & (all v_x (p_cupcake(v_x) -> p_baked_sweet(v_x))) & (all v_x (p_mala_hotpot(v_x) -> p_spicy(v_x))) & (all v_x (p_product(v_x) & p_from(v_x,c_baked_by_melissa) -> p_cupcake(v_x))) & (p_spicy(c_dried_thai_chili) | p_mala_hotpot(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili)).
-c_baked_by_melissa != c_dried_thai_chili.
+(all v_x (p_listed_in(v_x,c_yelp_recommendation) -> -p_receive_many_negative_reviews(v_x))) & (all v_x ((exists v_y (p_have_rating(v_x,v_y) & p_greater_than(v_y,c_four))) -> p_listed_in(v_x,c_yelp_recommendation))) & (exists v_x (-p_provide(v_x,c_take_out_service) & p_receive_many_negative_reviews(v_x))) & (all v_x (p_popular_among(v_x,c_local_residents) -> (exists v_y (p_have_rating(v_x,v_y) & p_greater_than(v_y,c_four))))) & ((exists v_y (p_have_rating(c_hamden_plaza_subway,v_y) & p_greater_than(v_y,c_four))) | p_popular_among(c_hamden_plaza_subway,c_local_residents)).
+c_four != c_hamden_plaza_subway.
+c_four != c_local_residents.
+c_four != c_take_out_service.
+c_four != c_yelp_recommendation.
+c_hamden_plaza_subway != c_local_residents.
+c_hamden_plaza_subway != c_take_out_service.
+c_hamden_plaza_subway != c_yelp_recommendation.
+c_local_residents != c_take_out_service.
+c_local_residents != c_yelp_recommendation.
+c_take_out_service != c_yelp_recommendation.
 end_of_list.
 
 formulas(goals).
---(p_product(c_dried_thai_chili) & p_from(c_dried_thai_chili,c_baked_by_melissa)).
+-(p_provide(c_hamden_plaza_subway,c_take_out_service) & p_receive_many_negative_reviews(c_hamden_plaza_subway) -> (exists v_y (p_have_rating(c_hamden_plaza_subway,v_y) & p_greater_than(v_y,c_four))) & -p_provide(c_hamden_plaza_subway,c_take_out_service)).
 end_of_list.
 
 % From the command line: assign(max_seconds, 5).
@@ -29,21 +38,33 @@ end_of_list.
 ============================== PROCESS NON-CLAUSAL FORMULAS ==========
 
 % Formulas that are not ordinary clauses:
-1 (all v_x (p_baked_sweet(v_x) -> -p_spicy(v_x))) & (all v_x (p_cupcake(v_x) -> p_baked_sweet(v_x))) & (all v_x (p_mala_hotpot(v_x) -> p_spicy(v_x))) & (all v_x (p_product(v_x) & p_from(v_x,c_baked_by_melissa) -> p_cupcake(v_x))) & (p_spicy(c_dried_thai_chili) | p_mala_hotpot(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili)) # label(non_clause).  [assumption].
-2 --(p_product(c_dried_thai_chili) & p_from(c_dried_thai_chili,c_baked_by_melissa)) # label(non_clause) # label(goal).  [goal].
+1 (all v_x (p_listed_in(v_x,c_yelp_recommendation) -> -p_receive_many_negative_reviews(v_x))) & (all v_x ((exists v_y (p_have_rating(v_x,v_y) & p_greater_than(v_y,c_four))) -> p_listed_in(v_x,c_yelp_recommendation))) & (exists v_x (-p_provide(v_x,c_take_out_service) & p_receive_many_negative_reviews(v_x))) & (all v_x (p_popular_among(v_x,c_local_residents) -> (exists v_y (p_have_rating(v_x,v_y) & p_greater_than(v_y,c_four))))) & ((exists v_y (p_have_rating(c_hamden_plaza_subway,v_y) & p_greater_than(v_y,c_four))) | p_popular_among(c_hamden_plaza_subway,c_local_residents)) # label(non_clause).  [assumption].
+2 -(p_provide(c_hamden_plaza_subway,c_take_out_service) & p_receive_many_negative_reviews(c_hamden_plaza_subway) -> (exists v_y (p_have_rating(c_hamden_plaza_subway,v_y) & p_greater_than(v_y,c_four))) & -p_provide(c_hamden_plaza_subway,c_take_out_service)) # label(non_clause) # label(goal).  [goal].
 
 ============================== end of process non-clausal formulas ===
 
 ============================== CLAUSES FOR SEARCH ====================
 
 formulas(mace4_clauses).
--p_baked_sweet(x) | -p_spicy(x).
--p_cupcake(x) | p_baked_sweet(x).
--p_mala_hotpot(x) | p_spicy(x).
--p_product(x) | -p_from(x,c_baked_by_melissa) | p_cupcake(x).
-p_spicy(c_dried_thai_chili) | p_mala_hotpot(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili).
-c_baked_by_melissa != c_dried_thai_chili.
--p_product(c_dried_thai_chili) | -p_from(c_dried_thai_chili,c_baked_by_melissa).
+-p_listed_in(x,c_yelp_recommendation) | -p_receive_many_negative_reviews(x).
+-p_have_rating(x,y) | -p_greater_than(y,c_four) | p_listed_in(x,c_yelp_recommendation).
+-p_provide(c1,c_take_out_service).
+p_receive_many_negative_reviews(c1).
+-p_popular_among(x,c_local_residents) | p_have_rating(x,f1(x)).
+-p_popular_among(x,c_local_residents) | p_greater_than(f1(x),c_four).
+p_have_rating(c_hamden_plaza_subway,c2) | p_popular_among(c_hamden_plaza_subway,c_local_residents).
+p_greater_than(c2,c_four) | p_popular_among(c_hamden_plaza_subway,c_local_residents).
+c_four != c_hamden_plaza_subway.
+c_four != c_local_residents.
+c_four != c_take_out_service.
+c_four != c_yelp_recommendation.
+c_hamden_plaza_subway != c_local_residents.
+c_hamden_plaza_subway != c_take_out_service.
+c_hamden_plaza_subway != c_yelp_recommendation.
+c_local_residents != c_take_out_service.
+c_local_residents != c_yelp_recommendation.
+c_take_out_service != c_yelp_recommendation.
+-p_provide(c_hamden_plaza_subway,c_take_out_service) | -p_receive_many_negative_reviews(c_hamden_plaza_subway).
 end_of_list.
 
 ============================== end of clauses for search =============
@@ -52,40 +73,117 @@ end_of_list.
 
 ============================== DOMAIN SIZE 2 =========================
 
+============================== STATISTICS ============================
+
+For domain size 2.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=25, kept=25.
+Selections=1, assignments=1, propagations=4, current_models=0.
+Rewrite_terms=14, rewrite_bools=0, indexes=5.
+Rules_from_neg_clauses=4, cross_offs=4.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 3 =========================
+
+============================== STATISTICS ============================
+
+For domain size 3.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=33, kept=33.
+Selections=2, assignments=3, propagations=3, current_models=0.
+Rewrite_terms=33, rewrite_bools=2, indexes=11.
+Rules_from_neg_clauses=3, cross_offs=7.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 4 =========================
+
+============================== STATISTICS ============================
+
+For domain size 4.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=43, kept=43.
+Selections=3, assignments=6, propagations=2, current_models=0.
+Rewrite_terms=63, rewrite_bools=7, indexes=29.
+Rules_from_neg_clauses=2, cross_offs=9.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 5 =========================
+
 ============================== MODEL =================================
 
-interpretation( 2, [number=1, seconds=0], [
+interpretation( 5, [number=1, seconds=0], [
 
-        function(c_baked_by_melissa, [ 0 ]),
+        function(c_four, [ 0 ]),
 
-        function(c_dried_thai_chili, [ 1 ]),
+        function(c_hamden_plaza_subway, [ 1 ]),
 
-        relation(p_baked_sweet(_), [ 0, 0 ]),
+        function(c_local_residents, [ 2 ]),
 
-        relation(p_cupcake(_), [ 0, 0 ]),
+        function(c_take_out_service, [ 3 ]),
 
-        relation(p_mala_hotpot(_), [ 0, 0 ]),
+        function(c_yelp_recommendation, [ 4 ]),
 
-        relation(p_product(_), [ 0, 0 ]),
+        function(c1, [ 0 ]),
 
-        relation(p_spicy(_), [ 0, 0 ]),
+        function(c2, [ 0 ]),
 
-        relation(p_from(_,_), [
-			   0, 0,
-			   0, 0 ])
+        function(f1(_), [ 0, 1, 0, 0, 0 ]),
+
+        relation(p_receive_many_negative_reviews(_), [ 1, 0, 0, 0, 0 ]),
+
+        relation(p_greater_than(_,_), [
+			   0, 0, 0, 0, 0,
+			   1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0 ]),
+
+        relation(p_have_rating(_,_), [
+			   0, 0, 0, 0, 0,
+			   0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0 ]),
+
+        relation(p_listed_in(_,_), [
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0 ]),
+
+        relation(p_popular_among(_,_), [
+			   0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0 ]),
+
+        relation(p_provide(_,_), [
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0 ])
 ]).
 
 ============================== end of model ==========================
 
 ============================== STATISTICS ============================
 
-For domain size 2.
+For domain size 5.
 
 Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
-Ground clauses: seen=11, kept=11.
-Selections=13, assignments=13, propagations=3, current_models=1.
-Rewrite_terms=10, rewrite_bools=15, indexes=7.
-Rules_from_neg_clauses=1, cross_offs=1.
+Ground clauses: seen=55, kept=55.
+Selections=128, assignments=135, propagations=14, current_models=1.
+Rewrite_terms=140, rewrite_bools=86, indexes=84.
+Rules_from_neg_clauses=1, cross_offs=11.
 
 ============================== end of statistics =====================
 
@@ -93,9 +191,15 @@ User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
 
 Exiting with 1 model.
 
-Process 29637 exit (max_models) Sat Oct 17 13:02:00 2026
-The process finished Sat Oct 17 13:02:00 2026
+Process 47211 exit (max_models) Fri Oct 23 14:35:08 2026
+The process finished Fri Oct 23 14:35:08 2026
 
 === Mace4 starting on domain size 2. ===
 
------- process 29637 exit (max_models) ------
+=== Mace4 starting on domain size 3. ===
+
+=== Mace4 starting on domain size 4. ===
+
+=== Mace4 starting on domain size 5. ===
+
+------ process 47211 exit (max_models) ------

@@ -1,7 +1,7 @@
 ============================== Prover9 ===============================
 Prover9 (64) version 2009-11A, November 2009.
-Process 29645 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
-Sat Oct 17 13:02:00 2026
+Process 47218 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:08 2026
 The command was "prover9 -t 5".
 ============================== end of head ===========================
 
@@ -12,7 +12,7 @@ formulas(assumptions).
 end_of_list.
 
 formulas(goals).
-p_legal_obligation(c_harvard_weekly_book_club).
+p_legal_obligation(c_harvard_weekly_book_club) & p_private_company(c_harvard_weekly_book_club).
 end_of_list.
 
 ============================== end of input ==========================
@@ -23,7 +23,7 @@ end_of_list.
 
 % Formulas that are not ordinary clauses:
 1 (all v_x (p_business_organization(v_x) -> p_legal_entity(v_x))) & (all v_x (p_company(v_x) -> p_business_organization(v_x))) & (all v_x (p_private_company(v_x) -> p_company(v_x))) & (all v_x (p_legal_entity(v_x) -> p_created_under_law(v_x))) & (all v_x (p_legal_entity(v_x) -> p_legal_obligation(v_x))) & (p_created_under_law(c_harvard_weekly_book_club) -> -p_private_company(c_harvard_weekly_book_club)) # label(non_clause).  [assumption].
-2 p_legal_obligation(c_harvard_weekly_book_club) # label(non_clause) # label(goal).  [goal].
+2 p_legal_obligation(c_harvard_weekly_book_club) & p_private_company(c_harvard_weekly_book_club) # label(non_clause) # label(goal).  [goal].
 
 ============================== end of process non-clausal formulas ===
 
@@ -41,7 +41,7 @@ formulas(sos).
 -p_legal_entity(x) | p_created_under_law(x).  [clausify(1)].
 -p_legal_entity(x) | p_legal_obligation(x).  [clausify(1)].
 -p_created_under_law(c_harvard_weekly_book_club) | -p_private_company(c_harvard_weekly_book_club).  [clausify(1)].
--p_legal_obligation(c_harvard_weekly_book_club).  [deny(2)].
+-p_legal_obligation(c_harvard_weekly_book_club) | -p_private_company(c_harvard_weekly_book_club).  [deny(2)].
 end_of_list.
 
 formulas(demodulators).
@@ -62,11 +62,6 @@ Eliminating p_legal_entity/1
 7 -p_legal_entity(x) | p_legal_obligation(x).  [clausify(1)].
 Derived: -p_company(x) | p_created_under_law(x).  [resolve(5,b,6,a)].
 Derived: -p_company(x) | p_legal_obligation(x).  [resolve(5,b,7,a)].
-
-Eliminating p_legal_obligation/1
-8 -p_company(x) | p_legal_obligation(x).  [resolve(5,b,7,a)].
-9 -p_legal_obligation(c_harvard_weekly_book_club).  [deny(2)].
-Derived: -p_company(c_harvard_weekly_book_club).  [resolve(8,b,9,a)].
 
 Eliminating p_company/1
 
@@ -114,7 +109,7 @@ end_of_list.
 ============================== STATISTICS ============================
 
 Given=0. Generated=0. Kept=0. proofs=0.
-Usable=0. Sos=0. Demods=0. Limbo=0, Disabled=11. Hints=0.
+Usable=0. Sos=0. Demods=0. Limbo=0, Disabled=10. Hints=0.
 Kept_by_rule=0, Deleted_by_rule=0.
 Forward_subsumed=0. Back_subsumed=0.
 Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
@@ -133,9 +128,9 @@ SEARCH FAILED
 
 Exiting with failure.
 
-Process 29645 exit (sos_empty) Sat Oct 17 13:02:00 2026
+Process 47218 exit (sos_empty) Fri Oct 23 14:35:08 2026
 
 SEARCH FAILED
 
------- process 29645 exit (sos_empty) ------
+------ process 47218 exit (sos_empty) ------
 

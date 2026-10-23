@@ -1,7 +1,7 @@
 ============================== Prover9 ===============================
 Prover9 (64) version 2009-11A, November 2009.
-Process 29724 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
-Sat Oct 17 13:02:00 2026
+Process 47306 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:08 2026
 The command was "prover9 -t 5".
 ============================== end of head ===========================
 
@@ -15,7 +15,7 @@ c_lga_airport != c_susan.
 end_of_list.
 
 formulas(goals).
--p_fly_from(c_susan,c_lga_airport).
+-p_fly_to(c_john,c_lga_airport).
 end_of_list.
 
 ============================== end of input ==========================
@@ -26,7 +26,7 @@ end_of_list.
 
 % Formulas that are not ordinary clauses:
 1 p_fly_to(c_susan,c_lga_airport) & (all v_x all v_y -(p_fly_from(v_x,v_y) & p_fly_to(v_x,v_y))) & p_fly_from(c_john,c_lga_airport) # label(non_clause).  [assumption].
-2 -p_fly_from(c_susan,c_lga_airport) # label(non_clause) # label(goal).  [goal].
+2 -p_fly_to(c_john,c_lga_airport) # label(non_clause) # label(goal).  [goal].
 
 ============================== end of process non-clausal formulas ===
 
@@ -44,7 +44,7 @@ p_fly_from(c_john,c_lga_airport).  [clausify(1)].
 c_john != c_lga_airport.  [assumption].
 c_john != c_susan.  [assumption].
 c_lga_airport != c_susan.  [assumption].
-p_fly_from(c_susan,c_lga_airport).  [deny(2)].
+p_fly_to(c_john,c_lga_airport).  [deny(2)].
 end_of_list.
 
 formulas(demodulators).
@@ -56,11 +56,13 @@ Eliminating p_fly_to/2
 3 -p_fly_from(x,y) | -p_fly_to(x,y).  [clausify(1)].
 4 p_fly_to(c_susan,c_lga_airport).  [clausify(1)].
 Derived: -p_fly_from(c_susan,c_lga_airport).  [resolve(3,b,4,a)].
+5 p_fly_to(c_john,c_lga_airport).  [deny(2)].
+Derived: -p_fly_from(c_john,c_lga_airport).  [resolve(5,a,3,b)].
 
 ============================== end predicate elimination =============
 
 Auto_denials:
-  % assign(max_proofs, 4).  % (Horn set with more than one neg. clause)
+  % assign(max_proofs, 5).  % (Horn set with more than one neg. clause)
 
 WARNING, because some of the denials share constants,
 some of the denials or their descendents may be subsumed,
@@ -69,7 +71,7 @@ The shared constants are:  c_susan, c_lga_airport, c_john.
 
 Term ordering decisions:
 Predicate symbol precedence:  predicate_order([ =, p_fly_from ]).
-Function symbol precedence:  function_order([ c_lga_airport, c_john, c_susan ]).
+Function symbol precedence:  function_order([ c_john, c_lga_airport, c_susan ]).
 After inverse_order:  (no changes).
 Unfolding symbols: (none).
 
@@ -82,14 +84,15 @@ Auto_inference settings:
 
 Auto_process settings:  (no changes).
 
-kept:      5 p_fly_from(c_john,c_lga_airport).  [clausify(1)].
-kept:      6 c_john != c_lga_airport.  [assumption].
-           7 c_john != c_susan.  [assumption].
-kept:      8 c_susan != c_john.  [copy(7),flip(a)].
-           9 c_lga_airport != c_susan.  [assumption].
-kept:      10 c_susan != c_lga_airport.  [copy(9),flip(a)].
-kept:      11 p_fly_from(c_susan,c_lga_airport).  [deny(2)].
-kept:      12 -p_fly_from(c_susan,c_lga_airport).  [resolve(3,b,4,a)].
+kept:      6 p_fly_from(c_john,c_lga_airport).  [clausify(1)].
+           7 c_john != c_lga_airport.  [assumption].
+kept:      8 c_lga_airport != c_john.  [copy(7),flip(a)].
+           9 c_john != c_susan.  [assumption].
+kept:      10 c_susan != c_john.  [copy(9),flip(a)].
+           11 c_lga_airport != c_susan.  [assumption].
+kept:      12 c_susan != c_lga_airport.  [copy(11),flip(a)].
+kept:      13 -p_fly_from(c_susan,c_lga_airport).  [resolve(3,b,4,a)].
+kept:      14 -p_fly_from(c_john,c_lga_airport).  [resolve(5,a,3,b)].
 
 ============================== PROOF =================================
 
@@ -100,17 +103,17 @@ kept:      12 -p_fly_from(c_susan,c_lga_airport).  [resolve(3,b,4,a)].
 % Given clauses 0.
 
 1 p_fly_to(c_susan,c_lga_airport) & (all v_x all v_y -(p_fly_from(v_x,v_y) & p_fly_to(v_x,v_y))) & p_fly_from(c_john,c_lga_airport) # label(non_clause).  [assumption].
-2 -p_fly_from(c_susan,c_lga_airport) # label(non_clause) # label(goal).  [goal].
+2 -p_fly_to(c_john,c_lga_airport) # label(non_clause) # label(goal).  [goal].
 3 -p_fly_from(x,y) | -p_fly_to(x,y).  [clausify(1)].
-4 p_fly_to(c_susan,c_lga_airport).  [clausify(1)].
-11 p_fly_from(c_susan,c_lga_airport).  [deny(2)].
-12 -p_fly_from(c_susan,c_lga_airport).  [resolve(3,b,4,a)].
-13 $F.  [resolve(12,a,11,a)].
+5 p_fly_to(c_john,c_lga_airport).  [deny(2)].
+6 p_fly_from(c_john,c_lga_airport).  [clausify(1)].
+14 -p_fly_from(c_john,c_lga_airport).  [resolve(5,a,3,b)].
+15 $F.  [resolve(14,a,6,a)].
 
 ============================== end of proof ==========================
 
 % Disable descendants (x means already disabled):
- 0x 3x 12
+ 0x 3x 13 14
 
 ============================== end of process initial clauses ========
 
@@ -122,11 +125,10 @@ formulas(usable).
 end_of_list.
 
 formulas(sos).
-5 p_fly_from(c_john,c_lga_airport).  [clausify(1)].
-6 c_john != c_lga_airport.  [assumption].
-8 c_susan != c_john.  [copy(7),flip(a)].
-10 c_susan != c_lga_airport.  [copy(9),flip(a)].
-11 p_fly_from(c_susan,c_lga_airport).  [deny(2)].
+6 p_fly_from(c_john,c_lga_airport).  [clausify(1)].
+8 c_lga_airport != c_john.  [copy(7),flip(a)].
+10 c_susan != c_john.  [copy(9),flip(a)].
+12 c_susan != c_lga_airport.  [copy(11),flip(a)].
 end_of_list.
 
 formulas(demodulators).
@@ -138,20 +140,18 @@ end_of_list.
 
 % Starting search at 0.00 seconds.
 
-given #1 (I,wt=3): 5 p_fly_from(c_john,c_lga_airport).  [clausify(1)].
+given #1 (I,wt=3): 6 p_fly_from(c_john,c_lga_airport).  [clausify(1)].
 
-given #2 (I,wt=3): 6 c_john != c_lga_airport.  [assumption].
+given #2 (I,wt=3): 8 c_lga_airport != c_john.  [copy(7),flip(a)].
 
-given #3 (I,wt=3): 8 c_susan != c_john.  [copy(7),flip(a)].
+given #3 (I,wt=3): 10 c_susan != c_john.  [copy(9),flip(a)].
 
-given #4 (I,wt=3): 10 c_susan != c_lga_airport.  [copy(9),flip(a)].
-
-given #5 (I,wt=3): 11 p_fly_from(c_susan,c_lga_airport).  [deny(2)].
+given #4 (I,wt=3): 12 c_susan != c_lga_airport.  [copy(11),flip(a)].
 
 ============================== STATISTICS ============================
 
-Given=5. Generated=6. Kept=6. proofs=1.
-Usable=5. Sos=0. Demods=0. Limbo=0, Disabled=9. Hints=0.
+Given=4. Generated=6. Kept=6. proofs=1.
+Usable=4. Sos=0. Demods=0. Limbo=0, Disabled=11. Hints=0.
 Kept_by_rule=0, Deleted_by_rule=0.
 Forward_subsumed=0. Back_subsumed=0.
 Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
@@ -170,7 +170,7 @@ SEARCH FAILED
 
 Exiting with 1 proof.
 
-Process 29724 exit (sos_empty) Sat Oct 17 13:02:00 2026
+Process 47306 exit (sos_empty) Fri Oct 23 14:35:08 2026
 
 WARNING: denials share constants (see output).
 
@@ -178,5 +178,5 @@ WARNING: denials share constants (see output).
 
 SEARCH FAILED
 
------- process 29724 exit (sos_empty) ------
+------ process 47306 exit (sos_empty) ------
 

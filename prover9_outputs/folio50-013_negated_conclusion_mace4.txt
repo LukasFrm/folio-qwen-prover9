@@ -1,208 +1,28 @@
 ============================== Mace4 =================================
 Mace4 (64) version 2009-11A, November 2009.
-Process 29623 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
-Sat Oct 17 13:01:59 2026
-The command was "mace4 -t 5 -n 2 -N 20".
+Process 47196 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:08 2026
+The command was "mace4 -t 5 -n 2 -N 8".
 ============================== end of head ===========================
 
 ============================== INPUT =================================
 
 formulas(assumptions).
-p_private_ivy_league_research_university(c_yale_university) & p_moved_to(c_yale_university,c_new_haven) & p_moved_in(c_yale_university,c_year1716) & p_valued_at(c_yale_universitys_endowment,c_usd42point3billion) & p_residential_college(c_benjamin_franklin_college) & p_at(c_benjamin_franklin_college,c_yale_university) & p_residential_college(c_berkeley_college) & p_at(c_berkeley_college,c_yale_university) & p_residential_college(c_branford_college) & p_at(c_branford_college,c_yale_university) & p_residential_college(c_davenport_college) & p_at(c_davenport_college,c_yale_university) & p_residential_college(c_ezra_stiles_college) & p_at(c_ezra_stiles_college,c_yale_university) & p_residential_college(c_grace_hopper_college) & p_at(c_grace_hopper_college,c_yale_university) & p_residential_college(c_jonathan_edwards_college) & p_at(c_jonathan_edwards_college,c_yale_university) & p_residential_college(c_morse_college) & p_at(c_morse_college,c_yale_university) & p_residential_college(c_pauli_murray_college) & p_at(c_pauli_murray_college,c_yale_university) & p_residential_college(c_pierson_college) & p_at(c_pierson_college,c_yale_university) & p_residential_college(c_saybrook_college) & p_at(c_saybrook_college,c_yale_university) & p_residential_college(c_silliman_college) & p_at(c_silliman_college,c_yale_university) & p_residential_college(c_timothy_dwight_college) & p_at(c_timothy_dwight_college,c_yale_university) & p_residential_college(c_trumbull_college) & p_at(c_trumbull_college,c_yale_university).
-c_any_educational_institution != c_benjamin_franklin_college.
-c_any_educational_institution != c_berkeley_college.
-c_any_educational_institution != c_branford_college.
-c_any_educational_institution != c_davenport_college.
-c_any_educational_institution != c_ezra_stiles_college.
-c_any_educational_institution != c_grace_hopper_college.
-c_any_educational_institution != c_jonathan_edwards_college.
-c_any_educational_institution != c_morse_college.
-c_any_educational_institution != c_new_haven.
-c_any_educational_institution != c_pauli_murray_college.
-c_any_educational_institution != c_pierson_college.
-c_any_educational_institution != c_saybrook_college.
-c_any_educational_institution != c_silliman_college.
-c_any_educational_institution != c_timothy_dwight_college.
-c_any_educational_institution != c_trumbull_college.
-c_any_educational_institution != c_usd42point3billion.
-c_any_educational_institution != c_yale_university.
-c_any_educational_institution != c_yale_universitys_endowment.
-c_any_educational_institution != c_year1716.
-c_benjamin_franklin_college != c_berkeley_college.
-c_benjamin_franklin_college != c_branford_college.
-c_benjamin_franklin_college != c_davenport_college.
-c_benjamin_franklin_college != c_ezra_stiles_college.
-c_benjamin_franklin_college != c_grace_hopper_college.
-c_benjamin_franklin_college != c_jonathan_edwards_college.
-c_benjamin_franklin_college != c_morse_college.
-c_benjamin_franklin_college != c_new_haven.
-c_benjamin_franklin_college != c_pauli_murray_college.
-c_benjamin_franklin_college != c_pierson_college.
-c_benjamin_franklin_college != c_saybrook_college.
-c_benjamin_franklin_college != c_silliman_college.
-c_benjamin_franklin_college != c_timothy_dwight_college.
-c_benjamin_franklin_college != c_trumbull_college.
-c_benjamin_franklin_college != c_usd42point3billion.
-c_benjamin_franklin_college != c_yale_university.
-c_benjamin_franklin_college != c_yale_universitys_endowment.
-c_benjamin_franklin_college != c_year1716.
-c_berkeley_college != c_branford_college.
-c_berkeley_college != c_davenport_college.
-c_berkeley_college != c_ezra_stiles_college.
-c_berkeley_college != c_grace_hopper_college.
-c_berkeley_college != c_jonathan_edwards_college.
-c_berkeley_college != c_morse_college.
-c_berkeley_college != c_new_haven.
-c_berkeley_college != c_pauli_murray_college.
-c_berkeley_college != c_pierson_college.
-c_berkeley_college != c_saybrook_college.
-c_berkeley_college != c_silliman_college.
-c_berkeley_college != c_timothy_dwight_college.
-c_berkeley_college != c_trumbull_college.
-c_berkeley_college != c_usd42point3billion.
-c_berkeley_college != c_yale_university.
-c_berkeley_college != c_yale_universitys_endowment.
-c_berkeley_college != c_year1716.
-c_branford_college != c_davenport_college.
-c_branford_college != c_ezra_stiles_college.
-c_branford_college != c_grace_hopper_college.
-c_branford_college != c_jonathan_edwards_college.
-c_branford_college != c_morse_college.
-c_branford_college != c_new_haven.
-c_branford_college != c_pauli_murray_college.
-c_branford_college != c_pierson_college.
-c_branford_college != c_saybrook_college.
-c_branford_college != c_silliman_college.
-c_branford_college != c_timothy_dwight_college.
-c_branford_college != c_trumbull_college.
-c_branford_college != c_usd42point3billion.
-c_branford_college != c_yale_university.
-c_branford_college != c_yale_universitys_endowment.
-c_branford_college != c_year1716.
-c_davenport_college != c_ezra_stiles_college.
-c_davenport_college != c_grace_hopper_college.
-c_davenport_college != c_jonathan_edwards_college.
-c_davenport_college != c_morse_college.
-c_davenport_college != c_new_haven.
-c_davenport_college != c_pauli_murray_college.
-c_davenport_college != c_pierson_college.
-c_davenport_college != c_saybrook_college.
-c_davenport_college != c_silliman_college.
-c_davenport_college != c_timothy_dwight_college.
-c_davenport_college != c_trumbull_college.
-c_davenport_college != c_usd42point3billion.
-c_davenport_college != c_yale_university.
-c_davenport_college != c_yale_universitys_endowment.
-c_davenport_college != c_year1716.
-c_ezra_stiles_college != c_grace_hopper_college.
-c_ezra_stiles_college != c_jonathan_edwards_college.
-c_ezra_stiles_college != c_morse_college.
-c_ezra_stiles_college != c_new_haven.
-c_ezra_stiles_college != c_pauli_murray_college.
-c_ezra_stiles_college != c_pierson_college.
-c_ezra_stiles_college != c_saybrook_college.
-c_ezra_stiles_college != c_silliman_college.
-c_ezra_stiles_college != c_timothy_dwight_college.
-c_ezra_stiles_college != c_trumbull_college.
-c_ezra_stiles_college != c_usd42point3billion.
-c_ezra_stiles_college != c_yale_university.
-c_ezra_stiles_college != c_yale_universitys_endowment.
-c_ezra_stiles_college != c_year1716.
-c_grace_hopper_college != c_jonathan_edwards_college.
-c_grace_hopper_college != c_morse_college.
-c_grace_hopper_college != c_new_haven.
-c_grace_hopper_college != c_pauli_murray_college.
-c_grace_hopper_college != c_pierson_college.
-c_grace_hopper_college != c_saybrook_college.
-c_grace_hopper_college != c_silliman_college.
-c_grace_hopper_college != c_timothy_dwight_college.
-c_grace_hopper_college != c_trumbull_college.
-c_grace_hopper_college != c_usd42point3billion.
-c_grace_hopper_college != c_yale_university.
-c_grace_hopper_college != c_yale_universitys_endowment.
-c_grace_hopper_college != c_year1716.
-c_jonathan_edwards_college != c_morse_college.
-c_jonathan_edwards_college != c_new_haven.
-c_jonathan_edwards_college != c_pauli_murray_college.
-c_jonathan_edwards_college != c_pierson_college.
-c_jonathan_edwards_college != c_saybrook_college.
-c_jonathan_edwards_college != c_silliman_college.
-c_jonathan_edwards_college != c_timothy_dwight_college.
-c_jonathan_edwards_college != c_trumbull_college.
-c_jonathan_edwards_college != c_usd42point3billion.
-c_jonathan_edwards_college != c_yale_university.
-c_jonathan_edwards_college != c_yale_universitys_endowment.
-c_jonathan_edwards_college != c_year1716.
-c_morse_college != c_new_haven.
-c_morse_college != c_pauli_murray_college.
-c_morse_college != c_pierson_college.
-c_morse_college != c_saybrook_college.
-c_morse_college != c_silliman_college.
-c_morse_college != c_timothy_dwight_college.
-c_morse_college != c_trumbull_college.
-c_morse_college != c_usd42point3billion.
-c_morse_college != c_yale_university.
-c_morse_college != c_yale_universitys_endowment.
-c_morse_college != c_year1716.
-c_new_haven != c_pauli_murray_college.
-c_new_haven != c_pierson_college.
-c_new_haven != c_saybrook_college.
-c_new_haven != c_silliman_college.
-c_new_haven != c_timothy_dwight_college.
-c_new_haven != c_trumbull_college.
-c_new_haven != c_usd42point3billion.
-c_new_haven != c_yale_university.
-c_new_haven != c_yale_universitys_endowment.
-c_new_haven != c_year1716.
-c_pauli_murray_college != c_pierson_college.
-c_pauli_murray_college != c_saybrook_college.
-c_pauli_murray_college != c_silliman_college.
-c_pauli_murray_college != c_timothy_dwight_college.
-c_pauli_murray_college != c_trumbull_college.
-c_pauli_murray_college != c_usd42point3billion.
-c_pauli_murray_college != c_yale_university.
-c_pauli_murray_college != c_yale_universitys_endowment.
-c_pauli_murray_college != c_year1716.
-c_pierson_college != c_saybrook_college.
-c_pierson_college != c_silliman_college.
-c_pierson_college != c_timothy_dwight_college.
-c_pierson_college != c_trumbull_college.
-c_pierson_college != c_usd42point3billion.
-c_pierson_college != c_yale_university.
-c_pierson_college != c_yale_universitys_endowment.
-c_pierson_college != c_year1716.
-c_saybrook_college != c_silliman_college.
-c_saybrook_college != c_timothy_dwight_college.
-c_saybrook_college != c_trumbull_college.
-c_saybrook_college != c_usd42point3billion.
-c_saybrook_college != c_yale_university.
-c_saybrook_college != c_yale_universitys_endowment.
-c_saybrook_college != c_year1716.
-c_silliman_college != c_timothy_dwight_college.
-c_silliman_college != c_trumbull_college.
-c_silliman_college != c_usd42point3billion.
-c_silliman_college != c_yale_university.
-c_silliman_college != c_yale_universitys_endowment.
-c_silliman_college != c_year1716.
-c_timothy_dwight_college != c_trumbull_college.
-c_timothy_dwight_college != c_usd42point3billion.
-c_timothy_dwight_college != c_yale_university.
-c_timothy_dwight_college != c_yale_universitys_endowment.
-c_timothy_dwight_college != c_year1716.
-c_trumbull_college != c_usd42point3billion.
-c_trumbull_college != c_yale_university.
-c_trumbull_college != c_yale_universitys_endowment.
-c_trumbull_college != c_year1716.
-c_usd42point3billion != c_yale_university.
-c_usd42point3billion != c_yale_universitys_endowment.
-c_usd42point3billion != c_year1716.
-c_yale_university != c_yale_universitys_endowment.
-c_yale_university != c_year1716.
-c_yale_universitys_endowment != c_year1716.
+(all v_x (p_vehicle_registration_plate_in(v_x,c_istanbul) -> p_begin_with(v_x,c_num34))) & (all v_x (-p_begin_with(v_x,c_num34) -> -p_vehicle_registration_plate_in(v_x,c_istanbul))) & (exists v_x (p_owns(c_joe,v_x) & p_vehicle_registration_plate_in(v_x,c_istanbul))) & (exists v_x exists v_y (p_owns(c_tom,v_x) & p_vehicle_registration_plate_in(v_x,v_y) & p_begin_with(v_x,c_num35))) & (all v_x (p_begin_with(v_x,c_num35) -> -p_begin_with(v_x,c_num34))).
+c_istanbul != c_joe.
+c_istanbul != c_num34.
+c_istanbul != c_num35.
+c_istanbul != c_tom.
+c_joe != c_num34.
+c_joe != c_num35.
+c_joe != c_tom.
+c_num34 != c_num35.
+c_num34 != c_tom.
+c_num35 != c_tom.
 end_of_list.
 
 formulas(goals).
--p_largest_university_endowment_of(c_yale_university,c_any_educational_institution).
+-(exists v_x (p_owns(c_joe,v_x) & p_begin_with(v_x,c_num34) & (exists v_y p_vehicle_registration_plate_in(v_x,v_y)))).
 end_of_list.
 
 % From the command line: assign(max_seconds, 5).
@@ -211,244 +31,42 @@ end_of_list.
 
 % From the command line: assign(domain_size, 2).
 
-% From the command line: assign(end_size, 20).
+% From the command line: assign(end_size, 8).
 
 ============================== end of input ==========================
 
 ============================== PROCESS NON-CLAUSAL FORMULAS ==========
 
 % Formulas that are not ordinary clauses:
-1 p_private_ivy_league_research_university(c_yale_university) & p_moved_to(c_yale_university,c_new_haven) & p_moved_in(c_yale_university,c_year1716) & p_valued_at(c_yale_universitys_endowment,c_usd42point3billion) & p_residential_college(c_benjamin_franklin_college) & p_at(c_benjamin_franklin_college,c_yale_university) & p_residential_college(c_berkeley_college) & p_at(c_berkeley_college,c_yale_university) & p_residential_college(c_branford_college) & p_at(c_branford_college,c_yale_university) & p_residential_college(c_davenport_college) & p_at(c_davenport_college,c_yale_university) & p_residential_college(c_ezra_stiles_college) & p_at(c_ezra_stiles_college,c_yale_university) & p_residential_college(c_grace_hopper_college) & p_at(c_grace_hopper_college,c_yale_university) & p_residential_college(c_jonathan_edwards_college) & p_at(c_jonathan_edwards_college,c_yale_university) & p_residential_college(c_morse_college) & p_at(c_morse_college,c_yale_university) & p_residential_college(c_pauli_murray_college) & p_at(c_pauli_murray_college,c_yale_university) & p_residential_college(c_pierson_college) & p_at(c_pierson_college,c_yale_university) & p_residential_college(c_saybrook_college) & p_at(c_saybrook_college,c_yale_university) & p_residential_college(c_silliman_college) & p_at(c_silliman_college,c_yale_university) & p_residential_college(c_timothy_dwight_college) & p_at(c_timothy_dwight_college,c_yale_university) & p_residential_college(c_trumbull_college) & p_at(c_trumbull_college,c_yale_university) # label(non_clause).  [assumption].
-2 -p_largest_university_endowment_of(c_yale_university,c_any_educational_institution) # label(non_clause) # label(goal).  [goal].
+1 (all v_x (p_vehicle_registration_plate_in(v_x,c_istanbul) -> p_begin_with(v_x,c_num34))) & (all v_x (-p_begin_with(v_x,c_num34) -> -p_vehicle_registration_plate_in(v_x,c_istanbul))) & (exists v_x (p_owns(c_joe,v_x) & p_vehicle_registration_plate_in(v_x,c_istanbul))) & (exists v_x exists v_y (p_owns(c_tom,v_x) & p_vehicle_registration_plate_in(v_x,v_y) & p_begin_with(v_x,c_num35))) & (all v_x (p_begin_with(v_x,c_num35) -> -p_begin_with(v_x,c_num34))) # label(non_clause).  [assumption].
+2 -(exists v_x (p_owns(c_joe,v_x) & p_begin_with(v_x,c_num34) & (exists v_y p_vehicle_registration_plate_in(v_x,v_y)))) # label(non_clause) # label(goal).  [goal].
 
 ============================== end of process non-clausal formulas ===
 
 ============================== CLAUSES FOR SEARCH ====================
 
 formulas(mace4_clauses).
-p_private_ivy_league_research_university(c_yale_university).
-p_moved_to(c_yale_university,c_new_haven).
-p_moved_in(c_yale_university,c_year1716).
-p_valued_at(c_yale_universitys_endowment,c_usd42point3billion).
-p_residential_college(c_benjamin_franklin_college).
-p_at(c_benjamin_franklin_college,c_yale_university).
-p_residential_college(c_berkeley_college).
-p_at(c_berkeley_college,c_yale_university).
-p_residential_college(c_branford_college).
-p_at(c_branford_college,c_yale_university).
-p_residential_college(c_davenport_college).
-p_at(c_davenport_college,c_yale_university).
-p_residential_college(c_ezra_stiles_college).
-p_at(c_ezra_stiles_college,c_yale_university).
-p_residential_college(c_grace_hopper_college).
-p_at(c_grace_hopper_college,c_yale_university).
-p_residential_college(c_jonathan_edwards_college).
-p_at(c_jonathan_edwards_college,c_yale_university).
-p_residential_college(c_morse_college).
-p_at(c_morse_college,c_yale_university).
-p_residential_college(c_pauli_murray_college).
-p_at(c_pauli_murray_college,c_yale_university).
-p_residential_college(c_pierson_college).
-p_at(c_pierson_college,c_yale_university).
-p_residential_college(c_saybrook_college).
-p_at(c_saybrook_college,c_yale_university).
-p_residential_college(c_silliman_college).
-p_at(c_silliman_college,c_yale_university).
-p_residential_college(c_timothy_dwight_college).
-p_at(c_timothy_dwight_college,c_yale_university).
-p_residential_college(c_trumbull_college).
-p_at(c_trumbull_college,c_yale_university).
-c_any_educational_institution != c_benjamin_franklin_college.
-c_any_educational_institution != c_berkeley_college.
-c_any_educational_institution != c_branford_college.
-c_any_educational_institution != c_davenport_college.
-c_any_educational_institution != c_ezra_stiles_college.
-c_any_educational_institution != c_grace_hopper_college.
-c_any_educational_institution != c_jonathan_edwards_college.
-c_any_educational_institution != c_morse_college.
-c_any_educational_institution != c_new_haven.
-c_any_educational_institution != c_pauli_murray_college.
-c_any_educational_institution != c_pierson_college.
-c_any_educational_institution != c_saybrook_college.
-c_any_educational_institution != c_silliman_college.
-c_any_educational_institution != c_timothy_dwight_college.
-c_any_educational_institution != c_trumbull_college.
-c_any_educational_institution != c_usd42point3billion.
-c_any_educational_institution != c_yale_university.
-c_any_educational_institution != c_yale_universitys_endowment.
-c_any_educational_institution != c_year1716.
-c_benjamin_franklin_college != c_berkeley_college.
-c_benjamin_franklin_college != c_branford_college.
-c_benjamin_franklin_college != c_davenport_college.
-c_benjamin_franklin_college != c_ezra_stiles_college.
-c_benjamin_franklin_college != c_grace_hopper_college.
-c_benjamin_franklin_college != c_jonathan_edwards_college.
-c_benjamin_franklin_college != c_morse_college.
-c_benjamin_franklin_college != c_new_haven.
-c_benjamin_franklin_college != c_pauli_murray_college.
-c_benjamin_franklin_college != c_pierson_college.
-c_benjamin_franklin_college != c_saybrook_college.
-c_benjamin_franklin_college != c_silliman_college.
-c_benjamin_franklin_college != c_timothy_dwight_college.
-c_benjamin_franklin_college != c_trumbull_college.
-c_benjamin_franklin_college != c_usd42point3billion.
-c_benjamin_franklin_college != c_yale_university.
-c_benjamin_franklin_college != c_yale_universitys_endowment.
-c_benjamin_franklin_college != c_year1716.
-c_berkeley_college != c_branford_college.
-c_berkeley_college != c_davenport_college.
-c_berkeley_college != c_ezra_stiles_college.
-c_berkeley_college != c_grace_hopper_college.
-c_berkeley_college != c_jonathan_edwards_college.
-c_berkeley_college != c_morse_college.
-c_berkeley_college != c_new_haven.
-c_berkeley_college != c_pauli_murray_college.
-c_berkeley_college != c_pierson_college.
-c_berkeley_college != c_saybrook_college.
-c_berkeley_college != c_silliman_college.
-c_berkeley_college != c_timothy_dwight_college.
-c_berkeley_college != c_trumbull_college.
-c_berkeley_college != c_usd42point3billion.
-c_berkeley_college != c_yale_university.
-c_berkeley_college != c_yale_universitys_endowment.
-c_berkeley_college != c_year1716.
-c_branford_college != c_davenport_college.
-c_branford_college != c_ezra_stiles_college.
-c_branford_college != c_grace_hopper_college.
-c_branford_college != c_jonathan_edwards_college.
-c_branford_college != c_morse_college.
-c_branford_college != c_new_haven.
-c_branford_college != c_pauli_murray_college.
-c_branford_college != c_pierson_college.
-c_branford_college != c_saybrook_college.
-c_branford_college != c_silliman_college.
-c_branford_college != c_timothy_dwight_college.
-c_branford_college != c_trumbull_college.
-c_branford_college != c_usd42point3billion.
-c_branford_college != c_yale_university.
-c_branford_college != c_yale_universitys_endowment.
-c_branford_college != c_year1716.
-c_davenport_college != c_ezra_stiles_college.
-c_davenport_college != c_grace_hopper_college.
-c_davenport_college != c_jonathan_edwards_college.
-c_davenport_college != c_morse_college.
-c_davenport_college != c_new_haven.
-c_davenport_college != c_pauli_murray_college.
-c_davenport_college != c_pierson_college.
-c_davenport_college != c_saybrook_college.
-c_davenport_college != c_silliman_college.
-c_davenport_college != c_timothy_dwight_college.
-c_davenport_college != c_trumbull_college.
-c_davenport_college != c_usd42point3billion.
-c_davenport_college != c_yale_university.
-c_davenport_college != c_yale_universitys_endowment.
-c_davenport_college != c_year1716.
-c_ezra_stiles_college != c_grace_hopper_college.
-c_ezra_stiles_college != c_jonathan_edwards_college.
-c_ezra_stiles_college != c_morse_college.
-c_ezra_stiles_college != c_new_haven.
-c_ezra_stiles_college != c_pauli_murray_college.
-c_ezra_stiles_college != c_pierson_college.
-c_ezra_stiles_college != c_saybrook_college.
-c_ezra_stiles_college != c_silliman_college.
-c_ezra_stiles_college != c_timothy_dwight_college.
-c_ezra_stiles_college != c_trumbull_college.
-c_ezra_stiles_college != c_usd42point3billion.
-c_ezra_stiles_college != c_yale_university.
-c_ezra_stiles_college != c_yale_universitys_endowment.
-c_ezra_stiles_college != c_year1716.
-c_grace_hopper_college != c_jonathan_edwards_college.
-c_grace_hopper_college != c_morse_college.
-c_grace_hopper_college != c_new_haven.
-c_grace_hopper_college != c_pauli_murray_college.
-c_grace_hopper_college != c_pierson_college.
-c_grace_hopper_college != c_saybrook_college.
-c_grace_hopper_college != c_silliman_college.
-c_grace_hopper_college != c_timothy_dwight_college.
-c_grace_hopper_college != c_trumbull_college.
-c_grace_hopper_college != c_usd42point3billion.
-c_grace_hopper_college != c_yale_university.
-c_grace_hopper_college != c_yale_universitys_endowment.
-c_grace_hopper_college != c_year1716.
-c_jonathan_edwards_college != c_morse_college.
-c_jonathan_edwards_college != c_new_haven.
-c_jonathan_edwards_college != c_pauli_murray_college.
-c_jonathan_edwards_college != c_pierson_college.
-c_jonathan_edwards_college != c_saybrook_college.
-c_jonathan_edwards_college != c_silliman_college.
-c_jonathan_edwards_college != c_timothy_dwight_college.
-c_jonathan_edwards_college != c_trumbull_college.
-c_jonathan_edwards_college != c_usd42point3billion.
-c_jonathan_edwards_college != c_yale_university.
-c_jonathan_edwards_college != c_yale_universitys_endowment.
-c_jonathan_edwards_college != c_year1716.
-c_morse_college != c_new_haven.
-c_morse_college != c_pauli_murray_college.
-c_morse_college != c_pierson_college.
-c_morse_college != c_saybrook_college.
-c_morse_college != c_silliman_college.
-c_morse_college != c_timothy_dwight_college.
-c_morse_college != c_trumbull_college.
-c_morse_college != c_usd42point3billion.
-c_morse_college != c_yale_university.
-c_morse_college != c_yale_universitys_endowment.
-c_morse_college != c_year1716.
-c_new_haven != c_pauli_murray_college.
-c_new_haven != c_pierson_college.
-c_new_haven != c_saybrook_college.
-c_new_haven != c_silliman_college.
-c_new_haven != c_timothy_dwight_college.
-c_new_haven != c_trumbull_college.
-c_new_haven != c_usd42point3billion.
-c_new_haven != c_yale_university.
-c_new_haven != c_yale_universitys_endowment.
-c_new_haven != c_year1716.
-c_pauli_murray_college != c_pierson_college.
-c_pauli_murray_college != c_saybrook_college.
-c_pauli_murray_college != c_silliman_college.
-c_pauli_murray_college != c_timothy_dwight_college.
-c_pauli_murray_college != c_trumbull_college.
-c_pauli_murray_college != c_usd42point3billion.
-c_pauli_murray_college != c_yale_university.
-c_pauli_murray_college != c_yale_universitys_endowment.
-c_pauli_murray_college != c_year1716.
-c_pierson_college != c_saybrook_college.
-c_pierson_college != c_silliman_college.
-c_pierson_college != c_timothy_dwight_college.
-c_pierson_college != c_trumbull_college.
-c_pierson_college != c_usd42point3billion.
-c_pierson_college != c_yale_university.
-c_pierson_college != c_yale_universitys_endowment.
-c_pierson_college != c_year1716.
-c_saybrook_college != c_silliman_college.
-c_saybrook_college != c_timothy_dwight_college.
-c_saybrook_college != c_trumbull_college.
-c_saybrook_college != c_usd42point3billion.
-c_saybrook_college != c_yale_university.
-c_saybrook_college != c_yale_universitys_endowment.
-c_saybrook_college != c_year1716.
-c_silliman_college != c_timothy_dwight_college.
-c_silliman_college != c_trumbull_college.
-c_silliman_college != c_usd42point3billion.
-c_silliman_college != c_yale_university.
-c_silliman_college != c_yale_universitys_endowment.
-c_silliman_college != c_year1716.
-c_timothy_dwight_college != c_trumbull_college.
-c_timothy_dwight_college != c_usd42point3billion.
-c_timothy_dwight_college != c_yale_university.
-c_timothy_dwight_college != c_yale_universitys_endowment.
-c_timothy_dwight_college != c_year1716.
-c_trumbull_college != c_usd42point3billion.
-c_trumbull_college != c_yale_university.
-c_trumbull_college != c_yale_universitys_endowment.
-c_trumbull_college != c_year1716.
-c_usd42point3billion != c_yale_university.
-c_usd42point3billion != c_yale_universitys_endowment.
-c_usd42point3billion != c_year1716.
-c_yale_university != c_yale_universitys_endowment.
-c_yale_university != c_year1716.
-c_yale_universitys_endowment != c_year1716.
-p_largest_university_endowment_of(c_yale_university,c_any_educational_institution).
+-p_vehicle_registration_plate_in(x,c_istanbul) | p_begin_with(x,c_num34).
+p_begin_with(x,c_num34) | -p_vehicle_registration_plate_in(x,c_istanbul).
+p_owns(c_joe,c1).
+p_vehicle_registration_plate_in(c1,c_istanbul).
+p_owns(c_tom,c2).
+p_vehicle_registration_plate_in(c2,c3).
+p_begin_with(c2,c_num35).
+-p_begin_with(x,c_num35) | -p_begin_with(x,c_num34).
+c_istanbul != c_joe.
+c_istanbul != c_num34.
+c_istanbul != c_num35.
+c_istanbul != c_tom.
+c_joe != c_num34.
+c_joe != c_num35.
+c_joe != c_tom.
+c_num34 != c_num35.
+c_num34 != c_tom.
+c_num35 != c_tom.
+p_owns(c_joe,c4).
+p_begin_with(c4,c_num34).
+p_vehicle_registration_plate_in(c4,c5).
 end_of_list.
 
 ============================== end of clauses for search =============
@@ -462,10 +80,10 @@ end_of_list.
 For domain size 2.
 
 Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
-Ground clauses: seen=223, kept=223.
-Selections=1, assignments=1, propagations=19, current_models=0.
-Rewrite_terms=21, rewrite_bools=0, indexes=0.
-Rules_from_neg_clauses=19, cross_offs=19.
+Ground clauses: seen=24, kept=24.
+Selections=1, assignments=1, propagations=4, current_models=0.
+Rewrite_terms=11, rewrite_bools=0, indexes=4.
+Rules_from_neg_clauses=4, cross_offs=4.
 
 ============================== end of statistics =====================
 
@@ -476,10 +94,10 @@ Rules_from_neg_clauses=19, cross_offs=19.
 For domain size 3.
 
 Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
-Ground clauses: seen=223, kept=223.
-Selections=2, assignments=3, propagations=19, current_models=0.
-Rewrite_terms=61, rewrite_bools=3, indexes=1.
-Rules_from_neg_clauses=18, cross_offs=37.
+Ground clauses: seen=27, kept=27.
+Selections=2, assignments=3, propagations=3, current_models=0.
+Rewrite_terms=24, rewrite_bools=2, indexes=6.
+Rules_from_neg_clauses=3, cross_offs=7.
 
 ============================== end of statistics =====================
 
@@ -490,404 +108,81 @@ Rules_from_neg_clauses=18, cross_offs=37.
 For domain size 4.
 
 Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
-Ground clauses: seen=223, kept=223.
-Selections=3, assignments=6, propagations=19, current_models=0.
-Rewrite_terms=119, rewrite_bools=9, indexes=2.
-Rules_from_neg_clauses=17, cross_offs=54.
+Ground clauses: seen=30, kept=30.
+Selections=3, assignments=6, propagations=2, current_models=0.
+Rewrite_terms=51, rewrite_bools=7, indexes=20.
+Rules_from_neg_clauses=2, cross_offs=9.
 
 ============================== end of statistics =====================
 
 ============================== DOMAIN SIZE 5 =========================
 
-============================== STATISTICS ============================
-
-For domain size 5.
-
-Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
-Ground clauses: seen=223, kept=223.
-Selections=4, assignments=10, propagations=19, current_models=0.
-Rewrite_terms=194, rewrite_bools=19, indexes=3.
-Rules_from_neg_clauses=16, cross_offs=70.
-
-============================== end of statistics =====================
-
-============================== DOMAIN SIZE 6 =========================
-
-============================== STATISTICS ============================
-
-For domain size 6.
-
-Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
-Ground clauses: seen=223, kept=223.
-Selections=5, assignments=15, propagations=19, current_models=0.
-Rewrite_terms=285, rewrite_bools=34, indexes=4.
-Rules_from_neg_clauses=15, cross_offs=85.
-
-============================== end of statistics =====================
-
-============================== DOMAIN SIZE 7 =========================
-
-============================== STATISTICS ============================
-
-For domain size 7.
-
-Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
-Ground clauses: seen=223, kept=223.
-Selections=6, assignments=21, propagations=19, current_models=0.
-Rewrite_terms=391, rewrite_bools=55, indexes=5.
-Rules_from_neg_clauses=14, cross_offs=99.
-
-============================== end of statistics =====================
-
-============================== DOMAIN SIZE 8 =========================
-
-============================== STATISTICS ============================
-
-For domain size 8.
-
-Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
-Ground clauses: seen=223, kept=223.
-Selections=7, assignments=28, propagations=19, current_models=0.
-Rewrite_terms=511, rewrite_bools=83, indexes=6.
-Rules_from_neg_clauses=13, cross_offs=112.
-
-============================== end of statistics =====================
-
-============================== DOMAIN SIZE 9 =========================
-
-============================== STATISTICS ============================
-
-For domain size 9.
-
-Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
-Ground clauses: seen=223, kept=223.
-Selections=8, assignments=36, propagations=19, current_models=0.
-Rewrite_terms=644, rewrite_bools=119, indexes=7.
-Rules_from_neg_clauses=12, cross_offs=124.
-
-============================== end of statistics =====================
-
-============================== DOMAIN SIZE 10 ========================
-
-============================== STATISTICS ============================
-
-For domain size 10.
-
-Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
-Ground clauses: seen=223, kept=223.
-Selections=9, assignments=45, propagations=19, current_models=0.
-Rewrite_terms=789, rewrite_bools=164, indexes=8.
-Rules_from_neg_clauses=11, cross_offs=135.
-
-============================== end of statistics =====================
-
-============================== DOMAIN SIZE 11 ========================
-
-============================== STATISTICS ============================
-
-For domain size 11.
-
-Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
-Ground clauses: seen=223, kept=223.
-Selections=10, assignments=55, propagations=18, current_models=0.
-Rewrite_terms=944, rewrite_bools=218, indexes=8.
-Rules_from_neg_clauses=10, cross_offs=145.
-
-============================== end of statistics =====================
-
-============================== DOMAIN SIZE 12 ========================
-
-============================== STATISTICS ============================
-
-For domain size 12.
-
-Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
-Ground clauses: seen=223, kept=223.
-Selections=11, assignments=66, propagations=18, current_models=0.
-Rewrite_terms=1110, rewrite_bools=284, indexes=9.
-Rules_from_neg_clauses=9, cross_offs=154.
-
-============================== end of statistics =====================
-
-============================== DOMAIN SIZE 13 ========================
-
-============================== STATISTICS ============================
-
-For domain size 13.
-
-Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
-Ground clauses: seen=223, kept=223.
-Selections=12, assignments=78, propagations=18, current_models=0.
-Rewrite_terms=1285, rewrite_bools=362, indexes=10.
-Rules_from_neg_clauses=8, cross_offs=162.
-
-============================== end of statistics =====================
-
-============================== DOMAIN SIZE 14 ========================
-
-============================== STATISTICS ============================
-
-For domain size 14.
-
-Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
-Ground clauses: seen=223, kept=223.
-Selections=13, assignments=91, propagations=18, current_models=0.
-Rewrite_terms=1468, rewrite_bools=453, indexes=11.
-Rules_from_neg_clauses=7, cross_offs=169.
-
-============================== end of statistics =====================
-
-============================== DOMAIN SIZE 15 ========================
-
-============================== STATISTICS ============================
-
-For domain size 15.
-
-Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
-Ground clauses: seen=223, kept=223.
-Selections=14, assignments=105, propagations=18, current_models=0.
-Rewrite_terms=1658, rewrite_bools=558, indexes=12.
-Rules_from_neg_clauses=6, cross_offs=175.
-
-============================== end of statistics =====================
-
-============================== DOMAIN SIZE 16 ========================
-
-============================== STATISTICS ============================
-
-For domain size 16.
-
-Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
-Ground clauses: seen=223, kept=223.
-Selections=15, assignments=120, propagations=18, current_models=0.
-Rewrite_terms=1854, rewrite_bools=678, indexes=13.
-Rules_from_neg_clauses=5, cross_offs=180.
-
-============================== end of statistics =====================
-
-============================== DOMAIN SIZE 17 ========================
-
-============================== STATISTICS ============================
-
-For domain size 17.
-
-Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
-Ground clauses: seen=223, kept=223.
-Selections=16, assignments=136, propagations=18, current_models=0.
-Rewrite_terms=2055, rewrite_bools=814, indexes=14.
-Rules_from_neg_clauses=4, cross_offs=184.
-
-============================== end of statistics =====================
-
-============================== DOMAIN SIZE 18 ========================
-
-============================== STATISTICS ============================
-
-For domain size 18.
-
-Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
-Ground clauses: seen=223, kept=223.
-Selections=17, assignments=153, propagations=18, current_models=0.
-Rewrite_terms=2260, rewrite_bools=966, indexes=15.
-Rules_from_neg_clauses=3, cross_offs=187.
-
-============================== end of statistics =====================
-
-============================== DOMAIN SIZE 19 ========================
-
-============================== STATISTICS ============================
-
-For domain size 19.
-
-Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
-Ground clauses: seen=223, kept=223.
-Selections=18, assignments=171, propagations=50, current_models=0.
-Rewrite_terms=2500, rewrite_bools=1152, indexes=48.
-Rules_from_neg_clauses=2, cross_offs=189.
-
-============================== end of statistics =====================
-
-============================== DOMAIN SIZE 20 ========================
-
 ============================== MODEL =================================
 
-interpretation( 20, [number=1, seconds=0], [
+interpretation( 5, [number=1, seconds=0], [
 
-        function(c_any_educational_institution, [ 0 ]),
+        function(c_istanbul, [ 0 ]),
 
-        function(c_benjamin_franklin_college, [ 1 ]),
+        function(c_joe, [ 1 ]),
 
-        function(c_berkeley_college, [ 2 ]),
+        function(c_num34, [ 2 ]),
 
-        function(c_branford_college, [ 3 ]),
+        function(c_num35, [ 3 ]),
 
-        function(c_davenport_college, [ 4 ]),
+        function(c_tom, [ 4 ]),
 
-        function(c_ezra_stiles_college, [ 5 ]),
+        function(c1, [ 0 ]),
 
-        function(c_grace_hopper_college, [ 6 ]),
+        function(c2, [ 1 ]),
 
-        function(c_jonathan_edwards_college, [ 7 ]),
+        function(c3, [ 1 ]),
 
-        function(c_morse_college, [ 8 ]),
+        function(c4, [ 0 ]),
 
-        function(c_new_haven, [ 9 ]),
+        function(c5, [ 0 ]),
 
-        function(c_pauli_murray_college, [10 ]),
+        relation(p_begin_with(_,_), [
+			   0, 0, 1, 0, 0,
+			   0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0 ]),
 
-        function(c_pierson_college, [11 ]),
+        relation(p_owns(_,_), [
+			   0, 0, 0, 0, 0,
+			   1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 1, 0, 0, 0 ]),
 
-        function(c_saybrook_college, [12 ]),
-
-        function(c_silliman_college, [13 ]),
-
-        function(c_timothy_dwight_college, [14 ]),
-
-        function(c_trumbull_college, [15 ]),
-
-        function(c_usd42point3billion, [16 ]),
-
-        function(c_yale_university, [17 ]),
-
-        function(c_yale_universitys_endowment, [18 ]),
-
-        function(c_year1716, [19 ]),
-
-        relation(p_private_ivy_league_research_university(_), [ 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0 ]),
-
-        relation(p_residential_college(_), [ 0, 1, 1, 1, 1, 1, 1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0, 0 ]),
-
-        relation(p_at(_,_), [
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
-
-        relation(p_largest_university_endowment_of(_,_), [
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
-
-        relation(p_moved_in(_,_), [
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
-
-        relation(p_moved_to(_,_), [
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ]),
-
-        relation(p_valued_at(_,_), [
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0,
-			   0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 ])
+        relation(p_vehicle_registration_plate_in(_,_), [
+			   1, 0, 0, 0, 0,
+			   0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0 ])
 ]).
 
 ============================== end of model ==========================
 
 ============================== STATISTICS ============================
 
-For domain size 20.
+For domain size 5.
 
-Current CPU time: 0.00 seconds (total CPU time: 0.01 seconds).
-Ground clauses: seen=223, kept=223.
-Selections=2026, assignments=2197, propagations=51, current_models=1.
-Rewrite_terms=2728, rewrite_bools=1363, indexes=50.
-Rules_from_neg_clauses=1, cross_offs=190.
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=33, kept=33.
+Selections=72, assignments=80, propagations=13, current_models=1.
+Rewrite_terms=91, rewrite_bools=57, indexes=35.
+Rules_from_neg_clauses=1, cross_offs=13.
 
 ============================== end of statistics =====================
 
-User_CPU=0.01, System_CPU=0.00, Wall_clock=0.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
 
 Exiting with 1 model.
 
-Process 29623 exit (max_models) Sat Oct 17 13:01:59 2026
-The process finished Sat Oct 17 13:01:59 2026
+Process 47196 exit (max_models) Fri Oct 23 14:35:08 2026
+The process finished Fri Oct 23 14:35:08 2026
 
 === Mace4 starting on domain size 2. ===
 
@@ -897,34 +192,4 @@ The process finished Sat Oct 17 13:01:59 2026
 
 === Mace4 starting on domain size 5. ===
 
-=== Mace4 starting on domain size 6. ===
-
-=== Mace4 starting on domain size 7. ===
-
-=== Mace4 starting on domain size 8. ===
-
-=== Mace4 starting on domain size 9. ===
-
-=== Mace4 starting on domain size 10. ===
-
-=== Mace4 starting on domain size 11. ===
-
-=== Mace4 starting on domain size 12. ===
-
-=== Mace4 starting on domain size 13. ===
-
-=== Mace4 starting on domain size 14. ===
-
-=== Mace4 starting on domain size 15. ===
-
-=== Mace4 starting on domain size 16. ===
-
-=== Mace4 starting on domain size 17. ===
-
-=== Mace4 starting on domain size 18. ===
-
-=== Mace4 starting on domain size 19. ===
-
-=== Mace4 starting on domain size 20. ===
-
------- process 29623 exit (max_models) ------
+------ process 47196 exit (max_models) ------

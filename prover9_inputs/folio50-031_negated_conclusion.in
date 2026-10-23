@@ -3,5 +3,5 @@ formulas(assumptions).
 end_of_list.
 
 formulas(goals).
--((p_tesla_model3(c_johns_car) & p_car(c_johns_car))).
+-((p_solo_e_v(c_johns_car) & p_car(c_johns_car))).
 end_of_list.

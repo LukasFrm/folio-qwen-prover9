@@ -1,7 +1,7 @@
 ============================== Mace4 =================================
 Mace4 (64) version 2009-11A, November 2009.
-Process 29687 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
-Sat Oct 17 13:02:00 2026
+Process 47271 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:08 2026
 The command was "mace4 -t 5 -n 2 -N 8".
 ============================== end of head ===========================
 
@@ -13,7 +13,7 @@ c_duster != c_space.
 end_of_list.
 
 formulas(goals).
--p_vampire(c_space).
+-p_suck(c_space).
 end_of_list.
 
 % From the command line: assign(max_seconds, 5).
@@ -30,7 +30,7 @@ end_of_list.
 
 % Formulas that are not ordinary clauses:
 1 (all v_x (p_plunger(v_x) -> p_suck(v_x))) & (all v_x (p_vacuum(v_x) -> p_suck(v_x))) & (all v_x (p_vampire(v_x) -> p_suck(v_x))) & p_vacuum(c_space) & p_household_appliance(c_duster) & -p_suck(c_duster) # label(non_clause).  [assumption].
-2 -p_vampire(c_space) # label(non_clause) # label(goal).  [goal].
+2 -p_suck(c_space) # label(non_clause) # label(goal).  [goal].
 
 ============================== end of process non-clausal formulas ===
 
@@ -44,7 +44,7 @@ p_vacuum(c_space).
 p_household_appliance(c_duster).
 -p_suck(c_duster).
 c_duster != c_space.
-p_vampire(c_space).
+p_suck(c_space).
 end_of_list.
 
 ============================== end of clauses for search =============
@@ -69,7 +69,7 @@ interpretation( 2, [number=1, seconds=0], [
 
         relation(p_vacuum(_), [ 0, 1 ]),
 
-        relation(p_vampire(_), [ 0, 1 ])
+        relation(p_vampire(_), [ 0, 0 ])
 ]).
 
 ============================== end of model ==========================
@@ -80,7 +80,7 @@ For domain size 2.
 
 Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
 Ground clauses: seen=11, kept=11.
-Selections=3, assignments=3, propagations=9, current_models=1.
+Selections=4, assignments=4, propagations=8, current_models=1.
 Rewrite_terms=6, rewrite_bools=15, indexes=4.
 Rules_from_neg_clauses=1, cross_offs=1.
 
@@ -90,9 +90,9 @@ User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
 
 Exiting with 1 model.
 
-Process 29687 exit (max_models) Sat Oct 17 13:02:00 2026
-The process finished Sat Oct 17 13:02:00 2026
+Process 47271 exit (max_models) Fri Oct 23 14:35:08 2026
+The process finished Fri Oct 23 14:35:08 2026
 
 === Mace4 starting on domain size 2. ===
 
------- process 29687 exit (max_models) ------
+------ process 47271 exit (max_models) ------

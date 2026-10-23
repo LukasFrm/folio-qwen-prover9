@@ -1,7 +1,13 @@
 formulas(assumptions).
-(all v_x ((p_square(v_x) -> p_four_sided(v_x))) & all v_x ((p_four_sided(v_x) -> p_shape(v_x)))).
+((((((p_netflix_show(c_stranger_things) & p_popular(c_stranger_things)) & all v_x (((p_netflix_show(v_x) & p_popular(v_x)) -> p_binge_watch(c_karen, v_x)))) & all v_x ((p_netflix_show(v_x) -> (p_binge_watch(c_karen, v_x) <-> p_download(c_karen, v_x))))) & -(p_download(c_karen, c_black_mirror))) & p_netflix_show(c_black_mirror)) & all v_x (((p_netflix_show(v_x) & p_binge_watch(c_karen, v_x)) -> p_share_with(c_karen, v_x, c_lisa)))).
+-(c_black_mirror = c_karen).
+-(c_black_mirror = c_lisa).
+-(c_black_mirror = c_stranger_things).
+-(c_karen = c_lisa).
+-(c_karen = c_stranger_things).
+-(c_lisa = c_stranger_things).
 end_of_list.
 
 formulas(goals).
-all v_x ((p_square(v_x) -> p_shape(v_x))).
+p_share_with(c_karen, c_stranger_things, c_lisa).
 end_of_list.

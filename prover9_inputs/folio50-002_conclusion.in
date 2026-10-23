@@ -1,10 +1,8 @@
 formulas(assumptions).
 ((((p_game(c_the_legendof_zelda) & exists v_x (((p_japanese(v_x) & p_video_game_company(v_x)) & p_created(v_x, c_the_legendof_zelda)))) & all v_x (all v_y ((((p_game(v_x) & p_in_top10(v_x)) & p_created(v_y, v_x)) -> (p_japanese(v_y) & p_video_game_company(v_y)))))) & all v_x (((p_game(v_x) & exists v_y ((p_greater_than(v_y, c_one_million) & p_copies_sold(v_x, v_y)))) -> p_in_top10(v_x)))) & exists v_y ((p_greater_than(v_y, c_one_million) & p_copies_sold(c_the_legendof_zelda, v_y)))).
--(c_fifa22 = c_one_million).
--(c_fifa22 = c_the_legendof_zelda).
 -(c_one_million = c_the_legendof_zelda).
 end_of_list.
 
 formulas(goals).
-exists v_x (((p_created(v_x, c_fifa22) & p_japanese(v_x)) & p_video_game_company(v_x))).
+-(p_in_top10(c_the_legendof_zelda)).
 end_of_list.

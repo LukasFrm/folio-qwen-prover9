@@ -1,19 +1,18 @@
 ============================== Prover9 ===============================
 Prover9 (64) version 2009-11A, November 2009.
-Process 29588 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
-Sat Oct 17 13:01:59 2026
+Process 47157 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:07 2026
 The command was "prover9 -t 5".
 ============================== end of head ===========================
 
 ============================== INPUT =================================
 
 formulas(assumptions).
-p_game(c_the_legendof_zelda) & (exists v_x (p_japanese(v_x) & p_video_game_company(v_x) & p_created(v_x,c_the_legendof_zelda))) & (all v_x all v_y (p_game(v_x) & p_in_top10(v_x) & p_created(v_y,v_x) -> p_japanese(v_y) & p_video_game_company(v_y))) & (all v_x (p_game(v_x) & (exists v_y (p_greater_than(v_y,c_one_million) & p_copies_sold(v_x,v_y))) -> p_in_top10(v_x))) & (exists v_y (p_greater_than(v_y,c_one_million) & p_copies_sold(c_the_legendof_zelda,v_y))).
-c_one_million != c_the_legendof_zelda.
+(all v_x (p_square(v_x) -> p_four_sided(v_x))) & (all v_x (p_four_sided(v_x) -> p_shape(v_x))).
 end_of_list.
 
 formulas(goals).
---p_in_top10(c_the_legendof_zelda).
+-(all v_x (p_square(v_x) -> p_shape(v_x))).
 end_of_list.
 
 ============================== end of input ==========================
@@ -23,8 +22,8 @@ end_of_list.
 ============================== PROCESS NON-CLAUSAL FORMULAS ==========
 
 % Formulas that are not ordinary clauses:
-1 p_game(c_the_legendof_zelda) & (exists v_x (p_japanese(v_x) & p_video_game_company(v_x) & p_created(v_x,c_the_legendof_zelda))) & (all v_x all v_y (p_game(v_x) & p_in_top10(v_x) & p_created(v_y,v_x) -> p_japanese(v_y) & p_video_game_company(v_y))) & (all v_x (p_game(v_x) & (exists v_y (p_greater_than(v_y,c_one_million) & p_copies_sold(v_x,v_y))) -> p_in_top10(v_x))) & (exists v_y (p_greater_than(v_y,c_one_million) & p_copies_sold(c_the_legendof_zelda,v_y))) # label(non_clause).  [assumption].
-2 --p_in_top10(c_the_legendof_zelda) # label(non_clause) # label(goal).  [goal].
+1 (all v_x (p_square(v_x) -> p_four_sided(v_x))) & (all v_x (p_four_sided(v_x) -> p_shape(v_x))) # label(non_clause).  [assumption].
+2 -(all v_x (p_square(v_x) -> p_shape(v_x))) # label(non_clause) # label(goal).  [goal].
 
 ============================== end of process non-clausal formulas ===
 
@@ -36,17 +35,9 @@ formulas(usable).
 end_of_list.
 
 formulas(sos).
-p_game(c_the_legendof_zelda).  [clausify(1)].
-p_japanese(c1).  [clausify(1)].
-p_video_game_company(c1).  [clausify(1)].
-p_created(c1,c_the_legendof_zelda).  [clausify(1)].
--p_game(x) | -p_in_top10(x) | -p_created(y,x) | p_japanese(y).  [clausify(1)].
--p_game(x) | -p_in_top10(x) | -p_created(y,x) | p_video_game_company(y).  [clausify(1)].
--p_game(x) | -p_greater_than(y,c_one_million) | -p_copies_sold(x,y) | p_in_top10(x).  [clausify(1)].
-p_greater_than(c2,c_one_million).  [clausify(1)].
-p_copies_sold(c_the_legendof_zelda,c2).  [clausify(1)].
-c_one_million != c_the_legendof_zelda.  [assumption].
--p_in_top10(c_the_legendof_zelda).  [deny(2)].
+-p_square(x) | p_four_sided(x).  [clausify(1)].
+-p_four_sided(x) | p_shape(x).  [clausify(1)].
+-p_square(x) | p_shape(x).  [deny(2)].
 end_of_list.
 
 formulas(demodulators).
@@ -54,32 +45,17 @@ end_of_list.
 
 ============================== PREDICATE ELIMINATION =================
 
-Eliminating p_game/1
-3 -p_game(x) | -p_in_top10(x) | -p_created(y,x) | p_japanese(y).  [clausify(1)].
-4 p_game(c_the_legendof_zelda).  [clausify(1)].
-5 -p_game(x) | -p_in_top10(x) | -p_created(y,x) | p_video_game_company(y).  [clausify(1)].
-6 -p_game(x) | -p_greater_than(y,c_one_million) | -p_copies_sold(x,y) | p_in_top10(x).  [clausify(1)].
-Derived: -p_greater_than(x,c_one_million) | -p_copies_sold(c_the_legendof_zelda,x) | p_in_top10(c_the_legendof_zelda).  [resolve(6,a,4,a)].
+Eliminating p_square/1
 
-Eliminating p_japanese/1
-
-Eliminating p_video_game_company/1
-
-Eliminating p_created/2
+Eliminating p_four_sided/1
 
 ============================== end predicate elimination =============
 
-Auto_denials:
-  % assign(max_proofs, 2).  % (Horn set with more than one neg. clause)
-
-WARNING, because some of the denials share constants,
-some of the denials or their descendents may be subsumed,
-preventing the target number of proofs from being found.
-The shared constants are:  c_the_legendof_zelda.
+Auto_denials:  (no changes).
 
 Term ordering decisions:
-Predicate symbol precedence:  predicate_order([ =, p_in_top10, p_copies_sold, p_greater_than ]).
-Function symbol precedence:  function_order([ c_the_legendof_zelda, c_one_million, c2 ]).
+Predicate symbol precedence:  predicate_order([ ]).
+Function symbol precedence:  function_order([ ]).
 After inverse_order:  (no changes).
 Unfolding symbols: (none).
 
@@ -92,11 +68,6 @@ Auto_inference settings:
 
 Auto_process settings:  (no changes).
 
-kept:      7 p_greater_than(c2,c_one_million).  [clausify(1)].
-kept:      8 p_copies_sold(c_the_legendof_zelda,c2).  [clausify(1)].
-kept:      9 c_one_million != c_the_legendof_zelda.  [assumption].
-kept:      10 -p_in_top10(c_the_legendof_zelda).  [deny(2)].
-kept:      11 -p_greater_than(x,c_one_million) | -p_copies_sold(c_the_legendof_zelda,x) | p_in_top10(c_the_legendof_zelda).  [resolve(6,a,4,a)].
 
 ============================== end of process initial clauses ========
 
@@ -108,11 +79,6 @@ formulas(usable).
 end_of_list.
 
 formulas(sos).
-7 p_greater_than(c2,c_one_million).  [clausify(1)].
-8 p_copies_sold(c_the_legendof_zelda,c2).  [clausify(1)].
-9 c_one_million != c_the_legendof_zelda.  [assumption].
-10 -p_in_top10(c_the_legendof_zelda).  [deny(2)].
-11 -p_greater_than(x,c_one_million) | -p_copies_sold(c_the_legendof_zelda,x) | p_in_top10(c_the_legendof_zelda).  [resolve(6,a,4,a)].
 end_of_list.
 
 formulas(demodulators).
@@ -124,56 +90,18 @@ end_of_list.
 
 % Starting search at 0.00 seconds.
 
-given #1 (I,wt=3): 7 p_greater_than(c2,c_one_million).  [clausify(1)].
-
-given #2 (I,wt=3): 8 p_copies_sold(c_the_legendof_zelda,c2).  [clausify(1)].
-
-given #3 (I,wt=3): 9 c_one_million != c_the_legendof_zelda.  [assumption].
-
-given #4 (I,wt=2): 10 -p_in_top10(c_the_legendof_zelda).  [deny(2)].
-
-given #5 (I,wt=8): 11 -p_greater_than(x,c_one_million) | -p_copies_sold(c_the_legendof_zelda,x) | p_in_top10(c_the_legendof_zelda).  [resolve(6,a,4,a)].
-
-============================== PROOF =================================
-
-% Proof 1 at 0.00 (+ 0.00) seconds.
-% Length of proof is 10.
-% Level of proof is 4.
-% Maximum clause weight is 8.000.
-% Given clauses 5.
-
-1 p_game(c_the_legendof_zelda) & (exists v_x (p_japanese(v_x) & p_video_game_company(v_x) & p_created(v_x,c_the_legendof_zelda))) & (all v_x all v_y (p_game(v_x) & p_in_top10(v_x) & p_created(v_y,v_x) -> p_japanese(v_y) & p_video_game_company(v_y))) & (all v_x (p_game(v_x) & (exists v_y (p_greater_than(v_y,c_one_million) & p_copies_sold(v_x,v_y))) -> p_in_top10(v_x))) & (exists v_y (p_greater_than(v_y,c_one_million) & p_copies_sold(c_the_legendof_zelda,v_y))) # label(non_clause).  [assumption].
-2 --p_in_top10(c_the_legendof_zelda) # label(non_clause) # label(goal).  [goal].
-4 p_game(c_the_legendof_zelda).  [clausify(1)].
-6 -p_game(x) | -p_greater_than(y,c_one_million) | -p_copies_sold(x,y) | p_in_top10(x).  [clausify(1)].
-7 p_greater_than(c2,c_one_million).  [clausify(1)].
-8 p_copies_sold(c_the_legendof_zelda,c2).  [clausify(1)].
-10 -p_in_top10(c_the_legendof_zelda).  [deny(2)].
-11 -p_greater_than(x,c_one_million) | -p_copies_sold(c_the_legendof_zelda,x) | p_in_top10(c_the_legendof_zelda).  [resolve(6,a,4,a)].
-13 p_in_top10(c_the_legendof_zelda).  [ur(11,a,7,a,b,8,a)].
-14 $F.  [resolve(13,a,10,a)].
-
-============================== end of proof ==========================
-% Redundant proof: 16 $F.  [resolve(15,a,7,a)].
-% Redundant proof: 18 $F.  [resolve(17,a,8,a)].
-
-% Disable descendants (x means already disabled):
- 10 12 15 17
-
-given #6 (A,wt=2): 13 p_in_top10(c_the_legendof_zelda).  [ur(11,a,7,a,b,8,a)].
-
 ============================== STATISTICS ============================
 
-Given=6. Generated=9. Kept=9. proofs=1.
-Usable=4. Sos=0. Demods=0. Limbo=0, Disabled=17. Hints=0.
+Given=0. Generated=0. Kept=0. proofs=0.
+Usable=0. Sos=0. Demods=0. Limbo=0, Disabled=3. Hints=0.
 Kept_by_rule=0, Deleted_by_rule=0.
-Forward_subsumed=0. Back_subsumed=1.
+Forward_subsumed=0. Back_subsumed=0.
 Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
 New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
 Demod_attempts=0. Demod_rewrites=0.
 Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
-Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=3.
-Megabytes=0.06.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.02.
 User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
 
 ============================== end of statistics =====================
@@ -182,15 +110,11 @@ User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
 
 SEARCH FAILED
 
-Exiting with 1 proof.
+Exiting with failure.
 
-Process 29588 exit (sos_empty) Sat Oct 17 13:01:59 2026
-
-WARNING: denials share constants (see output).
-
--------- Proof 1 -------- 
+Process 47157 exit (sos_empty) Fri Oct 23 14:35:07 2026
 
 SEARCH FAILED
 
------- process 29588 exit (sos_empty) ------
+------ process 47157 exit (sos_empty) ------
 

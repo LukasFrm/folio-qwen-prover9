@@ -3,5 +3,5 @@ formulas(assumptions).
 end_of_list.
 
 formulas(goals).
-p_legal_obligation(c_harvard_weekly_book_club).
+(p_legal_obligation(c_harvard_weekly_book_club) & p_private_company(c_harvard_weekly_book_club)).
 end_of_list.

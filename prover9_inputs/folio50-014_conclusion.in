@@ -1,28 +1,8 @@
 formulas(assumptions).
-(((((exists v_x ((((p_british_sitcom(c_badults) & p_series(c_badults)) & p_member_of(v_x, c_pappys)) & p_star(v_x, c_badults))) & p_piloted_in(c_badults, c_july2013)) & p_piloted_on(c_badults, c_b_b_c_three)) & p_working_title(c_the_secret_dude_society, c_badults)) & p_used_for(c_the_secret_dude_society, c_badults)) & p_script_editor_for(c_andrew_collins, c_badults)).
--(c_andrew_collins = c_b_b_c_three).
--(c_andrew_collins = c_b_b_c_two).
--(c_andrew_collins = c_badults).
--(c_andrew_collins = c_july2013).
--(c_andrew_collins = c_pappys).
--(c_andrew_collins = c_the_secret_dude_society).
--(c_b_b_c_three = c_b_b_c_two).
--(c_b_b_c_three = c_badults).
--(c_b_b_c_three = c_july2013).
--(c_b_b_c_three = c_pappys).
--(c_b_b_c_three = c_the_secret_dude_society).
--(c_b_b_c_two = c_badults).
--(c_b_b_c_two = c_july2013).
--(c_b_b_c_two = c_pappys).
--(c_b_b_c_two = c_the_secret_dude_society).
--(c_badults = c_july2013).
--(c_badults = c_pappys).
--(c_badults = c_the_secret_dude_society).
--(c_july2013 = c_pappys).
--(c_july2013 = c_the_secret_dude_society).
--(c_pappys = c_the_secret_dude_society).
+((((all v_x ((p_baked_sweet(v_x) -> -(p_spicy(v_x)))) & all v_x ((p_cupcake(v_x) -> p_baked_sweet(v_x)))) & all v_x ((p_mala_hotpot(v_x) -> p_spicy(v_x)))) & all v_x (((p_product(v_x) & p_from(v_x, c_baked_by_melissa)) -> p_cupcake(v_x)))) & ((p_spicy(c_dried_thai_chili) | p_mala_hotpot(c_dried_thai_chili)) | -(p_baked_sweet(c_dried_thai_chili)))).
+-(c_baked_by_melissa = c_dried_thai_chili).
 end_of_list.
 
 formulas(goals).
-all v_x (all v_y (((p_member_of(v_x, c_pappys) & p_star(v_x, v_y)) -> -((p_piloted_on(v_y, c_b_b_c_two) | p_piloted_on(v_y, c_b_b_c_three)))))).
+(p_product(c_dried_thai_chili) & p_from(c_dried_thai_chili, c_baked_by_melissa)).
 end_of_list.

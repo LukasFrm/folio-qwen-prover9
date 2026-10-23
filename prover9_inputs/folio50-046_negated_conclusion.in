@@ -1,8 +1,10 @@
 formulas(assumptions).
-((((((all v_x (((p_animal(v_x) & p_bark(v_x)) -> -(p_like(c_jane, v_x)))) & all v_x ((p_dog(v_x) -> (p_animal(v_x) & p_bark(v_x))))) & all v_x (((p_animal(v_x) & p_jump(v_x)) -> p_like(c_jane, v_x)))) & all v_x (((p_animal(v_x) & p_has_legs(v_x)) -> p_jump(v_x)))) & all v_x (((p_animal(v_x) & p_terricolous(v_x)) -> p_has_legs(v_x)))) & p_animal(c_kiki)) & ((-(p_jump(c_kiki)) & -(p_has_legs(c_kiki))) -> (p_terricolous(c_kiki) | p_has_legs(c_kiki)))).
--(c_jane = c_kiki).
+((((exists v_x (((p_professional(v_x) & p_basketball_player(v_x)) & -(p_american_national(v_x)))) & all v_x (((p_professional(v_x) & p_basketball_player(v_x)) -> p_can_do(v_x, c_jump_shot)))) & all v_x ((p_can_do(v_x, c_jump_shot) -> p_leap_straight_into_air(v_x)))) & all v_x ((p_leap_straight_into_air(v_x) -> p_activate(v_x, c_leg_muscle)))) & -(p_activate(c_yuri, c_leg_muscle))).
+-(c_jump_shot = c_leg_muscle).
+-(c_jump_shot = c_yuri).
+-(c_leg_muscle = c_yuri).
 end_of_list.
 
 formulas(goals).
--(p_terricolous(c_kiki)).
+-(-(((p_american_national(c_yuri) & p_professional(c_yuri)) & p_basketball_player(c_yuri)))).
 end_of_list.

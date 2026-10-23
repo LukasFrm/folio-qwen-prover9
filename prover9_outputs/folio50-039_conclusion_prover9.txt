@@ -1,21 +1,19 @@
 ============================== Prover9 ===============================
 Prover9 (64) version 2009-11A, November 2009.
-Process 29705 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
-Sat Oct 17 13:02:00 2026
+Process 47287 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:08 2026
 The command was "prover9 -t 5".
 ============================== end of head ===========================
 
 ============================== INPUT =================================
 
 formulas(assumptions).
-p_german(c_heinrich_schmidt) & p_politician(c_heinrich_schmidt) & p_member(c_heinrich_schmidt,c_prussian_state_parliament) & p_member(c_heinrich_schmidt,c_nazi_reichstag).
-c_heinrich_schmidt != c_nazi_reichstag.
-c_heinrich_schmidt != c_prussian_state_parliament.
-c_nazi_reichstag != c_prussian_state_parliament.
+(all v_x (p_deadly_disease(v_x) -> p_come_with(v_x,c_low_survival_rate))) & (all v_x (p_severe_cancer(v_x) -> p_deadly_disease(v_x))) & (all v_x (p_bile_duct_cancer(v_x) -> p_severe_cancer(v_x))) & (all v_x (p_cholangiocarcinoma(v_x) -> p_bile_duct_cancer(v_x))) & (all v_x (p_mild_flu(v_x) -> p_come_with(v_x,c_low_survival_rate))) & -(p_bile_duct_cancer(c_colorectal_cancer) & p_come_with(c_colorectal_cancer,c_low_survival_rate)).
+c_colorectal_cancer != c_low_survival_rate.
 end_of_list.
 
 formulas(goals).
-(all v_x (p_politician(v_x) -> -p_member(v_x,c_nazi_reichstag))).
+p_cholangiocarcinoma(c_colorectal_cancer) & (p_mild_flu(c_colorectal_cancer) | p_bile_duct_cancer(c_colorectal_cancer)).
 end_of_list.
 
 ============================== end of input ==========================
@@ -25,8 +23,8 @@ end_of_list.
 ============================== PROCESS NON-CLAUSAL FORMULAS ==========
 
 % Formulas that are not ordinary clauses:
-1 p_german(c_heinrich_schmidt) & p_politician(c_heinrich_schmidt) & p_member(c_heinrich_schmidt,c_prussian_state_parliament) & p_member(c_heinrich_schmidt,c_nazi_reichstag) # label(non_clause).  [assumption].
-2 (all v_x (p_politician(v_x) -> -p_member(v_x,c_nazi_reichstag))) # label(non_clause) # label(goal).  [goal].
+1 (all v_x (p_deadly_disease(v_x) -> p_come_with(v_x,c_low_survival_rate))) & (all v_x (p_severe_cancer(v_x) -> p_deadly_disease(v_x))) & (all v_x (p_bile_duct_cancer(v_x) -> p_severe_cancer(v_x))) & (all v_x (p_cholangiocarcinoma(v_x) -> p_bile_duct_cancer(v_x))) & (all v_x (p_mild_flu(v_x) -> p_come_with(v_x,c_low_survival_rate))) & -(p_bile_duct_cancer(c_colorectal_cancer) & p_come_with(c_colorectal_cancer,c_low_survival_rate)) # label(non_clause).  [assumption].
+2 p_cholangiocarcinoma(c_colorectal_cancer) & (p_mild_flu(c_colorectal_cancer) | p_bile_duct_cancer(c_colorectal_cancer)) # label(non_clause) # label(goal).  [goal].
 
 ============================== end of process non-clausal formulas ===
 
@@ -38,15 +36,15 @@ formulas(usable).
 end_of_list.
 
 formulas(sos).
-p_german(c_heinrich_schmidt).  [clausify(1)].
-p_politician(c_heinrich_schmidt).  [clausify(1)].
-p_member(c_heinrich_schmidt,c_prussian_state_parliament).  [clausify(1)].
-p_member(c_heinrich_schmidt,c_nazi_reichstag).  [clausify(1)].
-c_heinrich_schmidt != c_nazi_reichstag.  [assumption].
-c_heinrich_schmidt != c_prussian_state_parliament.  [assumption].
-c_nazi_reichstag != c_prussian_state_parliament.  [assumption].
-p_politician(c1).  [deny(2)].
-p_member(c1,c_nazi_reichstag).  [deny(2)].
+-p_deadly_disease(x) | p_come_with(x,c_low_survival_rate).  [clausify(1)].
+-p_severe_cancer(x) | p_deadly_disease(x).  [clausify(1)].
+-p_bile_duct_cancer(x) | p_severe_cancer(x).  [clausify(1)].
+-p_cholangiocarcinoma(x) | p_bile_duct_cancer(x).  [clausify(1)].
+-p_mild_flu(x) | p_come_with(x,c_low_survival_rate).  [clausify(1)].
+-p_bile_duct_cancer(c_colorectal_cancer) | -p_come_with(c_colorectal_cancer,c_low_survival_rate).  [clausify(1)].
+c_colorectal_cancer != c_low_survival_rate.  [assumption].
+-p_cholangiocarcinoma(c_colorectal_cancer) | -p_mild_flu(c_colorectal_cancer).  [deny(2)].
+-p_cholangiocarcinoma(c_colorectal_cancer) | -p_bile_duct_cancer(c_colorectal_cancer).  [deny(2)].
 end_of_list.
 
 formulas(demodulators).
@@ -54,25 +52,29 @@ end_of_list.
 
 ============================== PREDICATE ELIMINATION =================
 
-Eliminating p_german/1
+Eliminating p_deadly_disease/1
+3 -p_severe_cancer(x) | p_deadly_disease(x).  [clausify(1)].
+4 -p_deadly_disease(x) | p_come_with(x,c_low_survival_rate).  [clausify(1)].
+Derived: -p_severe_cancer(x) | p_come_with(x,c_low_survival_rate).  [resolve(3,b,4,a)].
 
-Eliminating p_politician/1
-
-Eliminating p_member/2
+Eliminating p_severe_cancer/1
+5 -p_severe_cancer(x) | p_come_with(x,c_low_survival_rate).  [resolve(3,b,4,a)].
+6 -p_bile_duct_cancer(x) | p_severe_cancer(x).  [clausify(1)].
+Derived: p_come_with(x,c_low_survival_rate) | -p_bile_duct_cancer(x).  [resolve(5,a,6,b)].
 
 ============================== end predicate elimination =============
 
 Auto_denials:
-  % assign(max_proofs, 3).  % (Horn set with more than one neg. clause)
+  % assign(max_proofs, 4).  % (Horn set with more than one neg. clause)
 
 WARNING, because some of the denials share constants,
 some of the denials or their descendents may be subsumed,
 preventing the target number of proofs from being found.
-The shared constants are:  c_prussian_state_parliament, c_nazi_reichstag, c_heinrich_schmidt.
+The shared constants are:  c_low_survival_rate, c_colorectal_cancer.
 
 Term ordering decisions:
-Predicate symbol precedence:  predicate_order([ = ]).
-Function symbol precedence:  function_order([ c_heinrich_schmidt, c_nazi_reichstag, c_prussian_state_parliament ]).
+Predicate symbol precedence:  predicate_order([ =, p_bile_duct_cancer, p_cholangiocarcinoma, p_mild_flu, p_come_with ]).
+Function symbol precedence:  function_order([ c_low_survival_rate, c_colorectal_cancer ]).
 After inverse_order:  (no changes).
 Unfolding symbols: (none).
 
@@ -83,14 +85,16 @@ Auto_inference settings:
     % set(ur_resolution) -> set(pos_ur_resolution).
     % set(ur_resolution) -> set(neg_ur_resolution).
 
-Auto_process settings:  (no changes).
+Auto_process settings:
+  % set(unit_deletion).  % (Horn set with negative nonunits)
 
-           3 c_heinrich_schmidt != c_nazi_reichstag.  [assumption].
-kept:      4 c_nazi_reichstag != c_heinrich_schmidt.  [copy(3),flip(a)].
-           5 c_heinrich_schmidt != c_prussian_state_parliament.  [assumption].
-kept:      6 c_prussian_state_parliament != c_heinrich_schmidt.  [copy(5),flip(a)].
-           7 c_nazi_reichstag != c_prussian_state_parliament.  [assumption].
-kept:      8 c_prussian_state_parliament != c_nazi_reichstag.  [copy(7),flip(a)].
+kept:      7 -p_cholangiocarcinoma(x) | p_bile_duct_cancer(x).  [clausify(1)].
+kept:      8 -p_mild_flu(x) | p_come_with(x,c_low_survival_rate).  [clausify(1)].
+kept:      9 -p_bile_duct_cancer(c_colorectal_cancer) | -p_come_with(c_colorectal_cancer,c_low_survival_rate).  [clausify(1)].
+kept:      10 c_colorectal_cancer != c_low_survival_rate.  [assumption].
+kept:      11 -p_cholangiocarcinoma(c_colorectal_cancer) | -p_mild_flu(c_colorectal_cancer).  [deny(2)].
+kept:      12 -p_cholangiocarcinoma(c_colorectal_cancer) | -p_bile_duct_cancer(c_colorectal_cancer).  [deny(2)].
+kept:      13 p_come_with(x,c_low_survival_rate) | -p_bile_duct_cancer(x).  [resolve(5,a,6,b)].
 
 ============================== end of process initial clauses ========
 
@@ -102,9 +106,13 @@ formulas(usable).
 end_of_list.
 
 formulas(sos).
-4 c_nazi_reichstag != c_heinrich_schmidt.  [copy(3),flip(a)].
-6 c_prussian_state_parliament != c_heinrich_schmidt.  [copy(5),flip(a)].
-8 c_prussian_state_parliament != c_nazi_reichstag.  [copy(7),flip(a)].
+7 -p_cholangiocarcinoma(x) | p_bile_duct_cancer(x).  [clausify(1)].
+8 -p_mild_flu(x) | p_come_with(x,c_low_survival_rate).  [clausify(1)].
+9 -p_bile_duct_cancer(c_colorectal_cancer) | -p_come_with(c_colorectal_cancer,c_low_survival_rate).  [clausify(1)].
+10 c_colorectal_cancer != c_low_survival_rate.  [assumption].
+11 -p_cholangiocarcinoma(c_colorectal_cancer) | -p_mild_flu(c_colorectal_cancer).  [deny(2)].
+12 -p_cholangiocarcinoma(c_colorectal_cancer) | -p_bile_duct_cancer(c_colorectal_cancer).  [deny(2)].
+13 p_come_with(x,c_low_survival_rate) | -p_bile_duct_cancer(x).  [resolve(5,a,6,b)].
 end_of_list.
 
 formulas(demodulators).
@@ -116,24 +124,36 @@ end_of_list.
 
 % Starting search at 0.00 seconds.
 
-given #1 (I,wt=3): 4 c_nazi_reichstag != c_heinrich_schmidt.  [copy(3),flip(a)].
+given #1 (I,wt=4): 7 -p_cholangiocarcinoma(x) | p_bile_duct_cancer(x).  [clausify(1)].
 
-given #2 (I,wt=3): 6 c_prussian_state_parliament != c_heinrich_schmidt.  [copy(5),flip(a)].
+given #2 (I,wt=5): 8 -p_mild_flu(x) | p_come_with(x,c_low_survival_rate).  [clausify(1)].
 
-given #3 (I,wt=3): 8 c_prussian_state_parliament != c_nazi_reichstag.  [copy(7),flip(a)].
+given #3 (I,wt=5): 9 -p_bile_duct_cancer(c_colorectal_cancer) | -p_come_with(c_colorectal_cancer,c_low_survival_rate).  [clausify(1)].
+
+given #4 (I,wt=3): 10 c_colorectal_cancer != c_low_survival_rate.  [assumption].
+
+given #5 (I,wt=4): 11 -p_cholangiocarcinoma(c_colorectal_cancer) | -p_mild_flu(c_colorectal_cancer).  [deny(2)].
+
+given #6 (I,wt=4): 12 -p_cholangiocarcinoma(c_colorectal_cancer) | -p_bile_duct_cancer(c_colorectal_cancer).  [deny(2)].
+
+given #7 (I,wt=5): 13 p_come_with(x,c_low_survival_rate) | -p_bile_duct_cancer(x).  [resolve(5,a,6,b)].
+
+given #8 (A,wt=2): 16 -p_cholangiocarcinoma(c_colorectal_cancer).  [resolve(12,b,7,b),merge(b)].
+
+given #9 (F,wt=2): 17 -p_bile_duct_cancer(c_colorectal_cancer).  [resolve(13,a,9,b),merge(b)].
 
 ============================== STATISTICS ============================
 
-Given=3. Generated=3. Kept=3. proofs=0.
-Usable=3. Sos=0. Demods=0. Limbo=0, Disabled=9. Hints=0.
+Given=9. Generated=13. Kept=11. proofs=0.
+Usable=6. Sos=0. Demods=0. Limbo=0, Disabled=16. Hints=0.
 Kept_by_rule=0, Deleted_by_rule=0.
-Forward_subsumed=0. Back_subsumed=0.
+Forward_subsumed=2. Back_subsumed=5.
 Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
 New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
 Demod_attempts=0. Demod_rewrites=0.
 Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
-Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
-Megabytes=0.03.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=13.
+Megabytes=0.05.
 User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
 
 ============================== end of statistics =====================
@@ -144,12 +164,12 @@ SEARCH FAILED
 
 Exiting with failure.
 
-Process 29705 exit (sos_empty) Sat Oct 17 13:02:00 2026
+Process 47287 exit (sos_empty) Fri Oct 23 14:35:08 2026
 
 WARNING: denials share constants (see output).
 
 
 SEARCH FAILED
 
------- process 29705 exit (sos_empty) ------
+------ process 47287 exit (sos_empty) ------
 

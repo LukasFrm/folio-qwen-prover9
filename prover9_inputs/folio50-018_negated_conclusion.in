@@ -1,8 +1,17 @@
 formulas(assumptions).
-((((all v_x ((p_baked_sweet(v_x) -> -(p_spicy(v_x)))) & all v_x ((p_cupcake(v_x) -> p_baked_sweet(v_x)))) & all v_x ((p_mala_hotpot(v_x) -> p_spicy(v_x)))) & all v_x (((p_product(v_x) & p_from(v_x, c_baked_by_melissa)) -> p_cupcake(v_x)))) & ((p_spicy(c_dried_thai_chili) | p_mala_hotpot(c_dried_thai_chili)) | -(p_baked_sweet(c_dried_thai_chili)))).
--(c_baked_by_melissa = c_dried_thai_chili).
+((((all v_x ((p_listed_in(v_x, c_yelp_recommendation) -> -(p_receive_many_negative_reviews(v_x)))) & all v_x ((exists v_y ((p_have_rating(v_x, v_y) & p_greater_than(v_y, c_four))) -> p_listed_in(v_x, c_yelp_recommendation)))) & exists v_x ((-(p_provide(v_x, c_take_out_service)) & p_receive_many_negative_reviews(v_x)))) & all v_x ((p_popular_among(v_x, c_local_residents) -> exists v_y ((p_have_rating(v_x, v_y) & p_greater_than(v_y, c_four)))))) & (exists v_y ((p_have_rating(c_hamden_plaza_subway, v_y) & p_greater_than(v_y, c_four))) | p_popular_among(c_hamden_plaza_subway, c_local_residents))).
+-(c_four = c_hamden_plaza_subway).
+-(c_four = c_local_residents).
+-(c_four = c_take_out_service).
+-(c_four = c_yelp_recommendation).
+-(c_hamden_plaza_subway = c_local_residents).
+-(c_hamden_plaza_subway = c_take_out_service).
+-(c_hamden_plaza_subway = c_yelp_recommendation).
+-(c_local_residents = c_take_out_service).
+-(c_local_residents = c_yelp_recommendation).
+-(c_take_out_service = c_yelp_recommendation).
 end_of_list.
 
 formulas(goals).
--(-((p_product(c_dried_thai_chili) & p_from(c_dried_thai_chili, c_baked_by_melissa)))).
+-(((p_provide(c_hamden_plaza_subway, c_take_out_service) & p_receive_many_negative_reviews(c_hamden_plaza_subway)) -> (exists v_y ((p_have_rating(c_hamden_plaza_subway, v_y) & p_greater_than(v_y, c_four))) & -(p_provide(c_hamden_plaza_subway, c_take_out_service))))).
 end_of_list.

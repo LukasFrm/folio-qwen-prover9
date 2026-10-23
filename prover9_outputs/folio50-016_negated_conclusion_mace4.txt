@@ -1,7 +1,7 @@
 ============================== Mace4 =================================
 Mace4 (64) version 2009-11A, November 2009.
-Process 29639 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
-Sat Oct 17 13:02:00 2026
+Process 47205 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:08 2026
 The command was "mace4 -t 5 -n 2 -N 8".
 ============================== end of head ===========================
 
@@ -13,7 +13,7 @@ c_baked_by_melissa != c_dried_thai_chili.
 end_of_list.
 
 formulas(goals).
-p_mala_hotpot(c_dried_thai_chili).
+-(-(p_product(c_dried_thai_chili) & p_from(c_dried_thai_chili,c_baked_by_melissa)) & -p_baked_sweet(c_dried_thai_chili)).
 end_of_list.
 
 % From the command line: assign(max_seconds, 5).
@@ -30,7 +30,7 @@ end_of_list.
 
 % Formulas that are not ordinary clauses:
 1 (all v_x (p_baked_sweet(v_x) -> -p_spicy(v_x))) & (all v_x (p_cupcake(v_x) -> p_baked_sweet(v_x))) & (all v_x (p_mala_hotpot(v_x) -> p_spicy(v_x))) & (all v_x (p_product(v_x) & p_from(v_x,c_baked_by_melissa) -> p_cupcake(v_x))) & (p_spicy(c_dried_thai_chili) | p_mala_hotpot(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili)) # label(non_clause).  [assumption].
-2 p_mala_hotpot(c_dried_thai_chili) # label(non_clause) # label(goal).  [goal].
+2 -(-(p_product(c_dried_thai_chili) & p_from(c_dried_thai_chili,c_baked_by_melissa)) & -p_baked_sweet(c_dried_thai_chili)) # label(non_clause) # label(goal).  [goal].
 
 ============================== end of process non-clausal formulas ===
 
@@ -43,7 +43,8 @@ formulas(mace4_clauses).
 -p_product(x) | -p_from(x,c_baked_by_melissa) | p_cupcake(x).
 p_spicy(c_dried_thai_chili) | p_mala_hotpot(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili).
 c_baked_by_melissa != c_dried_thai_chili.
--p_mala_hotpot(c_dried_thai_chili).
+-p_product(c_dried_thai_chili) | -p_from(c_dried_thai_chili,c_baked_by_melissa).
+-p_baked_sweet(c_dried_thai_chili).
 end_of_list.
 
 ============================== end of clauses for search =============
@@ -82,9 +83,9 @@ interpretation( 2, [number=1, seconds=0], [
 For domain size 2.
 
 Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
-Ground clauses: seen=11, kept=11.
+Ground clauses: seen=12, kept=12.
 Selections=12, assignments=12, propagations=4, current_models=1.
-Rewrite_terms=8, rewrite_bools=16, indexes=5.
+Rewrite_terms=11, rewrite_bools=16, indexes=7.
 Rules_from_neg_clauses=1, cross_offs=1.
 
 ============================== end of statistics =====================
@@ -93,9 +94,9 @@ User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
 
 Exiting with 1 model.
 
-Process 29639 exit (max_models) Sat Oct 17 13:02:00 2026
-The process finished Sat Oct 17 13:02:00 2026
+Process 47205 exit (max_models) Fri Oct 23 14:35:08 2026
+The process finished Fri Oct 23 14:35:08 2026
 
 === Mace4 starting on domain size 2. ===
 
------- process 29639 exit (max_models) ------
+------ process 47205 exit (max_models) ------

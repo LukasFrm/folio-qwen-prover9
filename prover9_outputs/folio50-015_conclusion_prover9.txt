@@ -1,28 +1,19 @@
 ============================== Prover9 ===============================
 Prover9 (64) version 2009-11A, November 2009.
-Process 29627 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
-Sat Oct 17 13:01:59 2026
+Process 47200 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:08 2026
 The command was "prover9 -t 5".
 ============================== end of head ===========================
 
 ============================== INPUT =================================
 
 formulas(assumptions).
-(all v_x (p_vehicle_registration_plate_in(v_x,c_istanbul) -> p_begin_with(v_x,c_num34))) & (all v_x (-p_begin_with(v_x,c_num34) -> -p_vehicle_registration_plate_in(v_x,c_istanbul))) & (exists v_x (p_owns(c_joe,v_x) & p_vehicle_registration_plate_in(v_x,c_istanbul))) & (exists v_x exists v_y (p_owns(c_tom,v_x) & p_vehicle_registration_plate_in(v_x,v_y) & p_begin_with(v_x,c_num35))) & (all v_x (p_begin_with(v_x,c_num35) -> -p_begin_with(v_x,c_num34))).
-c_istanbul != c_joe.
-c_istanbul != c_num34.
-c_istanbul != c_num35.
-c_istanbul != c_tom.
-c_joe != c_num34.
-c_joe != c_num35.
-c_joe != c_tom.
-c_num34 != c_num35.
-c_num34 != c_tom.
-c_num35 != c_tom.
+(all v_x (p_baked_sweet(v_x) -> -p_spicy(v_x))) & (all v_x (p_cupcake(v_x) -> p_baked_sweet(v_x))) & (all v_x (p_mala_hotpot(v_x) -> p_spicy(v_x))) & (all v_x (p_product(v_x) & p_from(v_x,c_baked_by_melissa) -> p_cupcake(v_x))) & (p_spicy(c_dried_thai_chili) | p_mala_hotpot(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili)).
+c_baked_by_melissa != c_dried_thai_chili.
 end_of_list.
 
 formulas(goals).
-(exists v_x (p_owns(c_joe,v_x) & p_begin_with(v_x,c_num34) & (exists v_y p_vehicle_registration_plate_in(v_x,v_y)))).
+-(p_product(c_dried_thai_chili) & p_from(c_dried_thai_chili,c_baked_by_melissa)).
 end_of_list.
 
 ============================== end of input ==========================
@@ -32,8 +23,8 @@ end_of_list.
 ============================== PROCESS NON-CLAUSAL FORMULAS ==========
 
 % Formulas that are not ordinary clauses:
-1 (all v_x (p_vehicle_registration_plate_in(v_x,c_istanbul) -> p_begin_with(v_x,c_num34))) & (all v_x (-p_begin_with(v_x,c_num34) -> -p_vehicle_registration_plate_in(v_x,c_istanbul))) & (exists v_x (p_owns(c_joe,v_x) & p_vehicle_registration_plate_in(v_x,c_istanbul))) & (exists v_x exists v_y (p_owns(c_tom,v_x) & p_vehicle_registration_plate_in(v_x,v_y) & p_begin_with(v_x,c_num35))) & (all v_x (p_begin_with(v_x,c_num35) -> -p_begin_with(v_x,c_num34))) # label(non_clause).  [assumption].
-2 (exists v_x (p_owns(c_joe,v_x) & p_begin_with(v_x,c_num34) & (exists v_y p_vehicle_registration_plate_in(v_x,v_y)))) # label(non_clause) # label(goal).  [goal].
+1 (all v_x (p_baked_sweet(v_x) -> -p_spicy(v_x))) & (all v_x (p_cupcake(v_x) -> p_baked_sweet(v_x))) & (all v_x (p_mala_hotpot(v_x) -> p_spicy(v_x))) & (all v_x (p_product(v_x) & p_from(v_x,c_baked_by_melissa) -> p_cupcake(v_x))) & (p_spicy(c_dried_thai_chili) | p_mala_hotpot(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili)) # label(non_clause).  [assumption].
+2 -(p_product(c_dried_thai_chili) & p_from(c_dried_thai_chili,c_baked_by_melissa)) # label(non_clause) # label(goal).  [goal].
 
 ============================== end of process non-clausal formulas ===
 
@@ -45,25 +36,14 @@ formulas(usable).
 end_of_list.
 
 formulas(sos).
--p_vehicle_registration_plate_in(x,c_istanbul) | p_begin_with(x,c_num34).  [clausify(1)].
-p_begin_with(x,c_num34) | -p_vehicle_registration_plate_in(x,c_istanbul).  [clausify(1)].
-p_owns(c_joe,c1).  [clausify(1)].
-p_vehicle_registration_plate_in(c1,c_istanbul).  [clausify(1)].
-p_owns(c_tom,c2).  [clausify(1)].
-p_vehicle_registration_plate_in(c2,c3).  [clausify(1)].
-p_begin_with(c2,c_num35).  [clausify(1)].
--p_begin_with(x,c_num35) | -p_begin_with(x,c_num34).  [clausify(1)].
-c_istanbul != c_joe.  [assumption].
-c_istanbul != c_num34.  [assumption].
-c_istanbul != c_num35.  [assumption].
-c_istanbul != c_tom.  [assumption].
-c_joe != c_num34.  [assumption].
-c_joe != c_num35.  [assumption].
-c_joe != c_tom.  [assumption].
-c_num34 != c_num35.  [assumption].
-c_num34 != c_tom.  [assumption].
-c_num35 != c_tom.  [assumption].
--p_owns(c_joe,x) | -p_begin_with(x,c_num34) | -p_vehicle_registration_plate_in(x,y).  [deny(2)].
+-p_baked_sweet(x) | -p_spicy(x).  [clausify(1)].
+-p_cupcake(x) | p_baked_sweet(x).  [clausify(1)].
+-p_mala_hotpot(x) | p_spicy(x).  [clausify(1)].
+-p_product(x) | -p_from(x,c_baked_by_melissa) | p_cupcake(x).  [clausify(1)].
+p_spicy(c_dried_thai_chili) | p_mala_hotpot(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili).  [clausify(1)].
+c_baked_by_melissa != c_dried_thai_chili.  [assumption].
+p_product(c_dried_thai_chili).  [deny(2)].
+p_from(c_dried_thai_chili,c_baked_by_melissa).  [deny(2)].
 end_of_list.
 
 formulas(demodulators).
@@ -71,21 +51,41 @@ end_of_list.
 
 ============================== PREDICATE ELIMINATION =================
 
-No predicates eliminated.
+Eliminating p_spicy/1
+3 -p_mala_hotpot(x) | p_spicy(x).  [clausify(1)].
+4 -p_baked_sweet(x) | -p_spicy(x).  [clausify(1)].
+Derived: -p_mala_hotpot(x) | -p_baked_sweet(x).  [resolve(3,b,4,b)].
+5 p_spicy(c_dried_thai_chili) | p_mala_hotpot(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili).  [clausify(1)].
+Derived: p_mala_hotpot(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili).  [resolve(5,a,4,b)].
+
+Eliminating p_cupcake/1
+6 -p_product(x) | -p_from(x,c_baked_by_melissa) | p_cupcake(x).  [clausify(1)].
+7 -p_cupcake(x) | p_baked_sweet(x).  [clausify(1)].
+Derived: -p_product(x) | -p_from(x,c_baked_by_melissa) | p_baked_sweet(x).  [resolve(6,c,7,a)].
+
+Eliminating p_product/1
+8 -p_product(x) | -p_from(x,c_baked_by_melissa) | p_baked_sweet(x).  [resolve(6,c,7,a)].
+9 p_product(c_dried_thai_chili).  [deny(2)].
+Derived: -p_from(c_dried_thai_chili,c_baked_by_melissa) | p_baked_sweet(c_dried_thai_chili).  [resolve(8,a,9,a)].
+
+Eliminating p_mala_hotpot/1
+10 p_mala_hotpot(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili).  [resolve(5,a,4,b)].
+11 -p_mala_hotpot(x) | -p_baked_sweet(x).  [resolve(3,b,4,b)].
+Derived: -p_baked_sweet(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili).  [resolve(10,a,11,a)].
 
 ============================== end predicate elimination =============
 
 Auto_denials:
-  % assign(max_proofs, 12).  % (Horn set with more than one neg. clause)
+  % assign(max_proofs, 2).  % (Horn set with more than one neg. clause)
 
 WARNING, because some of the denials share constants,
 some of the denials or their descendents may be subsumed,
 preventing the target number of proofs from being found.
-The shared constants are:  c_tom, c_joe, c_istanbul, c_num35, c_num34.
+The shared constants are:  c_dried_thai_chili.
 
 Term ordering decisions:
-Predicate symbol precedence:  predicate_order([ =, p_vehicle_registration_plate_in, p_begin_with, p_owns ]).
-Function symbol precedence:  function_order([ c_istanbul, c_num34, c_joe, c_num35, c_tom, c1, c2, c3 ]).
+Predicate symbol precedence:  predicate_order([ =, p_baked_sweet, p_from ]).
+Function symbol precedence:  function_order([ c_dried_thai_chili, c_baked_by_melissa ]).
 After inverse_order:  (no changes).
 Unfolding symbols: (none).
 
@@ -99,33 +99,41 @@ Auto_inference settings:
 Auto_process settings:
   % set(unit_deletion).  % (Horn set with negative nonunits)
 
-kept:      3 -p_vehicle_registration_plate_in(x,c_istanbul) | p_begin_with(x,c_num34).  [clausify(1)].
-kept:      4 p_owns(c_joe,c1).  [clausify(1)].
-kept:      5 p_vehicle_registration_plate_in(c1,c_istanbul).  [clausify(1)].
-kept:      6 p_owns(c_tom,c2).  [clausify(1)].
-kept:      7 p_vehicle_registration_plate_in(c2,c3).  [clausify(1)].
-kept:      8 p_begin_with(c2,c_num35).  [clausify(1)].
-kept:      9 -p_begin_with(x,c_num35) | -p_begin_with(x,c_num34).  [clausify(1)].
-           10 c_istanbul != c_joe.  [assumption].
-kept:      11 c_joe != c_istanbul.  [copy(10),flip(a)].
-           12 c_istanbul != c_num34.  [assumption].
-kept:      13 c_num34 != c_istanbul.  [copy(12),flip(a)].
-           14 c_istanbul != c_num35.  [assumption].
-kept:      15 c_num35 != c_istanbul.  [copy(14),flip(a)].
-           16 c_istanbul != c_tom.  [assumption].
-kept:      17 c_tom != c_istanbul.  [copy(16),flip(a)].
-kept:      18 c_joe != c_num34.  [assumption].
-           19 c_joe != c_num35.  [assumption].
-kept:      20 c_num35 != c_joe.  [copy(19),flip(a)].
-           21 c_joe != c_tom.  [assumption].
-kept:      22 c_tom != c_joe.  [copy(21),flip(a)].
-           23 c_num34 != c_num35.  [assumption].
-kept:      24 c_num35 != c_num34.  [copy(23),flip(a)].
-           25 c_num34 != c_tom.  [assumption].
-kept:      26 c_tom != c_num34.  [copy(25),flip(a)].
-           27 c_num35 != c_tom.  [assumption].
-kept:      28 c_tom != c_num35.  [copy(27),flip(a)].
-kept:      29 -p_owns(c_joe,x) | -p_begin_with(x,c_num34) | -p_vehicle_registration_plate_in(x,y).  [deny(2)].
+kept:      12 c_baked_by_melissa != c_dried_thai_chili.  [assumption].
+kept:      13 p_from(c_dried_thai_chili,c_baked_by_melissa).  [deny(2)].
+           14 -p_from(c_dried_thai_chili,c_baked_by_melissa) | p_baked_sweet(c_dried_thai_chili).  [resolve(8,a,9,a)].
+kept:      15 p_baked_sweet(c_dried_thai_chili).  [copy(14),unit_del(a,13)].
+           16 -p_baked_sweet(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili).  [resolve(10,a,11,a)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 16.
+% Level of proof is 5.
+% Maximum clause weight is 3.000.
+% Given clauses 0.
+
+1 (all v_x (p_baked_sweet(v_x) -> -p_spicy(v_x))) & (all v_x (p_cupcake(v_x) -> p_baked_sweet(v_x))) & (all v_x (p_mala_hotpot(v_x) -> p_spicy(v_x))) & (all v_x (p_product(v_x) & p_from(v_x,c_baked_by_melissa) -> p_cupcake(v_x))) & (p_spicy(c_dried_thai_chili) | p_mala_hotpot(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili)) # label(non_clause).  [assumption].
+2 -(p_product(c_dried_thai_chili) & p_from(c_dried_thai_chili,c_baked_by_melissa)) # label(non_clause) # label(goal).  [goal].
+3 -p_mala_hotpot(x) | p_spicy(x).  [clausify(1)].
+4 -p_baked_sweet(x) | -p_spicy(x).  [clausify(1)].
+5 p_spicy(c_dried_thai_chili) | p_mala_hotpot(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili).  [clausify(1)].
+6 -p_product(x) | -p_from(x,c_baked_by_melissa) | p_cupcake(x).  [clausify(1)].
+7 -p_cupcake(x) | p_baked_sweet(x).  [clausify(1)].
+8 -p_product(x) | -p_from(x,c_baked_by_melissa) | p_baked_sweet(x).  [resolve(6,c,7,a)].
+9 p_product(c_dried_thai_chili).  [deny(2)].
+10 p_mala_hotpot(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili).  [resolve(5,a,4,b)].
+11 -p_mala_hotpot(x) | -p_baked_sweet(x).  [resolve(3,b,4,b)].
+13 p_from(c_dried_thai_chili,c_baked_by_melissa).  [deny(2)].
+14 -p_from(c_dried_thai_chili,c_baked_by_melissa) | p_baked_sweet(c_dried_thai_chili).  [resolve(8,a,9,a)].
+15 p_baked_sweet(c_dried_thai_chili).  [copy(14),unit_del(a,13)].
+16 -p_baked_sweet(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili).  [resolve(10,a,11,a)].
+17 $F.  [copy(16),merge(b),merge(c),unit_del(a,15)].
+
+============================== end of proof ==========================
+
+% Disable descendants (x means already disabled):
+ 4x 11x 16x
 
 ============================== end of process initial clauses ========
 
@@ -137,24 +145,9 @@ formulas(usable).
 end_of_list.
 
 formulas(sos).
-3 -p_vehicle_registration_plate_in(x,c_istanbul) | p_begin_with(x,c_num34).  [clausify(1)].
-4 p_owns(c_joe,c1).  [clausify(1)].
-5 p_vehicle_registration_plate_in(c1,c_istanbul).  [clausify(1)].
-6 p_owns(c_tom,c2).  [clausify(1)].
-7 p_vehicle_registration_plate_in(c2,c3).  [clausify(1)].
-8 p_begin_with(c2,c_num35).  [clausify(1)].
-9 -p_begin_with(x,c_num35) | -p_begin_with(x,c_num34).  [clausify(1)].
-11 c_joe != c_istanbul.  [copy(10),flip(a)].
-13 c_num34 != c_istanbul.  [copy(12),flip(a)].
-15 c_num35 != c_istanbul.  [copy(14),flip(a)].
-17 c_tom != c_istanbul.  [copy(16),flip(a)].
-18 c_joe != c_num34.  [assumption].
-20 c_num35 != c_joe.  [copy(19),flip(a)].
-22 c_tom != c_joe.  [copy(21),flip(a)].
-24 c_num35 != c_num34.  [copy(23),flip(a)].
-26 c_tom != c_num34.  [copy(25),flip(a)].
-28 c_tom != c_num35.  [copy(27),flip(a)].
-29 -p_owns(c_joe,x) | -p_begin_with(x,c_num34) | -p_vehicle_registration_plate_in(x,y).  [deny(2)].
+12 c_baked_by_melissa != c_dried_thai_chili.  [assumption].
+13 p_from(c_dried_thai_chili,c_baked_by_melissa).  [deny(2)].
+15 p_baked_sweet(c_dried_thai_chili).  [copy(14),unit_del(a,13)].
 end_of_list.
 
 formulas(demodulators).
@@ -166,89 +159,24 @@ end_of_list.
 
 % Starting search at 0.00 seconds.
 
-given #1 (I,wt=6): 3 -p_vehicle_registration_plate_in(x,c_istanbul) | p_begin_with(x,c_num34).  [clausify(1)].
+given #1 (I,wt=3): 12 c_baked_by_melissa != c_dried_thai_chili.  [assumption].
 
-given #2 (I,wt=3): 4 p_owns(c_joe,c1).  [clausify(1)].
+given #2 (I,wt=3): 13 p_from(c_dried_thai_chili,c_baked_by_melissa).  [deny(2)].
 
-given #3 (I,wt=3): 5 p_vehicle_registration_plate_in(c1,c_istanbul).  [clausify(1)].
-
-given #4 (I,wt=3): 6 p_owns(c_tom,c2).  [clausify(1)].
-
-given #5 (I,wt=3): 7 p_vehicle_registration_plate_in(c2,c3).  [clausify(1)].
-
-given #6 (I,wt=3): 8 p_begin_with(c2,c_num35).  [clausify(1)].
-
-given #7 (I,wt=6): 9 -p_begin_with(x,c_num35) | -p_begin_with(x,c_num34).  [clausify(1)].
-
-given #8 (I,wt=3): 11 c_joe != c_istanbul.  [copy(10),flip(a)].
-
-given #9 (I,wt=3): 13 c_num34 != c_istanbul.  [copy(12),flip(a)].
-
-given #10 (I,wt=3): 15 c_num35 != c_istanbul.  [copy(14),flip(a)].
-
-given #11 (I,wt=3): 17 c_tom != c_istanbul.  [copy(16),flip(a)].
-
-given #12 (I,wt=3): 18 c_joe != c_num34.  [assumption].
-
-given #13 (I,wt=3): 20 c_num35 != c_joe.  [copy(19),flip(a)].
-
-given #14 (I,wt=3): 22 c_tom != c_joe.  [copy(21),flip(a)].
-
-given #15 (I,wt=3): 24 c_num35 != c_num34.  [copy(23),flip(a)].
-
-given #16 (I,wt=3): 26 c_tom != c_num34.  [copy(25),flip(a)].
-
-given #17 (I,wt=3): 28 c_tom != c_num35.  [copy(27),flip(a)].
-
-given #18 (I,wt=9): 29 -p_owns(c_joe,x) | -p_begin_with(x,c_num34) | -p_vehicle_registration_plate_in(x,y).  [deny(2)].
-
-============================== PROOF =================================
-
-% Proof 1 at 0.00 (+ 0.00) seconds.
-% Length of proof is 9.
-% Level of proof is 4.
-% Maximum clause weight is 9.000.
-% Given clauses 18.
-
-1 (all v_x (p_vehicle_registration_plate_in(v_x,c_istanbul) -> p_begin_with(v_x,c_num34))) & (all v_x (-p_begin_with(v_x,c_num34) -> -p_vehicle_registration_plate_in(v_x,c_istanbul))) & (exists v_x (p_owns(c_joe,v_x) & p_vehicle_registration_plate_in(v_x,c_istanbul))) & (exists v_x exists v_y (p_owns(c_tom,v_x) & p_vehicle_registration_plate_in(v_x,v_y) & p_begin_with(v_x,c_num35))) & (all v_x (p_begin_with(v_x,c_num35) -> -p_begin_with(v_x,c_num34))) # label(non_clause).  [assumption].
-2 (exists v_x (p_owns(c_joe,v_x) & p_begin_with(v_x,c_num34) & (exists v_y p_vehicle_registration_plate_in(v_x,v_y)))) # label(non_clause) # label(goal).  [goal].
-3 -p_vehicle_registration_plate_in(x,c_istanbul) | p_begin_with(x,c_num34).  [clausify(1)].
-4 p_owns(c_joe,c1).  [clausify(1)].
-5 p_vehicle_registration_plate_in(c1,c_istanbul).  [clausify(1)].
-29 -p_owns(c_joe,x) | -p_begin_with(x,c_num34) | -p_vehicle_registration_plate_in(x,y).  [deny(2)].
-30 p_begin_with(c1,c_num34).  [ur(3,a,5,a)].
-33 -p_vehicle_registration_plate_in(c1,x).  [resolve(29,a,4,a),unit_del(a,30)].
-34 $F.  [resolve(33,a,5,a)].
-
-============================== end of proof ==========================
-% Redundant proof: 36 $F.  [resolve(29,c,5,a),unit_del(a,4),unit_del(b,30)].
-% Redundant proof: 37 $F.  [ur(29,a,4,a,c,5,a),unit_del(a,30)].
-
-% Disable descendants (x means already disabled):
- 29 33 35
-
-given #19 (A,wt=3): 30 p_begin_with(c1,c_num34).  [ur(3,a,5,a)].
-
-given #20 (F,wt=3): 31 -p_begin_with(c2,c_num34).  [resolve(9,a,8,a)].
-
-given #21 (F,wt=3): 38 -p_begin_with(c1,c_num35).  [resolve(30,a,9,b)].
-
-given #22 (F,wt=3): 39 -p_vehicle_registration_plate_in(c2,c_istanbul).  [resolve(31,a,3,b)].
-
-given #23 (F,wt=6): 32 -p_begin_with(x,c_num35) | -p_vehicle_registration_plate_in(x,c_istanbul).  [resolve(9,b,3,b)].
+given #3 (I,wt=2): 15 p_baked_sweet(c_dried_thai_chili).  [copy(14),unit_del(a,13)].
 
 ============================== STATISTICS ============================
 
-Given=23. Generated=36. Kept=25. proofs=1.
-Usable=22. Sos=0. Demods=0. Limbo=0, Disabled=22. Hints=0.
+Given=3. Generated=4. Kept=3. proofs=1.
+Usable=3. Sos=0. Demods=0. Limbo=0, Disabled=13. Hints=0.
 Kept_by_rule=0, Deleted_by_rule=0.
-Forward_subsumed=9. Back_subsumed=0.
+Forward_subsumed=0. Back_subsumed=0.
 Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
 New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
 Demod_attempts=0. Demod_rewrites=0.
 Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
-Nonunit_fsub_feature_tests=1. Nonunit_bsub_feature_tests=5.
-Megabytes=0.08.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.04.
 User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
 
 ============================== end of statistics =====================
@@ -259,7 +187,7 @@ SEARCH FAILED
 
 Exiting with 1 proof.
 
-Process 29627 exit (sos_empty) Sat Oct 17 13:01:59 2026
+Process 47200 exit (sos_empty) Fri Oct 23 14:35:08 2026
 
 WARNING: denials share constants (see output).
 
@@ -267,5 +195,5 @@ WARNING: denials share constants (see output).
 
 SEARCH FAILED
 
------- process 29627 exit (sos_empty) ------
+------ process 47200 exit (sos_empty) ------
 

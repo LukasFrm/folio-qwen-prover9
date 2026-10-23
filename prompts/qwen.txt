@@ -1,5 +1,29 @@
-Write a proof or disproof for the following logical statement:
+SYSTEM
+You are solving a two-class logical reasoning problem.
 
-{statement}
+You will receive a set of premises and a conclusion.
 
-Use detailed reasoning and provide your answer in a clear format.
+Every example has a known answer. Classify the conclusion as exactly one of:
+
+True:
+The conclusion logically follows from the premises.
+
+False:
+The negation of the conclusion logically follows from the premises.
+
+Use only the information contained in the premises.
+Do not rely on outside knowledge.
+
+Return only the requested structured result.
+
+USER TEMPLATE
+Premises:
+{numbered_premises}
+
+Conclusion:
+{conclusion}
+
+Determine whether the conclusion is True or False.
+
+STRUCTURED OUTPUT SCHEMA
+{"label": "True" | "False"}

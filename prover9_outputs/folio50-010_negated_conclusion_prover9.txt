@@ -1,28 +1,19 @@
 ============================== Prover9 ===============================
 Prover9 (64) version 2009-11A, November 2009.
-Process 29612 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
-Sat Oct 17 13:01:59 2026
+Process 47182 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:07 2026
 The command was "prover9 -t 5".
 ============================== end of head ===========================
 
 ============================== INPUT =================================
 
 formulas(assumptions).
-(all v_x (p_romance_language(v_x) -> p_indo_european_language(v_x))) & (all v_x (p_romance_language(v_x) -> p_member_of(v_x,c_romance_family))) & (all v_x all v_y all v_z (p_member_of(v_x,v_z) & p_member_of(v_y,v_z) -> p_related(v_x,v_y) & p_related(v_y,v_x))) & p_romance_language(c_french) & p_romance_language(c_spanish) & p_related(c_german,c_spanish) & (all v_x (v_x != c_basque -> -p_related(c_basque,v_x))).
-c_basque != c_french.
-c_basque != c_german.
-c_basque != c_romance_family.
-c_basque != c_spanish.
-c_french != c_german.
-c_french != c_romance_family.
-c_french != c_spanish.
-c_german != c_romance_family.
-c_german != c_spanish.
-c_romance_family != c_spanish.
+p_striker(c_robert_lewandowski) & (all v_x (p_striker(v_x) -> p_soccer_player(v_x))) & p_left(c_robert_lewandowski,c_bayern_munchen) & (all v_x all v_y (p_player(v_x) & p_team(v_y) & p_left(v_x,v_y) -> -p_plays_for(v_x,v_y))).
+c_bayern_munchen != c_robert_lewandowski.
 end_of_list.
 
 formulas(goals).
--p_romance_language(c_german).
+-p_soccer_player(c_robert_lewandowski).
 end_of_list.
 
 ============================== end of input ==========================
@@ -32,8 +23,8 @@ end_of_list.
 ============================== PROCESS NON-CLAUSAL FORMULAS ==========
 
 % Formulas that are not ordinary clauses:
-1 (all v_x (p_romance_language(v_x) -> p_indo_european_language(v_x))) & (all v_x (p_romance_language(v_x) -> p_member_of(v_x,c_romance_family))) & (all v_x all v_y all v_z (p_member_of(v_x,v_z) & p_member_of(v_y,v_z) -> p_related(v_x,v_y) & p_related(v_y,v_x))) & p_romance_language(c_french) & p_romance_language(c_spanish) & p_related(c_german,c_spanish) & (all v_x (v_x != c_basque -> -p_related(c_basque,v_x))) # label(non_clause).  [assumption].
-2 -p_romance_language(c_german) # label(non_clause) # label(goal).  [goal].
+1 p_striker(c_robert_lewandowski) & (all v_x (p_striker(v_x) -> p_soccer_player(v_x))) & p_left(c_robert_lewandowski,c_bayern_munchen) & (all v_x all v_y (p_player(v_x) & p_team(v_y) & p_left(v_x,v_y) -> -p_plays_for(v_x,v_y))) # label(non_clause).  [assumption].
+2 -p_soccer_player(c_robert_lewandowski) # label(non_clause) # label(goal).  [goal].
 
 ============================== end of process non-clausal formulas ===
 
@@ -45,25 +36,12 @@ formulas(usable).
 end_of_list.
 
 formulas(sos).
--p_romance_language(x) | p_indo_european_language(x).  [clausify(1)].
--p_romance_language(x) | p_member_of(x,c_romance_family).  [clausify(1)].
--p_member_of(x,y) | -p_member_of(z,y) | p_related(x,z).  [clausify(1)].
--p_member_of(x,y) | -p_member_of(z,y) | p_related(z,x).  [clausify(1)].
-p_romance_language(c_french).  [clausify(1)].
-p_romance_language(c_spanish).  [clausify(1)].
-p_related(c_german,c_spanish).  [clausify(1)].
-c_basque = x | -p_related(c_basque,x).  [clausify(1)].
-c_basque != c_french.  [assumption].
-c_basque != c_german.  [assumption].
-c_basque != c_romance_family.  [assumption].
-c_basque != c_spanish.  [assumption].
-c_french != c_german.  [assumption].
-c_french != c_romance_family.  [assumption].
-c_french != c_spanish.  [assumption].
-c_german != c_romance_family.  [assumption].
-c_german != c_spanish.  [assumption].
-c_romance_family != c_spanish.  [assumption].
-p_romance_language(c_german).  [deny(2)].
+p_striker(c_robert_lewandowski).  [clausify(1)].
+-p_striker(x) | p_soccer_player(x).  [clausify(1)].
+p_left(c_robert_lewandowski,c_bayern_munchen).  [clausify(1)].
+-p_player(x) | -p_team(y) | -p_left(x,y) | -p_plays_for(x,y).  [clausify(1)].
+c_bayern_munchen != c_robert_lewandowski.  [assumption].
+p_soccer_player(c_robert_lewandowski).  [deny(2)].
 end_of_list.
 
 formulas(demodulators).
@@ -71,67 +49,46 @@ end_of_list.
 
 ============================== PREDICATE ELIMINATION =================
 
-Eliminating p_romance_language/1
-3 p_romance_language(c_french).  [clausify(1)].
-4 -p_romance_language(x) | p_indo_european_language(x).  [clausify(1)].
-5 -p_romance_language(x) | p_member_of(x,c_romance_family).  [clausify(1)].
-Derived: p_indo_european_language(c_french).  [resolve(3,a,4,a)].
-Derived: p_member_of(c_french,c_romance_family).  [resolve(3,a,5,a)].
-6 p_romance_language(c_spanish).  [clausify(1)].
-Derived: p_indo_european_language(c_spanish).  [resolve(6,a,4,a)].
-Derived: p_member_of(c_spanish,c_romance_family).  [resolve(6,a,5,a)].
-7 p_romance_language(c_german).  [deny(2)].
-Derived: p_indo_european_language(c_german).  [resolve(7,a,4,a)].
-Derived: p_member_of(c_german,c_romance_family).  [resolve(7,a,5,a)].
+Eliminating p_striker/1
+3 -p_striker(x) | p_soccer_player(x).  [clausify(1)].
+4 p_striker(c_robert_lewandowski).  [clausify(1)].
 
-Eliminating p_indo_european_language/1
+Eliminating p_left/2
+5 -p_player(x) | -p_team(y) | -p_left(x,y) | -p_plays_for(x,y).  [clausify(1)].
+6 p_left(c_robert_lewandowski,c_bayern_munchen).  [clausify(1)].
+Derived: -p_player(c_robert_lewandowski) | -p_team(c_bayern_munchen) | -p_plays_for(c_robert_lewandowski,c_bayern_munchen).  [resolve(5,c,6,a)].
+
+Eliminating p_soccer_player/1
 
 ============================== end predicate elimination =============
 
 Auto_denials:
-  % assign(max_proofs, 10).  % (Horn set with more than one neg. clause)
+  % assign(max_proofs, 2).  % (Horn set with more than one neg. clause)
 
 WARNING, because some of the denials share constants,
 some of the denials or their descendents may be subsumed,
 preventing the target number of proofs from being found.
-The shared constants are:  c_spanish, c_romance_family, c_german, c_french, c_basque.
+The shared constants are:  c_robert_lewandowski, c_bayern_munchen.
 
 Term ordering decisions:
-Predicate symbol precedence:  predicate_order([ =, p_member_of, p_related ]).
-Function symbol precedence:  function_order([ c_romance_family, c_basque, c_german, c_spanish, c_french ]).
+Predicate symbol precedence:  predicate_order([ =, p_player, p_team, p_plays_for ]).
+Function symbol precedence:  function_order([ c_bayern_munchen, c_robert_lewandowski ]).
 After inverse_order:  (no changes).
 Unfolding symbols: (none).
 
 Auto_inference settings:
-  % set(paramodulation).  % (positive equality literals)
-  % set(hyper_resolution).  % (nonunit Horn with equality)
-    % set(hyper_resolution) -> set(pos_hyper_resolution).
-  % set(neg_ur_resolution).  % (nonunit Horn with equality)
-  % assign(para_lit_limit, 3).  % (nonunit Horn with equality)
+  % set(neg_binary_resolution).  % (HNE depth_diff=0)
+  % clear(ordered_res).  % (HNE depth_diff=0)
+  % set(ur_resolution).  % (HNE depth_diff=0)
+    % set(ur_resolution) -> set(pos_ur_resolution).
+    % set(ur_resolution) -> set(neg_ur_resolution).
 
-Auto_process settings:  (no changes).
+Auto_process settings:
+  % set(unit_deletion).  % (Horn set with negative nonunits)
 
-kept:      8 -p_member_of(x,y) | -p_member_of(z,y) | p_related(x,z).  [clausify(1)].
-kept:      9 p_related(c_german,c_spanish).  [clausify(1)].
-kept:      10 c_basque = x | -p_related(c_basque,x).  [clausify(1)].
-           11 c_basque != c_french.  [assumption].
-kept:      12 c_french != c_basque.  [copy(11),flip(a)].
-           13 c_basque != c_german.  [assumption].
-kept:      14 c_german != c_basque.  [copy(13),flip(a)].
-kept:      15 c_basque != c_romance_family.  [assumption].
-           16 c_basque != c_spanish.  [assumption].
-kept:      17 c_spanish != c_basque.  [copy(16),flip(a)].
-kept:      18 c_french != c_german.  [assumption].
-kept:      19 c_french != c_romance_family.  [assumption].
-kept:      20 c_french != c_spanish.  [assumption].
-kept:      21 c_german != c_romance_family.  [assumption].
-           22 c_german != c_spanish.  [assumption].
-kept:      23 c_spanish != c_german.  [copy(22),flip(a)].
-           24 c_romance_family != c_spanish.  [assumption].
-kept:      25 c_spanish != c_romance_family.  [copy(24),flip(a)].
-kept:      26 p_member_of(c_french,c_romance_family).  [resolve(3,a,5,a)].
-kept:      27 p_member_of(c_spanish,c_romance_family).  [resolve(6,a,5,a)].
-kept:      28 p_member_of(c_german,c_romance_family).  [resolve(7,a,5,a)].
+           7 c_bayern_munchen != c_robert_lewandowski.  [assumption].
+kept:      8 c_robert_lewandowski != c_bayern_munchen.  [copy(7),flip(a)].
+kept:      9 -p_player(c_robert_lewandowski) | -p_team(c_bayern_munchen) | -p_plays_for(c_robert_lewandowski,c_bayern_munchen).  [resolve(5,c,6,a)].
 
 ============================== end of process initial clauses ========
 
@@ -143,22 +100,8 @@ formulas(usable).
 end_of_list.
 
 formulas(sos).
-8 -p_member_of(x,y) | -p_member_of(z,y) | p_related(x,z).  [clausify(1)].
-9 p_related(c_german,c_spanish).  [clausify(1)].
-10 c_basque = x | -p_related(c_basque,x).  [clausify(1)].
-12 c_french != c_basque.  [copy(11),flip(a)].
-14 c_german != c_basque.  [copy(13),flip(a)].
-15 c_basque != c_romance_family.  [assumption].
-17 c_spanish != c_basque.  [copy(16),flip(a)].
-18 c_french != c_german.  [assumption].
-19 c_french != c_romance_family.  [assumption].
-20 c_french != c_spanish.  [assumption].
-21 c_german != c_romance_family.  [assumption].
-23 c_spanish != c_german.  [copy(22),flip(a)].
-25 c_spanish != c_romance_family.  [copy(24),flip(a)].
-26 p_member_of(c_french,c_romance_family).  [resolve(3,a,5,a)].
-27 p_member_of(c_spanish,c_romance_family).  [resolve(6,a,5,a)].
-28 p_member_of(c_german,c_romance_family).  [resolve(7,a,5,a)].
+8 c_robert_lewandowski != c_bayern_munchen.  [copy(7),flip(a)].
+9 -p_player(c_robert_lewandowski) | -p_team(c_bayern_munchen) | -p_plays_for(c_robert_lewandowski,c_bayern_munchen).  [resolve(5,c,6,a)].
 end_of_list.
 
 formulas(demodulators).
@@ -170,76 +113,22 @@ end_of_list.
 
 % Starting search at 0.00 seconds.
 
-given #1 (I,wt=9): 8 -p_member_of(x,y) | -p_member_of(z,y) | p_related(x,z).  [clausify(1)].
+given #1 (I,wt=3): 8 c_robert_lewandowski != c_bayern_munchen.  [copy(7),flip(a)].
 
-given #2 (I,wt=3): 9 p_related(c_german,c_spanish).  [clausify(1)].
-
-given #3 (I,wt=6): 10 c_basque = x | -p_related(c_basque,x).  [clausify(1)].
-
-given #4 (I,wt=3): 12 c_french != c_basque.  [copy(11),flip(a)].
-
-given #5 (I,wt=3): 14 c_german != c_basque.  [copy(13),flip(a)].
-
-given #6 (I,wt=3): 15 c_basque != c_romance_family.  [assumption].
-
-given #7 (I,wt=3): 17 c_spanish != c_basque.  [copy(16),flip(a)].
-
-given #8 (I,wt=3): 18 c_french != c_german.  [assumption].
-
-given #9 (I,wt=3): 19 c_french != c_romance_family.  [assumption].
-
-given #10 (I,wt=3): 20 c_french != c_spanish.  [assumption].
-
-given #11 (I,wt=3): 21 c_german != c_romance_family.  [assumption].
-
-given #12 (I,wt=3): 23 c_spanish != c_german.  [copy(22),flip(a)].
-
-given #13 (I,wt=3): 25 c_spanish != c_romance_family.  [copy(24),flip(a)].
-
-given #14 (I,wt=3): 26 p_member_of(c_french,c_romance_family).  [resolve(3,a,5,a)].
-
-given #15 (I,wt=3): 27 p_member_of(c_spanish,c_romance_family).  [resolve(6,a,5,a)].
-
-given #16 (I,wt=3): 28 p_member_of(c_german,c_romance_family).  [resolve(7,a,5,a)].
-
-given #17 (A,wt=3): 29 -p_related(c_basque,c_french).  [ur(10,a,12,a(flip))].
-
-given #18 (F,wt=3): 30 -p_related(c_basque,c_german).  [ur(10,a,14,a(flip))].
-
-given #19 (F,wt=3): 31 -p_related(c_basque,c_romance_family).  [ur(10,a,15,a)].
-
-given #20 (F,wt=3): 32 -p_related(c_basque,c_spanish).  [ur(10,a,17,a(flip))].
-
-given #21 (F,wt=3): 41 -p_member_of(c_basque,c_romance_family).  [ur(8,b,26,a,c,29,a)].
-
-given #22 (T,wt=3): 33 p_related(c_french,c_french).  [hyper(8,a,26,a,b,26,a)].
-
-given #23 (T,wt=3): 34 p_related(c_spanish,c_spanish).  [hyper(8,a,27,a,b,27,a)].
-
-given #24 (T,wt=3): 35 p_related(c_french,c_spanish).  [hyper(8,a,26,a,b,27,a)].
-
-given #25 (T,wt=3): 36 p_related(c_spanish,c_french).  [hyper(8,a,27,a,b,26,a)].
-
-given #26 (A,wt=3): 37 p_related(c_german,c_german).  [hyper(8,a,28,a,b,28,a)].
-
-given #27 (T,wt=3): 38 p_related(c_spanish,c_german).  [hyper(8,a,27,a,b,28,a)].
-
-given #28 (T,wt=3): 39 p_related(c_french,c_german).  [hyper(8,a,26,a,b,28,a)].
-
-given #29 (T,wt=3): 40 p_related(c_german,c_french).  [hyper(8,a,28,a,b,26,a)].
+given #2 (I,wt=7): 9 -p_player(c_robert_lewandowski) | -p_team(c_bayern_munchen) | -p_plays_for(c_robert_lewandowski,c_bayern_munchen).  [resolve(5,c,6,a)].
 
 ============================== STATISTICS ============================
 
-Given=29. Generated=36. Kept=29. proofs=0.
-Usable=29. Sos=0. Demods=0. Limbo=0, Disabled=25. Hints=0.
+Given=2. Generated=2. Kept=2. proofs=0.
+Usable=2. Sos=0. Demods=0. Limbo=0, Disabled=7. Hints=0.
 Kept_by_rule=0, Deleted_by_rule=0.
-Forward_subsumed=7. Back_subsumed=0.
+Forward_subsumed=0. Back_subsumed=0.
 Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
 New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
 Demod_attempts=0. Demod_rewrites=0.
 Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
-Nonunit_fsub_feature_tests=1. Nonunit_bsub_feature_tests=2.
-Megabytes=0.07.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=1.
+Megabytes=0.04.
 User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
 
 ============================== end of statistics =====================
@@ -250,12 +139,12 @@ SEARCH FAILED
 
 Exiting with failure.
 
-Process 29612 exit (sos_empty) Sat Oct 17 13:01:59 2026
+Process 47182 exit (sos_empty) Fri Oct 23 14:35:07 2026
 
 WARNING: denials share constants (see output).
 
 
 SEARCH FAILED
 
------- process 29612 exit (sos_empty) ------
+------ process 47182 exit (sos_empty) ------
 

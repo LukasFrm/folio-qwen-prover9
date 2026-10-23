@@ -1,7 +1,7 @@
 ============================== Mace4 =================================
 Mace4 (64) version 2009-11A, November 2009.
-Process 29654 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
-Sat Oct 17 13:02:00 2026
+Process 47230 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:08 2026
 The command was "mace4 -t 5 -n 2 -N 8".
 ============================== end of head ===========================
 
@@ -27,7 +27,7 @@ c_siblings != c_strangers.
 end_of_list.
 
 formulas(goals).
-p_complain_about_often(c_luke,c_annoying_siblings).
+-(-p_born_in(c_luke,c_multiple_birth) & -p_complain_about_often(c_luke,c_annoying_siblings)).
 end_of_list.
 
 % From the command line: assign(max_seconds, 5).
@@ -44,7 +44,7 @@ end_of_list.
 
 % Formulas that are not ordinary clauses:
 1 (all v_x (p_born_in(v_x,c_multiple_birth) -> p_spend_time_playing_with(v_x,c_siblings))) & (all v_x ((exists v_y (p_sibling(v_x,v_y) & p_born_together(v_x,v_y))) -> p_born_in(v_x,c_multiple_birth))) & (all v_x (p_complain_about_often(v_x,c_annoying_siblings) -> (exists v_y (p_sibling(v_x,v_y) & p_born_together(v_x,v_y))))) & (all v_x (p_live_at(v_x,c_home) -> -p_live_with(v_x,c_strangers))) & (all v_x (p_spend_time_playing_with(v_x,c_siblings) -> p_live_at(v_x,c_home))) & -((p_born_in(c_luke,c_multiple_birth) | p_live_with(c_luke,c_strangers)) & -(p_born_in(c_luke,c_multiple_birth) & p_live_with(c_luke,c_strangers))) # label(non_clause).  [assumption].
-2 p_complain_about_often(c_luke,c_annoying_siblings) # label(non_clause) # label(goal).  [goal].
+2 -(-p_born_in(c_luke,c_multiple_birth) & -p_complain_about_often(c_luke,c_annoying_siblings)) # label(non_clause) # label(goal).  [goal].
 
 ============================== end of process non-clausal formulas ===
 
@@ -74,6 +74,7 @@ c_luke != c_strangers.
 c_multiple_birth != c_siblings.
 c_multiple_birth != c_strangers.
 c_siblings != c_strangers.
+-p_born_in(c_luke,c_multiple_birth).
 -p_complain_about_often(c_luke,c_annoying_siblings).
 end_of_list.
 
@@ -88,7 +89,7 @@ end_of_list.
 For domain size 2.
 
 Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
-Ground clauses: seen=32, kept=32.
+Ground clauses: seen=33, kept=33.
 Selections=1, assignments=1, propagations=5, current_models=0.
 Rewrite_terms=11, rewrite_bools=0, indexes=4.
 Rules_from_neg_clauses=5, cross_offs=5.
@@ -102,9 +103,9 @@ Rules_from_neg_clauses=5, cross_offs=5.
 For domain size 3.
 
 Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
-Ground clauses: seen=42, kept=42.
+Ground clauses: seen=43, kept=43.
 Selections=2, assignments=3, propagations=5, current_models=0.
-Rewrite_terms=30, rewrite_bools=2, indexes=13.
+Rewrite_terms=31, rewrite_bools=2, indexes=13.
 Rules_from_neg_clauses=4, cross_offs=9.
 
 ============================== end of statistics =====================
@@ -116,9 +117,9 @@ Rules_from_neg_clauses=4, cross_offs=9.
 For domain size 4.
 
 Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
-Ground clauses: seen=54, kept=54.
-Selections=3, assignments=6, propagations=6, current_models=0.
-Rewrite_terms=54, rewrite_bools=7, indexes=19.
+Ground clauses: seen=55, kept=55.
+Selections=3, assignments=6, propagations=7, current_models=0.
+Rewrite_terms=58, rewrite_bools=7, indexes=20.
 Rules_from_neg_clauses=3, cross_offs=12.
 
 ============================== end of statistics =====================
@@ -130,9 +131,9 @@ Rules_from_neg_clauses=3, cross_offs=12.
 For domain size 5.
 
 Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
-Ground clauses: seen=68, kept=68.
-Selections=4, assignments=10, propagations=5, current_models=0.
-Rewrite_terms=107, rewrite_bools=19, indexes=55.
+Ground clauses: seen=69, kept=69.
+Selections=4, assignments=10, propagations=9, current_models=0.
+Rewrite_terms=114, rewrite_bools=27, indexes=51.
 Rules_from_neg_clauses=2, cross_offs=14.
 
 ============================== end of statistics =====================
@@ -221,9 +222,9 @@ interpretation( 6, [number=1, seconds=0], [
 For domain size 6.
 
 Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
-Ground clauses: seen=84, kept=84.
-Selections=247, assignments=257, propagations=19, current_models=1.
-Rewrite_terms=178, rewrite_bools=148, indexes=103.
+Ground clauses: seen=85, kept=85.
+Selections=247, assignments=257, propagations=22, current_models=1.
+Rewrite_terms=185, rewrite_bools=151, indexes=96.
 Rules_from_neg_clauses=1, cross_offs=15.
 
 ============================== end of statistics =====================
@@ -232,8 +233,8 @@ User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
 
 Exiting with 1 model.
 
-Process 29654 exit (max_models) Sat Oct 17 13:02:00 2026
-The process finished Sat Oct 17 13:02:00 2026
+Process 47230 exit (max_models) Fri Oct 23 14:35:08 2026
+The process finished Fri Oct 23 14:35:08 2026
 
 === Mace4 starting on domain size 2. ===
 
@@ -245,4 +246,4 @@ The process finished Sat Oct 17 13:02:00 2026
 
 === Mace4 starting on domain size 6. ===
 
------- process 29654 exit (max_models) ------
+------ process 47230 exit (max_models) ------

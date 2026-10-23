@@ -18,5 +18,5 @@ formulas(assumptions).
 end_of_list.
 
 formulas(goals).
-p_complain_about_often(c_luke, c_annoying_siblings).
+(-(p_born_in(c_luke, c_multiple_birth)) & -(p_complain_about_often(c_luke, c_annoying_siblings))).
 end_of_list.

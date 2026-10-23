@@ -1,46 +1,33 @@
 ============================== Prover9 ===============================
 Prover9 (64) version 2009-11A, November 2009.
-Process 29599 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
-Sat Oct 17 13:01:59 2026
+Process 47170 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:07 2026
 The command was "prover9 -t 5".
 ============================== end of head ===========================
 
 ============================== INPUT =================================
 
 formulas(assumptions).
-p_season(c_spring) & p_season(c_summer) & p_season(c_fall) & p_season(c_winter) & (all v_x (p_season(v_x) -> v_x = c_spring | v_x = c_summer | v_x = c_fall | v_x = c_winter)) & (all v_x (p_student(v_x) & p_want(v_x,c_long_vacation) -> p_favorite(v_x,c_summer))) & p_favorite(c_emma,c_summer) & (all v_x all v_y (p_season(v_x) & p_season(v_y) & p_favorite(c_mia,v_x) & p_favorite(c_emma,v_y) -> v_x != v_y)) & p_want(c_james,c_long_vacation).
-c_emma != c_fall.
-c_emma != c_james.
-c_emma != c_long_vacation.
-c_emma != c_mia.
-c_emma != c_spring.
-c_emma != c_summer.
-c_emma != c_winter.
-c_fall != c_james.
-c_fall != c_long_vacation.
-c_fall != c_mia.
-c_fall != c_spring.
-c_fall != c_summer.
-c_fall != c_winter.
-c_james != c_long_vacation.
-c_james != c_mia.
-c_james != c_spring.
-c_james != c_summer.
-c_james != c_winter.
-c_long_vacation != c_mia.
-c_long_vacation != c_spring.
-c_long_vacation != c_summer.
-c_long_vacation != c_winter.
-c_mia != c_spring.
-c_mia != c_summer.
-c_mia != c_winter.
-c_spring != c_summer.
-c_spring != c_winter.
-c_summer != c_winter.
+p_professional_wrestling_stable(c_diamond_mine) & p_in(c_diamond_mine,c_w_w_e) & p_leads(c_roderick_strong,c_diamond_mine) & p_includes(c_diamond_mine,c_creed_brothers) & p_includes(c_diamond_mine,c_ivy_nile) & p_feuds(c_imperium,c_diamond_mine).
+c_creed_brothers != c_diamond_mine.
+c_creed_brothers != c_imperium.
+c_creed_brothers != c_ivy_nile.
+c_creed_brothers != c_roderick_strong.
+c_creed_brothers != c_w_w_e.
+c_diamond_mine != c_imperium.
+c_diamond_mine != c_ivy_nile.
+c_diamond_mine != c_roderick_strong.
+c_diamond_mine != c_w_w_e.
+c_imperium != c_ivy_nile.
+c_imperium != c_roderick_strong.
+c_imperium != c_w_w_e.
+c_ivy_nile != c_roderick_strong.
+c_ivy_nile != c_w_w_e.
+c_roderick_strong != c_w_w_e.
 end_of_list.
 
 formulas(goals).
-p_favorite(c_james,c_summer).
+(exists v_x (p_leads(c_roderick_strong,v_x) & p_professional_wrestling_stable(v_x))).
 end_of_list.
 
 ============================== end of input ==========================
@@ -50,8 +37,8 @@ end_of_list.
 ============================== PROCESS NON-CLAUSAL FORMULAS ==========
 
 % Formulas that are not ordinary clauses:
-1 p_season(c_spring) & p_season(c_summer) & p_season(c_fall) & p_season(c_winter) & (all v_x (p_season(v_x) -> v_x = c_spring | v_x = c_summer | v_x = c_fall | v_x = c_winter)) & (all v_x (p_student(v_x) & p_want(v_x,c_long_vacation) -> p_favorite(v_x,c_summer))) & p_favorite(c_emma,c_summer) & (all v_x all v_y (p_season(v_x) & p_season(v_y) & p_favorite(c_mia,v_x) & p_favorite(c_emma,v_y) -> v_x != v_y)) & p_want(c_james,c_long_vacation) # label(non_clause).  [assumption].
-2 p_favorite(c_james,c_summer) # label(non_clause) # label(goal).  [goal].
+1 p_professional_wrestling_stable(c_diamond_mine) & p_in(c_diamond_mine,c_w_w_e) & p_leads(c_roderick_strong,c_diamond_mine) & p_includes(c_diamond_mine,c_creed_brothers) & p_includes(c_diamond_mine,c_ivy_nile) & p_feuds(c_imperium,c_diamond_mine) # label(non_clause).  [assumption].
+2 (exists v_x (p_leads(c_roderick_strong,v_x) & p_professional_wrestling_stable(v_x))) # label(non_clause) # label(goal).  [goal].
 
 ============================== end of process non-clausal formulas ===
 
@@ -63,44 +50,28 @@ formulas(usable).
 end_of_list.
 
 formulas(sos).
-p_season(c_spring).  [clausify(1)].
-p_season(c_summer).  [clausify(1)].
-p_season(c_fall).  [clausify(1)].
-p_season(c_winter).  [clausify(1)].
--p_season(x) | x = c_spring | x = c_summer | x = c_fall | x = c_winter.  [clausify(1)].
--p_student(x) | -p_want(x,c_long_vacation) | p_favorite(x,c_summer).  [clausify(1)].
-p_favorite(c_emma,c_summer).  [clausify(1)].
--p_season(x) | -p_season(y) | -p_favorite(c_mia,x) | -p_favorite(c_emma,y) | y != x.  [clausify(1)].
-p_want(c_james,c_long_vacation).  [clausify(1)].
-c_emma != c_fall.  [assumption].
-c_emma != c_james.  [assumption].
-c_emma != c_long_vacation.  [assumption].
-c_emma != c_mia.  [assumption].
-c_emma != c_spring.  [assumption].
-c_emma != c_summer.  [assumption].
-c_emma != c_winter.  [assumption].
-c_fall != c_james.  [assumption].
-c_fall != c_long_vacation.  [assumption].
-c_fall != c_mia.  [assumption].
-c_fall != c_spring.  [assumption].
-c_fall != c_summer.  [assumption].
-c_fall != c_winter.  [assumption].
-c_james != c_long_vacation.  [assumption].
-c_james != c_mia.  [assumption].
-c_james != c_spring.  [assumption].
-c_james != c_summer.  [assumption].
-c_james != c_winter.  [assumption].
-c_long_vacation != c_mia.  [assumption].
-c_long_vacation != c_spring.  [assumption].
-c_long_vacation != c_summer.  [assumption].
-c_long_vacation != c_winter.  [assumption].
-c_mia != c_spring.  [assumption].
-c_mia != c_summer.  [assumption].
-c_mia != c_winter.  [assumption].
-c_spring != c_summer.  [assumption].
-c_spring != c_winter.  [assumption].
-c_summer != c_winter.  [assumption].
--p_favorite(c_james,c_summer).  [deny(2)].
+p_professional_wrestling_stable(c_diamond_mine).  [clausify(1)].
+p_in(c_diamond_mine,c_w_w_e).  [clausify(1)].
+p_leads(c_roderick_strong,c_diamond_mine).  [clausify(1)].
+p_includes(c_diamond_mine,c_creed_brothers).  [clausify(1)].
+p_includes(c_diamond_mine,c_ivy_nile).  [clausify(1)].
+p_feuds(c_imperium,c_diamond_mine).  [clausify(1)].
+c_creed_brothers != c_diamond_mine.  [assumption].
+c_creed_brothers != c_imperium.  [assumption].
+c_creed_brothers != c_ivy_nile.  [assumption].
+c_creed_brothers != c_roderick_strong.  [assumption].
+c_creed_brothers != c_w_w_e.  [assumption].
+c_diamond_mine != c_imperium.  [assumption].
+c_diamond_mine != c_ivy_nile.  [assumption].
+c_diamond_mine != c_roderick_strong.  [assumption].
+c_diamond_mine != c_w_w_e.  [assumption].
+c_imperium != c_ivy_nile.  [assumption].
+c_imperium != c_roderick_strong.  [assumption].
+c_imperium != c_w_w_e.  [assumption].
+c_ivy_nile != c_roderick_strong.  [assumption].
+c_ivy_nile != c_w_w_e.  [assumption].
+c_roderick_strong != c_w_w_e.  [assumption].
+-p_leads(c_roderick_strong,x) | -p_professional_wrestling_stable(x).  [deny(2)].
 end_of_list.
 
 formulas(demodulators).
@@ -108,80 +79,91 @@ end_of_list.
 
 ============================== PREDICATE ELIMINATION =================
 
-Eliminating p_student/1
+Eliminating p_professional_wrestling_stable/1
+3 -p_leads(c_roderick_strong,x) | -p_professional_wrestling_stable(x).  [deny(2)].
+4 p_professional_wrestling_stable(c_diamond_mine).  [clausify(1)].
+Derived: -p_leads(c_roderick_strong,c_diamond_mine).  [resolve(3,b,4,a)].
 
-Eliminating p_want/2
+Eliminating p_in/2
+
+Eliminating p_includes/2
+
+Eliminating p_feuds/2
 
 ============================== end predicate elimination =============
 
-Auto_denials:  (non-Horn, no changes).
+Auto_denials:
+  % assign(max_proofs, 16).  % (Horn set with more than one neg. clause)
+
+WARNING, because some of the denials share constants,
+some of the denials or their descendents may be subsumed,
+preventing the target number of proofs from being found.
+The shared constants are:  c_w_w_e, c_roderick_strong, c_ivy_nile, c_imperium, c_diamond_mine, c_creed_brothers.
 
 Term ordering decisions:
-Predicate symbol precedence:  predicate_order([ =, p_season, p_favorite ]).
-Function symbol precedence:  function_order([ c_summer, c_fall, c_spring, c_winter, c_emma, c_james, c_long_vacation, c_mia ]).
+Predicate symbol precedence:  predicate_order([ =, p_leads ]).
+Function symbol precedence:  function_order([ c_diamond_mine, c_roderick_strong, c_creed_brothers, c_imperium, c_ivy_nile, c_w_w_e ]).
 After inverse_order:  (no changes).
 Unfolding symbols: (none).
 
 Auto_inference settings:
-  % set(paramodulation).  % (positive equality literals)
-  % set(binary_resolution).  % (non-Horn)
-  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+  % set(neg_binary_resolution).  % (HNE depth_diff=0)
+  % clear(ordered_res).  % (HNE depth_diff=0)
+  % set(ur_resolution).  % (HNE depth_diff=0)
+    % set(ur_resolution) -> set(pos_ur_resolution).
+    % set(ur_resolution) -> set(neg_ur_resolution).
 
-Auto_process settings:
-  % set(factor).  % (non-Horn)
-  % set(unit_deletion).  % (non-Horn)
+Auto_process settings:  (no changes).
 
-kept:      3 p_season(c_spring).  [clausify(1)].
-kept:      4 p_season(c_summer).  [clausify(1)].
-kept:      5 p_season(c_fall).  [clausify(1)].
-kept:      6 p_season(c_winter).  [clausify(1)].
-           7 -p_season(x) | x = c_spring | x = c_summer | x = c_fall | x = c_winter.  [clausify(1)].
-kept:      8 -p_season(x) | c_spring = x | c_summer = x | c_fall = x | c_winter = x.  [copy(7),flip(b),flip(c),flip(d),flip(e)].
-kept:      9 p_favorite(c_emma,c_summer).  [clausify(1)].
-kept:      10 -p_season(x) | -p_season(y) | -p_favorite(c_mia,x) | -p_favorite(c_emma,y) | y != x.  [clausify(1)].
-kept:      11 c_emma != c_fall.  [assumption].
-           12 c_emma != c_james.  [assumption].
-kept:      13 c_james != c_emma.  [copy(12),flip(a)].
-           14 c_emma != c_long_vacation.  [assumption].
-kept:      15 c_long_vacation != c_emma.  [copy(14),flip(a)].
-           16 c_emma != c_mia.  [assumption].
-kept:      17 c_mia != c_emma.  [copy(16),flip(a)].
-kept:      18 c_emma != c_spring.  [assumption].
-kept:      19 c_emma != c_summer.  [assumption].
-kept:      20 c_emma != c_winter.  [assumption].
-           21 c_fall != c_james.  [assumption].
-kept:      22 c_james != c_fall.  [copy(21),flip(a)].
-           23 c_fall != c_long_vacation.  [assumption].
-kept:      24 c_long_vacation != c_fall.  [copy(23),flip(a)].
-           25 c_fall != c_mia.  [assumption].
-kept:      26 c_mia != c_fall.  [copy(25),flip(a)].
-           27 c_fall != c_spring.  [assumption].
-kept:      28 c_spring != c_fall.  [copy(27),flip(a)].
-kept:      29 c_fall != c_summer.  [assumption].
-           30 c_fall != c_winter.  [assumption].
-kept:      31 c_winter != c_fall.  [copy(30),flip(a)].
-           32 c_james != c_long_vacation.  [assumption].
-kept:      33 c_long_vacation != c_james.  [copy(32),flip(a)].
-           34 c_james != c_mia.  [assumption].
-kept:      35 c_mia != c_james.  [copy(34),flip(a)].
-kept:      36 c_james != c_spring.  [assumption].
-kept:      37 c_james != c_summer.  [assumption].
-kept:      38 c_james != c_winter.  [assumption].
-           39 c_long_vacation != c_mia.  [assumption].
-kept:      40 c_mia != c_long_vacation.  [copy(39),flip(a)].
-kept:      41 c_long_vacation != c_spring.  [assumption].
-kept:      42 c_long_vacation != c_summer.  [assumption].
-kept:      43 c_long_vacation != c_winter.  [assumption].
-kept:      44 c_mia != c_spring.  [assumption].
-kept:      45 c_mia != c_summer.  [assumption].
-kept:      46 c_mia != c_winter.  [assumption].
-kept:      47 c_spring != c_summer.  [assumption].
-           48 c_spring != c_winter.  [assumption].
-kept:      49 c_winter != c_spring.  [copy(48),flip(a)].
-           50 c_summer != c_winter.  [assumption].
-kept:      51 c_winter != c_summer.  [copy(50),flip(a)].
-kept:      52 -p_favorite(c_james,c_summer).  [deny(2)].
-kept:      53 -p_season(x) | -p_favorite(c_mia,x) | -p_favorite(c_emma,x).  [factor(10,a,b),xx(d)].
+kept:      5 p_leads(c_roderick_strong,c_diamond_mine).  [clausify(1)].
+kept:      6 c_creed_brothers != c_diamond_mine.  [assumption].
+           7 c_creed_brothers != c_imperium.  [assumption].
+kept:      8 c_imperium != c_creed_brothers.  [copy(7),flip(a)].
+           9 c_creed_brothers != c_ivy_nile.  [assumption].
+kept:      10 c_ivy_nile != c_creed_brothers.  [copy(9),flip(a)].
+kept:      11 c_creed_brothers != c_roderick_strong.  [assumption].
+           12 c_creed_brothers != c_w_w_e.  [assumption].
+kept:      13 c_w_w_e != c_creed_brothers.  [copy(12),flip(a)].
+           14 c_diamond_mine != c_imperium.  [assumption].
+kept:      15 c_imperium != c_diamond_mine.  [copy(14),flip(a)].
+           16 c_diamond_mine != c_ivy_nile.  [assumption].
+kept:      17 c_ivy_nile != c_diamond_mine.  [copy(16),flip(a)].
+           18 c_diamond_mine != c_roderick_strong.  [assumption].
+kept:      19 c_roderick_strong != c_diamond_mine.  [copy(18),flip(a)].
+           20 c_diamond_mine != c_w_w_e.  [assumption].
+kept:      21 c_w_w_e != c_diamond_mine.  [copy(20),flip(a)].
+           22 c_imperium != c_ivy_nile.  [assumption].
+kept:      23 c_ivy_nile != c_imperium.  [copy(22),flip(a)].
+kept:      24 c_imperium != c_roderick_strong.  [assumption].
+           25 c_imperium != c_w_w_e.  [assumption].
+kept:      26 c_w_w_e != c_imperium.  [copy(25),flip(a)].
+kept:      27 c_ivy_nile != c_roderick_strong.  [assumption].
+           28 c_ivy_nile != c_w_w_e.  [assumption].
+kept:      29 c_w_w_e != c_ivy_nile.  [copy(28),flip(a)].
+           30 c_roderick_strong != c_w_w_e.  [assumption].
+kept:      31 c_w_w_e != c_roderick_strong.  [copy(30),flip(a)].
+kept:      32 -p_leads(c_roderick_strong,c_diamond_mine).  [resolve(3,b,4,a)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 7.
+% Level of proof is 3.
+% Maximum clause weight is 3.000.
+% Given clauses 0.
+
+1 p_professional_wrestling_stable(c_diamond_mine) & p_in(c_diamond_mine,c_w_w_e) & p_leads(c_roderick_strong,c_diamond_mine) & p_includes(c_diamond_mine,c_creed_brothers) & p_includes(c_diamond_mine,c_ivy_nile) & p_feuds(c_imperium,c_diamond_mine) # label(non_clause).  [assumption].
+2 (exists v_x (p_leads(c_roderick_strong,v_x) & p_professional_wrestling_stable(v_x))) # label(non_clause) # label(goal).  [goal].
+3 -p_leads(c_roderick_strong,x) | -p_professional_wrestling_stable(x).  [deny(2)].
+4 p_professional_wrestling_stable(c_diamond_mine).  [clausify(1)].
+5 p_leads(c_roderick_strong,c_diamond_mine).  [clausify(1)].
+32 -p_leads(c_roderick_strong,c_diamond_mine).  [resolve(3,b,4,a)].
+33 $F.  [resolve(32,a,5,a)].
+
+============================== end of proof ==========================
+
+% Disable descendants (x means already disabled):
+ 0x 3x 32
 
 ============================== end of process initial clauses ========
 
@@ -193,43 +175,22 @@ formulas(usable).
 end_of_list.
 
 formulas(sos).
-3 p_season(c_spring).  [clausify(1)].
-4 p_season(c_summer).  [clausify(1)].
-5 p_season(c_fall).  [clausify(1)].
-6 p_season(c_winter).  [clausify(1)].
-8 -p_season(x) | c_spring = x | c_summer = x | c_fall = x | c_winter = x.  [copy(7),flip(b),flip(c),flip(d),flip(e)].
-9 p_favorite(c_emma,c_summer).  [clausify(1)].
-10 -p_season(x) | -p_season(y) | -p_favorite(c_mia,x) | -p_favorite(c_emma,y) | y != x.  [clausify(1)].
-11 c_emma != c_fall.  [assumption].
-13 c_james != c_emma.  [copy(12),flip(a)].
-15 c_long_vacation != c_emma.  [copy(14),flip(a)].
-17 c_mia != c_emma.  [copy(16),flip(a)].
-18 c_emma != c_spring.  [assumption].
-19 c_emma != c_summer.  [assumption].
-20 c_emma != c_winter.  [assumption].
-22 c_james != c_fall.  [copy(21),flip(a)].
-24 c_long_vacation != c_fall.  [copy(23),flip(a)].
-26 c_mia != c_fall.  [copy(25),flip(a)].
-28 c_spring != c_fall.  [copy(27),flip(a)].
-29 c_fall != c_summer.  [assumption].
-31 c_winter != c_fall.  [copy(30),flip(a)].
-33 c_long_vacation != c_james.  [copy(32),flip(a)].
-35 c_mia != c_james.  [copy(34),flip(a)].
-36 c_james != c_spring.  [assumption].
-37 c_james != c_summer.  [assumption].
-38 c_james != c_winter.  [assumption].
-40 c_mia != c_long_vacation.  [copy(39),flip(a)].
-41 c_long_vacation != c_spring.  [assumption].
-42 c_long_vacation != c_summer.  [assumption].
-43 c_long_vacation != c_winter.  [assumption].
-44 c_mia != c_spring.  [assumption].
-45 c_mia != c_summer.  [assumption].
-46 c_mia != c_winter.  [assumption].
-47 c_spring != c_summer.  [assumption].
-49 c_winter != c_spring.  [copy(48),flip(a)].
-51 c_winter != c_summer.  [copy(50),flip(a)].
-52 -p_favorite(c_james,c_summer).  [deny(2)].
-53 -p_season(x) | -p_favorite(c_mia,x) | -p_favorite(c_emma,x).  [factor(10,a,b),xx(d)].
+5 p_leads(c_roderick_strong,c_diamond_mine).  [clausify(1)].
+6 c_creed_brothers != c_diamond_mine.  [assumption].
+8 c_imperium != c_creed_brothers.  [copy(7),flip(a)].
+10 c_ivy_nile != c_creed_brothers.  [copy(9),flip(a)].
+11 c_creed_brothers != c_roderick_strong.  [assumption].
+13 c_w_w_e != c_creed_brothers.  [copy(12),flip(a)].
+15 c_imperium != c_diamond_mine.  [copy(14),flip(a)].
+17 c_ivy_nile != c_diamond_mine.  [copy(16),flip(a)].
+19 c_roderick_strong != c_diamond_mine.  [copy(18),flip(a)].
+21 c_w_w_e != c_diamond_mine.  [copy(20),flip(a)].
+23 c_ivy_nile != c_imperium.  [copy(22),flip(a)].
+24 c_imperium != c_roderick_strong.  [assumption].
+26 c_w_w_e != c_imperium.  [copy(25),flip(a)].
+27 c_ivy_nile != c_roderick_strong.  [assumption].
+29 c_w_w_e != c_ivy_nile.  [copy(28),flip(a)].
+31 c_w_w_e != c_roderick_strong.  [copy(30),flip(a)].
 end_of_list.
 
 formulas(demodulators).
@@ -241,104 +202,50 @@ end_of_list.
 
 % Starting search at 0.00 seconds.
 
-given #1 (I,wt=2): 3 p_season(c_spring).  [clausify(1)].
+given #1 (I,wt=3): 5 p_leads(c_roderick_strong,c_diamond_mine).  [clausify(1)].
 
-given #2 (I,wt=2): 4 p_season(c_summer).  [clausify(1)].
+given #2 (I,wt=3): 6 c_creed_brothers != c_diamond_mine.  [assumption].
 
-given #3 (I,wt=2): 5 p_season(c_fall).  [clausify(1)].
+given #3 (I,wt=3): 8 c_imperium != c_creed_brothers.  [copy(7),flip(a)].
 
-given #4 (I,wt=2): 6 p_season(c_winter).  [clausify(1)].
+given #4 (I,wt=3): 10 c_ivy_nile != c_creed_brothers.  [copy(9),flip(a)].
 
-given #5 (I,wt=14): 8 -p_season(x) | c_spring = x | c_summer = x | c_fall = x | c_winter = x.  [copy(7),flip(b),flip(c),flip(d),flip(e)].
+given #5 (I,wt=3): 11 c_creed_brothers != c_roderick_strong.  [assumption].
 
-given #6 (I,wt=3): 9 p_favorite(c_emma,c_summer).  [clausify(1)].
+given #6 (I,wt=3): 13 c_w_w_e != c_creed_brothers.  [copy(12),flip(a)].
 
-given #7 (I,wt=13): 10 -p_season(x) | -p_season(y) | -p_favorite(c_mia,x) | -p_favorite(c_emma,y) | y != x.  [clausify(1)].
+given #7 (I,wt=3): 15 c_imperium != c_diamond_mine.  [copy(14),flip(a)].
 
-given #8 (I,wt=3): 11 c_emma != c_fall.  [assumption].
+given #8 (I,wt=3): 17 c_ivy_nile != c_diamond_mine.  [copy(16),flip(a)].
 
-given #9 (I,wt=3): 13 c_james != c_emma.  [copy(12),flip(a)].
+given #9 (I,wt=3): 19 c_roderick_strong != c_diamond_mine.  [copy(18),flip(a)].
 
-given #10 (I,wt=3): 15 c_long_vacation != c_emma.  [copy(14),flip(a)].
+given #10 (I,wt=3): 21 c_w_w_e != c_diamond_mine.  [copy(20),flip(a)].
 
-given #11 (I,wt=3): 17 c_mia != c_emma.  [copy(16),flip(a)].
+given #11 (I,wt=3): 23 c_ivy_nile != c_imperium.  [copy(22),flip(a)].
 
-given #12 (I,wt=3): 18 c_emma != c_spring.  [assumption].
+given #12 (I,wt=3): 24 c_imperium != c_roderick_strong.  [assumption].
 
-given #13 (I,wt=3): 19 c_emma != c_summer.  [assumption].
+given #13 (I,wt=3): 26 c_w_w_e != c_imperium.  [copy(25),flip(a)].
 
-given #14 (I,wt=3): 20 c_emma != c_winter.  [assumption].
+given #14 (I,wt=3): 27 c_ivy_nile != c_roderick_strong.  [assumption].
 
-given #15 (I,wt=3): 22 c_james != c_fall.  [copy(21),flip(a)].
+given #15 (I,wt=3): 29 c_w_w_e != c_ivy_nile.  [copy(28),flip(a)].
 
-given #16 (I,wt=3): 24 c_long_vacation != c_fall.  [copy(23),flip(a)].
-
-given #17 (I,wt=3): 26 c_mia != c_fall.  [copy(25),flip(a)].
-
-given #18 (I,wt=3): 28 c_spring != c_fall.  [copy(27),flip(a)].
-
-given #19 (I,wt=3): 29 c_fall != c_summer.  [assumption].
-
-given #20 (I,wt=3): 31 c_winter != c_fall.  [copy(30),flip(a)].
-
-given #21 (I,wt=3): 33 c_long_vacation != c_james.  [copy(32),flip(a)].
-
-given #22 (I,wt=3): 35 c_mia != c_james.  [copy(34),flip(a)].
-
-given #23 (I,wt=3): 36 c_james != c_spring.  [assumption].
-
-given #24 (I,wt=3): 37 c_james != c_summer.  [assumption].
-
-given #25 (I,wt=3): 38 c_james != c_winter.  [assumption].
-
-given #26 (I,wt=3): 40 c_mia != c_long_vacation.  [copy(39),flip(a)].
-
-given #27 (I,wt=3): 41 c_long_vacation != c_spring.  [assumption].
-
-given #28 (I,wt=3): 42 c_long_vacation != c_summer.  [assumption].
-
-given #29 (I,wt=3): 43 c_long_vacation != c_winter.  [assumption].
-
-given #30 (I,wt=3): 44 c_mia != c_spring.  [assumption].
-
-given #31 (I,wt=3): 45 c_mia != c_summer.  [assumption].
-
-given #32 (I,wt=3): 46 c_mia != c_winter.  [assumption].
-
-given #33 (I,wt=3): 47 c_spring != c_summer.  [assumption].
-
-given #34 (I,wt=3): 49 c_winter != c_spring.  [copy(48),flip(a)].
-
-given #35 (I,wt=3): 51 c_winter != c_summer.  [copy(50),flip(a)].
-
-given #36 (I,wt=3): 52 -p_favorite(c_james,c_summer).  [deny(2)].
-
-given #37 (I,wt=8): 53 -p_season(x) | -p_favorite(c_mia,x) | -p_favorite(c_emma,x).  [factor(10,a,b),xx(d)].
-
-given #38 (A,wt=8): 54 -p_season(x) | -p_favorite(c_mia,x) | c_summer != x.  [resolve(10,d,9,a),unit_del(b,4)].
-
-given #39 (F,wt=2): 56 -p_season(c_emma).  [ur(8,b,18,a(flip),c,19,a(flip),d,11,a(flip),e,20,a(flip))].
-
-given #40 (F,wt=2): 57 -p_season(c_james).  [ur(8,b,36,a(flip),c,37,a(flip),d,22,a(flip),e,38,a(flip))].
-
-given #41 (F,wt=2): 58 -p_season(c_long_vacation).  [ur(8,b,41,a(flip),c,42,a(flip),d,24,a(flip),e,43,a(flip))].
-
-given #42 (F,wt=2): 59 -p_season(c_mia).  [ur(8,b,44,a(flip),c,45,a(flip),d,26,a(flip),e,46,a(flip))].
-
-given #43 (A,wt=3): 55 -p_favorite(c_mia,c_summer).  [ur(10,a,4,a,b,4,a,d,9,a,e,xx)].
+given #16 (I,wt=3): 31 c_w_w_e != c_roderick_strong.  [copy(30),flip(a)].
 
 ============================== STATISTICS ============================
 
-Given=43. Generated=49. Kept=43. proofs=0.
-Usable=43. Sos=0. Demods=0. Limbo=0, Disabled=38. Hints=0.
+Given=16. Generated=17. Kept=17. proofs=1.
+Usable=16. Sos=0. Demods=0. Limbo=0, Disabled=24. Hints=0.
 Kept_by_rule=0, Deleted_by_rule=0.
-Forward_subsumed=6. Back_subsumed=0.
+Forward_subsumed=0. Back_subsumed=0.
 Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
 New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
 Demod_attempts=0. Demod_rewrites=0.
 Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
-Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=12.
-Megabytes=0.10.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.04.
 User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
 
 ============================== end of statistics =====================
@@ -347,11 +254,15 @@ User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
 
 SEARCH FAILED
 
-Exiting with failure.
+Exiting with 1 proof.
 
-Process 29599 exit (sos_empty) Sat Oct 17 13:01:59 2026
+Process 47170 exit (sos_empty) Fri Oct 23 14:35:07 2026
+
+WARNING: denials share constants (see output).
+
+-------- Proof 1 -------- 
 
 SEARCH FAILED
 
------- process 29599 exit (sos_empty) ------
+------ process 47170 exit (sos_empty) ------
 

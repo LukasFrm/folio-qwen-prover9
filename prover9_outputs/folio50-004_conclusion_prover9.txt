@@ -1,18 +1,24 @@
 ============================== Prover9 ===============================
 Prover9 (64) version 2009-11A, November 2009.
-Process 29589 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
-Sat Oct 17 13:01:59 2026
+Process 47159 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:07 2026
 The command was "prover9 -t 5".
 ============================== end of head ===========================
 
 ============================== INPUT =================================
 
 formulas(assumptions).
-(all v_x (p_square(v_x) -> p_four_sided(v_x))) & (all v_x (p_four_sided(v_x) -> p_shape(v_x))).
+p_netflix_show(c_stranger_things) & p_popular(c_stranger_things) & (all v_x (p_netflix_show(v_x) & p_popular(v_x) -> p_binge_watch(c_karen,v_x))) & (all v_x (p_netflix_show(v_x) -> (p_binge_watch(c_karen,v_x) <-> p_download(c_karen,v_x)))) & -p_download(c_karen,c_black_mirror) & p_netflix_show(c_black_mirror) & (all v_x (p_netflix_show(v_x) & p_binge_watch(c_karen,v_x) -> p_share_with(c_karen,v_x,c_lisa))).
+c_black_mirror != c_karen.
+c_black_mirror != c_lisa.
+c_black_mirror != c_stranger_things.
+c_karen != c_lisa.
+c_karen != c_stranger_things.
+c_lisa != c_stranger_things.
 end_of_list.
 
 formulas(goals).
-(all v_x (p_square(v_x) -> p_shape(v_x))).
+p_share_with(c_karen,c_stranger_things,c_lisa).
 end_of_list.
 
 ============================== end of input ==========================
@@ -22,8 +28,8 @@ end_of_list.
 ============================== PROCESS NON-CLAUSAL FORMULAS ==========
 
 % Formulas that are not ordinary clauses:
-1 (all v_x (p_square(v_x) -> p_four_sided(v_x))) & (all v_x (p_four_sided(v_x) -> p_shape(v_x))) # label(non_clause).  [assumption].
-2 (all v_x (p_square(v_x) -> p_shape(v_x))) # label(non_clause) # label(goal).  [goal].
+1 p_netflix_show(c_stranger_things) & p_popular(c_stranger_things) & (all v_x (p_netflix_show(v_x) & p_popular(v_x) -> p_binge_watch(c_karen,v_x))) & (all v_x (p_netflix_show(v_x) -> (p_binge_watch(c_karen,v_x) <-> p_download(c_karen,v_x)))) & -p_download(c_karen,c_black_mirror) & p_netflix_show(c_black_mirror) & (all v_x (p_netflix_show(v_x) & p_binge_watch(c_karen,v_x) -> p_share_with(c_karen,v_x,c_lisa))) # label(non_clause).  [assumption].
+2 p_share_with(c_karen,c_stranger_things,c_lisa) # label(non_clause) # label(goal).  [goal].
 
 ============================== end of process non-clausal formulas ===
 
@@ -35,10 +41,21 @@ formulas(usable).
 end_of_list.
 
 formulas(sos).
--p_square(x) | p_four_sided(x).  [clausify(1)].
--p_four_sided(x) | p_shape(x).  [clausify(1)].
-p_square(c1).  [deny(2)].
--p_shape(c1).  [deny(2)].
+p_netflix_show(c_stranger_things).  [clausify(1)].
+p_popular(c_stranger_things).  [clausify(1)].
+-p_netflix_show(x) | -p_popular(x) | p_binge_watch(c_karen,x).  [clausify(1)].
+-p_netflix_show(x) | -p_binge_watch(c_karen,x) | p_download(c_karen,x).  [clausify(1)].
+-p_netflix_show(x) | p_binge_watch(c_karen,x) | -p_download(c_karen,x).  [clausify(1)].
+-p_download(c_karen,c_black_mirror).  [clausify(1)].
+p_netflix_show(c_black_mirror).  [clausify(1)].
+-p_netflix_show(x) | -p_binge_watch(c_karen,x) | p_share_with(c_karen,x,c_lisa).  [clausify(1)].
+c_black_mirror != c_karen.  [assumption].
+c_black_mirror != c_lisa.  [assumption].
+c_black_mirror != c_stranger_things.  [assumption].
+c_karen != c_lisa.  [assumption].
+c_karen != c_stranger_things.  [assumption].
+c_lisa != c_stranger_things.  [assumption].
+-p_share_with(c_karen,c_stranger_things,c_lisa).  [deny(2)].
 end_of_list.
 
 formulas(demodulators).
@@ -46,28 +63,35 @@ end_of_list.
 
 ============================== PREDICATE ELIMINATION =================
 
-Eliminating p_square/1
-3 p_square(c1).  [deny(2)].
-4 -p_square(x) | p_four_sided(x).  [clausify(1)].
-Derived: p_four_sided(c1).  [resolve(3,a,4,a)].
-
-Eliminating p_four_sided/1
-5 p_four_sided(c1).  [resolve(3,a,4,a)].
-6 -p_four_sided(x) | p_shape(x).  [clausify(1)].
-Derived: p_shape(c1).  [resolve(5,a,6,a)].
-
-Eliminating p_shape/1
-7 p_shape(c1).  [resolve(5,a,6,a)].
-8 -p_shape(c1).  [deny(2)].
-Derived: $F.  [resolve(7,a,8,a)].
+Eliminating p_netflix_show/1
+3 -p_netflix_show(x) | -p_popular(x) | p_binge_watch(c_karen,x).  [clausify(1)].
+4 p_netflix_show(c_stranger_things).  [clausify(1)].
+Derived: -p_popular(c_stranger_things) | p_binge_watch(c_karen,c_stranger_things).  [resolve(3,a,4,a)].
+5 -p_netflix_show(x) | -p_binge_watch(c_karen,x) | p_download(c_karen,x).  [clausify(1)].
+Derived: -p_binge_watch(c_karen,c_stranger_things) | p_download(c_karen,c_stranger_things).  [resolve(5,a,4,a)].
+6 -p_netflix_show(x) | p_binge_watch(c_karen,x) | -p_download(c_karen,x).  [clausify(1)].
+Derived: p_binge_watch(c_karen,c_stranger_things) | -p_download(c_karen,c_stranger_things).  [resolve(6,a,4,a)].
+7 p_netflix_show(c_black_mirror).  [clausify(1)].
+Derived: -p_popular(c_black_mirror) | p_binge_watch(c_karen,c_black_mirror).  [resolve(7,a,3,a)].
+Derived: -p_binge_watch(c_karen,c_black_mirror) | p_download(c_karen,c_black_mirror).  [resolve(7,a,5,a)].
+Derived: p_binge_watch(c_karen,c_black_mirror) | -p_download(c_karen,c_black_mirror).  [resolve(7,a,6,a)].
+8 -p_netflix_show(x) | -p_binge_watch(c_karen,x) | p_share_with(c_karen,x,c_lisa).  [clausify(1)].
+Derived: -p_binge_watch(c_karen,c_stranger_things) | p_share_with(c_karen,c_stranger_things,c_lisa).  [resolve(8,a,4,a)].
+Derived: -p_binge_watch(c_karen,c_black_mirror) | p_share_with(c_karen,c_black_mirror,c_lisa).  [resolve(8,a,7,a)].
 
 ============================== end predicate elimination =============
 
-Auto_denials:  (no changes).
+Auto_denials:
+  % assign(max_proofs, 8).  % (Horn set with more than one neg. clause)
+
+WARNING, because some of the denials share constants,
+some of the denials or their descendents may be subsumed,
+preventing the target number of proofs from being found.
+The shared constants are:  c_stranger_things, c_lisa, c_black_mirror, c_karen.
 
 Term ordering decisions:
-Predicate symbol precedence:  predicate_order([ ]).
-Function symbol precedence:  function_order([ ]).
+Predicate symbol precedence:  predicate_order([ =, p_popular, p_binge_watch, p_download, p_share_with ]).
+Function symbol precedence:  function_order([ c_karen, c_stranger_things, c_black_mirror, c_lisa ]).
 After inverse_order:  (no changes).
 Unfolding symbols: (none).
 
@@ -80,53 +104,152 @@ Auto_inference settings:
 
 Auto_process settings:  (no changes).
 
+kept:      9 p_popular(c_stranger_things).  [clausify(1)].
+kept:      10 -p_download(c_karen,c_black_mirror).  [clausify(1)].
+kept:      11 c_black_mirror != c_karen.  [assumption].
+           12 c_black_mirror != c_lisa.  [assumption].
+kept:      13 c_lisa != c_black_mirror.  [copy(12),flip(a)].
+kept:      14 c_black_mirror != c_stranger_things.  [assumption].
+           15 c_karen != c_lisa.  [assumption].
+kept:      16 c_lisa != c_karen.  [copy(15),flip(a)].
+           17 c_karen != c_stranger_things.  [assumption].
+kept:      18 c_stranger_things != c_karen.  [copy(17),flip(a)].
+kept:      19 c_lisa != c_stranger_things.  [assumption].
+kept:      20 -p_share_with(c_karen,c_stranger_things,c_lisa).  [deny(2)].
+kept:      21 -p_popular(c_stranger_things) | p_binge_watch(c_karen,c_stranger_things).  [resolve(3,a,4,a)].
+kept:      22 -p_binge_watch(c_karen,c_stranger_things) | p_download(c_karen,c_stranger_things).  [resolve(5,a,4,a)].
+kept:      23 p_binge_watch(c_karen,c_stranger_things) | -p_download(c_karen,c_stranger_things).  [resolve(6,a,4,a)].
+kept:      24 -p_popular(c_black_mirror) | p_binge_watch(c_karen,c_black_mirror).  [resolve(7,a,3,a)].
+kept:      25 -p_binge_watch(c_karen,c_black_mirror) | p_download(c_karen,c_black_mirror).  [resolve(7,a,5,a)].
+kept:      26 -p_binge_watch(c_karen,c_stranger_things) | p_share_with(c_karen,c_stranger_things,c_lisa).  [resolve(8,a,4,a)].
+kept:      27 -p_binge_watch(c_karen,c_black_mirror) | p_share_with(c_karen,c_black_mirror,c_lisa).  [resolve(8,a,7,a)].
+
+============================== end of process initial clauses ========
+
+============================== CLAUSES FOR SEARCH ====================
+
+% Clauses after input processing:
+
+formulas(usable).
+end_of_list.
+
+formulas(sos).
+9 p_popular(c_stranger_things).  [clausify(1)].
+10 -p_download(c_karen,c_black_mirror).  [clausify(1)].
+11 c_black_mirror != c_karen.  [assumption].
+13 c_lisa != c_black_mirror.  [copy(12),flip(a)].
+14 c_black_mirror != c_stranger_things.  [assumption].
+16 c_lisa != c_karen.  [copy(15),flip(a)].
+18 c_stranger_things != c_karen.  [copy(17),flip(a)].
+19 c_lisa != c_stranger_things.  [assumption].
+20 -p_share_with(c_karen,c_stranger_things,c_lisa).  [deny(2)].
+21 -p_popular(c_stranger_things) | p_binge_watch(c_karen,c_stranger_things).  [resolve(3,a,4,a)].
+22 -p_binge_watch(c_karen,c_stranger_things) | p_download(c_karen,c_stranger_things).  [resolve(5,a,4,a)].
+23 p_binge_watch(c_karen,c_stranger_things) | -p_download(c_karen,c_stranger_things).  [resolve(6,a,4,a)].
+24 -p_popular(c_black_mirror) | p_binge_watch(c_karen,c_black_mirror).  [resolve(7,a,3,a)].
+25 -p_binge_watch(c_karen,c_black_mirror) | p_download(c_karen,c_black_mirror).  [resolve(7,a,5,a)].
+26 -p_binge_watch(c_karen,c_stranger_things) | p_share_with(c_karen,c_stranger_things,c_lisa).  [resolve(8,a,4,a)].
+27 -p_binge_watch(c_karen,c_black_mirror) | p_share_with(c_karen,c_black_mirror,c_lisa).  [resolve(8,a,7,a)].
+end_of_list.
+
+formulas(demodulators).
+end_of_list.
+
+============================== end of clauses for search =============
+
+============================== SEARCH ================================
+
+% Starting search at 0.00 seconds.
+
+given #1 (I,wt=2): 9 p_popular(c_stranger_things).  [clausify(1)].
+
+given #2 (I,wt=3): 10 -p_download(c_karen,c_black_mirror).  [clausify(1)].
+
+given #3 (I,wt=3): 11 c_black_mirror != c_karen.  [assumption].
+
+given #4 (I,wt=3): 13 c_lisa != c_black_mirror.  [copy(12),flip(a)].
+
+given #5 (I,wt=3): 14 c_black_mirror != c_stranger_things.  [assumption].
+
+given #6 (I,wt=3): 16 c_lisa != c_karen.  [copy(15),flip(a)].
+
+given #7 (I,wt=3): 18 c_stranger_things != c_karen.  [copy(17),flip(a)].
+
+given #8 (I,wt=3): 19 c_lisa != c_stranger_things.  [assumption].
+
+given #9 (I,wt=4): 20 -p_share_with(c_karen,c_stranger_things,c_lisa).  [deny(2)].
+
+given #10 (I,wt=5): 21 -p_popular(c_stranger_things) | p_binge_watch(c_karen,c_stranger_things).  [resolve(3,a,4,a)].
+
+given #11 (I,wt=6): 22 -p_binge_watch(c_karen,c_stranger_things) | p_download(c_karen,c_stranger_things).  [resolve(5,a,4,a)].
+
+given #12 (I,wt=5): 24 -p_popular(c_black_mirror) | p_binge_watch(c_karen,c_black_mirror).  [resolve(7,a,3,a)].
+
+given #13 (I,wt=6): 25 -p_binge_watch(c_karen,c_black_mirror) | p_download(c_karen,c_black_mirror).  [resolve(7,a,5,a)].
+
+given #14 (I,wt=7): 26 -p_binge_watch(c_karen,c_stranger_things) | p_share_with(c_karen,c_stranger_things,c_lisa).  [resolve(8,a,4,a)].
 
 ============================== PROOF =================================
 
 % Proof 1 at 0.00 (+ 0.00) seconds.
-% Length of proof is 9.
+% Length of proof is 12.
 % Level of proof is 4.
-% Maximum clause weight is 0.000.
-% Given clauses 0.
+% Maximum clause weight is 7.000.
+% Given clauses 14.
 
-1 (all v_x (p_square(v_x) -> p_four_sided(v_x))) & (all v_x (p_four_sided(v_x) -> p_shape(v_x))) # label(non_clause).  [assumption].
-2 (all v_x (p_square(v_x) -> p_shape(v_x))) # label(non_clause) # label(goal).  [goal].
-3 p_square(c1).  [deny(2)].
-4 -p_square(x) | p_four_sided(x).  [clausify(1)].
-5 p_four_sided(c1).  [resolve(3,a,4,a)].
-6 -p_four_sided(x) | p_shape(x).  [clausify(1)].
-7 p_shape(c1).  [resolve(5,a,6,a)].
-8 -p_shape(c1).  [deny(2)].
-9 $F.  [resolve(7,a,8,a)].
+1 p_netflix_show(c_stranger_things) & p_popular(c_stranger_things) & (all v_x (p_netflix_show(v_x) & p_popular(v_x) -> p_binge_watch(c_karen,v_x))) & (all v_x (p_netflix_show(v_x) -> (p_binge_watch(c_karen,v_x) <-> p_download(c_karen,v_x)))) & -p_download(c_karen,c_black_mirror) & p_netflix_show(c_black_mirror) & (all v_x (p_netflix_show(v_x) & p_binge_watch(c_karen,v_x) -> p_share_with(c_karen,v_x,c_lisa))) # label(non_clause).  [assumption].
+2 p_share_with(c_karen,c_stranger_things,c_lisa) # label(non_clause) # label(goal).  [goal].
+3 -p_netflix_show(x) | -p_popular(x) | p_binge_watch(c_karen,x).  [clausify(1)].
+4 p_netflix_show(c_stranger_things).  [clausify(1)].
+8 -p_netflix_show(x) | -p_binge_watch(c_karen,x) | p_share_with(c_karen,x,c_lisa).  [clausify(1)].
+9 p_popular(c_stranger_things).  [clausify(1)].
+20 -p_share_with(c_karen,c_stranger_things,c_lisa).  [deny(2)].
+21 -p_popular(c_stranger_things) | p_binge_watch(c_karen,c_stranger_things).  [resolve(3,a,4,a)].
+26 -p_binge_watch(c_karen,c_stranger_things) | p_share_with(c_karen,c_stranger_things,c_lisa).  [resolve(8,a,4,a)].
+28 p_binge_watch(c_karen,c_stranger_things).  [ur(21,a,9,a)].
+30 -p_binge_watch(c_karen,c_stranger_things).  [resolve(26,b,20,a)].
+31 $F.  [resolve(30,a,28,a)].
 
 ============================== end of proof ==========================
 
+% Disable descendants (x means already disabled):
+ 20 30
+
+given #15 (A,wt=3): 28 p_binge_watch(c_karen,c_stranger_things).  [ur(21,a,9,a)].
+
+given #16 (F,wt=3): 29 -p_binge_watch(c_karen,c_black_mirror).  [resolve(25,b,10,a)].
+
+given #17 (F,wt=2): 32 -p_popular(c_black_mirror).  [resolve(29,a,24,b)].
+
 ============================== STATISTICS ============================
 
-Given=0. Generated=1. Kept=0. proofs=1.
-Usable=0. Sos=0. Demods=0. Limbo=0, Disabled=7. Hints=0.
+Given=17. Generated=24. Kept=20. proofs=1.
+Usable=11. Sos=0. Demods=0. Limbo=0, Disabled=32. Hints=0.
 Kept_by_rule=0, Deleted_by_rule=0.
-Forward_subsumed=0. Back_subsumed=0.
+Forward_subsumed=4. Back_subsumed=7.
 Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
 New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
 Demod_attempts=0. Demod_rewrites=0.
 Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
-Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
-Megabytes=0.03.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=14.
+Megabytes=0.07.
 User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
 
 ============================== end of statistics =====================
 
 ============================== end of search =========================
 
-THEOREM PROVED
+SEARCH FAILED
 
 Exiting with 1 proof.
 
-Process 29589 exit (max_proofs) Sat Oct 17 13:01:59 2026
+Process 47159 exit (sos_empty) Fri Oct 23 14:35:07 2026
+
+WARNING: denials share constants (see output).
+
 -------- Proof 1 -------- 
 
-THEOREM PROVED
+SEARCH FAILED
 
------- process 29589 exit (max_proofs) ------
+------ process 47159 exit (sos_empty) ------
 

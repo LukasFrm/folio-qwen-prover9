@@ -1,13 +1,10 @@
 formulas(assumptions).
-(((((exists v_x (((p_show(v_x) & p_airing_at(v_x, c_eight_p_m_monday)) & p_gives_out_on_t_v(v_x, c_rose))) & all v_x (((p_show(v_x) & p_gives_out_on_t_v(v_x, c_rose)) -> p_the_bachelor(v_x)))) & all v_x ((p_the_bachelor(v_x) -> p_portray(v_x, c_lives_of_real_people)))) & all v_x ((p_portray(v_x, c_lives_of_real_people) -> p_reality_t_v_show(v_x)))) & p_show(c_breaking_bad)) & -(p_reality_t_v_show(c_breaking_bad))).
--(c_breaking_bad = c_eight_p_m_monday).
--(c_breaking_bad = c_lives_of_real_people).
--(c_breaking_bad = c_rose).
--(c_eight_p_m_monday = c_lives_of_real_people).
--(c_eight_p_m_monday = c_rose).
--(c_lives_of_real_people = c_rose).
+(((p_german(c_heinrich_schmidt) & p_politician(c_heinrich_schmidt)) & p_member(c_heinrich_schmidt, c_prussian_state_parliament)) & p_member(c_heinrich_schmidt, c_nazi_reichstag)).
+-(c_heinrich_schmidt = c_nazi_reichstag).
+-(c_heinrich_schmidt = c_prussian_state_parliament).
+-(c_nazi_reichstag = c_prussian_state_parliament).
 end_of_list.
 
 formulas(goals).
-p_airing_at(c_breaking_bad, c_eight_p_m_monday).
+all v_x ((p_politician(v_x) -> -(p_member(v_x, c_nazi_reichstag)))).
 end_of_list.

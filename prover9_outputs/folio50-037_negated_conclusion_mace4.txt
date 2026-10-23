@@ -1,7 +1,7 @@
 ============================== Mace4 =================================
 Mace4 (64) version 2009-11A, November 2009.
-Process 29700 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
-Sat Oct 17 13:02:00 2026
+Process 47283 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:08 2026
 The command was "mace4 -t 5 -n 2 -N 8".
 ============================== end of head ===========================
 
@@ -12,7 +12,7 @@ formulas(assumptions).
 end_of_list.
 
 formulas(goals).
--(-p_will_compose(c_george) -> -p_can_compose(c_george)).
+-(p_like_music(c_george) & p_access_to_program(c_george) -> p_will_compose(c_george)).
 end_of_list.
 
 % From the command line: assign(max_seconds, 5).
@@ -29,7 +29,7 @@ end_of_list.
 
 % Formulas that are not ordinary clauses:
 1 (p_like_music(c_george) -> p_want_to_compose(c_george)) & (p_access_to_program(c_george) -> p_can_compose(c_george)) & (p_want_to_compose(c_george) & p_can_compose(c_george) -> p_will_compose(c_george)) # label(non_clause).  [assumption].
-2 -(-p_will_compose(c_george) -> -p_can_compose(c_george)) # label(non_clause) # label(goal).  [goal].
+2 -(p_like_music(c_george) & p_access_to_program(c_george) -> p_will_compose(c_george)) # label(non_clause) # label(goal).  [goal].
 
 ============================== end of process non-clausal formulas ===
 
@@ -39,7 +39,7 @@ formulas(mace4_clauses).
 -p_like_music(c_george) | p_want_to_compose(c_george).
 -p_access_to_program(c_george) | p_can_compose(c_george).
 -p_want_to_compose(c_george) | -p_can_compose(c_george) | p_will_compose(c_george).
-p_will_compose(c_george) | -p_can_compose(c_george).
+-p_like_music(c_george) | -p_access_to_program(c_george) | p_will_compose(c_george).
 end_of_list.
 
 ============================== end of clauses for search =============
@@ -74,7 +74,7 @@ For domain size 2.
 Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
 Ground clauses: seen=4, kept=4.
 Selections=11, assignments=11, propagations=0, current_models=1.
-Rewrite_terms=9, rewrite_bools=4, indexes=9.
+Rewrite_terms=10, rewrite_bools=4, indexes=10.
 Rules_from_neg_clauses=0, cross_offs=0.
 
 ============================== end of statistics =====================
@@ -83,9 +83,9 @@ User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
 
 Exiting with 1 model.
 
-Process 29700 exit (max_models) Sat Oct 17 13:02:00 2026
-The process finished Sat Oct 17 13:02:00 2026
+Process 47283 exit (max_models) Fri Oct 23 14:35:08 2026
+The process finished Fri Oct 23 14:35:08 2026
 
 === Mace4 starting on domain size 2. ===
 
------- process 29700 exit (max_models) ------
+------ process 47283 exit (max_models) ------

@@ -1,17 +1,8 @@
 formulas(assumptions).
-((((((all v_x ((p_romance_language(v_x) -> p_indo_european_language(v_x))) & all v_x ((p_romance_language(v_x) -> p_member_of(v_x, c_romance_family)))) & all v_x (all v_y (all v_z (((p_member_of(v_x, v_z) & p_member_of(v_y, v_z)) -> (p_related(v_x, v_y) & p_related(v_y, v_x))))))) & p_romance_language(c_french)) & p_romance_language(c_spanish)) & p_related(c_german, c_spanish)) & all v_x ((-(v_x = c_basque) -> -(p_related(c_basque, v_x))))).
--(c_basque = c_french).
--(c_basque = c_german).
--(c_basque = c_romance_family).
--(c_basque = c_spanish).
--(c_french = c_german).
--(c_french = c_romance_family).
--(c_french = c_spanish).
--(c_german = c_romance_family).
--(c_german = c_spanish).
--(c_romance_family = c_spanish).
+(((p_striker(c_robert_lewandowski) & all v_x ((p_striker(v_x) -> p_soccer_player(v_x)))) & p_left(c_robert_lewandowski, c_bayern_munchen)) & all v_x (all v_y ((((p_player(v_x) & p_team(v_y)) & p_left(v_x, v_y)) -> -(p_plays_for(v_x, v_y)))))).
+-(c_bayern_munchen = c_robert_lewandowski).
 end_of_list.
 
 formulas(goals).
--(p_romance_language(c_german)).
+-(p_soccer_player(c_robert_lewandowski)).
 end_of_list.

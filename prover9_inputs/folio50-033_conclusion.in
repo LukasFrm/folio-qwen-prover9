@@ -4,5 +4,5 @@ formulas(assumptions).
 end_of_list.
 
 formulas(goals).
-p_vampire(c_space).
+p_suck(c_space).
 end_of_list.

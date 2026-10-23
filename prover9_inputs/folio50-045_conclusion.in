@@ -1,10 +1,22 @@
 formulas(assumptions).
-((((exists v_x (((p_professional(v_x) & p_basketball_player(v_x)) & -(p_american_national(v_x)))) & all v_x (((p_professional(v_x) & p_basketball_player(v_x)) -> p_can_do(v_x, c_jump_shot)))) & all v_x ((p_can_do(v_x, c_jump_shot) -> p_leap_straight_into_air(v_x)))) & all v_x ((p_leap_straight_into_air(v_x) -> p_activate(v_x, c_leg_muscle)))) & -(p_activate(c_yuri, c_leg_muscle))).
--(c_jump_shot = c_leg_muscle).
--(c_jump_shot = c_yuri).
--(c_leg_muscle = c_yuri).
+(((((((((((all v_x ((p_podcast(v_x) -> -(p_novel(v_x)))) & all v_x ((exists v_y (((p_born_in(v_x, v_y) & p_city(v_y)) & p_located_in(v_y, c_america))) -> p_american(v_x)))) & all v_x (all v_y (((p_novel(v_x) & p_written_by(v_x, v_y)) -> p_writes_novel(v_y))))) & p_american(c_dani_shapiro)) & p_writer(c_dani_shapiro)) & p_written_by(c_family_history, c_dani_shapiro)) & p_novel(c_family_history)) & p_written_in(c_family_history, c_yr2003)) & p_podcast(c_family_secrets)) & p_created_by(c_family_secrets, c_dani_shapiro)) & p_city(c_boston)) & p_located_in(c_boston, c_america)).
+-(c_america = c_boston).
+-(c_america = c_dani_shapiro).
+-(c_america = c_family_history).
+-(c_america = c_family_secrets).
+-(c_america = c_yr2003).
+-(c_boston = c_dani_shapiro).
+-(c_boston = c_family_history).
+-(c_boston = c_family_secrets).
+-(c_boston = c_yr2003).
+-(c_dani_shapiro = c_family_history).
+-(c_dani_shapiro = c_family_secrets).
+-(c_dani_shapiro = c_yr2003).
+-(c_family_history = c_family_secrets).
+-(c_family_history = c_yr2003).
+-(c_family_secrets = c_yr2003).
 end_of_list.
 
 formulas(goals).
--(((p_american_national(c_yuri) & p_professional(c_yuri)) & p_basketball_player(c_yuri))).
+p_novel(c_family_secrets).
 end_of_list.

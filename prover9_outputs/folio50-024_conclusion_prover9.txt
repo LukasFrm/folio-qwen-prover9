@@ -1,33 +1,63 @@
 ============================== Prover9 ===============================
 Prover9 (64) version 2009-11A, November 2009.
-Process 29656 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
-Sat Oct 17 13:02:00 2026
+Process 47231 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:08 2026
 The command was "prover9 -t 5".
 ============================== end of head ===========================
 
 ============================== INPUT =================================
 
 formulas(assumptions).
-(all v_x (p_born_in(v_x,c_multiple_birth) -> p_spend_time_playing_with(v_x,c_siblings))) & (all v_x ((exists v_y (p_sibling(v_x,v_y) & p_born_together(v_x,v_y))) -> p_born_in(v_x,c_multiple_birth))) & (all v_x (p_complain_about_often(v_x,c_annoying_siblings) -> (exists v_y (p_sibling(v_x,v_y) & p_born_together(v_x,v_y))))) & (all v_x (p_live_at(v_x,c_home) -> -p_live_with(v_x,c_strangers))) & (all v_x (p_spend_time_playing_with(v_x,c_siblings) -> p_live_at(v_x,c_home))) & -((p_born_in(c_luke,c_multiple_birth) | p_live_with(c_luke,c_strangers)) & -(p_born_in(c_luke,c_multiple_birth) & p_live_with(c_luke,c_strangers))).
-c_annoying_siblings != c_home.
-c_annoying_siblings != c_luke.
-c_annoying_siblings != c_multiple_birth.
-c_annoying_siblings != c_siblings.
-c_annoying_siblings != c_strangers.
-c_home != c_luke.
-c_home != c_multiple_birth.
-c_home != c_siblings.
-c_home != c_strangers.
-c_luke != c_multiple_birth.
-c_luke != c_siblings.
-c_luke != c_strangers.
-c_multiple_birth != c_siblings.
-c_multiple_birth != c_strangers.
-c_siblings != c_strangers.
+p_cost(c_gre,c_u_s_d205) & p_cheaper(c_u_s_d205,c_u_s_d300) & (all v_x (p_applicant_of(v_x,c_gre) & p_prove(v_x,c_economic_hardship) -> p_provide_to(c_ets,c_financial_aid,v_x))) & (all v_x (p_living_in(v_x,c_single_parent_family) | p_available_to(c_few_resources,v_x) -> p_prove(v_x,c_economic_hardship))) & p_living_in(c_tom,c_single_parent_family) & p_out_of_work(c_toms_dad) & p_available_to(c_few_resources,c_tom) & p_applicant_of(c_tom,c_gre).
+c_economic_hardship != c_ets.
+c_economic_hardship != c_few_resources.
+c_economic_hardship != c_financial_aid.
+c_economic_hardship != c_gre.
+c_economic_hardship != c_single_parent_family.
+c_economic_hardship != c_tom.
+c_economic_hardship != c_toms_dad.
+c_economic_hardship != c_u_s_d205.
+c_economic_hardship != c_u_s_d300.
+c_ets != c_few_resources.
+c_ets != c_financial_aid.
+c_ets != c_gre.
+c_ets != c_single_parent_family.
+c_ets != c_tom.
+c_ets != c_toms_dad.
+c_ets != c_u_s_d205.
+c_ets != c_u_s_d300.
+c_few_resources != c_financial_aid.
+c_few_resources != c_gre.
+c_few_resources != c_single_parent_family.
+c_few_resources != c_tom.
+c_few_resources != c_toms_dad.
+c_few_resources != c_u_s_d205.
+c_few_resources != c_u_s_d300.
+c_financial_aid != c_gre.
+c_financial_aid != c_single_parent_family.
+c_financial_aid != c_tom.
+c_financial_aid != c_toms_dad.
+c_financial_aid != c_u_s_d205.
+c_financial_aid != c_u_s_d300.
+c_gre != c_single_parent_family.
+c_gre != c_tom.
+c_gre != c_toms_dad.
+c_gre != c_u_s_d205.
+c_gre != c_u_s_d300.
+c_single_parent_family != c_tom.
+c_single_parent_family != c_toms_dad.
+c_single_parent_family != c_u_s_d205.
+c_single_parent_family != c_u_s_d300.
+c_tom != c_toms_dad.
+c_tom != c_u_s_d205.
+c_tom != c_u_s_d300.
+c_toms_dad != c_u_s_d205.
+c_toms_dad != c_u_s_d300.
+c_u_s_d205 != c_u_s_d300.
 end_of_list.
 
 formulas(goals).
--p_born_in(c_luke,c_multiple_birth) & -p_complain_about_often(c_luke,c_annoying_siblings).
+p_provide_to(c_ets,c_financial_aid,c_tom).
 end_of_list.
 
 ============================== end of input ==========================
@@ -37,8 +67,8 @@ end_of_list.
 ============================== PROCESS NON-CLAUSAL FORMULAS ==========
 
 % Formulas that are not ordinary clauses:
-1 (all v_x (p_born_in(v_x,c_multiple_birth) -> p_spend_time_playing_with(v_x,c_siblings))) & (all v_x ((exists v_y (p_sibling(v_x,v_y) & p_born_together(v_x,v_y))) -> p_born_in(v_x,c_multiple_birth))) & (all v_x (p_complain_about_often(v_x,c_annoying_siblings) -> (exists v_y (p_sibling(v_x,v_y) & p_born_together(v_x,v_y))))) & (all v_x (p_live_at(v_x,c_home) -> -p_live_with(v_x,c_strangers))) & (all v_x (p_spend_time_playing_with(v_x,c_siblings) -> p_live_at(v_x,c_home))) & -((p_born_in(c_luke,c_multiple_birth) | p_live_with(c_luke,c_strangers)) & -(p_born_in(c_luke,c_multiple_birth) & p_live_with(c_luke,c_strangers))) # label(non_clause).  [assumption].
-2 -p_born_in(c_luke,c_multiple_birth) & -p_complain_about_often(c_luke,c_annoying_siblings) # label(non_clause) # label(goal).  [goal].
+1 p_cost(c_gre,c_u_s_d205) & p_cheaper(c_u_s_d205,c_u_s_d300) & (all v_x (p_applicant_of(v_x,c_gre) & p_prove(v_x,c_economic_hardship) -> p_provide_to(c_ets,c_financial_aid,v_x))) & (all v_x (p_living_in(v_x,c_single_parent_family) | p_available_to(c_few_resources,v_x) -> p_prove(v_x,c_economic_hardship))) & p_living_in(c_tom,c_single_parent_family) & p_out_of_work(c_toms_dad) & p_available_to(c_few_resources,c_tom) & p_applicant_of(c_tom,c_gre) # label(non_clause).  [assumption].
+2 p_provide_to(c_ets,c_financial_aid,c_tom) # label(non_clause) # label(goal).  [goal].
 
 ============================== end of process non-clausal formulas ===
 
@@ -50,30 +80,61 @@ formulas(usable).
 end_of_list.
 
 formulas(sos).
--p_born_in(x,c_multiple_birth) | p_spend_time_playing_with(x,c_siblings).  [clausify(1)].
--p_sibling(x,y) | -p_born_together(x,y) | p_born_in(x,c_multiple_birth).  [clausify(1)].
--p_complain_about_often(x,c_annoying_siblings) | p_sibling(x,f1(x)).  [clausify(1)].
--p_complain_about_often(x,c_annoying_siblings) | p_born_together(x,f1(x)).  [clausify(1)].
--p_live_at(x,c_home) | -p_live_with(x,c_strangers).  [clausify(1)].
--p_spend_time_playing_with(x,c_siblings) | p_live_at(x,c_home).  [clausify(1)].
--p_born_in(c_luke,c_multiple_birth) | p_live_with(c_luke,c_strangers).  [clausify(1)].
--p_live_with(c_luke,c_strangers) | p_born_in(c_luke,c_multiple_birth).  [clausify(1)].
-c_annoying_siblings != c_home.  [assumption].
-c_annoying_siblings != c_luke.  [assumption].
-c_annoying_siblings != c_multiple_birth.  [assumption].
-c_annoying_siblings != c_siblings.  [assumption].
-c_annoying_siblings != c_strangers.  [assumption].
-c_home != c_luke.  [assumption].
-c_home != c_multiple_birth.  [assumption].
-c_home != c_siblings.  [assumption].
-c_home != c_strangers.  [assumption].
-c_luke != c_multiple_birth.  [assumption].
-c_luke != c_siblings.  [assumption].
-c_luke != c_strangers.  [assumption].
-c_multiple_birth != c_siblings.  [assumption].
-c_multiple_birth != c_strangers.  [assumption].
-c_siblings != c_strangers.  [assumption].
-p_born_in(c_luke,c_multiple_birth) | p_complain_about_often(c_luke,c_annoying_siblings).  [deny(2)].
+p_cost(c_gre,c_u_s_d205).  [clausify(1)].
+p_cheaper(c_u_s_d205,c_u_s_d300).  [clausify(1)].
+-p_applicant_of(x,c_gre) | -p_prove(x,c_economic_hardship) | p_provide_to(c_ets,c_financial_aid,x).  [clausify(1)].
+-p_living_in(x,c_single_parent_family) | p_prove(x,c_economic_hardship).  [clausify(1)].
+-p_available_to(c_few_resources,x) | p_prove(x,c_economic_hardship).  [clausify(1)].
+p_living_in(c_tom,c_single_parent_family).  [clausify(1)].
+p_out_of_work(c_toms_dad).  [clausify(1)].
+p_available_to(c_few_resources,c_tom).  [clausify(1)].
+p_applicant_of(c_tom,c_gre).  [clausify(1)].
+c_economic_hardship != c_ets.  [assumption].
+c_economic_hardship != c_few_resources.  [assumption].
+c_economic_hardship != c_financial_aid.  [assumption].
+c_economic_hardship != c_gre.  [assumption].
+c_economic_hardship != c_single_parent_family.  [assumption].
+c_economic_hardship != c_tom.  [assumption].
+c_economic_hardship != c_toms_dad.  [assumption].
+c_economic_hardship != c_u_s_d205.  [assumption].
+c_economic_hardship != c_u_s_d300.  [assumption].
+c_ets != c_few_resources.  [assumption].
+c_ets != c_financial_aid.  [assumption].
+c_ets != c_gre.  [assumption].
+c_ets != c_single_parent_family.  [assumption].
+c_ets != c_tom.  [assumption].
+c_ets != c_toms_dad.  [assumption].
+c_ets != c_u_s_d205.  [assumption].
+c_ets != c_u_s_d300.  [assumption].
+c_few_resources != c_financial_aid.  [assumption].
+c_few_resources != c_gre.  [assumption].
+c_few_resources != c_single_parent_family.  [assumption].
+c_few_resources != c_tom.  [assumption].
+c_few_resources != c_toms_dad.  [assumption].
+c_few_resources != c_u_s_d205.  [assumption].
+c_few_resources != c_u_s_d300.  [assumption].
+c_financial_aid != c_gre.  [assumption].
+c_financial_aid != c_single_parent_family.  [assumption].
+c_financial_aid != c_tom.  [assumption].
+c_financial_aid != c_toms_dad.  [assumption].
+c_financial_aid != c_u_s_d205.  [assumption].
+c_financial_aid != c_u_s_d300.  [assumption].
+c_gre != c_single_parent_family.  [assumption].
+c_gre != c_tom.  [assumption].
+c_gre != c_toms_dad.  [assumption].
+c_gre != c_u_s_d205.  [assumption].
+c_gre != c_u_s_d300.  [assumption].
+c_single_parent_family != c_tom.  [assumption].
+c_single_parent_family != c_toms_dad.  [assumption].
+c_single_parent_family != c_u_s_d205.  [assumption].
+c_single_parent_family != c_u_s_d300.  [assumption].
+c_tom != c_toms_dad.  [assumption].
+c_tom != c_u_s_d205.  [assumption].
+c_tom != c_u_s_d300.  [assumption].
+c_toms_dad != c_u_s_d205.  [assumption].
+c_toms_dad != c_u_s_d300.  [assumption].
+c_u_s_d205 != c_u_s_d300.  [assumption].
+-p_provide_to(c_ets,c_financial_aid,c_tom).  [deny(2)].
 end_of_list.
 
 formulas(demodulators).
@@ -81,61 +142,124 @@ end_of_list.
 
 ============================== PREDICATE ELIMINATION =================
 
-Eliminating p_sibling/2
-3 -p_complain_about_often(x,c_annoying_siblings) | p_sibling(x,f1(x)).  [clausify(1)].
-4 -p_sibling(x,y) | -p_born_together(x,y) | p_born_in(x,c_multiple_birth).  [clausify(1)].
-Derived: -p_complain_about_often(x,c_annoying_siblings) | -p_born_together(x,f1(x)) | p_born_in(x,c_multiple_birth).  [resolve(3,b,4,a)].
+Eliminating p_cost/2
+
+Eliminating p_cheaper/2
+
+Eliminating p_out_of_work/1
 
 ============================== end predicate elimination =============
 
-Auto_denials:  (non-Horn, no changes).
+Auto_denials:
+  % assign(max_proofs, 46).  % (Horn set with more than one neg. clause)
+
+WARNING, because some of the denials share constants,
+some of the denials or their descendents may be subsumed,
+preventing the target number of proofs from being found.
+The shared constants are:  c_u_s_d300, c_u_s_d205, c_toms_dad, c_tom, c_single_parent_family, c_gre, c_financial_aid, c_few_resources, c_ets, c_economic_hardship.
 
 Term ordering decisions:
-Predicate symbol precedence:  predicate_order([ =, p_born_in, p_complain_about_often, p_born_together, p_live_with, p_spend_time_playing_with, p_live_at ]).
-Function symbol precedence:  function_order([ c_luke, c_multiple_birth, c_annoying_siblings, c_siblings, c_strangers, c_home, f1 ]).
+Predicate symbol precedence:  predicate_order([ =, p_prove, p_applicant_of, p_available_to, p_living_in, p_provide_to ]).
+Function symbol precedence:  function_order([ c_economic_hardship, c_tom, c_few_resources, c_gre, c_single_parent_family, c_ets, c_financial_aid, c_toms_dad, c_u_s_d205, c_u_s_d300 ]).
 After inverse_order:  (no changes).
 Unfolding symbols: (none).
 
 Auto_inference settings:
-  % set(binary_resolution).  % (non-Horn)
-  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+  % set(neg_binary_resolution).  % (HNE depth_diff=0)
+  % clear(ordered_res).  % (HNE depth_diff=0)
+  % set(ur_resolution).  % (HNE depth_diff=0)
+    % set(ur_resolution) -> set(pos_ur_resolution).
+    % set(ur_resolution) -> set(neg_ur_resolution).
 
-Auto_process settings:
-  % set(factor).  % (non-Horn)
-  % set(unit_deletion).  % (non-Horn)
+Auto_process settings:  (no changes).
 
-kept:      5 -p_born_in(x,c_multiple_birth) | p_spend_time_playing_with(x,c_siblings).  [clausify(1)].
-kept:      6 -p_complain_about_often(x,c_annoying_siblings) | p_born_together(x,f1(x)).  [clausify(1)].
-kept:      7 -p_live_at(x,c_home) | -p_live_with(x,c_strangers).  [clausify(1)].
-kept:      8 -p_spend_time_playing_with(x,c_siblings) | p_live_at(x,c_home).  [clausify(1)].
-kept:      9 -p_born_in(c_luke,c_multiple_birth) | p_live_with(c_luke,c_strangers).  [clausify(1)].
-kept:      10 -p_live_with(c_luke,c_strangers) | p_born_in(c_luke,c_multiple_birth).  [clausify(1)].
-           11 c_annoying_siblings != c_home.  [assumption].
-kept:      12 c_home != c_annoying_siblings.  [copy(11),flip(a)].
-kept:      13 c_annoying_siblings != c_luke.  [assumption].
-kept:      14 c_annoying_siblings != c_multiple_birth.  [assumption].
-           15 c_annoying_siblings != c_siblings.  [assumption].
-kept:      16 c_siblings != c_annoying_siblings.  [copy(15),flip(a)].
-           17 c_annoying_siblings != c_strangers.  [assumption].
-kept:      18 c_strangers != c_annoying_siblings.  [copy(17),flip(a)].
-kept:      19 c_home != c_luke.  [assumption].
-kept:      20 c_home != c_multiple_birth.  [assumption].
-kept:      21 c_home != c_siblings.  [assumption].
-kept:      22 c_home != c_strangers.  [assumption].
-           23 c_luke != c_multiple_birth.  [assumption].
-kept:      24 c_multiple_birth != c_luke.  [copy(23),flip(a)].
-           25 c_luke != c_siblings.  [assumption].
-kept:      26 c_siblings != c_luke.  [copy(25),flip(a)].
-           27 c_luke != c_strangers.  [assumption].
-kept:      28 c_strangers != c_luke.  [copy(27),flip(a)].
-           29 c_multiple_birth != c_siblings.  [assumption].
-kept:      30 c_siblings != c_multiple_birth.  [copy(29),flip(a)].
-           31 c_multiple_birth != c_strangers.  [assumption].
-kept:      32 c_strangers != c_multiple_birth.  [copy(31),flip(a)].
-           33 c_siblings != c_strangers.  [assumption].
-kept:      34 c_strangers != c_siblings.  [copy(33),flip(a)].
-kept:      35 p_born_in(c_luke,c_multiple_birth) | p_complain_about_often(c_luke,c_annoying_siblings).  [deny(2)].
-kept:      36 -p_complain_about_often(x,c_annoying_siblings) | -p_born_together(x,f1(x)) | p_born_in(x,c_multiple_birth).  [resolve(3,b,4,a)].
+kept:      3 -p_applicant_of(x,c_gre) | -p_prove(x,c_economic_hardship) | p_provide_to(c_ets,c_financial_aid,x).  [clausify(1)].
+kept:      4 -p_living_in(x,c_single_parent_family) | p_prove(x,c_economic_hardship).  [clausify(1)].
+kept:      5 -p_available_to(c_few_resources,x) | p_prove(x,c_economic_hardship).  [clausify(1)].
+kept:      6 p_living_in(c_tom,c_single_parent_family).  [clausify(1)].
+kept:      7 p_available_to(c_few_resources,c_tom).  [clausify(1)].
+kept:      8 p_applicant_of(c_tom,c_gre).  [clausify(1)].
+           9 c_economic_hardship != c_ets.  [assumption].
+kept:      10 c_ets != c_economic_hardship.  [copy(9),flip(a)].
+           11 c_economic_hardship != c_few_resources.  [assumption].
+kept:      12 c_few_resources != c_economic_hardship.  [copy(11),flip(a)].
+           13 c_economic_hardship != c_financial_aid.  [assumption].
+kept:      14 c_financial_aid != c_economic_hardship.  [copy(13),flip(a)].
+           15 c_economic_hardship != c_gre.  [assumption].
+kept:      16 c_gre != c_economic_hardship.  [copy(15),flip(a)].
+           17 c_economic_hardship != c_single_parent_family.  [assumption].
+kept:      18 c_single_parent_family != c_economic_hardship.  [copy(17),flip(a)].
+           19 c_economic_hardship != c_tom.  [assumption].
+kept:      20 c_tom != c_economic_hardship.  [copy(19),flip(a)].
+           21 c_economic_hardship != c_toms_dad.  [assumption].
+kept:      22 c_toms_dad != c_economic_hardship.  [copy(21),flip(a)].
+           23 c_economic_hardship != c_u_s_d205.  [assumption].
+kept:      24 c_u_s_d205 != c_economic_hardship.  [copy(23),flip(a)].
+           25 c_economic_hardship != c_u_s_d300.  [assumption].
+kept:      26 c_u_s_d300 != c_economic_hardship.  [copy(25),flip(a)].
+kept:      27 c_ets != c_few_resources.  [assumption].
+           28 c_ets != c_financial_aid.  [assumption].
+kept:      29 c_financial_aid != c_ets.  [copy(28),flip(a)].
+kept:      30 c_ets != c_gre.  [assumption].
+kept:      31 c_ets != c_single_parent_family.  [assumption].
+kept:      32 c_ets != c_tom.  [assumption].
+           33 c_ets != c_toms_dad.  [assumption].
+kept:      34 c_toms_dad != c_ets.  [copy(33),flip(a)].
+           35 c_ets != c_u_s_d205.  [assumption].
+kept:      36 c_u_s_d205 != c_ets.  [copy(35),flip(a)].
+           37 c_ets != c_u_s_d300.  [assumption].
+kept:      38 c_u_s_d300 != c_ets.  [copy(37),flip(a)].
+           39 c_few_resources != c_financial_aid.  [assumption].
+kept:      40 c_financial_aid != c_few_resources.  [copy(39),flip(a)].
+           41 c_few_resources != c_gre.  [assumption].
+kept:      42 c_gre != c_few_resources.  [copy(41),flip(a)].
+           43 c_few_resources != c_single_parent_family.  [assumption].
+kept:      44 c_single_parent_family != c_few_resources.  [copy(43),flip(a)].
+kept:      45 c_few_resources != c_tom.  [assumption].
+           46 c_few_resources != c_toms_dad.  [assumption].
+kept:      47 c_toms_dad != c_few_resources.  [copy(46),flip(a)].
+           48 c_few_resources != c_u_s_d205.  [assumption].
+kept:      49 c_u_s_d205 != c_few_resources.  [copy(48),flip(a)].
+           50 c_few_resources != c_u_s_d300.  [assumption].
+kept:      51 c_u_s_d300 != c_few_resources.  [copy(50),flip(a)].
+kept:      52 c_financial_aid != c_gre.  [assumption].
+kept:      53 c_financial_aid != c_single_parent_family.  [assumption].
+kept:      54 c_financial_aid != c_tom.  [assumption].
+           55 c_financial_aid != c_toms_dad.  [assumption].
+kept:      56 c_toms_dad != c_financial_aid.  [copy(55),flip(a)].
+           57 c_financial_aid != c_u_s_d205.  [assumption].
+kept:      58 c_u_s_d205 != c_financial_aid.  [copy(57),flip(a)].
+           59 c_financial_aid != c_u_s_d300.  [assumption].
+kept:      60 c_u_s_d300 != c_financial_aid.  [copy(59),flip(a)].
+           61 c_gre != c_single_parent_family.  [assumption].
+kept:      62 c_single_parent_family != c_gre.  [copy(61),flip(a)].
+kept:      63 c_gre != c_tom.  [assumption].
+           64 c_gre != c_toms_dad.  [assumption].
+kept:      65 c_toms_dad != c_gre.  [copy(64),flip(a)].
+           66 c_gre != c_u_s_d205.  [assumption].
+kept:      67 c_u_s_d205 != c_gre.  [copy(66),flip(a)].
+           68 c_gre != c_u_s_d300.  [assumption].
+kept:      69 c_u_s_d300 != c_gre.  [copy(68),flip(a)].
+kept:      70 c_single_parent_family != c_tom.  [assumption].
+           71 c_single_parent_family != c_toms_dad.  [assumption].
+kept:      72 c_toms_dad != c_single_parent_family.  [copy(71),flip(a)].
+           73 c_single_parent_family != c_u_s_d205.  [assumption].
+kept:      74 c_u_s_d205 != c_single_parent_family.  [copy(73),flip(a)].
+           75 c_single_parent_family != c_u_s_d300.  [assumption].
+kept:      76 c_u_s_d300 != c_single_parent_family.  [copy(75),flip(a)].
+           77 c_tom != c_toms_dad.  [assumption].
+kept:      78 c_toms_dad != c_tom.  [copy(77),flip(a)].
+           79 c_tom != c_u_s_d205.  [assumption].
+kept:      80 c_u_s_d205 != c_tom.  [copy(79),flip(a)].
+           81 c_tom != c_u_s_d300.  [assumption].
+kept:      82 c_u_s_d300 != c_tom.  [copy(81),flip(a)].
+           83 c_toms_dad != c_u_s_d205.  [assumption].
+kept:      84 c_u_s_d205 != c_toms_dad.  [copy(83),flip(a)].
+           85 c_toms_dad != c_u_s_d300.  [assumption].
+kept:      86 c_u_s_d300 != c_toms_dad.  [copy(85),flip(a)].
+           87 c_u_s_d205 != c_u_s_d300.  [assumption].
+kept:      88 c_u_s_d300 != c_u_s_d205.  [copy(87),flip(a)].
+kept:      89 -p_provide_to(c_ets,c_financial_aid,c_tom).  [deny(2)].
 
 ============================== end of process initial clauses ========
 
@@ -147,29 +271,58 @@ formulas(usable).
 end_of_list.
 
 formulas(sos).
-5 -p_born_in(x,c_multiple_birth) | p_spend_time_playing_with(x,c_siblings).  [clausify(1)].
-6 -p_complain_about_often(x,c_annoying_siblings) | p_born_together(x,f1(x)).  [clausify(1)].
-7 -p_live_at(x,c_home) | -p_live_with(x,c_strangers).  [clausify(1)].
-8 -p_spend_time_playing_with(x,c_siblings) | p_live_at(x,c_home).  [clausify(1)].
-9 -p_born_in(c_luke,c_multiple_birth) | p_live_with(c_luke,c_strangers).  [clausify(1)].
-10 -p_live_with(c_luke,c_strangers) | p_born_in(c_luke,c_multiple_birth).  [clausify(1)].
-12 c_home != c_annoying_siblings.  [copy(11),flip(a)].
-13 c_annoying_siblings != c_luke.  [assumption].
-14 c_annoying_siblings != c_multiple_birth.  [assumption].
-16 c_siblings != c_annoying_siblings.  [copy(15),flip(a)].
-18 c_strangers != c_annoying_siblings.  [copy(17),flip(a)].
-19 c_home != c_luke.  [assumption].
-20 c_home != c_multiple_birth.  [assumption].
-21 c_home != c_siblings.  [assumption].
-22 c_home != c_strangers.  [assumption].
-24 c_multiple_birth != c_luke.  [copy(23),flip(a)].
-26 c_siblings != c_luke.  [copy(25),flip(a)].
-28 c_strangers != c_luke.  [copy(27),flip(a)].
-30 c_siblings != c_multiple_birth.  [copy(29),flip(a)].
-32 c_strangers != c_multiple_birth.  [copy(31),flip(a)].
-34 c_strangers != c_siblings.  [copy(33),flip(a)].
-35 p_born_in(c_luke,c_multiple_birth) | p_complain_about_often(c_luke,c_annoying_siblings).  [deny(2)].
-36 -p_complain_about_often(x,c_annoying_siblings) | -p_born_together(x,f1(x)) | p_born_in(x,c_multiple_birth).  [resolve(3,b,4,a)].
+3 -p_applicant_of(x,c_gre) | -p_prove(x,c_economic_hardship) | p_provide_to(c_ets,c_financial_aid,x).  [clausify(1)].
+4 -p_living_in(x,c_single_parent_family) | p_prove(x,c_economic_hardship).  [clausify(1)].
+5 -p_available_to(c_few_resources,x) | p_prove(x,c_economic_hardship).  [clausify(1)].
+6 p_living_in(c_tom,c_single_parent_family).  [clausify(1)].
+7 p_available_to(c_few_resources,c_tom).  [clausify(1)].
+8 p_applicant_of(c_tom,c_gre).  [clausify(1)].
+10 c_ets != c_economic_hardship.  [copy(9),flip(a)].
+12 c_few_resources != c_economic_hardship.  [copy(11),flip(a)].
+14 c_financial_aid != c_economic_hardship.  [copy(13),flip(a)].
+16 c_gre != c_economic_hardship.  [copy(15),flip(a)].
+18 c_single_parent_family != c_economic_hardship.  [copy(17),flip(a)].
+20 c_tom != c_economic_hardship.  [copy(19),flip(a)].
+22 c_toms_dad != c_economic_hardship.  [copy(21),flip(a)].
+24 c_u_s_d205 != c_economic_hardship.  [copy(23),flip(a)].
+26 c_u_s_d300 != c_economic_hardship.  [copy(25),flip(a)].
+27 c_ets != c_few_resources.  [assumption].
+29 c_financial_aid != c_ets.  [copy(28),flip(a)].
+30 c_ets != c_gre.  [assumption].
+31 c_ets != c_single_parent_family.  [assumption].
+32 c_ets != c_tom.  [assumption].
+34 c_toms_dad != c_ets.  [copy(33),flip(a)].
+36 c_u_s_d205 != c_ets.  [copy(35),flip(a)].
+38 c_u_s_d300 != c_ets.  [copy(37),flip(a)].
+40 c_financial_aid != c_few_resources.  [copy(39),flip(a)].
+42 c_gre != c_few_resources.  [copy(41),flip(a)].
+44 c_single_parent_family != c_few_resources.  [copy(43),flip(a)].
+45 c_few_resources != c_tom.  [assumption].
+47 c_toms_dad != c_few_resources.  [copy(46),flip(a)].
+49 c_u_s_d205 != c_few_resources.  [copy(48),flip(a)].
+51 c_u_s_d300 != c_few_resources.  [copy(50),flip(a)].
+52 c_financial_aid != c_gre.  [assumption].
+53 c_financial_aid != c_single_parent_family.  [assumption].
+54 c_financial_aid != c_tom.  [assumption].
+56 c_toms_dad != c_financial_aid.  [copy(55),flip(a)].
+58 c_u_s_d205 != c_financial_aid.  [copy(57),flip(a)].
+60 c_u_s_d300 != c_financial_aid.  [copy(59),flip(a)].
+62 c_single_parent_family != c_gre.  [copy(61),flip(a)].
+63 c_gre != c_tom.  [assumption].
+65 c_toms_dad != c_gre.  [copy(64),flip(a)].
+67 c_u_s_d205 != c_gre.  [copy(66),flip(a)].
+69 c_u_s_d300 != c_gre.  [copy(68),flip(a)].
+70 c_single_parent_family != c_tom.  [assumption].
+72 c_toms_dad != c_single_parent_family.  [copy(71),flip(a)].
+74 c_u_s_d205 != c_single_parent_family.  [copy(73),flip(a)].
+76 c_u_s_d300 != c_single_parent_family.  [copy(75),flip(a)].
+78 c_toms_dad != c_tom.  [copy(77),flip(a)].
+80 c_u_s_d205 != c_tom.  [copy(79),flip(a)].
+82 c_u_s_d300 != c_tom.  [copy(81),flip(a)].
+84 c_u_s_d205 != c_toms_dad.  [copy(83),flip(a)].
+86 c_u_s_d300 != c_toms_dad.  [copy(85),flip(a)].
+88 c_u_s_d300 != c_u_s_d205.  [copy(87),flip(a)].
+89 -p_provide_to(c_ets,c_financial_aid,c_tom).  [deny(2)].
 end_of_list.
 
 formulas(demodulators).
@@ -181,117 +334,167 @@ end_of_list.
 
 % Starting search at 0.00 seconds.
 
-given #1 (I,wt=6): 5 -p_born_in(x,c_multiple_birth) | p_spend_time_playing_with(x,c_siblings).  [clausify(1)].
+given #1 (I,wt=10): 3 -p_applicant_of(x,c_gre) | -p_prove(x,c_economic_hardship) | p_provide_to(c_ets,c_financial_aid,x).  [clausify(1)].
 
-given #2 (I,wt=7): 6 -p_complain_about_often(x,c_annoying_siblings) | p_born_together(x,f1(x)).  [clausify(1)].
+given #2 (I,wt=6): 4 -p_living_in(x,c_single_parent_family) | p_prove(x,c_economic_hardship).  [clausify(1)].
 
-given #3 (I,wt=6): 7 -p_live_at(x,c_home) | -p_live_with(x,c_strangers).  [clausify(1)].
+given #3 (I,wt=6): 5 -p_available_to(c_few_resources,x) | p_prove(x,c_economic_hardship).  [clausify(1)].
 
-given #4 (I,wt=6): 8 -p_spend_time_playing_with(x,c_siblings) | p_live_at(x,c_home).  [clausify(1)].
+given #4 (I,wt=3): 6 p_living_in(c_tom,c_single_parent_family).  [clausify(1)].
 
-given #5 (I,wt=6): 9 -p_born_in(c_luke,c_multiple_birth) | p_live_with(c_luke,c_strangers).  [clausify(1)].
+given #5 (I,wt=3): 7 p_available_to(c_few_resources,c_tom).  [clausify(1)].
 
-given #6 (I,wt=6): 10 -p_live_with(c_luke,c_strangers) | p_born_in(c_luke,c_multiple_birth).  [clausify(1)].
+given #6 (I,wt=3): 8 p_applicant_of(c_tom,c_gre).  [clausify(1)].
 
-given #7 (I,wt=3): 12 c_home != c_annoying_siblings.  [copy(11),flip(a)].
+given #7 (I,wt=3): 10 c_ets != c_economic_hardship.  [copy(9),flip(a)].
 
-given #8 (I,wt=3): 13 c_annoying_siblings != c_luke.  [assumption].
+given #8 (I,wt=3): 12 c_few_resources != c_economic_hardship.  [copy(11),flip(a)].
 
-given #9 (I,wt=3): 14 c_annoying_siblings != c_multiple_birth.  [assumption].
+given #9 (I,wt=3): 14 c_financial_aid != c_economic_hardship.  [copy(13),flip(a)].
 
-given #10 (I,wt=3): 16 c_siblings != c_annoying_siblings.  [copy(15),flip(a)].
+given #10 (I,wt=3): 16 c_gre != c_economic_hardship.  [copy(15),flip(a)].
 
-given #11 (I,wt=3): 18 c_strangers != c_annoying_siblings.  [copy(17),flip(a)].
+given #11 (I,wt=3): 18 c_single_parent_family != c_economic_hardship.  [copy(17),flip(a)].
 
-given #12 (I,wt=3): 19 c_home != c_luke.  [assumption].
+given #12 (I,wt=3): 20 c_tom != c_economic_hardship.  [copy(19),flip(a)].
 
-given #13 (I,wt=3): 20 c_home != c_multiple_birth.  [assumption].
+given #13 (I,wt=3): 22 c_toms_dad != c_economic_hardship.  [copy(21),flip(a)].
 
-given #14 (I,wt=3): 21 c_home != c_siblings.  [assumption].
+given #14 (I,wt=3): 24 c_u_s_d205 != c_economic_hardship.  [copy(23),flip(a)].
 
-given #15 (I,wt=3): 22 c_home != c_strangers.  [assumption].
+given #15 (I,wt=3): 26 c_u_s_d300 != c_economic_hardship.  [copy(25),flip(a)].
 
-given #16 (I,wt=3): 24 c_multiple_birth != c_luke.  [copy(23),flip(a)].
+given #16 (I,wt=3): 27 c_ets != c_few_resources.  [assumption].
 
-given #17 (I,wt=3): 26 c_siblings != c_luke.  [copy(25),flip(a)].
+given #17 (I,wt=3): 29 c_financial_aid != c_ets.  [copy(28),flip(a)].
 
-given #18 (I,wt=3): 28 c_strangers != c_luke.  [copy(27),flip(a)].
+given #18 (I,wt=3): 30 c_ets != c_gre.  [assumption].
 
-given #19 (I,wt=3): 30 c_siblings != c_multiple_birth.  [copy(29),flip(a)].
+given #19 (I,wt=3): 31 c_ets != c_single_parent_family.  [assumption].
 
-given #20 (I,wt=3): 32 c_strangers != c_multiple_birth.  [copy(31),flip(a)].
+given #20 (I,wt=3): 32 c_ets != c_tom.  [assumption].
 
-given #21 (I,wt=3): 34 c_strangers != c_siblings.  [copy(33),flip(a)].
+given #21 (I,wt=3): 34 c_toms_dad != c_ets.  [copy(33),flip(a)].
 
-given #22 (I,wt=6): 35 p_born_in(c_luke,c_multiple_birth) | p_complain_about_often(c_luke,c_annoying_siblings).  [deny(2)].
+given #22 (I,wt=3): 36 c_u_s_d205 != c_ets.  [copy(35),flip(a)].
 
-given #23 (I,wt=10): 36 -p_complain_about_often(x,c_annoying_siblings) | -p_born_together(x,f1(x)) | p_born_in(x,c_multiple_birth).  [resolve(3,b,4,a)].
+given #23 (I,wt=3): 38 c_u_s_d300 != c_ets.  [copy(37),flip(a)].
 
-given #24 (A,wt=7): 37 p_born_in(c_luke,c_multiple_birth) | p_born_together(c_luke,f1(c_luke)).  [resolve(35,b,6,a)].
+given #24 (I,wt=3): 40 c_financial_aid != c_few_resources.  [copy(39),flip(a)].
 
-given #25 (T,wt=6): 38 p_born_in(c_luke,c_multiple_birth) | -p_complain_about_often(c_luke,c_annoying_siblings).  [resolve(37,b,36,b),merge(c)].
+given #25 (I,wt=3): 42 c_gre != c_few_resources.  [copy(41),flip(a)].
 
-given #26 (T,wt=3): 39 p_born_in(c_luke,c_multiple_birth).  [resolve(38,b,35,b),merge(b)].
+given #26 (I,wt=3): 44 c_single_parent_family != c_few_resources.  [copy(43),flip(a)].
 
-given #27 (T,wt=3): 40 p_live_with(c_luke,c_strangers).  [back_unit_del(9),unit_del(a,39)].
+given #27 (I,wt=3): 45 c_few_resources != c_tom.  [assumption].
 
-given #28 (T,wt=3): 41 p_spend_time_playing_with(c_luke,c_siblings).  [resolve(39,a,5,a)].
+given #28 (I,wt=3): 47 c_toms_dad != c_few_resources.  [copy(46),flip(a)].
+
+given #29 (I,wt=3): 49 c_u_s_d205 != c_few_resources.  [copy(48),flip(a)].
+
+given #30 (I,wt=3): 51 c_u_s_d300 != c_few_resources.  [copy(50),flip(a)].
+
+given #31 (I,wt=3): 52 c_financial_aid != c_gre.  [assumption].
+
+given #32 (I,wt=3): 53 c_financial_aid != c_single_parent_family.  [assumption].
+
+given #33 (I,wt=3): 54 c_financial_aid != c_tom.  [assumption].
+
+given #34 (I,wt=3): 56 c_toms_dad != c_financial_aid.  [copy(55),flip(a)].
+
+given #35 (I,wt=3): 58 c_u_s_d205 != c_financial_aid.  [copy(57),flip(a)].
+
+given #36 (I,wt=3): 60 c_u_s_d300 != c_financial_aid.  [copy(59),flip(a)].
+
+given #37 (I,wt=3): 62 c_single_parent_family != c_gre.  [copy(61),flip(a)].
+
+given #38 (I,wt=3): 63 c_gre != c_tom.  [assumption].
+
+given #39 (I,wt=3): 65 c_toms_dad != c_gre.  [copy(64),flip(a)].
+
+given #40 (I,wt=3): 67 c_u_s_d205 != c_gre.  [copy(66),flip(a)].
+
+given #41 (I,wt=3): 69 c_u_s_d300 != c_gre.  [copy(68),flip(a)].
+
+given #42 (I,wt=3): 70 c_single_parent_family != c_tom.  [assumption].
+
+given #43 (I,wt=3): 72 c_toms_dad != c_single_parent_family.  [copy(71),flip(a)].
+
+given #44 (I,wt=3): 74 c_u_s_d205 != c_single_parent_family.  [copy(73),flip(a)].
+
+given #45 (I,wt=3): 76 c_u_s_d300 != c_single_parent_family.  [copy(75),flip(a)].
+
+given #46 (I,wt=3): 78 c_toms_dad != c_tom.  [copy(77),flip(a)].
+
+given #47 (I,wt=3): 80 c_u_s_d205 != c_tom.  [copy(79),flip(a)].
+
+given #48 (I,wt=3): 82 c_u_s_d300 != c_tom.  [copy(81),flip(a)].
+
+given #49 (I,wt=3): 84 c_u_s_d205 != c_toms_dad.  [copy(83),flip(a)].
+
+given #50 (I,wt=3): 86 c_u_s_d300 != c_toms_dad.  [copy(85),flip(a)].
+
+given #51 (I,wt=3): 88 c_u_s_d300 != c_u_s_d205.  [copy(87),flip(a)].
+
+given #52 (I,wt=4): 89 -p_provide_to(c_ets,c_financial_aid,c_tom).  [deny(2)].
 
 ============================== PROOF =================================
 
 % Proof 1 at 0.00 (+ 0.00) seconds.
-% Length of proof is 18.
-% Level of proof is 7.
+% Length of proof is 10.
+% Level of proof is 3.
 % Maximum clause weight is 10.000.
-% Given clauses 28.
+% Given clauses 52.
 
-1 (all v_x (p_born_in(v_x,c_multiple_birth) -> p_spend_time_playing_with(v_x,c_siblings))) & (all v_x ((exists v_y (p_sibling(v_x,v_y) & p_born_together(v_x,v_y))) -> p_born_in(v_x,c_multiple_birth))) & (all v_x (p_complain_about_often(v_x,c_annoying_siblings) -> (exists v_y (p_sibling(v_x,v_y) & p_born_together(v_x,v_y))))) & (all v_x (p_live_at(v_x,c_home) -> -p_live_with(v_x,c_strangers))) & (all v_x (p_spend_time_playing_with(v_x,c_siblings) -> p_live_at(v_x,c_home))) & -((p_born_in(c_luke,c_multiple_birth) | p_live_with(c_luke,c_strangers)) & -(p_born_in(c_luke,c_multiple_birth) & p_live_with(c_luke,c_strangers))) # label(non_clause).  [assumption].
-2 -p_born_in(c_luke,c_multiple_birth) & -p_complain_about_often(c_luke,c_annoying_siblings) # label(non_clause) # label(goal).  [goal].
-3 -p_complain_about_often(x,c_annoying_siblings) | p_sibling(x,f1(x)).  [clausify(1)].
-4 -p_sibling(x,y) | -p_born_together(x,y) | p_born_in(x,c_multiple_birth).  [clausify(1)].
-5 -p_born_in(x,c_multiple_birth) | p_spend_time_playing_with(x,c_siblings).  [clausify(1)].
-6 -p_complain_about_often(x,c_annoying_siblings) | p_born_together(x,f1(x)).  [clausify(1)].
-7 -p_live_at(x,c_home) | -p_live_with(x,c_strangers).  [clausify(1)].
-8 -p_spend_time_playing_with(x,c_siblings) | p_live_at(x,c_home).  [clausify(1)].
-9 -p_born_in(c_luke,c_multiple_birth) | p_live_with(c_luke,c_strangers).  [clausify(1)].
-35 p_born_in(c_luke,c_multiple_birth) | p_complain_about_often(c_luke,c_annoying_siblings).  [deny(2)].
-36 -p_complain_about_often(x,c_annoying_siblings) | -p_born_together(x,f1(x)) | p_born_in(x,c_multiple_birth).  [resolve(3,b,4,a)].
-37 p_born_in(c_luke,c_multiple_birth) | p_born_together(c_luke,f1(c_luke)).  [resolve(35,b,6,a)].
-38 p_born_in(c_luke,c_multiple_birth) | -p_complain_about_often(c_luke,c_annoying_siblings).  [resolve(37,b,36,b),merge(c)].
-39 p_born_in(c_luke,c_multiple_birth).  [resolve(38,b,35,b),merge(b)].
-40 p_live_with(c_luke,c_strangers).  [back_unit_del(9),unit_del(a,39)].
-41 p_spend_time_playing_with(c_luke,c_siblings).  [resolve(39,a,5,a)].
-42 -p_live_at(c_luke,c_home).  [ur(7,b,40,a)].
-43 $F.  [resolve(41,a,8,a),unit_del(a,42)].
+1 p_cost(c_gre,c_u_s_d205) & p_cheaper(c_u_s_d205,c_u_s_d300) & (all v_x (p_applicant_of(v_x,c_gre) & p_prove(v_x,c_economic_hardship) -> p_provide_to(c_ets,c_financial_aid,v_x))) & (all v_x (p_living_in(v_x,c_single_parent_family) | p_available_to(c_few_resources,v_x) -> p_prove(v_x,c_economic_hardship))) & p_living_in(c_tom,c_single_parent_family) & p_out_of_work(c_toms_dad) & p_available_to(c_few_resources,c_tom) & p_applicant_of(c_tom,c_gre) # label(non_clause).  [assumption].
+2 p_provide_to(c_ets,c_financial_aid,c_tom) # label(non_clause) # label(goal).  [goal].
+3 -p_applicant_of(x,c_gre) | -p_prove(x,c_economic_hardship) | p_provide_to(c_ets,c_financial_aid,x).  [clausify(1)].
+4 -p_living_in(x,c_single_parent_family) | p_prove(x,c_economic_hardship).  [clausify(1)].
+6 p_living_in(c_tom,c_single_parent_family).  [clausify(1)].
+8 p_applicant_of(c_tom,c_gre).  [clausify(1)].
+89 -p_provide_to(c_ets,c_financial_aid,c_tom).  [deny(2)].
+90 p_prove(c_tom,c_economic_hardship).  [ur(4,a,6,a)].
+92 -p_prove(c_tom,c_economic_hardship).  [ur(3,a,8,a,c,89,a)].
+93 $F.  [resolve(92,a,90,a)].
 
 ============================== end of proof ==========================
 
+% Disable descendants (x means already disabled):
+ 89 91x 92
+
+given #53 (A,wt=3): 90 p_prove(c_tom,c_economic_hardship).  [ur(4,a,6,a)].
+
+given #54 (T,wt=4): 94 p_provide_to(c_ets,c_financial_aid,c_tom).  [ur(3,a,8,a,b,90,a)].
+
 ============================== STATISTICS ============================
 
-Given=28. Generated=30. Kept=29. proofs=1.
-Usable=23. Sos=1. Demods=0. Limbo=0, Disabled=30. Hints=0.
+Given=54. Generated=57. Kept=56. proofs=1.
+Usable=53. Sos=0. Demods=0. Limbo=0, Disabled=58. Hints=0.
 Kept_by_rule=0, Deleted_by_rule=0.
-Forward_subsumed=0. Back_subsumed=4.
+Forward_subsumed=1. Back_subsumed=1.
 Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
-New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=1.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
 Demod_attempts=0. Demod_rewrites=0.
 Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
-Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=14.
-Megabytes=0.10.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=5.
+Megabytes=0.11.
 User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
 
 ============================== end of statistics =====================
 
 ============================== end of search =========================
 
-THEOREM PROVED
+SEARCH FAILED
 
 Exiting with 1 proof.
 
-Process 29656 exit (max_proofs) Sat Oct 17 13:02:00 2026
+Process 47231 exit (sos_empty) Fri Oct 23 14:35:08 2026
+
+WARNING: denials share constants (see output).
+
 -------- Proof 1 -------- 
 
-THEOREM PROVED
+SEARCH FAILED
 
------- process 29656 exit (max_proofs) ------
+------ process 47231 exit (sos_empty) ------
 

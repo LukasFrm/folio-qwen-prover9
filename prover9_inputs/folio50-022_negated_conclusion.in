@@ -18,5 +18,5 @@ formulas(assumptions).
 end_of_list.
 
 formulas(goals).
--(p_spend_time_playing_with(c_luke, c_siblings)).
+-(p_complain_about_often(c_luke, c_annoying_siblings)).
 end_of_list.

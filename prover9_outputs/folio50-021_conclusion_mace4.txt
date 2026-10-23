@@ -1,7 +1,7 @@
 ============================== Mace4 =================================
 Mace4 (64) version 2009-11A, November 2009.
-Process 29646 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
-Sat Oct 17 13:02:00 2026
+Process 47219 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:08 2026
 The command was "mace4 -t 5 -n 2 -N 8".
 ============================== end of head ===========================
 
@@ -12,7 +12,7 @@ formulas(assumptions).
 end_of_list.
 
 formulas(goals).
-p_legal_obligation(c_harvard_weekly_book_club).
+p_legal_obligation(c_harvard_weekly_book_club) & p_private_company(c_harvard_weekly_book_club).
 end_of_list.
 
 % From the command line: assign(max_seconds, 5).
@@ -29,7 +29,7 @@ end_of_list.
 
 % Formulas that are not ordinary clauses:
 1 (all v_x (p_business_organization(v_x) -> p_legal_entity(v_x))) & (all v_x (p_company(v_x) -> p_business_organization(v_x))) & (all v_x (p_private_company(v_x) -> p_company(v_x))) & (all v_x (p_legal_entity(v_x) -> p_created_under_law(v_x))) & (all v_x (p_legal_entity(v_x) -> p_legal_obligation(v_x))) & (p_created_under_law(c_harvard_weekly_book_club) -> -p_private_company(c_harvard_weekly_book_club)) # label(non_clause).  [assumption].
-2 p_legal_obligation(c_harvard_weekly_book_club) # label(non_clause) # label(goal).  [goal].
+2 p_legal_obligation(c_harvard_weekly_book_club) & p_private_company(c_harvard_weekly_book_club) # label(non_clause) # label(goal).  [goal].
 
 ============================== end of process non-clausal formulas ===
 
@@ -42,7 +42,7 @@ formulas(mace4_clauses).
 -p_legal_entity(x) | p_created_under_law(x).
 -p_legal_entity(x) | p_legal_obligation(x).
 -p_created_under_law(c_harvard_weekly_book_club) | -p_private_company(c_harvard_weekly_book_club).
--p_legal_obligation(c_harvard_weekly_book_club).
+-p_legal_obligation(c_harvard_weekly_book_club) | -p_private_company(c_harvard_weekly_book_club).
 end_of_list.
 
 ============================== end of clauses for search =============
@@ -78,8 +78,8 @@ For domain size 2.
 
 Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
 Ground clauses: seen=12, kept=12.
-Selections=5, assignments=5, propagations=8, current_models=1.
-Rewrite_terms=3, rewrite_bools=19, indexes=3.
+Selections=7, assignments=7, propagations=6, current_models=1.
+Rewrite_terms=4, rewrite_bools=18, indexes=4.
 Rules_from_neg_clauses=0, cross_offs=0.
 
 ============================== end of statistics =====================
@@ -88,9 +88,9 @@ User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
 
 Exiting with 1 model.
 
-Process 29646 exit (max_models) Sat Oct 17 13:02:00 2026
-The process finished Sat Oct 17 13:02:00 2026
+Process 47219 exit (max_models) Fri Oct 23 14:35:08 2026
+The process finished Fri Oct 23 14:35:08 2026
 
 === Mace4 starting on domain size 2. ===
 
------- process 29646 exit (max_models) ------
+------ process 47219 exit (max_models) ------

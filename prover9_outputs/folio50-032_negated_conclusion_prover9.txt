@@ -1,7 +1,7 @@
 ============================== Prover9 ===============================
 Prover9 (64) version 2009-11A, November 2009.
-Process 29683 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
-Sat Oct 17 13:02:00 2026
+Process 47267 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:08 2026
 The command was "prover9 -t 5".
 ============================== end of head ===========================
 
@@ -12,7 +12,7 @@ formulas(assumptions).
 end_of_list.
 
 formulas(goals).
--(p_solo_e_v(c_johns_car) & p_car(c_johns_car)).
+-(-p_solo_e_v(c_johns_car) & p_car(c_johns_car)).
 end_of_list.
 
 ============================== end of input ==========================
@@ -23,7 +23,7 @@ end_of_list.
 
 % Formulas that are not ordinary clauses:
 1 (all v_x ((exists v_y exists v_z (p_passenger(v_y) & p_passenger(v_z) & p_transport(v_x,v_y) & p_transport(v_x,v_z) & v_y != v_z)) -> -p_one_seater(v_x))) & (all v_x (p_tesla_model3(v_x) -> (exists v_y exists v_z (p_passenger(v_y) & p_passenger(v_z) & p_transport(v_x,v_y) & p_transport(v_x,v_z) & v_y != v_z)))) & (all v_x (p_single_seat(v_x) & p_electric_car(v_x) -> p_one_seater(v_x))) & (all v_x (p_solo_e_v(v_x) & p_car(v_x) -> p_single_seat(v_x) & p_electric_car(v_x))) & (-p_tesla_model3(c_johns_car) -> -p_tesla_model3(c_johns_car) & -(p_single_seat(c_johns_car) & p_electric_car(c_johns_car))) & p_car(c_johns_car) # label(non_clause).  [assumption].
-2 -(p_solo_e_v(c_johns_car) & p_car(c_johns_car)) # label(non_clause) # label(goal).  [goal].
+2 -(-p_solo_e_v(c_johns_car) & p_car(c_johns_car)) # label(non_clause) # label(goal).  [goal].
 
 ============================== end of process non-clausal formulas ===
 
@@ -46,7 +46,7 @@ formulas(sos).
 -p_solo_e_v(x) | -p_car(x) | p_electric_car(x).  [clausify(1)].
 p_tesla_model3(c_johns_car) | -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car).  [clausify(1)].
 p_car(c_johns_car).  [clausify(1)].
-p_solo_e_v(c_johns_car).  [deny(2)].
+-p_solo_e_v(c_johns_car).  [deny(2)].
 p_car(c_johns_car).  [deny(2)].
 end_of_list.
 
@@ -73,19 +73,26 @@ Derived: -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | p_transpor
 Derived: -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | p_transport(c_johns_car,f2(c_johns_car)).  [resolve(5,a,9,a)].
 Derived: -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | f2(c_johns_car) != f1(c_johns_car).  [resolve(5,a,10,a)].
 
-Eliminating p_solo_e_v/1
-11 p_solo_e_v(c_johns_car).  [deny(2)].
+Eliminating p_car/1
+11 p_car(c_johns_car).  [clausify(1)].
 12 -p_solo_e_v(x) | -p_car(x) | p_single_seat(x).  [clausify(1)].
 13 -p_solo_e_v(x) | -p_car(x) | p_electric_car(x).  [clausify(1)].
-Derived: -p_car(c_johns_car) | p_single_seat(c_johns_car).  [resolve(11,a,12,a)].
-Derived: -p_car(c_johns_car) | p_electric_car(c_johns_car).  [resolve(11,a,13,a)].
+14 p_car(c_johns_car).  [deny(2)].
+Derived: -p_solo_e_v(c_johns_car) | p_single_seat(c_johns_car).  [resolve(14,a,12,b)].
+Derived: -p_solo_e_v(c_johns_car) | p_electric_car(c_johns_car).  [resolve(14,a,13,b)].
 
 ============================== end predicate elimination =============
 
-Auto_denials:  (no changes).
+Auto_denials:
+  % assign(max_proofs, 2).  % (Horn set with more than one neg. clause)
+
+WARNING, because some of the denials share constants,
+some of the denials or their descendents may be subsumed,
+preventing the target number of proofs from being found.
+The shared constants are:  c_johns_car.
 
 Term ordering decisions:
-Predicate symbol precedence:  predicate_order([ =, p_electric_car, p_single_seat, p_car, p_passenger, p_transport ]).
+Predicate symbol precedence:  predicate_order([ =, p_electric_car, p_single_seat, p_passenger, p_solo_e_v, p_transport ]).
 Function symbol precedence:  function_order([ c_johns_car, f1, f2 ]).
 After inverse_order:  (no changes).
 Unfolding symbols: (none).
@@ -100,22 +107,13 @@ Auto_inference settings:
 Auto_process settings:
   % set(unit_deletion).  % (Horn set with negative nonunits)
 
-kept:      14 p_car(c_johns_car).  [clausify(1)].
-kept:      15 -p_single_seat(x) | -p_electric_car(x) | -p_passenger(y) | -p_passenger(z) | -p_transport(x,y) | -p_transport(x,z) | z = y.  [resolve(3,c,4,f)].
-kept:      16 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | p_passenger(f1(c_johns_car)).  [resolve(5,a,6,a)].
-kept:      17 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | p_passenger(f2(c_johns_car)).  [resolve(5,a,7,a)].
-kept:      18 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | p_transport(c_johns_car,f1(c_johns_car)).  [resolve(5,a,8,a)].
-kept:      19 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | p_transport(c_johns_car,f2(c_johns_car)).  [resolve(5,a,9,a)].
-kept:      20 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | f2(c_johns_car) != f1(c_johns_car).  [resolve(5,a,10,a)].
-           21 -p_car(c_johns_car) | p_single_seat(c_johns_car).  [resolve(11,a,12,a)].
-kept:      22 p_single_seat(c_johns_car).  [copy(21),unit_del(a,14)].
-           23 -p_car(c_johns_car) | p_electric_car(c_johns_car).  [resolve(11,a,13,a)].
-kept:      24 p_electric_car(c_johns_car).  [copy(23),unit_del(a,14)].
-kept:      25 f2(c_johns_car) != f1(c_johns_car).  [back_unit_del(20),unit_del(a,22),unit_del(b,24)].
-kept:      26 p_transport(c_johns_car,f2(c_johns_car)).  [back_unit_del(19),unit_del(a,22),unit_del(b,24)].
-kept:      27 p_transport(c_johns_car,f1(c_johns_car)).  [back_unit_del(18),unit_del(a,22),unit_del(b,24)].
-kept:      28 p_passenger(f2(c_johns_car)).  [back_unit_del(17),unit_del(a,22),unit_del(b,24)].
-kept:      29 p_passenger(f1(c_johns_car)).  [back_unit_del(16),unit_del(a,22),unit_del(b,24)].
+kept:      15 -p_solo_e_v(c_johns_car).  [deny(2)].
+kept:      16 -p_single_seat(x) | -p_electric_car(x) | -p_passenger(y) | -p_passenger(z) | -p_transport(x,y) | -p_transport(x,z) | z = y.  [resolve(3,c,4,f)].
+kept:      17 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | p_passenger(f1(c_johns_car)).  [resolve(5,a,6,a)].
+kept:      18 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | p_passenger(f2(c_johns_car)).  [resolve(5,a,7,a)].
+kept:      19 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | p_transport(c_johns_car,f1(c_johns_car)).  [resolve(5,a,8,a)].
+kept:      20 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | p_transport(c_johns_car,f2(c_johns_car)).  [resolve(5,a,9,a)].
+kept:      21 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | f2(c_johns_car) != f1(c_johns_car).  [resolve(5,a,10,a)].
 
 ============================== end of process initial clauses ========
 
@@ -127,15 +125,13 @@ formulas(usable).
 end_of_list.
 
 formulas(sos).
-14 p_car(c_johns_car).  [clausify(1)].
-15 -p_single_seat(x) | -p_electric_car(x) | -p_passenger(y) | -p_passenger(z) | -p_transport(x,y) | -p_transport(x,z) | z = y.  [resolve(3,c,4,f)].
-22 p_single_seat(c_johns_car).  [copy(21),unit_del(a,14)].
-24 p_electric_car(c_johns_car).  [copy(23),unit_del(a,14)].
-25 f2(c_johns_car) != f1(c_johns_car).  [back_unit_del(20),unit_del(a,22),unit_del(b,24)].
-26 p_transport(c_johns_car,f2(c_johns_car)).  [back_unit_del(19),unit_del(a,22),unit_del(b,24)].
-27 p_transport(c_johns_car,f1(c_johns_car)).  [back_unit_del(18),unit_del(a,22),unit_del(b,24)].
-28 p_passenger(f2(c_johns_car)).  [back_unit_del(17),unit_del(a,22),unit_del(b,24)].
-29 p_passenger(f1(c_johns_car)).  [back_unit_del(16),unit_del(a,22),unit_del(b,24)].
+15 -p_solo_e_v(c_johns_car).  [deny(2)].
+16 -p_single_seat(x) | -p_electric_car(x) | -p_passenger(y) | -p_passenger(z) | -p_transport(x,y) | -p_transport(x,z) | z = y.  [resolve(3,c,4,f)].
+17 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | p_passenger(f1(c_johns_car)).  [resolve(5,a,6,a)].
+18 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | p_passenger(f2(c_johns_car)).  [resolve(5,a,7,a)].
+19 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | p_transport(c_johns_car,f1(c_johns_car)).  [resolve(5,a,8,a)].
+20 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | p_transport(c_johns_car,f2(c_johns_car)).  [resolve(5,a,9,a)].
+21 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | f2(c_johns_car) != f1(c_johns_car).  [resolve(5,a,10,a)].
 end_of_list.
 
 formulas(demodulators).
@@ -147,89 +143,48 @@ end_of_list.
 
 % Starting search at 0.00 seconds.
 
-given #1 (I,wt=2): 14 p_car(c_johns_car).  [clausify(1)].
+given #1 (I,wt=2): 15 -p_solo_e_v(c_johns_car).  [deny(2)].
 
-given #2 (I,wt=17): 15 -p_single_seat(x) | -p_electric_car(x) | -p_passenger(y) | -p_passenger(z) | -p_transport(x,y) | -p_transport(x,z) | z = y.  [resolve(3,c,4,f)].
+given #2 (I,wt=17): 16 -p_single_seat(x) | -p_electric_car(x) | -p_passenger(y) | -p_passenger(z) | -p_transport(x,y) | -p_transport(x,z) | z = y.  [resolve(3,c,4,f)].
 
-given #3 (I,wt=2): 22 p_single_seat(c_johns_car).  [copy(21),unit_del(a,14)].
+given #3 (I,wt=7): 17 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | p_passenger(f1(c_johns_car)).  [resolve(5,a,6,a)].
 
-given #4 (I,wt=2): 24 p_electric_car(c_johns_car).  [copy(23),unit_del(a,14)].
+given #4 (I,wt=7): 18 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | p_passenger(f2(c_johns_car)).  [resolve(5,a,7,a)].
 
-given #5 (I,wt=5): 25 f2(c_johns_car) != f1(c_johns_car).  [back_unit_del(20),unit_del(a,22),unit_del(b,24)].
+given #5 (I,wt=8): 19 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | p_transport(c_johns_car,f1(c_johns_car)).  [resolve(5,a,8,a)].
 
-given #6 (I,wt=4): 26 p_transport(c_johns_car,f2(c_johns_car)).  [back_unit_del(19),unit_del(a,22),unit_del(b,24)].
+given #6 (I,wt=8): 20 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | p_transport(c_johns_car,f2(c_johns_car)).  [resolve(5,a,9,a)].
 
-given #7 (I,wt=4): 27 p_transport(c_johns_car,f1(c_johns_car)).  [back_unit_del(18),unit_del(a,22),unit_del(b,24)].
-
-given #8 (I,wt=3): 28 p_passenger(f2(c_johns_car)).  [back_unit_del(17),unit_del(a,22),unit_del(b,24)].
-
-============================== PROOF =================================
-
-% Proof 1 at 0.00 (+ 0.00) seconds.
-% Length of proof is 30.
-% Level of proof is 5.
-% Maximum clause weight is 17.000.
-% Given clauses 8.
-
-1 (all v_x ((exists v_y exists v_z (p_passenger(v_y) & p_passenger(v_z) & p_transport(v_x,v_y) & p_transport(v_x,v_z) & v_y != v_z)) -> -p_one_seater(v_x))) & (all v_x (p_tesla_model3(v_x) -> (exists v_y exists v_z (p_passenger(v_y) & p_passenger(v_z) & p_transport(v_x,v_y) & p_transport(v_x,v_z) & v_y != v_z)))) & (all v_x (p_single_seat(v_x) & p_electric_car(v_x) -> p_one_seater(v_x))) & (all v_x (p_solo_e_v(v_x) & p_car(v_x) -> p_single_seat(v_x) & p_electric_car(v_x))) & (-p_tesla_model3(c_johns_car) -> -p_tesla_model3(c_johns_car) & -(p_single_seat(c_johns_car) & p_electric_car(c_johns_car))) & p_car(c_johns_car) # label(non_clause).  [assumption].
-2 -(p_solo_e_v(c_johns_car) & p_car(c_johns_car)) # label(non_clause) # label(goal).  [goal].
-3 -p_single_seat(x) | -p_electric_car(x) | p_one_seater(x).  [clausify(1)].
-4 -p_passenger(x) | -p_passenger(y) | -p_transport(z,x) | -p_transport(z,y) | y = x | -p_one_seater(z).  [clausify(1)].
-5 p_tesla_model3(c_johns_car) | -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car).  [clausify(1)].
-6 -p_tesla_model3(x) | p_passenger(f1(x)).  [clausify(1)].
-7 -p_tesla_model3(x) | p_passenger(f2(x)).  [clausify(1)].
-8 -p_tesla_model3(x) | p_transport(x,f1(x)).  [clausify(1)].
-9 -p_tesla_model3(x) | p_transport(x,f2(x)).  [clausify(1)].
-10 -p_tesla_model3(x) | f2(x) != f1(x).  [clausify(1)].
-11 p_solo_e_v(c_johns_car).  [deny(2)].
-12 -p_solo_e_v(x) | -p_car(x) | p_single_seat(x).  [clausify(1)].
-13 -p_solo_e_v(x) | -p_car(x) | p_electric_car(x).  [clausify(1)].
-14 p_car(c_johns_car).  [clausify(1)].
-15 -p_single_seat(x) | -p_electric_car(x) | -p_passenger(y) | -p_passenger(z) | -p_transport(x,y) | -p_transport(x,z) | z = y.  [resolve(3,c,4,f)].
-16 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | p_passenger(f1(c_johns_car)).  [resolve(5,a,6,a)].
-17 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | p_passenger(f2(c_johns_car)).  [resolve(5,a,7,a)].
-18 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | p_transport(c_johns_car,f1(c_johns_car)).  [resolve(5,a,8,a)].
-19 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | p_transport(c_johns_car,f2(c_johns_car)).  [resolve(5,a,9,a)].
-20 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | f2(c_johns_car) != f1(c_johns_car).  [resolve(5,a,10,a)].
-21 -p_car(c_johns_car) | p_single_seat(c_johns_car).  [resolve(11,a,12,a)].
-22 p_single_seat(c_johns_car).  [copy(21),unit_del(a,14)].
-23 -p_car(c_johns_car) | p_electric_car(c_johns_car).  [resolve(11,a,13,a)].
-24 p_electric_car(c_johns_car).  [copy(23),unit_del(a,14)].
-25 f2(c_johns_car) != f1(c_johns_car).  [back_unit_del(20),unit_del(a,22),unit_del(b,24)].
-26 p_transport(c_johns_car,f2(c_johns_car)).  [back_unit_del(19),unit_del(a,22),unit_del(b,24)].
-27 p_transport(c_johns_car,f1(c_johns_car)).  [back_unit_del(18),unit_del(a,22),unit_del(b,24)].
-28 p_passenger(f2(c_johns_car)).  [back_unit_del(17),unit_del(a,22),unit_del(b,24)].
-29 p_passenger(f1(c_johns_car)).  [back_unit_del(16),unit_del(a,22),unit_del(b,24)].
-30 $F.  [ur(15,a,22,a,b,24,a,d,28,a,e,27,a,f,26,a,g,25,a),unit_del(a,29)].
-
-============================== end of proof ==========================
+given #7 (I,wt=9): 21 -p_single_seat(c_johns_car) | -p_electric_car(c_johns_car) | f2(c_johns_car) != f1(c_johns_car).  [resolve(5,a,10,a)].
 
 ============================== STATISTICS ============================
 
-Given=8. Generated=18. Kept=14. proofs=1.
-Usable=8. Sos=1. Demods=0. Limbo=0, Disabled=26. Hints=0.
+Given=7. Generated=9. Kept=7. proofs=0.
+Usable=7. Sos=0. Demods=0. Limbo=0, Disabled=21. Hints=0.
 Kept_by_rule=0, Deleted_by_rule=0.
-Forward_subsumed=3. Back_subsumed=0.
+Forward_subsumed=2. Back_subsumed=0.
 Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
-New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=5.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
 Demod_attempts=0. Demod_rewrites=0.
 Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
 Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=6.
-Megabytes=0.09.
+Megabytes=0.08.
 User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
 
 ============================== end of statistics =====================
 
 ============================== end of search =========================
 
-THEOREM PROVED
+SEARCH FAILED
 
-Exiting with 1 proof.
+Exiting with failure.
 
-Process 29683 exit (max_proofs) Sat Oct 17 13:02:00 2026
--------- Proof 1 -------- 
+Process 47267 exit (sos_empty) Fri Oct 23 14:35:08 2026
+
+WARNING: denials share constants (see output).
 
-THEOREM PROVED
 
------- process 29683 exit (max_proofs) ------
+SEARCH FAILED
+
+------ process 47267 exit (sos_empty) ------
 

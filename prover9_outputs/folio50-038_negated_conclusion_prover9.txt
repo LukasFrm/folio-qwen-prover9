@@ -1,24 +1,21 @@
 ============================== Prover9 ===============================
 Prover9 (64) version 2009-11A, November 2009.
-Process 29703 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
-Sat Oct 17 13:02:00 2026
+Process 47286 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:08 2026
 The command was "prover9 -t 5".
 ============================== end of head ===========================
 
 ============================== INPUT =================================
 
 formulas(assumptions).
-(exists v_x (p_show(v_x) & p_airing_at(v_x,c_eight_p_m_monday) & p_gives_out_on_t_v(v_x,c_rose))) & (all v_x (p_show(v_x) & p_gives_out_on_t_v(v_x,c_rose) -> p_the_bachelor(v_x))) & (all v_x (p_the_bachelor(v_x) -> p_portray(v_x,c_lives_of_real_people))) & (all v_x (p_portray(v_x,c_lives_of_real_people) -> p_reality_t_v_show(v_x))) & p_show(c_breaking_bad) & -p_reality_t_v_show(c_breaking_bad).
-c_breaking_bad != c_eight_p_m_monday.
-c_breaking_bad != c_lives_of_real_people.
-c_breaking_bad != c_rose.
-c_eight_p_m_monday != c_lives_of_real_people.
-c_eight_p_m_monday != c_rose.
-c_lives_of_real_people != c_rose.
+p_german(c_heinrich_schmidt) & p_politician(c_heinrich_schmidt) & p_member(c_heinrich_schmidt,c_prussian_state_parliament) & p_member(c_heinrich_schmidt,c_nazi_reichstag).
+c_heinrich_schmidt != c_nazi_reichstag.
+c_heinrich_schmidt != c_prussian_state_parliament.
+c_nazi_reichstag != c_prussian_state_parliament.
 end_of_list.
 
 formulas(goals).
--p_airing_at(c_breaking_bad,c_eight_p_m_monday).
+-(all v_x (p_politician(v_x) -> -p_member(v_x,c_nazi_reichstag))).
 end_of_list.
 
 ============================== end of input ==========================
@@ -28,8 +25,8 @@ end_of_list.
 ============================== PROCESS NON-CLAUSAL FORMULAS ==========
 
 % Formulas that are not ordinary clauses:
-1 (exists v_x (p_show(v_x) & p_airing_at(v_x,c_eight_p_m_monday) & p_gives_out_on_t_v(v_x,c_rose))) & (all v_x (p_show(v_x) & p_gives_out_on_t_v(v_x,c_rose) -> p_the_bachelor(v_x))) & (all v_x (p_the_bachelor(v_x) -> p_portray(v_x,c_lives_of_real_people))) & (all v_x (p_portray(v_x,c_lives_of_real_people) -> p_reality_t_v_show(v_x))) & p_show(c_breaking_bad) & -p_reality_t_v_show(c_breaking_bad) # label(non_clause).  [assumption].
-2 -p_airing_at(c_breaking_bad,c_eight_p_m_monday) # label(non_clause) # label(goal).  [goal].
+1 p_german(c_heinrich_schmidt) & p_politician(c_heinrich_schmidt) & p_member(c_heinrich_schmidt,c_prussian_state_parliament) & p_member(c_heinrich_schmidt,c_nazi_reichstag) # label(non_clause).  [assumption].
+2 -(all v_x (p_politician(v_x) -> -p_member(v_x,c_nazi_reichstag))) # label(non_clause) # label(goal).  [goal].
 
 ============================== end of process non-clausal formulas ===
 
@@ -41,21 +38,14 @@ formulas(usable).
 end_of_list.
 
 formulas(sos).
-p_show(c1).  [clausify(1)].
-p_airing_at(c1,c_eight_p_m_monday).  [clausify(1)].
-p_gives_out_on_t_v(c1,c_rose).  [clausify(1)].
--p_show(x) | -p_gives_out_on_t_v(x,c_rose) | p_the_bachelor(x).  [clausify(1)].
--p_the_bachelor(x) | p_portray(x,c_lives_of_real_people).  [clausify(1)].
--p_portray(x,c_lives_of_real_people) | p_reality_t_v_show(x).  [clausify(1)].
-p_show(c_breaking_bad).  [clausify(1)].
--p_reality_t_v_show(c_breaking_bad).  [clausify(1)].
-c_breaking_bad != c_eight_p_m_monday.  [assumption].
-c_breaking_bad != c_lives_of_real_people.  [assumption].
-c_breaking_bad != c_rose.  [assumption].
-c_eight_p_m_monday != c_lives_of_real_people.  [assumption].
-c_eight_p_m_monday != c_rose.  [assumption].
-c_lives_of_real_people != c_rose.  [assumption].
-p_airing_at(c_breaking_bad,c_eight_p_m_monday).  [deny(2)].
+p_german(c_heinrich_schmidt).  [clausify(1)].
+p_politician(c_heinrich_schmidt).  [clausify(1)].
+p_member(c_heinrich_schmidt,c_prussian_state_parliament).  [clausify(1)].
+p_member(c_heinrich_schmidt,c_nazi_reichstag).  [clausify(1)].
+c_heinrich_schmidt != c_nazi_reichstag.  [assumption].
+c_heinrich_schmidt != c_prussian_state_parliament.  [assumption].
+c_nazi_reichstag != c_prussian_state_parliament.  [assumption].
+-p_politician(x) | -p_member(x,c_nazi_reichstag).  [deny(2)].
 end_of_list.
 
 formulas(demodulators).
@@ -63,35 +53,26 @@ end_of_list.
 
 ============================== PREDICATE ELIMINATION =================
 
-Eliminating p_show/1
-3 -p_show(x) | -p_gives_out_on_t_v(x,c_rose) | p_the_bachelor(x).  [clausify(1)].
-4 p_show(c1).  [clausify(1)].
-Derived: -p_gives_out_on_t_v(c1,c_rose) | p_the_bachelor(c1).  [resolve(3,a,4,a)].
-5 p_show(c_breaking_bad).  [clausify(1)].
-Derived: -p_gives_out_on_t_v(c_breaking_bad,c_rose) | p_the_bachelor(c_breaking_bad).  [resolve(5,a,3,a)].
+Eliminating p_german/1
 
-Eliminating p_airing_at/2
-
-Eliminating p_the_bachelor/1
-6 -p_gives_out_on_t_v(c1,c_rose) | p_the_bachelor(c1).  [resolve(3,a,4,a)].
-7 -p_the_bachelor(x) | p_portray(x,c_lives_of_real_people).  [clausify(1)].
-Derived: -p_gives_out_on_t_v(c1,c_rose) | p_portray(c1,c_lives_of_real_people).  [resolve(6,b,7,a)].
-8 -p_gives_out_on_t_v(c_breaking_bad,c_rose) | p_the_bachelor(c_breaking_bad).  [resolve(5,a,3,a)].
-Derived: -p_gives_out_on_t_v(c_breaking_bad,c_rose) | p_portray(c_breaking_bad,c_lives_of_real_people).  [resolve(8,b,7,a)].
+Eliminating p_politician/1
+3 -p_politician(x) | -p_member(x,c_nazi_reichstag).  [deny(2)].
+4 p_politician(c_heinrich_schmidt).  [clausify(1)].
+Derived: -p_member(c_heinrich_schmidt,c_nazi_reichstag).  [resolve(3,a,4,a)].
 
 ============================== end predicate elimination =============
 
 Auto_denials:
-  % assign(max_proofs, 7).  % (Horn set with more than one neg. clause)
+  % assign(max_proofs, 4).  % (Horn set with more than one neg. clause)
 
 WARNING, because some of the denials share constants,
 some of the denials or their descendents may be subsumed,
 preventing the target number of proofs from being found.
-The shared constants are:  c_rose, c_lives_of_real_people, c_eight_p_m_monday, c_breaking_bad.
+The shared constants are:  c_prussian_state_parliament, c_nazi_reichstag, c_heinrich_schmidt.
 
 Term ordering decisions:
-Predicate symbol precedence:  predicate_order([ =, p_reality_t_v_show, p_gives_out_on_t_v, p_portray ]).
-Function symbol precedence:  function_order([ c_lives_of_real_people, c_rose, c_breaking_bad, c_eight_p_m_monday, c1 ]).
+Predicate symbol precedence:  predicate_order([ =, p_member ]).
+Function symbol precedence:  function_order([ c_heinrich_schmidt, c_nazi_reichstag, c_prussian_state_parliament ]).
 After inverse_order:  (no changes).
 Unfolding symbols: (none).
 
@@ -104,19 +85,36 @@ Auto_inference settings:
 
 Auto_process settings:  (no changes).
 
-kept:      9 p_gives_out_on_t_v(c1,c_rose).  [clausify(1)].
-kept:      10 -p_portray(x,c_lives_of_real_people) | p_reality_t_v_show(x).  [clausify(1)].
-kept:      11 -p_reality_t_v_show(c_breaking_bad).  [clausify(1)].
-           12 c_breaking_bad != c_eight_p_m_monday.  [assumption].
-kept:      13 c_eight_p_m_monday != c_breaking_bad.  [copy(12),flip(a)].
-kept:      14 c_breaking_bad != c_lives_of_real_people.  [assumption].
-kept:      15 c_breaking_bad != c_rose.  [assumption].
-kept:      16 c_eight_p_m_monday != c_lives_of_real_people.  [assumption].
-kept:      17 c_eight_p_m_monday != c_rose.  [assumption].
-           18 c_lives_of_real_people != c_rose.  [assumption].
-kept:      19 c_rose != c_lives_of_real_people.  [copy(18),flip(a)].
-kept:      20 -p_gives_out_on_t_v(c1,c_rose) | p_portray(c1,c_lives_of_real_people).  [resolve(6,b,7,a)].
-kept:      21 -p_gives_out_on_t_v(c_breaking_bad,c_rose) | p_portray(c_breaking_bad,c_lives_of_real_people).  [resolve(8,b,7,a)].
+kept:      5 p_member(c_heinrich_schmidt,c_prussian_state_parliament).  [clausify(1)].
+kept:      6 p_member(c_heinrich_schmidt,c_nazi_reichstag).  [clausify(1)].
+           7 c_heinrich_schmidt != c_nazi_reichstag.  [assumption].
+kept:      8 c_nazi_reichstag != c_heinrich_schmidt.  [copy(7),flip(a)].
+           9 c_heinrich_schmidt != c_prussian_state_parliament.  [assumption].
+kept:      10 c_prussian_state_parliament != c_heinrich_schmidt.  [copy(9),flip(a)].
+           11 c_nazi_reichstag != c_prussian_state_parliament.  [assumption].
+kept:      12 c_prussian_state_parliament != c_nazi_reichstag.  [copy(11),flip(a)].
+kept:      13 -p_member(c_heinrich_schmidt,c_nazi_reichstag).  [resolve(3,a,4,a)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 7.
+% Level of proof is 3.
+% Maximum clause weight is 3.000.
+% Given clauses 0.
+
+1 p_german(c_heinrich_schmidt) & p_politician(c_heinrich_schmidt) & p_member(c_heinrich_schmidt,c_prussian_state_parliament) & p_member(c_heinrich_schmidt,c_nazi_reichstag) # label(non_clause).  [assumption].
+2 -(all v_x (p_politician(v_x) -> -p_member(v_x,c_nazi_reichstag))) # label(non_clause) # label(goal).  [goal].
+3 -p_politician(x) | -p_member(x,c_nazi_reichstag).  [deny(2)].
+4 p_politician(c_heinrich_schmidt).  [clausify(1)].
+6 p_member(c_heinrich_schmidt,c_nazi_reichstag).  [clausify(1)].
+13 -p_member(c_heinrich_schmidt,c_nazi_reichstag).  [resolve(3,a,4,a)].
+14 $F.  [resolve(13,a,6,a)].
+
+============================== end of proof ==========================
+
+% Disable descendants (x means already disabled):
+ 0x 3x 13
 
 ============================== end of process initial clauses ========
 
@@ -128,17 +126,11 @@ formulas(usable).
 end_of_list.
 
 formulas(sos).
-9 p_gives_out_on_t_v(c1,c_rose).  [clausify(1)].
-10 -p_portray(x,c_lives_of_real_people) | p_reality_t_v_show(x).  [clausify(1)].
-11 -p_reality_t_v_show(c_breaking_bad).  [clausify(1)].
-13 c_eight_p_m_monday != c_breaking_bad.  [copy(12),flip(a)].
-14 c_breaking_bad != c_lives_of_real_people.  [assumption].
-15 c_breaking_bad != c_rose.  [assumption].
-16 c_eight_p_m_monday != c_lives_of_real_people.  [assumption].
-17 c_eight_p_m_monday != c_rose.  [assumption].
-19 c_rose != c_lives_of_real_people.  [copy(18),flip(a)].
-20 -p_gives_out_on_t_v(c1,c_rose) | p_portray(c1,c_lives_of_real_people).  [resolve(6,b,7,a)].
-21 -p_gives_out_on_t_v(c_breaking_bad,c_rose) | p_portray(c_breaking_bad,c_lives_of_real_people).  [resolve(8,b,7,a)].
+5 p_member(c_heinrich_schmidt,c_prussian_state_parliament).  [clausify(1)].
+6 p_member(c_heinrich_schmidt,c_nazi_reichstag).  [clausify(1)].
+8 c_nazi_reichstag != c_heinrich_schmidt.  [copy(7),flip(a)].
+10 c_prussian_state_parliament != c_heinrich_schmidt.  [copy(9),flip(a)].
+12 c_prussian_state_parliament != c_nazi_reichstag.  [copy(11),flip(a)].
 end_of_list.
 
 formulas(demodulators).
@@ -150,48 +142,28 @@ end_of_list.
 
 % Starting search at 0.00 seconds.
 
-given #1 (I,wt=3): 9 p_gives_out_on_t_v(c1,c_rose).  [clausify(1)].
+given #1 (I,wt=3): 5 p_member(c_heinrich_schmidt,c_prussian_state_parliament).  [clausify(1)].
 
-given #2 (I,wt=5): 10 -p_portray(x,c_lives_of_real_people) | p_reality_t_v_show(x).  [clausify(1)].
+given #2 (I,wt=3): 6 p_member(c_heinrich_schmidt,c_nazi_reichstag).  [clausify(1)].
 
-given #3 (I,wt=2): 11 -p_reality_t_v_show(c_breaking_bad).  [clausify(1)].
+given #3 (I,wt=3): 8 c_nazi_reichstag != c_heinrich_schmidt.  [copy(7),flip(a)].
 
-given #4 (I,wt=3): 13 c_eight_p_m_monday != c_breaking_bad.  [copy(12),flip(a)].
+given #4 (I,wt=3): 10 c_prussian_state_parliament != c_heinrich_schmidt.  [copy(9),flip(a)].
 
-given #5 (I,wt=3): 14 c_breaking_bad != c_lives_of_real_people.  [assumption].
-
-given #6 (I,wt=3): 15 c_breaking_bad != c_rose.  [assumption].
-
-given #7 (I,wt=3): 16 c_eight_p_m_monday != c_lives_of_real_people.  [assumption].
-
-given #8 (I,wt=3): 17 c_eight_p_m_monday != c_rose.  [assumption].
-
-given #9 (I,wt=3): 19 c_rose != c_lives_of_real_people.  [copy(18),flip(a)].
-
-given #10 (I,wt=6): 20 -p_gives_out_on_t_v(c1,c_rose) | p_portray(c1,c_lives_of_real_people).  [resolve(6,b,7,a)].
-
-given #11 (I,wt=6): 21 -p_gives_out_on_t_v(c_breaking_bad,c_rose) | p_portray(c_breaking_bad,c_lives_of_real_people).  [resolve(8,b,7,a)].
-
-given #12 (A,wt=3): 22 -p_portray(c_breaking_bad,c_lives_of_real_people).  [resolve(11,a,10,b)].
-
-given #13 (F,wt=3): 24 -p_gives_out_on_t_v(c_breaking_bad,c_rose).  [resolve(22,a,21,b)].
-
-given #14 (T,wt=3): 23 p_portray(c1,c_lives_of_real_people).  [ur(20,a,9,a)].
-
-given #15 (T,wt=2): 25 p_reality_t_v_show(c1).  [ur(10,a,23,a)].
+given #5 (I,wt=3): 12 c_prussian_state_parliament != c_nazi_reichstag.  [copy(11),flip(a)].
 
 ============================== STATISTICS ============================
 
-Given=15. Generated=17. Kept=15. proofs=0.
-Usable=13. Sos=0. Demods=0. Limbo=0, Disabled=21. Hints=0.
+Given=5. Generated=6. Kept=6. proofs=1.
+Usable=5. Sos=0. Demods=0. Limbo=0, Disabled=10. Hints=0.
 Kept_by_rule=0, Deleted_by_rule=0.
-Forward_subsumed=2. Back_subsumed=2.
+Forward_subsumed=0. Back_subsumed=0.
 Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
 New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
 Demod_attempts=0. Demod_rewrites=0.
 Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
-Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=5.
-Megabytes=0.06.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.03.
 User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
 
 ============================== end of statistics =====================
@@ -200,14 +172,15 @@ User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
 
 SEARCH FAILED
 
-Exiting with failure.
+Exiting with 1 proof.
 
-Process 29703 exit (sos_empty) Sat Oct 17 13:02:00 2026
+Process 47286 exit (sos_empty) Fri Oct 23 14:35:08 2026
 
 WARNING: denials share constants (see output).
 
+-------- Proof 1 -------- 
 
 SEARCH FAILED
 
------- process 29703 exit (sos_empty) ------
+------ process 47286 exit (sos_empty) ------
 

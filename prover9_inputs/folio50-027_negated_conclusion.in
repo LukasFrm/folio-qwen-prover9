@@ -1,52 +1,22 @@
 formulas(assumptions).
-(((((((p_cost(c_gre, c_u_s_d205) & p_cheaper(c_u_s_d205, c_u_s_d300)) & all v_x (((p_applicant_of(v_x, c_gre) & p_prove(v_x, c_economic_hardship)) -> p_provide_to(c_ets, c_financial_aid, v_x)))) & all v_x (((p_living_in(v_x, c_single_parent_family) | p_available_to(c_few_resources, v_x)) -> p_prove(v_x, c_economic_hardship)))) & p_living_in(c_tom, c_single_parent_family)) & p_out_of_work(c_toms_dad)) & p_available_to(c_few_resources, c_tom)) & p_applicant_of(c_tom, c_gre)).
--(c_economic_hardship = c_ets).
--(c_economic_hardship = c_few_resources).
--(c_economic_hardship = c_financial_aid).
--(c_economic_hardship = c_gre).
--(c_economic_hardship = c_single_parent_family).
--(c_economic_hardship = c_tom).
--(c_economic_hardship = c_toms_dad).
--(c_economic_hardship = c_u_s_d205).
--(c_economic_hardship = c_u_s_d300).
--(c_ets = c_few_resources).
--(c_ets = c_financial_aid).
--(c_ets = c_gre).
--(c_ets = c_single_parent_family).
--(c_ets = c_tom).
--(c_ets = c_toms_dad).
--(c_ets = c_u_s_d205).
--(c_ets = c_u_s_d300).
--(c_few_resources = c_financial_aid).
--(c_few_resources = c_gre).
--(c_few_resources = c_single_parent_family).
--(c_few_resources = c_tom).
--(c_few_resources = c_toms_dad).
--(c_few_resources = c_u_s_d205).
--(c_few_resources = c_u_s_d300).
--(c_financial_aid = c_gre).
--(c_financial_aid = c_single_parent_family).
--(c_financial_aid = c_tom).
--(c_financial_aid = c_toms_dad).
--(c_financial_aid = c_u_s_d205).
--(c_financial_aid = c_u_s_d300).
--(c_gre = c_single_parent_family).
--(c_gre = c_tom).
--(c_gre = c_toms_dad).
--(c_gre = c_u_s_d205).
--(c_gre = c_u_s_d300).
--(c_single_parent_family = c_tom).
--(c_single_parent_family = c_toms_dad).
--(c_single_parent_family = c_u_s_d205).
--(c_single_parent_family = c_u_s_d300).
--(c_tom = c_toms_dad).
--(c_tom = c_u_s_d205).
--(c_tom = c_u_s_d300).
--(c_toms_dad = c_u_s_d205).
--(c_toms_dad = c_u_s_d300).
--(c_u_s_d205 = c_u_s_d300).
+(((((all v_x ((p_spill_on(v_x, c_a_lot_of_food, c_clothing) -> -(p_notably_tidy(v_x)))) & all v_x (((p_clumsy_foodie(v_x) & p_go_out_frequently_to_find_to_try(v_x, c_new_food_restaurant)) -> p_spill_on(v_x, c_a_lot_of_food, c_clothing)))) & all v_x ((p_cleanly(v_x) -> p_notably_tidy(v_x)))) & all v_x (((p_value(v_x, c_order) & p_value(v_x, c_spotlessness)) -> p_cleanly(v_x)))) & all v_x ((exists v_y (((p_family_of(v_y, v_x) & p_prioritize(v_y, c_order)) & p_prioritize(v_y, c_spotlessness))) -> (p_value(v_x, c_order) & p_value(v_x, c_spotlessness))))) & -(((p_spill_on(c_peter, c_a_lot_of_food, c_clothing) | p_cleanly(c_peter)) & -(p_spill_on(c_peter, c_a_lot_of_food, c_clothing) & p_cleanly(c_peter))))).
+-(c_a_lot_of_food = c_clothing).
+-(c_a_lot_of_food = c_new_food_restaurant).
+-(c_a_lot_of_food = c_order).
+-(c_a_lot_of_food = c_peter).
+-(c_a_lot_of_food = c_spotlessness).
+-(c_clothing = c_new_food_restaurant).
+-(c_clothing = c_order).
+-(c_clothing = c_peter).
+-(c_clothing = c_spotlessness).
+-(c_new_food_restaurant = c_order).
+-(c_new_food_restaurant = c_peter).
+-(c_new_food_restaurant = c_spotlessness).
+-(c_order = c_peter).
+-(c_order = c_spotlessness).
+-(c_peter = c_spotlessness).
 end_of_list.
 
 formulas(goals).
--(-(exists v_x (exists v_y ((p_applicant_of(v_x, c_gre) & p_provide_to(v_y, c_financial_aid, v_x)))))).
+-(-((((p_clumsy_foodie(c_peter) & p_go_out_frequently_to_find_to_try(c_peter, c_new_food_restaurant)) | exists v_y (((p_family_of(v_y, c_peter) & p_prioritize(v_y, c_order)) & p_prioritize(v_y, c_spotlessness)))) & -((p_clumsy_foodie(c_peter) & p_go_out_frequently_to_find_to_try(c_peter, c_new_food_restaurant)) & exists v_y (((p_family_of(v_y, c_peter) & p_prioritize(v_y, c_order)) & p_prioritize(v_y, c_spotlessness))))))).
 end_of_list.

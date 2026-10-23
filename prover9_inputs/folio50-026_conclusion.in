@@ -48,5 +48,5 @@ formulas(assumptions).
 end_of_list.
 
 formulas(goals).
-exists v_x ((p_cost(c_gre, v_x) & p_cheaper(v_x, c_u_s_d300))).
+-(exists v_x (exists v_y ((p_applicant_of(v_x, c_gre) & p_provide_to(v_y, c_financial_aid, v_x))))).
 end_of_list.

@@ -1,0 +1,227 @@
+============================== Mace4 =================================
+Mace4 (64) version 2009-11A, November 2009.
+Process 47277 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:08 2026
+The command was "mace4 -t 5 -n 2 -N 8".
+============================== end of head ===========================
+
+============================== INPUT =================================
+
+formulas(assumptions).
+p_publishing_house(c_new_vessel_press) & p_specializes_in_translating_into_english(c_new_vessel_press,c_foreign_literature) & (all v_x (p_book(v_x) & p_published_by(v_x,c_new_vessel_press) -> p_in(v_x,c_english))) & p_book(c_neapolitan_chronicles) & p_published_by(c_neapolitan_chronicles,c_new_vessel_press) & p_translated_from(c_neapolitan_chronicles,c_italian) & p_book(c_palace_of_flies) & p_published_by(c_palace_of_flies,c_new_vessel_press).
+c_english != c_foreign_literature.
+c_english != c_italian.
+c_english != c_neapolitan_chronicles.
+c_english != c_new_vessel_press.
+c_english != c_palace_of_flies.
+c_foreign_literature != c_italian.
+c_foreign_literature != c_neapolitan_chronicles.
+c_foreign_literature != c_new_vessel_press.
+c_foreign_literature != c_palace_of_flies.
+c_italian != c_neapolitan_chronicles.
+c_italian != c_new_vessel_press.
+c_italian != c_palace_of_flies.
+c_neapolitan_chronicles != c_new_vessel_press.
+c_neapolitan_chronicles != c_palace_of_flies.
+c_new_vessel_press != c_palace_of_flies.
+end_of_list.
+
+formulas(goals).
+-(p_book(c_neapolitan_chronicles) & p_in(c_neapolitan_chronicles,c_english)).
+end_of_list.
+
+% From the command line: assign(max_seconds, 5).
+    % assign(domain_size, 2) -> assign(start_size, 2).
+    % assign(domain_size, 2) -> assign(end_size, 2).
+
+% From the command line: assign(domain_size, 2).
+
+% From the command line: assign(end_size, 8).
+
+============================== end of input ==========================
+
+============================== PROCESS NON-CLAUSAL FORMULAS ==========
+
+% Formulas that are not ordinary clauses:
+1 p_publishing_house(c_new_vessel_press) & p_specializes_in_translating_into_english(c_new_vessel_press,c_foreign_literature) & (all v_x (p_book(v_x) & p_published_by(v_x,c_new_vessel_press) -> p_in(v_x,c_english))) & p_book(c_neapolitan_chronicles) & p_published_by(c_neapolitan_chronicles,c_new_vessel_press) & p_translated_from(c_neapolitan_chronicles,c_italian) & p_book(c_palace_of_flies) & p_published_by(c_palace_of_flies,c_new_vessel_press) # label(non_clause).  [assumption].
+2 -(p_book(c_neapolitan_chronicles) & p_in(c_neapolitan_chronicles,c_english)) # label(non_clause) # label(goal).  [goal].
+
+============================== end of process non-clausal formulas ===
+
+============================== CLAUSES FOR SEARCH ====================
+
+formulas(mace4_clauses).
+p_publishing_house(c_new_vessel_press).
+p_specializes_in_translating_into_english(c_new_vessel_press,c_foreign_literature).
+-p_book(x) | -p_published_by(x,c_new_vessel_press) | p_in(x,c_english).
+p_book(c_neapolitan_chronicles).
+p_published_by(c_neapolitan_chronicles,c_new_vessel_press).
+p_translated_from(c_neapolitan_chronicles,c_italian).
+p_book(c_palace_of_flies).
+p_published_by(c_palace_of_flies,c_new_vessel_press).
+c_english != c_foreign_literature.
+c_english != c_italian.
+c_english != c_neapolitan_chronicles.
+c_english != c_new_vessel_press.
+c_english != c_palace_of_flies.
+c_foreign_literature != c_italian.
+c_foreign_literature != c_neapolitan_chronicles.
+c_foreign_literature != c_new_vessel_press.
+c_foreign_literature != c_palace_of_flies.
+c_italian != c_neapolitan_chronicles.
+c_italian != c_new_vessel_press.
+c_italian != c_palace_of_flies.
+c_neapolitan_chronicles != c_new_vessel_press.
+c_neapolitan_chronicles != c_palace_of_flies.
+c_new_vessel_press != c_palace_of_flies.
+p_book(c_neapolitan_chronicles).
+p_in(c_neapolitan_chronicles,c_english).
+end_of_list.
+
+============================== end of clauses for search =============
+
+% There are no natural numbers in the input.
+
+============================== DOMAIN SIZE 2 =========================
+
+============================== STATISTICS ============================
+
+For domain size 2.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=26, kept=26.
+Selections=1, assignments=1, propagations=5, current_models=0.
+Rewrite_terms=9, rewrite_bools=0, indexes=2.
+Rules_from_neg_clauses=5, cross_offs=5.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 3 =========================
+
+============================== STATISTICS ============================
+
+For domain size 3.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=27, kept=27.
+Selections=2, assignments=3, propagations=4, current_models=0.
+Rewrite_terms=21, rewrite_bools=2, indexes=3.
+Rules_from_neg_clauses=4, cross_offs=9.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 4 =========================
+
+============================== STATISTICS ============================
+
+For domain size 4.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=28, kept=28.
+Selections=3, assignments=6, propagations=5, current_models=0.
+Rewrite_terms=39, rewrite_bools=7, indexes=6.
+Rules_from_neg_clauses=3, cross_offs=12.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 5 =========================
+
+============================== STATISTICS ============================
+
+For domain size 5.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=29, kept=29.
+Selections=4, assignments=10, propagations=11, current_models=0.
+Rewrite_terms=66, rewrite_bools=18, indexes=14.
+Rules_from_neg_clauses=2, cross_offs=14.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 6 =========================
+
+============================== MODEL =================================
+
+interpretation( 6, [number=1, seconds=0], [
+
+        function(c_english, [ 0 ]),
+
+        function(c_foreign_literature, [ 1 ]),
+
+        function(c_italian, [ 2 ]),
+
+        function(c_neapolitan_chronicles, [ 3 ]),
+
+        function(c_new_vessel_press, [ 4 ]),
+
+        function(c_palace_of_flies, [ 5 ]),
+
+        relation(p_book(_), [ 0, 0, 0, 1, 0, 1 ]),
+
+        relation(p_publishing_house(_), [ 0, 0, 0, 0, 1, 0 ]),
+
+        relation(p_in(_,_), [
+			   0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0,
+			   1, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0,
+			   1, 0, 0, 0, 0, 0 ]),
+
+        relation(p_published_by(_,_), [
+			   0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1, 0,
+			   0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 1, 0 ]),
+
+        relation(p_specializes_in_translating_into_english(_,_), [
+			   0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0,
+			   0, 1, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0 ]),
+
+        relation(p_translated_from(_,_), [
+			   0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0,
+			   0, 0, 1, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0 ])
+]).
+
+============================== end of model ==========================
+
+============================== STATISTICS ============================
+
+For domain size 6.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=30, kept=30.
+Selections=152, assignments=162, propagations=16, current_models=1.
+Rewrite_terms=102, rewrite_bools=53, indexes=25.
+Rules_from_neg_clauses=1, cross_offs=15.
+
+============================== end of statistics =====================
+
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
+
+Exiting with 1 model.
+
+Process 47277 exit (max_models) Fri Oct 23 14:35:08 2026
+The process finished Fri Oct 23 14:35:08 2026
+
+=== Mace4 starting on domain size 2. ===
+
+=== Mace4 starting on domain size 3. ===
+
+=== Mace4 starting on domain size 4. ===
+
+=== Mace4 starting on domain size 5. ===
+
+=== Mace4 starting on domain size 6. ===
+
+------ process 47277 exit (max_models) ------

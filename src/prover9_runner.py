@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import json
 import re
 import shutil
@@ -70,7 +71,7 @@ Formula: TypeAlias = Atom | Equality | Not | Binary | Quantifier
 
 
 TOKEN_RE = re.compile(
-    r"\s*(?:(?P<operator>[∀∃¬∧∨⊕→=≠(),])|"
+    r"\s*(?:(?P<operator>[∀∃¬∧∨⊕→↔=≠(),])|"
     r"(?P<identifier>[A-Za-z_][A-Za-z0-9_]*))"
 )
 
@@ -98,11 +99,17 @@ class Parser:
         self.position = 0
 
     def parse(self) -> Formula:
-        formula = self.parse_implication()
+        formula = self.parse_biconditional()
         if self.position != len(self.tokens):
             raise FormulaError(
                 f"Unexpected token {self.peek()!r} at token {self.position} in {self.text!r}"
             )
+        return formula
+
+    def parse_biconditional(self) -> Formula:
+        formula = self.parse_implication()
+        while self.accept("↔"):
+            formula = Binary("iff", formula, self.parse_implication())
         return formula
 
     def peek(self) -> str | None:
@@ -167,7 +174,7 @@ class Parser:
             return Quantifier(kind, variable, self.parse_unary())
 
         if self.accept("("):
-            formula = self.parse_implication()
+            formula = self.parse_biconditional()
             self.expect(")")
             return formula
 
@@ -241,6 +248,8 @@ def render_formula(
             return f"({left} | {right})"
         if formula.operator == "implies":
             return f"({left} -> {right})"
+        if formula.operator == "iff":
+            return f"({left} <-> {right})"
         if formula.operator == "xor":
             return f"(({left} | {right}) & -({left} & {right}))"
         raise FormulaError(f"Unknown binary operator: {formula.operator}")
@@ -489,10 +498,29 @@ def load_jsonl(path: Path) -> list[dict]:
         return [json.loads(line) for line in source if line.strip()]
 
 
+def sha256(path: Path) -> str:
+    digest = hashlib.sha256()
+    with path.open("rb") as source:
+        for chunk in iter(lambda: source.read(64 * 1024), b""):
+            digest.update(chunk)
+    return digest.hexdigest()
+
+
 def append_jsonl(path: Path, row: dict) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("a", encoding="utf-8") as destination:
         destination.write(json.dumps(row, ensure_ascii=False, sort_keys=True) + "\n")
+
+
+def clear_primary_artifacts() -> None:
+    """Remove generated artifacts for the current folio50 experiment."""
+    for directory, pattern in (
+        (INPUT_DIR, "folio50-*.in"),
+        (OUTPUT_DIR, "folio50-*.txt"),
+    ):
+        if directory.exists():
+            for path in directory.glob(pattern):
+                path.unlink()
 
 
 def parse_args() -> argparse.Namespace:
@@ -515,6 +543,11 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Disable distinct-name axioms for constants.",
     )
+    parser.add_argument(
+        "--restart",
+        action="store_true",
+        help="Start a fresh run by replacing the current primary results file.",
+    )
     return parser.parse_args()
 
 
@@ -534,7 +567,24 @@ def main() -> None:
         raise RuntimeError(f"Expected 50 examples, found {len(dataset)}.")
     validate_translation(dataset)
 
+    dataset_hash = sha256(DATASET_PATH)
+    if args.restart:
+        if RESULTS_PATH.exists():
+            RESULTS_PATH.unlink()
+        clear_primary_artifacts()
+
     existing = load_jsonl(RESULTS_PATH) if RESULTS_PATH.exists() else []
+    stale = [
+        row["id"]
+        for row in existing
+        if row.get("dataset_sha256") != dataset_hash
+    ]
+    if stale:
+        raise RuntimeError(
+            "Existing results belong to a different dataset. "
+            "Use --restart after preserving them; mismatched IDs: "
+            + ", ".join(stale[:5])
+        )
     completed_ids = {row["id"] for row in existing}
     processed = 0
     print(f"Dataset: {len(dataset)} examples")
@@ -575,6 +625,7 @@ def main() -> None:
             "id": example["id"],
             "source_story_id": example["source_story_id"],
             "source_example_id": example["source_example_id"],
+            "dataset_sha256": dataset_hash,
             "gold_label": example["label"],
             "prover9_label": classification,
             "matches_gold": matches_gold,

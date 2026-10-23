@@ -1,19 +1,21 @@
 ============================== Prover9 ===============================
 Prover9 (64) version 2009-11A, November 2009.
-Process 29728 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
-Sat Oct 17 13:02:00 2026
+Process 47310 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:08 2026
 The command was "prover9 -t 5".
 ============================== end of head ===========================
 
 ============================== INPUT =================================
 
 formulas(assumptions).
-(all v_x (p_animal(v_x) & p_bark(v_x) -> -p_like(c_jane,v_x))) & (all v_x (p_dog(v_x) -> p_animal(v_x) & p_bark(v_x))) & (all v_x (p_animal(v_x) & p_jump(v_x) -> p_like(c_jane,v_x))) & (all v_x (p_animal(v_x) & p_has_legs(v_x) -> p_jump(v_x))) & (all v_x (p_animal(v_x) & p_terricolous(v_x) -> p_has_legs(v_x))) & p_animal(c_kiki) & (-p_jump(c_kiki) & -p_has_legs(c_kiki) -> p_terricolous(c_kiki) | p_has_legs(c_kiki)).
-c_jane != c_kiki.
+(exists v_x (p_professional(v_x) & p_basketball_player(v_x) & -p_american_national(v_x))) & (all v_x (p_professional(v_x) & p_basketball_player(v_x) -> p_can_do(v_x,c_jump_shot))) & (all v_x (p_can_do(v_x,c_jump_shot) -> p_leap_straight_into_air(v_x))) & (all v_x (p_leap_straight_into_air(v_x) -> p_activate(v_x,c_leg_muscle))) & -p_activate(c_yuri,c_leg_muscle).
+c_jump_shot != c_leg_muscle.
+c_jump_shot != c_yuri.
+c_leg_muscle != c_yuri.
 end_of_list.
 
 formulas(goals).
-p_terricolous(c_kiki).
+-(p_american_national(c_yuri) & p_professional(c_yuri) & p_basketball_player(c_yuri)).
 end_of_list.
 
 ============================== end of input ==========================
@@ -23,8 +25,8 @@ end_of_list.
 ============================== PROCESS NON-CLAUSAL FORMULAS ==========
 
 % Formulas that are not ordinary clauses:
-1 (all v_x (p_animal(v_x) & p_bark(v_x) -> -p_like(c_jane,v_x))) & (all v_x (p_dog(v_x) -> p_animal(v_x) & p_bark(v_x))) & (all v_x (p_animal(v_x) & p_jump(v_x) -> p_like(c_jane,v_x))) & (all v_x (p_animal(v_x) & p_has_legs(v_x) -> p_jump(v_x))) & (all v_x (p_animal(v_x) & p_terricolous(v_x) -> p_has_legs(v_x))) & p_animal(c_kiki) & (-p_jump(c_kiki) & -p_has_legs(c_kiki) -> p_terricolous(c_kiki) | p_has_legs(c_kiki)) # label(non_clause).  [assumption].
-2 p_terricolous(c_kiki) # label(non_clause) # label(goal).  [goal].
+1 (exists v_x (p_professional(v_x) & p_basketball_player(v_x) & -p_american_national(v_x))) & (all v_x (p_professional(v_x) & p_basketball_player(v_x) -> p_can_do(v_x,c_jump_shot))) & (all v_x (p_can_do(v_x,c_jump_shot) -> p_leap_straight_into_air(v_x))) & (all v_x (p_leap_straight_into_air(v_x) -> p_activate(v_x,c_leg_muscle))) & -p_activate(c_yuri,c_leg_muscle) # label(non_clause).  [assumption].
+2 -(p_american_national(c_yuri) & p_professional(c_yuri) & p_basketball_player(c_yuri)) # label(non_clause) # label(goal).  [goal].
 
 ============================== end of process non-clausal formulas ===
 
@@ -36,16 +38,19 @@ formulas(usable).
 end_of_list.
 
 formulas(sos).
--p_animal(x) | -p_bark(x) | -p_like(c_jane,x).  [clausify(1)].
--p_dog(x) | p_animal(x).  [clausify(1)].
--p_dog(x) | p_bark(x).  [clausify(1)].
--p_animal(x) | -p_jump(x) | p_like(c_jane,x).  [clausify(1)].
--p_animal(x) | -p_has_legs(x) | p_jump(x).  [clausify(1)].
--p_animal(x) | -p_terricolous(x) | p_has_legs(x).  [clausify(1)].
-p_animal(c_kiki).  [clausify(1)].
-p_jump(c_kiki) | p_has_legs(c_kiki) | p_terricolous(c_kiki).  [clausify(1)].
-c_jane != c_kiki.  [assumption].
--p_terricolous(c_kiki).  [deny(2)].
+p_professional(c1).  [clausify(1)].
+p_basketball_player(c1).  [clausify(1)].
+-p_american_national(c1).  [clausify(1)].
+-p_professional(x) | -p_basketball_player(x) | p_can_do(x,c_jump_shot).  [clausify(1)].
+-p_can_do(x,c_jump_shot) | p_leap_straight_into_air(x).  [clausify(1)].
+-p_leap_straight_into_air(x) | p_activate(x,c_leg_muscle).  [clausify(1)].
+-p_activate(c_yuri,c_leg_muscle).  [clausify(1)].
+c_jump_shot != c_leg_muscle.  [assumption].
+c_jump_shot != c_yuri.  [assumption].
+c_leg_muscle != c_yuri.  [assumption].
+p_american_national(c_yuri).  [deny(2)].
+p_professional(c_yuri).  [deny(2)].
+p_basketball_player(c_yuri).  [deny(2)].
 end_of_list.
 
 formulas(demodulators).
@@ -53,48 +58,55 @@ end_of_list.
 
 ============================== PREDICATE ELIMINATION =================
 
-Eliminating p_animal/1
-3 -p_dog(x) | p_animal(x).  [clausify(1)].
-4 -p_animal(x) | -p_bark(x) | -p_like(c_jane,x).  [clausify(1)].
-Derived: -p_dog(x) | -p_bark(x) | -p_like(c_jane,x).  [resolve(3,b,4,a)].
-5 -p_animal(x) | -p_jump(x) | p_like(c_jane,x).  [clausify(1)].
-Derived: -p_jump(x) | p_like(c_jane,x) | -p_dog(x).  [resolve(5,a,3,b)].
-6 -p_animal(x) | -p_has_legs(x) | p_jump(x).  [clausify(1)].
-Derived: -p_has_legs(x) | p_jump(x) | -p_dog(x).  [resolve(6,a,3,b)].
-7 -p_animal(x) | -p_terricolous(x) | p_has_legs(x).  [clausify(1)].
-Derived: -p_terricolous(x) | p_has_legs(x) | -p_dog(x).  [resolve(7,a,3,b)].
-8 p_animal(c_kiki).  [clausify(1)].
-Derived: -p_bark(c_kiki) | -p_like(c_jane,c_kiki).  [resolve(8,a,4,a)].
-Derived: -p_jump(c_kiki) | p_like(c_jane,c_kiki).  [resolve(8,a,5,a)].
-Derived: -p_has_legs(c_kiki) | p_jump(c_kiki).  [resolve(8,a,6,a)].
+Eliminating p_professional/1
+3 -p_professional(x) | -p_basketball_player(x) | p_can_do(x,c_jump_shot).  [clausify(1)].
+4 p_professional(c1).  [clausify(1)].
+Derived: -p_basketball_player(c1) | p_can_do(c1,c_jump_shot).  [resolve(3,a,4,a)].
+5 p_professional(c_yuri).  [deny(2)].
+Derived: -p_basketball_player(c_yuri) | p_can_do(c_yuri,c_jump_shot).  [resolve(5,a,3,a)].
 
-Eliminating p_dog/1
+Eliminating p_leap_straight_into_air/1
+6 -p_leap_straight_into_air(x) | p_activate(x,c_leg_muscle).  [clausify(1)].
+7 -p_can_do(x,c_jump_shot) | p_leap_straight_into_air(x).  [clausify(1)].
+Derived: p_activate(x,c_leg_muscle) | -p_can_do(x,c_jump_shot).  [resolve(6,a,7,b)].
 
 ============================== end predicate elimination =============
 
-Auto_denials:  (non-Horn, no changes).
+Auto_denials:
+  % assign(max_proofs, 5).  % (Horn set with more than one neg. clause)
+
+WARNING, because some of the denials share constants,
+some of the denials or their descendents may be subsumed,
+preventing the target number of proofs from being found.
+The shared constants are:  c_jump_shot, c_yuri, c_leg_muscle.
 
 Term ordering decisions:
-Predicate symbol precedence:  predicate_order([ =, p_jump, p_has_legs, p_terricolous, p_bark, p_like ]).
-Function symbol precedence:  function_order([ c_kiki, c_jane ]).
+Predicate symbol precedence:  predicate_order([ =, p_basketball_player, p_american_national, p_can_do, p_activate ]).
+Function symbol precedence:  function_order([ c_yuri, c_jump_shot, c_leg_muscle, c1 ]).
 After inverse_order:  (no changes).
 Unfolding symbols: (none).
 
 Auto_inference settings:
-  % set(binary_resolution).  % (non-Horn)
-  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+  % set(neg_binary_resolution).  % (HNE depth_diff=0)
+  % clear(ordered_res).  % (HNE depth_diff=0)
+  % set(ur_resolution).  % (HNE depth_diff=0)
+    % set(ur_resolution) -> set(pos_ur_resolution).
+    % set(ur_resolution) -> set(neg_ur_resolution).
 
-Auto_process settings:
-  % set(factor).  % (non-Horn)
-  % set(unit_deletion).  % (non-Horn)
+Auto_process settings:  (no changes).
 
-kept:      9 p_jump(c_kiki) | p_has_legs(c_kiki) | p_terricolous(c_kiki).  [clausify(1)].
-kept:      10 c_jane != c_kiki.  [assumption].
-kept:      11 -p_terricolous(c_kiki).  [deny(2)].
-kept:      12 -p_bark(c_kiki) | -p_like(c_jane,c_kiki).  [resolve(8,a,4,a)].
-kept:      13 -p_jump(c_kiki) | p_like(c_jane,c_kiki).  [resolve(8,a,5,a)].
-kept:      14 -p_has_legs(c_kiki) | p_jump(c_kiki).  [resolve(8,a,6,a)].
-kept:      15 p_jump(c_kiki) | p_has_legs(c_kiki).  [back_unit_del(9),unit_del(c,11)].
+kept:      8 p_basketball_player(c1).  [clausify(1)].
+kept:      9 -p_american_national(c1).  [clausify(1)].
+kept:      10 -p_activate(c_yuri,c_leg_muscle).  [clausify(1)].
+           11 c_jump_shot != c_leg_muscle.  [assumption].
+kept:      12 c_leg_muscle != c_jump_shot.  [copy(11),flip(a)].
+kept:      13 c_jump_shot != c_yuri.  [assumption].
+kept:      14 c_leg_muscle != c_yuri.  [assumption].
+kept:      15 p_american_national(c_yuri).  [deny(2)].
+kept:      16 p_basketball_player(c_yuri).  [deny(2)].
+kept:      17 -p_basketball_player(c1) | p_can_do(c1,c_jump_shot).  [resolve(3,a,4,a)].
+kept:      18 -p_basketball_player(c_yuri) | p_can_do(c_yuri,c_jump_shot).  [resolve(5,a,3,a)].
+kept:      19 p_activate(x,c_leg_muscle) | -p_can_do(x,c_jump_shot).  [resolve(6,a,7,b)].
 
 ============================== end of process initial clauses ========
 
@@ -106,12 +118,17 @@ formulas(usable).
 end_of_list.
 
 formulas(sos).
-10 c_jane != c_kiki.  [assumption].
-11 -p_terricolous(c_kiki).  [deny(2)].
-12 -p_bark(c_kiki) | -p_like(c_jane,c_kiki).  [resolve(8,a,4,a)].
-13 -p_jump(c_kiki) | p_like(c_jane,c_kiki).  [resolve(8,a,5,a)].
-14 -p_has_legs(c_kiki) | p_jump(c_kiki).  [resolve(8,a,6,a)].
-15 p_jump(c_kiki) | p_has_legs(c_kiki).  [back_unit_del(9),unit_del(c,11)].
+8 p_basketball_player(c1).  [clausify(1)].
+9 -p_american_national(c1).  [clausify(1)].
+10 -p_activate(c_yuri,c_leg_muscle).  [clausify(1)].
+12 c_leg_muscle != c_jump_shot.  [copy(11),flip(a)].
+13 c_jump_shot != c_yuri.  [assumption].
+14 c_leg_muscle != c_yuri.  [assumption].
+15 p_american_national(c_yuri).  [deny(2)].
+16 p_basketball_player(c_yuri).  [deny(2)].
+17 -p_basketball_player(c1) | p_can_do(c1,c_jump_shot).  [resolve(3,a,4,a)].
+18 -p_basketball_player(c_yuri) | p_can_do(c_yuri,c_jump_shot).  [resolve(5,a,3,a)].
+19 p_activate(x,c_leg_muscle) | -p_can_do(x,c_jump_shot).  [resolve(6,a,7,b)].
 end_of_list.
 
 formulas(demodulators).
@@ -123,35 +140,74 @@ end_of_list.
 
 % Starting search at 0.00 seconds.
 
-given #1 (I,wt=3): 10 c_jane != c_kiki.  [assumption].
+given #1 (I,wt=2): 8 p_basketball_player(c1).  [clausify(1)].
 
-given #2 (I,wt=2): 11 -p_terricolous(c_kiki).  [deny(2)].
+given #2 (I,wt=2): 9 -p_american_national(c1).  [clausify(1)].
 
-given #3 (I,wt=5): 12 -p_bark(c_kiki) | -p_like(c_jane,c_kiki).  [resolve(8,a,4,a)].
+given #3 (I,wt=3): 10 -p_activate(c_yuri,c_leg_muscle).  [clausify(1)].
 
-given #4 (I,wt=5): 13 -p_jump(c_kiki) | p_like(c_jane,c_kiki).  [resolve(8,a,5,a)].
+given #4 (I,wt=3): 12 c_leg_muscle != c_jump_shot.  [copy(11),flip(a)].
 
-given #5 (I,wt=4): 14 -p_has_legs(c_kiki) | p_jump(c_kiki).  [resolve(8,a,6,a)].
+given #5 (I,wt=3): 13 c_jump_shot != c_yuri.  [assumption].
 
-given #6 (I,wt=4): 15 p_jump(c_kiki) | p_has_legs(c_kiki).  [back_unit_del(9),unit_del(c,11)].
+given #6 (I,wt=3): 14 c_leg_muscle != c_yuri.  [assumption].
 
-given #7 (A,wt=2): 16 p_jump(c_kiki).  [resolve(15,b,14,a),merge(b)].
+given #7 (I,wt=2): 15 p_american_national(c_yuri).  [deny(2)].
 
-given #8 (F,wt=2): 18 -p_bark(c_kiki).  [back_unit_del(12),unit_del(b,17)].
+given #8 (I,wt=2): 16 p_basketball_player(c_yuri).  [deny(2)].
 
-given #9 (T,wt=3): 17 p_like(c_jane,c_kiki).  [back_unit_del(13),unit_del(a,16)].
+given #9 (I,wt=5): 17 -p_basketball_player(c1) | p_can_do(c1,c_jump_shot).  [resolve(3,a,4,a)].
+
+given #10 (I,wt=5): 18 -p_basketball_player(c_yuri) | p_can_do(c_yuri,c_jump_shot).  [resolve(5,a,3,a)].
+
+given #11 (I,wt=6): 19 p_activate(x,c_leg_muscle) | -p_can_do(x,c_jump_shot).  [resolve(6,a,7,b)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 13.
+% Level of proof is 4.
+% Maximum clause weight is 6.000.
+% Given clauses 11.
+
+1 (exists v_x (p_professional(v_x) & p_basketball_player(v_x) & -p_american_national(v_x))) & (all v_x (p_professional(v_x) & p_basketball_player(v_x) -> p_can_do(v_x,c_jump_shot))) & (all v_x (p_can_do(v_x,c_jump_shot) -> p_leap_straight_into_air(v_x))) & (all v_x (p_leap_straight_into_air(v_x) -> p_activate(v_x,c_leg_muscle))) & -p_activate(c_yuri,c_leg_muscle) # label(non_clause).  [assumption].
+2 -(p_american_national(c_yuri) & p_professional(c_yuri) & p_basketball_player(c_yuri)) # label(non_clause) # label(goal).  [goal].
+3 -p_professional(x) | -p_basketball_player(x) | p_can_do(x,c_jump_shot).  [clausify(1)].
+5 p_professional(c_yuri).  [deny(2)].
+6 -p_leap_straight_into_air(x) | p_activate(x,c_leg_muscle).  [clausify(1)].
+7 -p_can_do(x,c_jump_shot) | p_leap_straight_into_air(x).  [clausify(1)].
+10 -p_activate(c_yuri,c_leg_muscle).  [clausify(1)].
+16 p_basketball_player(c_yuri).  [deny(2)].
+18 -p_basketball_player(c_yuri) | p_can_do(c_yuri,c_jump_shot).  [resolve(5,a,3,a)].
+19 p_activate(x,c_leg_muscle) | -p_can_do(x,c_jump_shot).  [resolve(6,a,7,b)].
+21 p_can_do(c_yuri,c_jump_shot).  [ur(18,a,16,a)].
+22 -p_can_do(c_yuri,c_jump_shot).  [resolve(19,a,10,a)].
+23 $F.  [resolve(22,a,21,a)].
+
+============================== end of proof ==========================
+
+% Disable descendants (x means already disabled):
+ 10 22
+
+given #12 (A,wt=3): 20 p_can_do(c1,c_jump_shot).  [ur(17,a,8,a)].
+
+given #13 (T,wt=3): 21 p_can_do(c_yuri,c_jump_shot).  [ur(18,a,16,a)].
+
+given #14 (T,wt=3): 24 p_activate(c1,c_leg_muscle).  [ur(19,b,20,a)].
+
+given #15 (T,wt=3): 25 p_activate(c_yuri,c_leg_muscle).  [ur(19,b,21,a)].
 
 ============================== STATISTICS ============================
 
-Given=9. Generated=10. Kept=10. proofs=0.
-Usable=5. Sos=0. Demods=0. Limbo=0, Disabled=22. Hints=0.
+Given=15. Generated=17. Kept=16. proofs=1.
+Usable=12. Sos=0. Demods=0. Limbo=0, Disabled=20. Hints=0.
 Kept_by_rule=0, Deleted_by_rule=0.
-Forward_subsumed=0. Back_subsumed=2.
+Forward_subsumed=1. Back_subsumed=2.
 Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
-New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=3.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
 Demod_attempts=0. Demod_rewrites=0.
 Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
-Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=7.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=5.
 Megabytes=0.06.
 User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
 
@@ -161,11 +217,15 @@ User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
 
 SEARCH FAILED
 
-Exiting with failure.
+Exiting with 1 proof.
 
-Process 29728 exit (sos_empty) Sat Oct 17 13:02:00 2026
+Process 47310 exit (sos_empty) Fri Oct 23 14:35:08 2026
+
+WARNING: denials share constants (see output).
+
+-------- Proof 1 -------- 
 
 SEARCH FAILED
 
------- process 29728 exit (sos_empty) ------
+------ process 47310 exit (sos_empty) ------
 

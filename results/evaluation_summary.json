@@ -1,76 +1,53 @@
 {
   "examples": 50,
-  "qwen_correct": 39,
-  "qwen_accuracy": 0.78,
-  "average_duration_seconds": 0.272596,
+  "qwen_correct": 48,
+  "qwen_accuracy": 0.96,
+  "average_duration_seconds": 0.405718,
   "per_class": {
     "True": {
-      "total": 17,
-      "correct": 16,
-      "accuracy": 0.9411764705882353
+      "total": 25,
+      "correct": 24,
+      "accuracy": 0.96
     },
     "False": {
-      "total": 17,
-      "correct": 10,
-      "accuracy": 0.5882352941176471
-    },
-    "Uncertain": {
-      "total": 16,
-      "correct": 13,
-      "accuracy": 0.8125
+      "total": 25,
+      "correct": 24,
+      "accuracy": 0.96
     }
   },
   "confusion_matrix": {
     "True": {
-      "True": 16,
-      "False": 0,
-      "Uncertain": 1
+      "True": 24,
+      "False": 1
     },
     "False": {
-      "True": 0,
-      "False": 10,
-      "Uncertain": 7
-    },
-    "Uncertain": {
-      "True": 2,
-      "False": 1,
-      "Uncertain": 13
+      "True": 1,
+      "False": 24
     }
   },
   "by_premise_count": {
     "2_to_4": {
-      "total": 15,
-      "correct": 14,
-      "accuracy": 0.9333333333333333
+      "total": 16,
+      "correct": 16,
+      "accuracy": 1.0
     },
     "5_or_more": {
-      "total": 35,
-      "correct": 25,
-      "accuracy": 0.7142857142857143
+      "total": 34,
+      "correct": 32,
+      "accuracy": 0.9411764705882353
     }
   },
   "prover9_fully_verified": 50,
   "prover9_matches_gold": 50,
-  "inconsistent_premise_sets": [
-    "folio50-016"
-  ],
+  "inconsistent_premise_sets": [],
   "qwen_error_ids": [
-    "folio50-007",
-    "folio50-010",
-    "folio50-014",
-    "folio50-017",
-    "folio50-021",
-    "folio50-023",
-    "folio50-024",
-    "folio50-032",
-    "folio50-035",
-    "folio50-042",
-    "folio50-047"
+    "folio50-005",
+    "folio50-018"
   ],
   "report_case_ids": [
     "folio50-001",
     "folio50-002",
-    "folio50-024",
-    "folio50-007"
+    "folio50-018",
+    "folio50-005"
   ]
 }

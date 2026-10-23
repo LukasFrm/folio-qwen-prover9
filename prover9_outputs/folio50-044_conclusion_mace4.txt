@@ -1,7 +1,7 @@
 ============================== Mace4 =================================
 Mace4 (64) version 2009-11A, November 2009.
-Process 29723 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
-Sat Oct 17 13:02:00 2026
+Process 47305 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:08 2026
 The command was "mace4 -t 5 -n 2 -N 8".
 ============================== end of head ===========================
 
@@ -15,7 +15,7 @@ c_lga_airport != c_susan.
 end_of_list.
 
 formulas(goals).
-p_fly_from(c_susan,c_lga_airport).
+p_fly_to(c_john,c_lga_airport).
 end_of_list.
 
 % From the command line: assign(max_seconds, 5).
@@ -32,7 +32,7 @@ end_of_list.
 
 % Formulas that are not ordinary clauses:
 1 p_fly_to(c_susan,c_lga_airport) & (all v_x all v_y -(p_fly_from(v_x,v_y) & p_fly_to(v_x,v_y))) & p_fly_from(c_john,c_lga_airport) # label(non_clause).  [assumption].
-2 p_fly_from(c_susan,c_lga_airport) # label(non_clause) # label(goal).  [goal].
+2 p_fly_to(c_john,c_lga_airport) # label(non_clause) # label(goal).  [goal].
 
 ============================== end of process non-clausal formulas ===
 
@@ -45,7 +45,7 @@ p_fly_from(c_john,c_lga_airport).
 c_john != c_lga_airport.
 c_john != c_susan.
 c_lga_airport != c_susan.
--p_fly_from(c_susan,c_lga_airport).
+-p_fly_to(c_john,c_lga_airport).
 end_of_list.
 
 ============================== end of clauses for search =============
@@ -60,8 +60,8 @@ For domain size 2.
 
 Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
 Ground clauses: seen=10, kept=10.
-Selections=1, assignments=1, propagations=2, current_models=0.
-Rewrite_terms=5, rewrite_bools=0, indexes=0.
+Selections=1, assignments=1, propagations=3, current_models=0.
+Rewrite_terms=6, rewrite_bools=0, indexes=1.
 Rules_from_neg_clauses=2, cross_offs=2.
 
 ============================== end of statistics =====================
@@ -97,8 +97,8 @@ For domain size 3.
 
 Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
 Ground clauses: seen=15, kept=15.
-Selections=16, assignments=17, propagations=5, current_models=1.
-Rewrite_terms=15, rewrite_bools=18, indexes=3.
+Selections=16, assignments=17, propagations=6, current_models=1.
+Rewrite_terms=15, rewrite_bools=18, indexes=4.
 Rules_from_neg_clauses=1, cross_offs=3.
 
 ============================== end of statistics =====================
@@ -107,11 +107,11 @@ User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
 
 Exiting with 1 model.
 
-Process 29723 exit (max_models) Sat Oct 17 13:02:00 2026
-The process finished Sat Oct 17 13:02:00 2026
+Process 47305 exit (max_models) Fri Oct 23 14:35:08 2026
+The process finished Fri Oct 23 14:35:08 2026
 
 === Mace4 starting on domain size 2. ===
 
 === Mace4 starting on domain size 3. ===
 
------- process 29723 exit (max_models) ------
+------ process 47305 exit (max_models) ------

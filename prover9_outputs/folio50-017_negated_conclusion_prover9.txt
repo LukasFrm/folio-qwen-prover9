@@ -1,7 +1,7 @@
 ============================== Prover9 ===============================
 Prover9 (64) version 2009-11A, November 2009.
-Process 29634 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
-Sat Oct 17 13:02:00 2026
+Process 47208 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:08 2026
 The command was "prover9 -t 5".
 ============================== end of head ===========================
 
@@ -13,7 +13,7 @@ c_baked_by_melissa != c_dried_thai_chili.
 end_of_list.
 
 formulas(goals).
--(p_product(c_dried_thai_chili) & p_from(c_dried_thai_chili,c_baked_by_melissa)).
+-(p_cupcake(c_dried_thai_chili) & p_product(c_dried_thai_chili) & p_from(c_dried_thai_chili,c_baked_by_melissa)).
 end_of_list.
 
 ============================== end of input ==========================
@@ -24,7 +24,7 @@ end_of_list.
 
 % Formulas that are not ordinary clauses:
 1 (all v_x (p_baked_sweet(v_x) -> -p_spicy(v_x))) & (all v_x (p_cupcake(v_x) -> p_baked_sweet(v_x))) & (all v_x (p_mala_hotpot(v_x) -> p_spicy(v_x))) & (all v_x (p_product(v_x) & p_from(v_x,c_baked_by_melissa) -> p_cupcake(v_x))) & (p_spicy(c_dried_thai_chili) | p_mala_hotpot(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili)) # label(non_clause).  [assumption].
-2 -(p_product(c_dried_thai_chili) & p_from(c_dried_thai_chili,c_baked_by_melissa)) # label(non_clause) # label(goal).  [goal].
+2 -(p_cupcake(c_dried_thai_chili) & p_product(c_dried_thai_chili) & p_from(c_dried_thai_chili,c_baked_by_melissa)) # label(non_clause) # label(goal).  [goal].
 
 ============================== end of process non-clausal formulas ===
 
@@ -42,6 +42,7 @@ formulas(sos).
 -p_product(x) | -p_from(x,c_baked_by_melissa) | p_cupcake(x).  [clausify(1)].
 p_spicy(c_dried_thai_chili) | p_mala_hotpot(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili).  [clausify(1)].
 c_baked_by_melissa != c_dried_thai_chili.  [assumption].
+p_cupcake(c_dried_thai_chili).  [deny(2)].
 p_product(c_dried_thai_chili).  [deny(2)].
 p_from(c_dried_thai_chili,c_baked_by_melissa).  [deny(2)].
 end_of_list.
@@ -62,16 +63,19 @@ Eliminating p_cupcake/1
 6 -p_product(x) | -p_from(x,c_baked_by_melissa) | p_cupcake(x).  [clausify(1)].
 7 -p_cupcake(x) | p_baked_sweet(x).  [clausify(1)].
 Derived: -p_product(x) | -p_from(x,c_baked_by_melissa) | p_baked_sweet(x).  [resolve(6,c,7,a)].
+8 p_cupcake(c_dried_thai_chili).  [deny(2)].
+Derived: p_baked_sweet(c_dried_thai_chili).  [resolve(8,a,7,a)].
 
 Eliminating p_product/1
-8 -p_product(x) | -p_from(x,c_baked_by_melissa) | p_baked_sweet(x).  [resolve(6,c,7,a)].
-9 p_product(c_dried_thai_chili).  [deny(2)].
-Derived: -p_from(c_dried_thai_chili,c_baked_by_melissa) | p_baked_sweet(c_dried_thai_chili).  [resolve(8,a,9,a)].
+9 -p_product(x) | -p_from(x,c_baked_by_melissa) | p_baked_sweet(x).  [resolve(6,c,7,a)].
+10 p_product(c_dried_thai_chili).  [deny(2)].
+
+Eliminating p_from/2
 
 Eliminating p_mala_hotpot/1
-10 p_mala_hotpot(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili).  [resolve(5,a,4,b)].
-11 -p_mala_hotpot(x) | -p_baked_sweet(x).  [resolve(3,b,4,b)].
-Derived: -p_baked_sweet(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili).  [resolve(10,a,11,a)].
+11 p_mala_hotpot(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili).  [resolve(5,a,4,b)].
+12 -p_mala_hotpot(x) | -p_baked_sweet(x).  [resolve(3,b,4,b)].
+Derived: -p_baked_sweet(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili).  [resolve(11,a,12,a)].
 
 ============================== end predicate elimination =============
 
@@ -84,7 +88,7 @@ preventing the target number of proofs from being found.
 The shared constants are:  c_dried_thai_chili.
 
 Term ordering decisions:
-Predicate symbol precedence:  predicate_order([ =, p_baked_sweet, p_from ]).
+Predicate symbol precedence:  predicate_order([ =, p_baked_sweet ]).
 Function symbol precedence:  function_order([ c_dried_thai_chili, c_baked_by_melissa ]).
 After inverse_order:  (no changes).
 Unfolding symbols: (none).
@@ -99,41 +103,35 @@ Auto_inference settings:
 Auto_process settings:
   % set(unit_deletion).  % (Horn set with negative nonunits)
 
-kept:      12 c_baked_by_melissa != c_dried_thai_chili.  [assumption].
-kept:      13 p_from(c_dried_thai_chili,c_baked_by_melissa).  [deny(2)].
-           14 -p_from(c_dried_thai_chili,c_baked_by_melissa) | p_baked_sweet(c_dried_thai_chili).  [resolve(8,a,9,a)].
-kept:      15 p_baked_sweet(c_dried_thai_chili).  [copy(14),unit_del(a,13)].
-           16 -p_baked_sweet(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili).  [resolve(10,a,11,a)].
+kept:      13 c_baked_by_melissa != c_dried_thai_chili.  [assumption].
+kept:      14 p_baked_sweet(c_dried_thai_chili).  [resolve(8,a,7,a)].
+           15 -p_baked_sweet(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili).  [resolve(11,a,12,a)].
 
 ============================== PROOF =================================
 
 % Proof 1 at 0.00 (+ 0.00) seconds.
-% Length of proof is 16.
-% Level of proof is 5.
-% Maximum clause weight is 3.000.
+% Length of proof is 12.
+% Level of proof is 4.
+% Maximum clause weight is 2.000.
 % Given clauses 0.
 
 1 (all v_x (p_baked_sweet(v_x) -> -p_spicy(v_x))) & (all v_x (p_cupcake(v_x) -> p_baked_sweet(v_x))) & (all v_x (p_mala_hotpot(v_x) -> p_spicy(v_x))) & (all v_x (p_product(v_x) & p_from(v_x,c_baked_by_melissa) -> p_cupcake(v_x))) & (p_spicy(c_dried_thai_chili) | p_mala_hotpot(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili)) # label(non_clause).  [assumption].
-2 -(p_product(c_dried_thai_chili) & p_from(c_dried_thai_chili,c_baked_by_melissa)) # label(non_clause) # label(goal).  [goal].
+2 -(p_cupcake(c_dried_thai_chili) & p_product(c_dried_thai_chili) & p_from(c_dried_thai_chili,c_baked_by_melissa)) # label(non_clause) # label(goal).  [goal].
 3 -p_mala_hotpot(x) | p_spicy(x).  [clausify(1)].
 4 -p_baked_sweet(x) | -p_spicy(x).  [clausify(1)].
 5 p_spicy(c_dried_thai_chili) | p_mala_hotpot(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili).  [clausify(1)].
-6 -p_product(x) | -p_from(x,c_baked_by_melissa) | p_cupcake(x).  [clausify(1)].
 7 -p_cupcake(x) | p_baked_sweet(x).  [clausify(1)].
-8 -p_product(x) | -p_from(x,c_baked_by_melissa) | p_baked_sweet(x).  [resolve(6,c,7,a)].
-9 p_product(c_dried_thai_chili).  [deny(2)].
-10 p_mala_hotpot(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili).  [resolve(5,a,4,b)].
-11 -p_mala_hotpot(x) | -p_baked_sweet(x).  [resolve(3,b,4,b)].
-13 p_from(c_dried_thai_chili,c_baked_by_melissa).  [deny(2)].
-14 -p_from(c_dried_thai_chili,c_baked_by_melissa) | p_baked_sweet(c_dried_thai_chili).  [resolve(8,a,9,a)].
-15 p_baked_sweet(c_dried_thai_chili).  [copy(14),unit_del(a,13)].
-16 -p_baked_sweet(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili).  [resolve(10,a,11,a)].
-17 $F.  [copy(16),merge(b),merge(c),unit_del(a,15)].
+8 p_cupcake(c_dried_thai_chili).  [deny(2)].
+11 p_mala_hotpot(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili).  [resolve(5,a,4,b)].
+12 -p_mala_hotpot(x) | -p_baked_sweet(x).  [resolve(3,b,4,b)].
+14 p_baked_sweet(c_dried_thai_chili).  [resolve(8,a,7,a)].
+15 -p_baked_sweet(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili) | -p_baked_sweet(c_dried_thai_chili).  [resolve(11,a,12,a)].
+16 $F.  [copy(15),merge(b),merge(c),unit_del(a,14)].
 
 ============================== end of proof ==========================
 
 % Disable descendants (x means already disabled):
- 4x 11x 16x
+ 4x 12x 15x
 
 ============================== end of process initial clauses ========
 
@@ -145,9 +143,8 @@ formulas(usable).
 end_of_list.
 
 formulas(sos).
-12 c_baked_by_melissa != c_dried_thai_chili.  [assumption].
-13 p_from(c_dried_thai_chili,c_baked_by_melissa).  [deny(2)].
-15 p_baked_sweet(c_dried_thai_chili).  [copy(14),unit_del(a,13)].
+13 c_baked_by_melissa != c_dried_thai_chili.  [assumption].
+14 p_baked_sweet(c_dried_thai_chili).  [resolve(8,a,7,a)].
 end_of_list.
 
 formulas(demodulators).
@@ -159,16 +156,14 @@ end_of_list.
 
 % Starting search at 0.00 seconds.
 
-given #1 (I,wt=3): 12 c_baked_by_melissa != c_dried_thai_chili.  [assumption].
+given #1 (I,wt=3): 13 c_baked_by_melissa != c_dried_thai_chili.  [assumption].
 
-given #2 (I,wt=3): 13 p_from(c_dried_thai_chili,c_baked_by_melissa).  [deny(2)].
-
-given #3 (I,wt=2): 15 p_baked_sweet(c_dried_thai_chili).  [copy(14),unit_del(a,13)].
+given #2 (I,wt=2): 14 p_baked_sweet(c_dried_thai_chili).  [resolve(8,a,7,a)].
 
 ============================== STATISTICS ============================
 
-Given=3. Generated=4. Kept=3. proofs=1.
-Usable=3. Sos=0. Demods=0. Limbo=0, Disabled=13. Hints=0.
+Given=2. Generated=3. Kept=2. proofs=1.
+Usable=2. Sos=0. Demods=0. Limbo=0, Disabled=14. Hints=0.
 Kept_by_rule=0, Deleted_by_rule=0.
 Forward_subsumed=0. Back_subsumed=0.
 Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
@@ -187,7 +182,7 @@ SEARCH FAILED
 
 Exiting with 1 proof.
 
-Process 29634 exit (sos_empty) Sat Oct 17 13:02:00 2026
+Process 47208 exit (sos_empty) Fri Oct 23 14:35:08 2026
 
 WARNING: denials share constants (see output).
 
@@ -195,5 +190,5 @@ WARNING: denials share constants (see output).
 
 SEARCH FAILED
 
------- process 29634 exit (sos_empty) ------
+------ process 47208 exit (sos_empty) ------
 

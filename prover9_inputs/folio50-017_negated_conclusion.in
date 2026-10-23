@@ -4,5 +4,5 @@ formulas(assumptions).
 end_of_list.
 
 formulas(goals).
--((p_product(c_dried_thai_chili) & p_from(c_dried_thai_chili, c_baked_by_melissa))).
+-(((p_cupcake(c_dried_thai_chili) & p_product(c_dried_thai_chili)) & p_from(c_dried_thai_chili, c_baked_by_melissa))).
 end_of_list.

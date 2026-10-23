@@ -1,7 +1,7 @@
 ============================== Prover9 ===============================
 Prover9 (64) version 2009-11A, November 2009.
-Process 29660 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
-Sat Oct 17 13:02:00 2026
+Process 47240 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:08 2026
 The command was "prover9 -t 5".
 ============================== end of head ===========================
 
@@ -57,7 +57,7 @@ c_u_s_d205 != c_u_s_d300.
 end_of_list.
 
 formulas(goals).
--p_provide_to(c_ets,c_financial_aid,c_tom).
+-(exists v_x (p_cost(c_gre,v_x) & p_cheaper(v_x,c_u_s_d300))).
 end_of_list.
 
 ============================== end of input ==========================
@@ -68,7 +68,7 @@ end_of_list.
 
 % Formulas that are not ordinary clauses:
 1 p_cost(c_gre,c_u_s_d205) & p_cheaper(c_u_s_d205,c_u_s_d300) & (all v_x (p_applicant_of(v_x,c_gre) & p_prove(v_x,c_economic_hardship) -> p_provide_to(c_ets,c_financial_aid,v_x))) & (all v_x (p_living_in(v_x,c_single_parent_family) | p_available_to(c_few_resources,v_x) -> p_prove(v_x,c_economic_hardship))) & p_living_in(c_tom,c_single_parent_family) & p_out_of_work(c_toms_dad) & p_available_to(c_few_resources,c_tom) & p_applicant_of(c_tom,c_gre) # label(non_clause).  [assumption].
-2 -p_provide_to(c_ets,c_financial_aid,c_tom) # label(non_clause) # label(goal).  [goal].
+2 -(exists v_x (p_cost(c_gre,v_x) & p_cheaper(v_x,c_u_s_d300))) # label(non_clause) # label(goal).  [goal].
 
 ============================== end of process non-clausal formulas ===
 
@@ -134,7 +134,8 @@ c_tom != c_u_s_d300.  [assumption].
 c_toms_dad != c_u_s_d205.  [assumption].
 c_toms_dad != c_u_s_d300.  [assumption].
 c_u_s_d205 != c_u_s_d300.  [assumption].
-p_provide_to(c_ets,c_financial_aid,c_tom).  [deny(2)].
+p_cost(c_gre,c1).  [deny(2)].
+p_cheaper(c1,c_u_s_d300).  [deny(2)].
 end_of_list.
 
 formulas(demodulators).
@@ -433,7 +434,7 @@ given #45 (I,wt=3): 92 c_u_s_d300 != c_u_s_d205.  [copy(91),flip(a)].
 ============================== STATISTICS ============================
 
 Given=45. Generated=45. Kept=45. proofs=0.
-Usable=45. Sos=0. Demods=0. Limbo=0, Disabled=55. Hints=0.
+Usable=45. Sos=0. Demods=0. Limbo=0, Disabled=56. Hints=0.
 Kept_by_rule=0, Deleted_by_rule=0.
 Forward_subsumed=0. Back_subsumed=0.
 Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
@@ -452,12 +453,12 @@ SEARCH FAILED
 
 Exiting with failure.
 
-Process 29660 exit (sos_empty) Sat Oct 17 13:02:00 2026
+Process 47240 exit (sos_empty) Fri Oct 23 14:35:08 2026
 
 WARNING: denials share constants (see output).
 
 
 SEARCH FAILED
 
------- process 29660 exit (sos_empty) ------
+------ process 47240 exit (sos_empty) ------
 

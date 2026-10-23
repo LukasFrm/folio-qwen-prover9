@@ -1,7 +1,7 @@
 ============================== Prover9 ===============================
 Prover9 (64) version 2009-11A, November 2009.
-Process 29684 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
-Sat Oct 17 13:02:00 2026
+Process 47269 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:08 2026
 The command was "prover9 -t 5".
 ============================== end of head ===========================
 
@@ -13,7 +13,7 @@ c_duster != c_space.
 end_of_list.
 
 formulas(goals).
-p_vampire(c_space).
+p_suck(c_space).
 end_of_list.
 
 ============================== end of input ==========================
@@ -24,7 +24,7 @@ end_of_list.
 
 % Formulas that are not ordinary clauses:
 1 (all v_x (p_plunger(v_x) -> p_suck(v_x))) & (all v_x (p_vacuum(v_x) -> p_suck(v_x))) & (all v_x (p_vampire(v_x) -> p_suck(v_x))) & p_vacuum(c_space) & p_household_appliance(c_duster) & -p_suck(c_duster) # label(non_clause).  [assumption].
-2 p_vampire(c_space) # label(non_clause) # label(goal).  [goal].
+2 p_suck(c_space) # label(non_clause) # label(goal).  [goal].
 
 ============================== end of process non-clausal formulas ===
 
@@ -43,7 +43,7 @@ p_vacuum(c_space).  [clausify(1)].
 p_household_appliance(c_duster).  [clausify(1)].
 -p_suck(c_duster).  [clausify(1)].
 c_duster != c_space.  [assumption].
--p_vampire(c_space).  [deny(2)].
+-p_suck(c_space).  [deny(2)].
 end_of_list.
 
 formulas(demodulators).
@@ -58,6 +58,8 @@ Eliminating p_vacuum/1
 4 -p_vacuum(x) | p_suck(x).  [clausify(1)].
 Derived: p_suck(c_space).  [resolve(3,a,4,a)].
 
+Eliminating p_vampire/1
+
 Eliminating p_household_appliance/1
 
 ============================== end predicate elimination =============
@@ -71,7 +73,7 @@ preventing the target number of proofs from being found.
 The shared constants are:  c_space, c_duster.
 
 Term ordering decisions:
-Predicate symbol precedence:  predicate_order([ =, p_suck, p_vampire ]).
+Predicate symbol precedence:  predicate_order([ =, p_suck ]).
 Function symbol precedence:  function_order([ c_space, c_duster ]).
 After inverse_order:  (no changes).
 Unfolding symbols: (none).
@@ -85,11 +87,31 @@ Auto_inference settings:
 
 Auto_process settings:  (no changes).
 
-kept:      5 -p_vampire(x) | p_suck(x).  [clausify(1)].
-kept:      6 -p_suck(c_duster).  [clausify(1)].
-kept:      7 c_duster != c_space.  [assumption].
-kept:      8 -p_vampire(c_space).  [deny(2)].
-kept:      9 p_suck(c_space).  [resolve(3,a,4,a)].
+kept:      5 -p_suck(c_duster).  [clausify(1)].
+kept:      6 c_duster != c_space.  [assumption].
+kept:      7 -p_suck(c_space).  [deny(2)].
+kept:      8 p_suck(c_space).  [resolve(3,a,4,a)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 7.
+% Level of proof is 3.
+% Maximum clause weight is 2.000.
+% Given clauses 0.
+
+1 (all v_x (p_plunger(v_x) -> p_suck(v_x))) & (all v_x (p_vacuum(v_x) -> p_suck(v_x))) & (all v_x (p_vampire(v_x) -> p_suck(v_x))) & p_vacuum(c_space) & p_household_appliance(c_duster) & -p_suck(c_duster) # label(non_clause).  [assumption].
+2 p_suck(c_space) # label(non_clause) # label(goal).  [goal].
+3 p_vacuum(c_space).  [clausify(1)].
+4 -p_vacuum(x) | p_suck(x).  [clausify(1)].
+7 -p_suck(c_space).  [deny(2)].
+8 p_suck(c_space).  [resolve(3,a,4,a)].
+9 $F.  [resolve(8,a,7,a)].
+
+============================== end of proof ==========================
+
+% Disable descendants (x means already disabled):
+ 7
 
 ============================== end of process initial clauses ========
 
@@ -101,11 +123,9 @@ formulas(usable).
 end_of_list.
 
 formulas(sos).
-5 -p_vampire(x) | p_suck(x).  [clausify(1)].
-6 -p_suck(c_duster).  [clausify(1)].
-7 c_duster != c_space.  [assumption].
-8 -p_vampire(c_space).  [deny(2)].
-9 p_suck(c_space).  [resolve(3,a,4,a)].
+5 -p_suck(c_duster).  [clausify(1)].
+6 c_duster != c_space.  [assumption].
+8 p_suck(c_space).  [resolve(3,a,4,a)].
 end_of_list.
 
 formulas(demodulators).
@@ -117,30 +137,24 @@ end_of_list.
 
 % Starting search at 0.00 seconds.
 
-given #1 (I,wt=4): 5 -p_vampire(x) | p_suck(x).  [clausify(1)].
+given #1 (I,wt=2): 5 -p_suck(c_duster).  [clausify(1)].
 
-given #2 (I,wt=2): 6 -p_suck(c_duster).  [clausify(1)].
+given #2 (I,wt=3): 6 c_duster != c_space.  [assumption].
 
-given #3 (I,wt=3): 7 c_duster != c_space.  [assumption].
-
-given #4 (I,wt=2): 8 -p_vampire(c_space).  [deny(2)].
-
-given #5 (I,wt=2): 9 p_suck(c_space).  [resolve(3,a,4,a)].
-
-given #6 (A,wt=2): 10 -p_vampire(c_duster).  [resolve(6,a,5,b)].
+given #3 (I,wt=2): 8 p_suck(c_space).  [resolve(3,a,4,a)].
 
 ============================== STATISTICS ============================
 
-Given=6. Generated=7. Kept=6. proofs=0.
-Usable=6. Sos=0. Demods=0. Limbo=0, Disabled=9. Hints=0.
+Given=3. Generated=4. Kept=4. proofs=1.
+Usable=3. Sos=0. Demods=0. Limbo=0, Disabled=10. Hints=0.
 Kept_by_rule=0, Deleted_by_rule=0.
-Forward_subsumed=1. Back_subsumed=0.
+Forward_subsumed=0. Back_subsumed=0.
 Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
 New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
 Demod_attempts=0. Demod_rewrites=0.
 Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
-Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=1.
-Megabytes=0.04.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.03.
 User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
 
 ============================== end of statistics =====================
@@ -149,14 +163,15 @@ User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
 
 SEARCH FAILED
 
-Exiting with failure.
+Exiting with 1 proof.
 
-Process 29684 exit (sos_empty) Sat Oct 17 13:02:00 2026
+Process 47269 exit (sos_empty) Fri Oct 23 14:35:08 2026
 
 WARNING: denials share constants (see output).
 
+-------- Proof 1 -------- 
 
 SEARCH FAILED
 
------- process 29684 exit (sos_empty) ------
+------ process 47269 exit (sos_empty) ------
 

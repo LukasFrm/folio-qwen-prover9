@@ -1,19 +1,46 @@
 ============================== Mace4 =================================
 Mace4 (64) version 2009-11A, November 2009.
-Process 29709 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
-Sat Oct 17 13:02:00 2026
+Process 47291 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:08 2026
 The command was "mace4 -t 5 -n 2 -N 8".
 ============================== end of head ===========================
 
 ============================== INPUT =================================
 
 formulas(assumptions).
-(all v_x (p_deadly_disease(v_x) -> p_come_with(v_x,c_low_survival_rate))) & (all v_x (p_severe_cancer(v_x) -> p_deadly_disease(v_x))) & (all v_x (p_bile_duct_cancer(v_x) -> p_severe_cancer(v_x))) & (all v_x (p_cholangiocarcinoma(v_x) -> p_bile_duct_cancer(v_x))) & (all v_x (p_mild_flu(v_x) -> p_come_with(v_x,c_low_survival_rate))) & -(p_bile_duct_cancer(c_colorectal_cancer) & p_come_with(c_colorectal_cancer,c_low_survival_rate)).
-c_colorectal_cancer != c_low_survival_rate.
+(all v_x (p_regularly_eat(v_x,c_salad) -> p_conscious_about(v_x,c_health) & p_conscious_about(v_x,c_eating_habit))) & (all v_x (p_grew_up_in(v_x,c_health_conscious_childhood_home) -> p_regularly_eat(v_x,c_salad))) & (all v_x (p_fulfill(v_x,c_daily_nutritional_intake) -> p_grew_up_in(v_x,c_health_conscious_childhood_home))) & (all v_x (p_disregard(v_x,c_physical_wellbeing) -> -(p_conscious_about(v_x,c_health) & p_conscious_about(v_x,c_eating_habit)))) & (all v_x (p_visit_daily(v_x,c_gym) -> p_fulfill(v_x,c_daily_nutritional_intake))) & -((p_grew_up_in(c_taylor,c_health_conscious_childhood_home) | p_disregard(c_taylor,c_physical_wellbeing)) & -(p_grew_up_in(c_taylor,c_health_conscious_childhood_home) & p_disregard(c_taylor,c_physical_wellbeing))).
+c_daily_nutritional_intake != c_eating_habit.
+c_daily_nutritional_intake != c_gym.
+c_daily_nutritional_intake != c_health.
+c_daily_nutritional_intake != c_health_conscious_childhood_home.
+c_daily_nutritional_intake != c_physical_wellbeing.
+c_daily_nutritional_intake != c_salad.
+c_daily_nutritional_intake != c_taylor.
+c_eating_habit != c_gym.
+c_eating_habit != c_health.
+c_eating_habit != c_health_conscious_childhood_home.
+c_eating_habit != c_physical_wellbeing.
+c_eating_habit != c_salad.
+c_eating_habit != c_taylor.
+c_gym != c_health.
+c_gym != c_health_conscious_childhood_home.
+c_gym != c_physical_wellbeing.
+c_gym != c_salad.
+c_gym != c_taylor.
+c_health != c_health_conscious_childhood_home.
+c_health != c_physical_wellbeing.
+c_health != c_salad.
+c_health != c_taylor.
+c_health_conscious_childhood_home != c_physical_wellbeing.
+c_health_conscious_childhood_home != c_salad.
+c_health_conscious_childhood_home != c_taylor.
+c_physical_wellbeing != c_salad.
+c_physical_wellbeing != c_taylor.
+c_salad != c_taylor.
 end_of_list.
 
 formulas(goals).
-p_severe_cancer(c_colorectal_cancer).
+p_visit_daily(c_taylor,c_gym).
 end_of_list.
 
 % From the command line: assign(max_seconds, 5).
@@ -29,22 +56,51 @@ end_of_list.
 ============================== PROCESS NON-CLAUSAL FORMULAS ==========
 
 % Formulas that are not ordinary clauses:
-1 (all v_x (p_deadly_disease(v_x) -> p_come_with(v_x,c_low_survival_rate))) & (all v_x (p_severe_cancer(v_x) -> p_deadly_disease(v_x))) & (all v_x (p_bile_duct_cancer(v_x) -> p_severe_cancer(v_x))) & (all v_x (p_cholangiocarcinoma(v_x) -> p_bile_duct_cancer(v_x))) & (all v_x (p_mild_flu(v_x) -> p_come_with(v_x,c_low_survival_rate))) & -(p_bile_duct_cancer(c_colorectal_cancer) & p_come_with(c_colorectal_cancer,c_low_survival_rate)) # label(non_clause).  [assumption].
-2 p_severe_cancer(c_colorectal_cancer) # label(non_clause) # label(goal).  [goal].
+1 (all v_x (p_regularly_eat(v_x,c_salad) -> p_conscious_about(v_x,c_health) & p_conscious_about(v_x,c_eating_habit))) & (all v_x (p_grew_up_in(v_x,c_health_conscious_childhood_home) -> p_regularly_eat(v_x,c_salad))) & (all v_x (p_fulfill(v_x,c_daily_nutritional_intake) -> p_grew_up_in(v_x,c_health_conscious_childhood_home))) & (all v_x (p_disregard(v_x,c_physical_wellbeing) -> -(p_conscious_about(v_x,c_health) & p_conscious_about(v_x,c_eating_habit)))) & (all v_x (p_visit_daily(v_x,c_gym) -> p_fulfill(v_x,c_daily_nutritional_intake))) & -((p_grew_up_in(c_taylor,c_health_conscious_childhood_home) | p_disregard(c_taylor,c_physical_wellbeing)) & -(p_grew_up_in(c_taylor,c_health_conscious_childhood_home) & p_disregard(c_taylor,c_physical_wellbeing))) # label(non_clause).  [assumption].
+2 p_visit_daily(c_taylor,c_gym) # label(non_clause) # label(goal).  [goal].
 
 ============================== end of process non-clausal formulas ===
 
 ============================== CLAUSES FOR SEARCH ====================
 
 formulas(mace4_clauses).
--p_deadly_disease(x) | p_come_with(x,c_low_survival_rate).
--p_severe_cancer(x) | p_deadly_disease(x).
--p_bile_duct_cancer(x) | p_severe_cancer(x).
--p_cholangiocarcinoma(x) | p_bile_duct_cancer(x).
--p_mild_flu(x) | p_come_with(x,c_low_survival_rate).
--p_bile_duct_cancer(c_colorectal_cancer) | -p_come_with(c_colorectal_cancer,c_low_survival_rate).
-c_colorectal_cancer != c_low_survival_rate.
--p_severe_cancer(c_colorectal_cancer).
+-p_regularly_eat(x,c_salad) | p_conscious_about(x,c_health).
+-p_regularly_eat(x,c_salad) | p_conscious_about(x,c_eating_habit).
+-p_grew_up_in(x,c_health_conscious_childhood_home) | p_regularly_eat(x,c_salad).
+-p_fulfill(x,c_daily_nutritional_intake) | p_grew_up_in(x,c_health_conscious_childhood_home).
+-p_disregard(x,c_physical_wellbeing) | -p_conscious_about(x,c_health) | -p_conscious_about(x,c_eating_habit).
+-p_visit_daily(x,c_gym) | p_fulfill(x,c_daily_nutritional_intake).
+-p_grew_up_in(c_taylor,c_health_conscious_childhood_home) | p_disregard(c_taylor,c_physical_wellbeing).
+-p_disregard(c_taylor,c_physical_wellbeing) | p_grew_up_in(c_taylor,c_health_conscious_childhood_home).
+c_daily_nutritional_intake != c_eating_habit.
+c_daily_nutritional_intake != c_gym.
+c_daily_nutritional_intake != c_health.
+c_daily_nutritional_intake != c_health_conscious_childhood_home.
+c_daily_nutritional_intake != c_physical_wellbeing.
+c_daily_nutritional_intake != c_salad.
+c_daily_nutritional_intake != c_taylor.
+c_eating_habit != c_gym.
+c_eating_habit != c_health.
+c_eating_habit != c_health_conscious_childhood_home.
+c_eating_habit != c_physical_wellbeing.
+c_eating_habit != c_salad.
+c_eating_habit != c_taylor.
+c_gym != c_health.
+c_gym != c_health_conscious_childhood_home.
+c_gym != c_physical_wellbeing.
+c_gym != c_salad.
+c_gym != c_taylor.
+c_health != c_health_conscious_childhood_home.
+c_health != c_physical_wellbeing.
+c_health != c_salad.
+c_health != c_taylor.
+c_health_conscious_childhood_home != c_physical_wellbeing.
+c_health_conscious_childhood_home != c_salad.
+c_health_conscious_childhood_home != c_taylor.
+c_physical_wellbeing != c_salad.
+c_physical_wellbeing != c_taylor.
+c_salad != c_taylor.
+-p_visit_daily(c_taylor,c_gym).
 end_of_list.
 
 ============================== end of clauses for search =============
@@ -53,40 +109,182 @@ end_of_list.
 
 ============================== DOMAIN SIZE 2 =========================
 
+============================== STATISTICS ============================
+
+For domain size 2.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=43, kept=43.
+Selections=1, assignments=1, propagations=7, current_models=0.
+Rewrite_terms=12, rewrite_bools=0, indexes=4.
+Rules_from_neg_clauses=7, cross_offs=7.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 3 =========================
+
+============================== STATISTICS ============================
+
+For domain size 3.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=49, kept=49.
+Selections=2, assignments=3, propagations=6, current_models=0.
+Rewrite_terms=35, rewrite_bools=2, indexes=12.
+Rules_from_neg_clauses=6, cross_offs=13.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 4 =========================
+
+============================== STATISTICS ============================
+
+For domain size 4.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=55, kept=55.
+Selections=3, assignments=6, propagations=5, current_models=0.
+Rewrite_terms=65, rewrite_bools=7, indexes=20.
+Rules_from_neg_clauses=5, cross_offs=18.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 5 =========================
+
+============================== STATISTICS ============================
+
+For domain size 5.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=61, kept=61.
+Selections=4, assignments=10, propagations=4, current_models=0.
+Rewrite_terms=105, rewrite_bools=16, indexes=35.
+Rules_from_neg_clauses=4, cross_offs=22.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 6 =========================
+
+============================== STATISTICS ============================
+
+For domain size 6.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=67, kept=67.
+Selections=5, assignments=15, propagations=3, current_models=0.
+Rewrite_terms=155, rewrite_bools=30, indexes=54.
+Rules_from_neg_clauses=3, cross_offs=25.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 7 =========================
+
+============================== STATISTICS ============================
+
+For domain size 7.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=73, kept=73.
+Selections=6, assignments=21, propagations=2, current_models=0.
+Rewrite_terms=205, rewrite_bools=50, indexes=70.
+Rules_from_neg_clauses=2, cross_offs=27.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 8 =========================
+
 ============================== MODEL =================================
 
-interpretation( 2, [number=1, seconds=0], [
+interpretation( 8, [number=1, seconds=0], [
 
-        function(c_colorectal_cancer, [ 0 ]),
+        function(c_daily_nutritional_intake, [ 0 ]),
 
-        function(c_low_survival_rate, [ 1 ]),
+        function(c_eating_habit, [ 1 ]),
 
-        relation(p_bile_duct_cancer(_), [ 0, 0 ]),
+        function(c_gym, [ 2 ]),
 
-        relation(p_cholangiocarcinoma(_), [ 0, 0 ]),
+        function(c_health, [ 3 ]),
 
-        relation(p_deadly_disease(_), [ 0, 0 ]),
+        function(c_health_conscious_childhood_home, [ 4 ]),
 
-        relation(p_mild_flu(_), [ 0, 0 ]),
+        function(c_physical_wellbeing, [ 5 ]),
 
-        relation(p_severe_cancer(_), [ 0, 0 ]),
+        function(c_salad, [ 6 ]),
 
-        relation(p_come_with(_,_), [
-			   0, 0,
-			   0, 0 ])
+        function(c_taylor, [ 7 ]),
+
+        relation(p_conscious_about(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(p_disregard(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(p_fulfill(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(p_grew_up_in(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(p_regularly_eat(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0 ]),
+
+        relation(p_visit_daily(_,_), [
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0,
+			   0, 0, 0, 0, 0, 0, 0, 0 ])
 ]).
 
 ============================== end of model ==========================
 
 ============================== STATISTICS ============================
 
-For domain size 2.
+For domain size 8.
 
 Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
-Ground clauses: seen=13, kept=13.
-Selections=10, assignments=10, propagations=6, current_models=1.
-Rewrite_terms=10, rewrite_bools=17, indexes=7.
-Rules_from_neg_clauses=1, cross_offs=1.
+Ground clauses: seen=79, kept=79.
+Selections=359, assignments=380, propagations=33, current_models=1.
+Rewrite_terms=284, rewrite_bools=166, indexes=109.
+Rules_from_neg_clauses=1, cross_offs=28.
 
 ============================== end of statistics =====================
 
@@ -94,9 +292,21 @@ User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
 
 Exiting with 1 model.
 
-Process 29709 exit (max_models) Sat Oct 17 13:02:00 2026
-The process finished Sat Oct 17 13:02:00 2026
+Process 47291 exit (max_models) Fri Oct 23 14:35:08 2026
+The process finished Fri Oct 23 14:35:08 2026
 
 === Mace4 starting on domain size 2. ===
 
------- process 29709 exit (max_models) ------
+=== Mace4 starting on domain size 3. ===
+
+=== Mace4 starting on domain size 4. ===
+
+=== Mace4 starting on domain size 5. ===
+
+=== Mace4 starting on domain size 6. ===
+
+=== Mace4 starting on domain size 7. ===
+
+=== Mace4 starting on domain size 8. ===
+
+------ process 47291 exit (max_models) ------

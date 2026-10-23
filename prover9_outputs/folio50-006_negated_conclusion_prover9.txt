@@ -1,7 +1,7 @@
 ============================== Prover9 ===============================
 Prover9 (64) version 2009-11A, November 2009.
-Process 29598 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
-Sat Oct 17 13:01:59 2026
+Process 47169 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:07 2026
 The command was "prover9 -t 5".
 ============================== end of head ===========================
 
@@ -180,7 +180,7 @@ end_of_list.
 
 ============================== SEARCH ================================
 
-% Starting search at 0.06 seconds.
+% Starting search at 0.10 seconds.
 
 given #1 (I,wt=7): 31 -p_at(x,c_mixer) | -p_athlete(x) | p_famous(x).  [clausify(1)].
 
@@ -220,7 +220,7 @@ given #18 (T,wt=6): 53 p_athlete(c_djokovic) | p_live_in(c_djokovic,f1(c_djokovi
 
 ============================== PROOF =================================
 
-% Proof 1 at 0.06 (+ 0.00) seconds.
+% Proof 1 at 0.10 (+ 0.00) seconds.
 % Length of proof is 56.
 % Level of proof is 17.
 % Maximum clause weight is 11.000.
@@ -297,7 +297,7 @@ Demod_attempts=0. Demod_rewrites=0.
 Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
 Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=22.
 Megabytes=0.12.
-User_CPU=0.06, System_CPU=0.00, Wall_clock=0.
+User_CPU=0.10, System_CPU=0.00, Wall_clock=0.
 
 ============================== end of statistics =====================
 
@@ -307,10 +307,10 @@ THEOREM PROVED
 
 Exiting with 1 proof.
 
-Process 29598 exit (max_proofs) Sat Oct 17 13:01:59 2026
+Process 47169 exit (max_proofs) Fri Oct 23 14:35:07 2026
 -------- Proof 1 -------- 
 
 THEOREM PROVED
 
------- process 29598 exit (max_proofs) ------
+------ process 47169 exit (max_proofs) ------
 

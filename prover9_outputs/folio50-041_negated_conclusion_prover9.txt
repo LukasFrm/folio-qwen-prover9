@@ -1,46 +1,21 @@
 ============================== Prover9 ===============================
 Prover9 (64) version 2009-11A, November 2009.
-Process 29714 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
-Sat Oct 17 13:02:00 2026
+Process 47295 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:08 2026
 The command was "prover9 -t 5".
 ============================== end of head ===========================
 
 ============================== INPUT =================================
 
 formulas(assumptions).
-(all v_x (p_regularly_eat(v_x,c_salad) -> p_conscious_about(v_x,c_health) & p_conscious_about(v_x,c_eating_habit))) & (all v_x (p_grew_up_in(v_x,c_health_conscious_childhood_home) -> p_regularly_eat(v_x,c_salad))) & (all v_x (p_fulfill(v_x,c_daily_nutritional_intake) -> p_grew_up_in(v_x,c_health_conscious_childhood_home))) & (all v_x (p_disregard(v_x,c_physical_wellbeing) -> -(p_conscious_about(v_x,c_health) & p_conscious_about(v_x,c_eating_habit)))) & (all v_x (p_visit_daily(v_x,c_gym) -> p_fulfill(v_x,c_daily_nutritional_intake))) & -((p_grew_up_in(c_taylor,c_health_conscious_childhood_home) | p_disregard(c_taylor,c_physical_wellbeing)) & -(p_grew_up_in(c_taylor,c_health_conscious_childhood_home) & p_disregard(c_taylor,c_physical_wellbeing))).
-c_daily_nutritional_intake != c_eating_habit.
-c_daily_nutritional_intake != c_gym.
-c_daily_nutritional_intake != c_health.
-c_daily_nutritional_intake != c_health_conscious_childhood_home.
-c_daily_nutritional_intake != c_physical_wellbeing.
-c_daily_nutritional_intake != c_salad.
-c_daily_nutritional_intake != c_taylor.
-c_eating_habit != c_gym.
-c_eating_habit != c_health.
-c_eating_habit != c_health_conscious_childhood_home.
-c_eating_habit != c_physical_wellbeing.
-c_eating_habit != c_salad.
-c_eating_habit != c_taylor.
-c_gym != c_health.
-c_gym != c_health_conscious_childhood_home.
-c_gym != c_physical_wellbeing.
-c_gym != c_salad.
-c_gym != c_taylor.
-c_health != c_health_conscious_childhood_home.
-c_health != c_physical_wellbeing.
-c_health != c_salad.
-c_health != c_taylor.
-c_health_conscious_childhood_home != c_physical_wellbeing.
-c_health_conscious_childhood_home != c_salad.
-c_health_conscious_childhood_home != c_taylor.
-c_physical_wellbeing != c_salad.
-c_physical_wellbeing != c_taylor.
-c_salad != c_taylor.
+p_sporting_event(c_olympics) & p_last_summer_olympics(c_tokyoolympics) & p_most_medals(c_united_states,c_tokyoolympics).
+c_olympics != c_tokyoolympics.
+c_olympics != c_united_states.
+c_tokyoolympics != c_united_states.
 end_of_list.
 
 formulas(goals).
--p_regularly_eat(c_taylor,c_salad).
+--p_last_summer_olympics(c_tokyoolympics).
 end_of_list.
 
 ============================== end of input ==========================
@@ -50,8 +25,8 @@ end_of_list.
 ============================== PROCESS NON-CLAUSAL FORMULAS ==========
 
 % Formulas that are not ordinary clauses:
-1 (all v_x (p_regularly_eat(v_x,c_salad) -> p_conscious_about(v_x,c_health) & p_conscious_about(v_x,c_eating_habit))) & (all v_x (p_grew_up_in(v_x,c_health_conscious_childhood_home) -> p_regularly_eat(v_x,c_salad))) & (all v_x (p_fulfill(v_x,c_daily_nutritional_intake) -> p_grew_up_in(v_x,c_health_conscious_childhood_home))) & (all v_x (p_disregard(v_x,c_physical_wellbeing) -> -(p_conscious_about(v_x,c_health) & p_conscious_about(v_x,c_eating_habit)))) & (all v_x (p_visit_daily(v_x,c_gym) -> p_fulfill(v_x,c_daily_nutritional_intake))) & -((p_grew_up_in(c_taylor,c_health_conscious_childhood_home) | p_disregard(c_taylor,c_physical_wellbeing)) & -(p_grew_up_in(c_taylor,c_health_conscious_childhood_home) & p_disregard(c_taylor,c_physical_wellbeing))) # label(non_clause).  [assumption].
-2 -p_regularly_eat(c_taylor,c_salad) # label(non_clause) # label(goal).  [goal].
+1 p_sporting_event(c_olympics) & p_last_summer_olympics(c_tokyoolympics) & p_most_medals(c_united_states,c_tokyoolympics) # label(non_clause).  [assumption].
+2 --p_last_summer_olympics(c_tokyoolympics) # label(non_clause) # label(goal).  [goal].
 
 ============================== end of process non-clausal formulas ===
 
@@ -63,43 +38,13 @@ formulas(usable).
 end_of_list.
 
 formulas(sos).
--p_regularly_eat(x,c_salad) | p_conscious_about(x,c_health).  [clausify(1)].
--p_regularly_eat(x,c_salad) | p_conscious_about(x,c_eating_habit).  [clausify(1)].
--p_grew_up_in(x,c_health_conscious_childhood_home) | p_regularly_eat(x,c_salad).  [clausify(1)].
--p_fulfill(x,c_daily_nutritional_intake) | p_grew_up_in(x,c_health_conscious_childhood_home).  [clausify(1)].
--p_disregard(x,c_physical_wellbeing) | -p_conscious_about(x,c_health) | -p_conscious_about(x,c_eating_habit).  [clausify(1)].
--p_visit_daily(x,c_gym) | p_fulfill(x,c_daily_nutritional_intake).  [clausify(1)].
--p_grew_up_in(c_taylor,c_health_conscious_childhood_home) | p_disregard(c_taylor,c_physical_wellbeing).  [clausify(1)].
--p_disregard(c_taylor,c_physical_wellbeing) | p_grew_up_in(c_taylor,c_health_conscious_childhood_home).  [clausify(1)].
-c_daily_nutritional_intake != c_eating_habit.  [assumption].
-c_daily_nutritional_intake != c_gym.  [assumption].
-c_daily_nutritional_intake != c_health.  [assumption].
-c_daily_nutritional_intake != c_health_conscious_childhood_home.  [assumption].
-c_daily_nutritional_intake != c_physical_wellbeing.  [assumption].
-c_daily_nutritional_intake != c_salad.  [assumption].
-c_daily_nutritional_intake != c_taylor.  [assumption].
-c_eating_habit != c_gym.  [assumption].
-c_eating_habit != c_health.  [assumption].
-c_eating_habit != c_health_conscious_childhood_home.  [assumption].
-c_eating_habit != c_physical_wellbeing.  [assumption].
-c_eating_habit != c_salad.  [assumption].
-c_eating_habit != c_taylor.  [assumption].
-c_gym != c_health.  [assumption].
-c_gym != c_health_conscious_childhood_home.  [assumption].
-c_gym != c_physical_wellbeing.  [assumption].
-c_gym != c_salad.  [assumption].
-c_gym != c_taylor.  [assumption].
-c_health != c_health_conscious_childhood_home.  [assumption].
-c_health != c_physical_wellbeing.  [assumption].
-c_health != c_salad.  [assumption].
-c_health != c_taylor.  [assumption].
-c_health_conscious_childhood_home != c_physical_wellbeing.  [assumption].
-c_health_conscious_childhood_home != c_salad.  [assumption].
-c_health_conscious_childhood_home != c_taylor.  [assumption].
-c_physical_wellbeing != c_salad.  [assumption].
-c_physical_wellbeing != c_taylor.  [assumption].
-c_salad != c_taylor.  [assumption].
-p_regularly_eat(c_taylor,c_salad).  [deny(2)].
+p_sporting_event(c_olympics).  [clausify(1)].
+p_last_summer_olympics(c_tokyoolympics).  [clausify(1)].
+p_most_medals(c_united_states,c_tokyoolympics).  [clausify(1)].
+c_olympics != c_tokyoolympics.  [assumption].
+c_olympics != c_united_states.  [assumption].
+c_tokyoolympics != c_united_states.  [assumption].
+-p_last_summer_olympics(c_tokyoolympics).  [deny(2)].
 end_of_list.
 
 formulas(demodulators).
@@ -107,21 +52,23 @@ end_of_list.
 
 ============================== PREDICATE ELIMINATION =================
 
-No predicates eliminated.
+Eliminating p_sporting_event/1
+
+Eliminating p_most_medals/2
 
 ============================== end predicate elimination =============
 
 Auto_denials:
-  % assign(max_proofs, 29).  % (Horn set with more than one neg. clause)
+  % assign(max_proofs, 4).  % (Horn set with more than one neg. clause)
 
 WARNING, because some of the denials share constants,
 some of the denials or their descendents may be subsumed,
 preventing the target number of proofs from being found.
-The shared constants are:  c_taylor, c_salad, c_health_conscious_childhood_home, c_gym, c_daily_nutritional_intake, c_physical_wellbeing, c_health, c_eating_habit.
+The shared constants are:  c_united_states, c_tokyoolympics, c_olympics.
 
 Term ordering decisions:
-Predicate symbol precedence:  predicate_order([ =, p_grew_up_in, p_regularly_eat, p_conscious_about, p_disregard, p_fulfill, p_visit_daily ]).
-Function symbol precedence:  function_order([ c_taylor, c_health_conscious_childhood_home, c_salad, c_daily_nutritional_intake, c_physical_wellbeing, c_eating_habit, c_gym, c_health ]).
+Predicate symbol precedence:  predicate_order([ =, p_last_summer_olympics ]).
+Function symbol precedence:  function_order([ c_tokyoolympics, c_olympics, c_united_states ]).
 After inverse_order:  (no changes).
 Unfolding symbols: (none).
 
@@ -132,55 +79,34 @@ Auto_inference settings:
     % set(ur_resolution) -> set(pos_ur_resolution).
     % set(ur_resolution) -> set(neg_ur_resolution).
 
-Auto_process settings:
-  % set(unit_deletion).  % (Horn set with negative nonunits)
+Auto_process settings:  (no changes).
 
-kept:      3 -p_regularly_eat(x,c_salad) | p_conscious_about(x,c_health).  [clausify(1)].
-kept:      4 -p_regularly_eat(x,c_salad) | p_conscious_about(x,c_eating_habit).  [clausify(1)].
-kept:      5 -p_grew_up_in(x,c_health_conscious_childhood_home) | p_regularly_eat(x,c_salad).  [clausify(1)].
-kept:      6 -p_fulfill(x,c_daily_nutritional_intake) | p_grew_up_in(x,c_health_conscious_childhood_home).  [clausify(1)].
-kept:      7 -p_disregard(x,c_physical_wellbeing) | -p_conscious_about(x,c_health) | -p_conscious_about(x,c_eating_habit).  [clausify(1)].
-kept:      8 -p_visit_daily(x,c_gym) | p_fulfill(x,c_daily_nutritional_intake).  [clausify(1)].
-kept:      9 -p_grew_up_in(c_taylor,c_health_conscious_childhood_home) | p_disregard(c_taylor,c_physical_wellbeing).  [clausify(1)].
-kept:      10 -p_disregard(c_taylor,c_physical_wellbeing) | p_grew_up_in(c_taylor,c_health_conscious_childhood_home).  [clausify(1)].
-           11 c_daily_nutritional_intake != c_eating_habit.  [assumption].
-kept:      12 c_eating_habit != c_daily_nutritional_intake.  [copy(11),flip(a)].
-           13 c_daily_nutritional_intake != c_gym.  [assumption].
-kept:      14 c_gym != c_daily_nutritional_intake.  [copy(13),flip(a)].
-           15 c_daily_nutritional_intake != c_health.  [assumption].
-kept:      16 c_health != c_daily_nutritional_intake.  [copy(15),flip(a)].
-kept:      17 c_daily_nutritional_intake != c_health_conscious_childhood_home.  [assumption].
-           18 c_daily_nutritional_intake != c_physical_wellbeing.  [assumption].
-kept:      19 c_physical_wellbeing != c_daily_nutritional_intake.  [copy(18),flip(a)].
-kept:      20 c_daily_nutritional_intake != c_salad.  [assumption].
-kept:      21 c_daily_nutritional_intake != c_taylor.  [assumption].
-           22 c_eating_habit != c_gym.  [assumption].
-kept:      23 c_gym != c_eating_habit.  [copy(22),flip(a)].
-           24 c_eating_habit != c_health.  [assumption].
-kept:      25 c_health != c_eating_habit.  [copy(24),flip(a)].
-kept:      26 c_eating_habit != c_health_conscious_childhood_home.  [assumption].
-kept:      27 c_eating_habit != c_physical_wellbeing.  [assumption].
-kept:      28 c_eating_habit != c_salad.  [assumption].
-kept:      29 c_eating_habit != c_taylor.  [assumption].
-           30 c_gym != c_health.  [assumption].
-kept:      31 c_health != c_gym.  [copy(30),flip(a)].
-kept:      32 c_gym != c_health_conscious_childhood_home.  [assumption].
-kept:      33 c_gym != c_physical_wellbeing.  [assumption].
-kept:      34 c_gym != c_salad.  [assumption].
-kept:      35 c_gym != c_taylor.  [assumption].
-kept:      36 c_health != c_health_conscious_childhood_home.  [assumption].
-kept:      37 c_health != c_physical_wellbeing.  [assumption].
-kept:      38 c_health != c_salad.  [assumption].
-kept:      39 c_health != c_taylor.  [assumption].
-           40 c_health_conscious_childhood_home != c_physical_wellbeing.  [assumption].
-kept:      41 c_physical_wellbeing != c_health_conscious_childhood_home.  [copy(40),flip(a)].
-           42 c_health_conscious_childhood_home != c_salad.  [assumption].
-kept:      43 c_salad != c_health_conscious_childhood_home.  [copy(42),flip(a)].
-kept:      44 c_health_conscious_childhood_home != c_taylor.  [assumption].
-kept:      45 c_physical_wellbeing != c_salad.  [assumption].
-kept:      46 c_physical_wellbeing != c_taylor.  [assumption].
-kept:      47 c_salad != c_taylor.  [assumption].
-kept:      48 p_regularly_eat(c_taylor,c_salad).  [deny(2)].
+kept:      3 p_last_summer_olympics(c_tokyoolympics).  [clausify(1)].
+kept:      4 c_olympics != c_tokyoolympics.  [assumption].
+           5 c_olympics != c_united_states.  [assumption].
+kept:      6 c_united_states != c_olympics.  [copy(5),flip(a)].
+           7 c_tokyoolympics != c_united_states.  [assumption].
+kept:      8 c_united_states != c_tokyoolympics.  [copy(7),flip(a)].
+kept:      9 -p_last_summer_olympics(c_tokyoolympics).  [deny(2)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 5.
+% Level of proof is 2.
+% Maximum clause weight is 2.000.
+% Given clauses 0.
+
+1 p_sporting_event(c_olympics) & p_last_summer_olympics(c_tokyoolympics) & p_most_medals(c_united_states,c_tokyoolympics) # label(non_clause).  [assumption].
+2 --p_last_summer_olympics(c_tokyoolympics) # label(non_clause) # label(goal).  [goal].
+3 p_last_summer_olympics(c_tokyoolympics).  [clausify(1)].
+9 -p_last_summer_olympics(c_tokyoolympics).  [deny(2)].
+10 $F.  [resolve(9,a,3,a)].
+
+============================== end of proof ==========================
+
+% Disable descendants (x means already disabled):
+ 9
 
 ============================== end of process initial clauses ========
 
@@ -192,43 +118,10 @@ formulas(usable).
 end_of_list.
 
 formulas(sos).
-3 -p_regularly_eat(x,c_salad) | p_conscious_about(x,c_health).  [clausify(1)].
-4 -p_regularly_eat(x,c_salad) | p_conscious_about(x,c_eating_habit).  [clausify(1)].
-5 -p_grew_up_in(x,c_health_conscious_childhood_home) | p_regularly_eat(x,c_salad).  [clausify(1)].
-6 -p_fulfill(x,c_daily_nutritional_intake) | p_grew_up_in(x,c_health_conscious_childhood_home).  [clausify(1)].
-7 -p_disregard(x,c_physical_wellbeing) | -p_conscious_about(x,c_health) | -p_conscious_about(x,c_eating_habit).  [clausify(1)].
-8 -p_visit_daily(x,c_gym) | p_fulfill(x,c_daily_nutritional_intake).  [clausify(1)].
-9 -p_grew_up_in(c_taylor,c_health_conscious_childhood_home) | p_disregard(c_taylor,c_physical_wellbeing).  [clausify(1)].
-10 -p_disregard(c_taylor,c_physical_wellbeing) | p_grew_up_in(c_taylor,c_health_conscious_childhood_home).  [clausify(1)].
-12 c_eating_habit != c_daily_nutritional_intake.  [copy(11),flip(a)].
-14 c_gym != c_daily_nutritional_intake.  [copy(13),flip(a)].
-16 c_health != c_daily_nutritional_intake.  [copy(15),flip(a)].
-17 c_daily_nutritional_intake != c_health_conscious_childhood_home.  [assumption].
-19 c_physical_wellbeing != c_daily_nutritional_intake.  [copy(18),flip(a)].
-20 c_daily_nutritional_intake != c_salad.  [assumption].
-21 c_daily_nutritional_intake != c_taylor.  [assumption].
-23 c_gym != c_eating_habit.  [copy(22),flip(a)].
-25 c_health != c_eating_habit.  [copy(24),flip(a)].
-26 c_eating_habit != c_health_conscious_childhood_home.  [assumption].
-27 c_eating_habit != c_physical_wellbeing.  [assumption].
-28 c_eating_habit != c_salad.  [assumption].
-29 c_eating_habit != c_taylor.  [assumption].
-31 c_health != c_gym.  [copy(30),flip(a)].
-32 c_gym != c_health_conscious_childhood_home.  [assumption].
-33 c_gym != c_physical_wellbeing.  [assumption].
-34 c_gym != c_salad.  [assumption].
-35 c_gym != c_taylor.  [assumption].
-36 c_health != c_health_conscious_childhood_home.  [assumption].
-37 c_health != c_physical_wellbeing.  [assumption].
-38 c_health != c_salad.  [assumption].
-39 c_health != c_taylor.  [assumption].
-41 c_physical_wellbeing != c_health_conscious_childhood_home.  [copy(40),flip(a)].
-43 c_salad != c_health_conscious_childhood_home.  [copy(42),flip(a)].
-44 c_health_conscious_childhood_home != c_taylor.  [assumption].
-45 c_physical_wellbeing != c_salad.  [assumption].
-46 c_physical_wellbeing != c_taylor.  [assumption].
-47 c_salad != c_taylor.  [assumption].
-48 p_regularly_eat(c_taylor,c_salad).  [deny(2)].
+3 p_last_summer_olympics(c_tokyoolympics).  [clausify(1)].
+4 c_olympics != c_tokyoolympics.  [assumption].
+6 c_united_states != c_olympics.  [copy(5),flip(a)].
+8 c_united_states != c_tokyoolympics.  [copy(7),flip(a)].
 end_of_list.
 
 formulas(demodulators).
@@ -240,114 +133,26 @@ end_of_list.
 
 % Starting search at 0.00 seconds.
 
-given #1 (I,wt=6): 3 -p_regularly_eat(x,c_salad) | p_conscious_about(x,c_health).  [clausify(1)].
+given #1 (I,wt=2): 3 p_last_summer_olympics(c_tokyoolympics).  [clausify(1)].
 
-given #2 (I,wt=6): 4 -p_regularly_eat(x,c_salad) | p_conscious_about(x,c_eating_habit).  [clausify(1)].
+given #2 (I,wt=3): 4 c_olympics != c_tokyoolympics.  [assumption].
 
-given #3 (I,wt=6): 5 -p_grew_up_in(x,c_health_conscious_childhood_home) | p_regularly_eat(x,c_salad).  [clausify(1)].
+given #3 (I,wt=3): 6 c_united_states != c_olympics.  [copy(5),flip(a)].
 
-given #4 (I,wt=6): 6 -p_fulfill(x,c_daily_nutritional_intake) | p_grew_up_in(x,c_health_conscious_childhood_home).  [clausify(1)].
-
-given #5 (I,wt=9): 7 -p_disregard(x,c_physical_wellbeing) | -p_conscious_about(x,c_health) | -p_conscious_about(x,c_eating_habit).  [clausify(1)].
-
-given #6 (I,wt=6): 8 -p_visit_daily(x,c_gym) | p_fulfill(x,c_daily_nutritional_intake).  [clausify(1)].
-
-given #7 (I,wt=6): 9 -p_grew_up_in(c_taylor,c_health_conscious_childhood_home) | p_disregard(c_taylor,c_physical_wellbeing).  [clausify(1)].
-
-given #8 (I,wt=6): 10 -p_disregard(c_taylor,c_physical_wellbeing) | p_grew_up_in(c_taylor,c_health_conscious_childhood_home).  [clausify(1)].
-
-given #9 (I,wt=3): 12 c_eating_habit != c_daily_nutritional_intake.  [copy(11),flip(a)].
-
-given #10 (I,wt=3): 14 c_gym != c_daily_nutritional_intake.  [copy(13),flip(a)].
-
-given #11 (I,wt=3): 16 c_health != c_daily_nutritional_intake.  [copy(15),flip(a)].
-
-given #12 (I,wt=3): 17 c_daily_nutritional_intake != c_health_conscious_childhood_home.  [assumption].
-
-given #13 (I,wt=3): 19 c_physical_wellbeing != c_daily_nutritional_intake.  [copy(18),flip(a)].
-
-given #14 (I,wt=3): 20 c_daily_nutritional_intake != c_salad.  [assumption].
-
-given #15 (I,wt=3): 21 c_daily_nutritional_intake != c_taylor.  [assumption].
-
-given #16 (I,wt=3): 23 c_gym != c_eating_habit.  [copy(22),flip(a)].
-
-given #17 (I,wt=3): 25 c_health != c_eating_habit.  [copy(24),flip(a)].
-
-given #18 (I,wt=3): 26 c_eating_habit != c_health_conscious_childhood_home.  [assumption].
-
-given #19 (I,wt=3): 27 c_eating_habit != c_physical_wellbeing.  [assumption].
-
-given #20 (I,wt=3): 28 c_eating_habit != c_salad.  [assumption].
-
-given #21 (I,wt=3): 29 c_eating_habit != c_taylor.  [assumption].
-
-given #22 (I,wt=3): 31 c_health != c_gym.  [copy(30),flip(a)].
-
-given #23 (I,wt=3): 32 c_gym != c_health_conscious_childhood_home.  [assumption].
-
-given #24 (I,wt=3): 33 c_gym != c_physical_wellbeing.  [assumption].
-
-given #25 (I,wt=3): 34 c_gym != c_salad.  [assumption].
-
-given #26 (I,wt=3): 35 c_gym != c_taylor.  [assumption].
-
-given #27 (I,wt=3): 36 c_health != c_health_conscious_childhood_home.  [assumption].
-
-given #28 (I,wt=3): 37 c_health != c_physical_wellbeing.  [assumption].
-
-given #29 (I,wt=3): 38 c_health != c_salad.  [assumption].
-
-given #30 (I,wt=3): 39 c_health != c_taylor.  [assumption].
-
-given #31 (I,wt=3): 41 c_physical_wellbeing != c_health_conscious_childhood_home.  [copy(40),flip(a)].
-
-given #32 (I,wt=3): 43 c_salad != c_health_conscious_childhood_home.  [copy(42),flip(a)].
-
-given #33 (I,wt=3): 44 c_health_conscious_childhood_home != c_taylor.  [assumption].
-
-given #34 (I,wt=3): 45 c_physical_wellbeing != c_salad.  [assumption].
-
-given #35 (I,wt=3): 46 c_physical_wellbeing != c_taylor.  [assumption].
-
-given #36 (I,wt=3): 47 c_salad != c_taylor.  [assumption].
-
-given #37 (I,wt=3): 48 p_regularly_eat(c_taylor,c_salad).  [deny(2)].
-
-given #38 (A,wt=9): 49 -p_disregard(x,c_physical_wellbeing) | -p_conscious_about(x,c_eating_habit) | -p_regularly_eat(x,c_salad).  [resolve(7,b,3,b)].
-
-given #39 (F,wt=3): 54 -p_grew_up_in(c_taylor,c_health_conscious_childhood_home).  [back_unit_del(51),unit_del(b,53),unit_del(c,52)].
-
-given #40 (F,wt=3): 55 -p_disregard(c_taylor,c_physical_wellbeing).  [back_unit_del(10),unit_del(b,54)].
-
-given #41 (F,wt=3): 58 -p_fulfill(c_taylor,c_daily_nutritional_intake).  [resolve(54,a,6,b)].
-
-given #42 (F,wt=3): 59 -p_visit_daily(c_taylor,c_gym).  [resolve(58,a,8,b)].
-
-given #43 (T,wt=3): 52 p_conscious_about(c_taylor,c_eating_habit).  [ur(4,a,48,a)].
-
-given #44 (T,wt=3): 53 p_conscious_about(c_taylor,c_health).  [ur(3,a,48,a)].
-
-given #45 (A,wt=6): 56 -p_disregard(x,c_physical_wellbeing) | -p_regularly_eat(x,c_salad).  [resolve(49,b,4,b),merge(c)].
-
-given #46 (F,wt=6): 60 -p_disregard(x,c_physical_wellbeing) | -p_grew_up_in(x,c_health_conscious_childhood_home).  [resolve(56,b,5,b)].
-
-given #47 (F,wt=6): 61 -p_disregard(x,c_physical_wellbeing) | -p_fulfill(x,c_daily_nutritional_intake).  [resolve(60,b,6,b)].
-
-given #48 (F,wt=6): 62 -p_disregard(x,c_physical_wellbeing) | -p_visit_daily(x,c_gym).  [resolve(61,b,8,b)].
+given #4 (I,wt=3): 8 c_united_states != c_tokyoolympics.  [copy(7),flip(a)].
 
 ============================== STATISTICS ============================
 
-Given=48. Generated=59. Kept=51. proofs=0.
-Usable=45. Sos=0. Demods=0. Limbo=0, Disabled=43. Hints=0.
+Given=4. Generated=5. Kept=5. proofs=1.
+Usable=4. Sos=0. Demods=0. Limbo=0, Disabled=8. Hints=0.
 Kept_by_rule=0, Deleted_by_rule=0.
-Forward_subsumed=8. Back_subsumed=4.
+Forward_subsumed=0. Back_subsumed=0.
 Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
-New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=2.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
 Demod_attempts=0. Demod_rewrites=0.
 Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
-Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=20.
-Megabytes=0.10.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.03.
 User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
 
 ============================== end of statistics =====================
@@ -356,14 +161,15 @@ User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
 
 SEARCH FAILED
 
-Exiting with failure.
+Exiting with 1 proof.
 
-Process 29714 exit (sos_empty) Sat Oct 17 13:02:00 2026
+Process 47295 exit (sos_empty) Fri Oct 23 14:35:08 2026
 
 WARNING: denials share constants (see output).
 
+-------- Proof 1 -------- 
 
 SEARCH FAILED
 
------- process 29714 exit (sos_empty) ------
+------ process 47295 exit (sos_empty) ------
 

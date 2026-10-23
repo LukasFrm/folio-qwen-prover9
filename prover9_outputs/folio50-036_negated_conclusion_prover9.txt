@@ -1,18 +1,19 @@
 ============================== Prover9 ===============================
 Prover9 (64) version 2009-11A, November 2009.
-Process 29695 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
-Sat Oct 17 13:02:00 2026
+Process 47280 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:08 2026
 The command was "prover9 -t 5".
 ============================== end of head ===========================
 
 ============================== INPUT =================================
 
 formulas(assumptions).
-(p_like_music(c_george) -> p_want_to_compose(c_george)) & (p_access_to_program(c_george) -> p_can_compose(c_george)) & (p_want_to_compose(c_george) & p_can_compose(c_george) -> p_will_compose(c_george)).
+(all v_x (p_hydrocarbon(v_x) -> p_organic_compound(v_x))) & (all v_x (p_alkane(v_x) -> p_hydrocarbon(v_x))) & (all v_x (p_organic_compound(v_x) -> p_chemical_compound(v_x))) & (all v_x (p_organic_compound(v_x) -> p_contain(v_x,c_carbon))) & (all v_x (p_chemical_compound(v_x) -> -(exists v_y (p_contain(v_x,v_y) & (all v_z (p_contain(v_x,v_z) -> v_z = v_y)))))) & -((p_chemical_compound(c_mixture) | (exists v_y (p_contain(c_mixture,v_y) & (all v_z (p_contain(c_mixture,v_z) -> v_z = v_y))))) & -(p_chemical_compound(c_mixture) & (exists v_y (p_contain(c_mixture,v_y) & (all v_z (p_contain(c_mixture,v_z) -> v_z = v_y)))))).
+c_carbon != c_mixture.
 end_of_list.
 
 formulas(goals).
--(p_like_music(c_george) & p_access_to_program(c_george) -> p_will_compose(c_george)).
+-(p_alkane(c_mixture) & p_contain(c_mixture,c_carbon)).
 end_of_list.
 
 ============================== end of input ==========================
@@ -22,8 +23,8 @@ end_of_list.
 ============================== PROCESS NON-CLAUSAL FORMULAS ==========
 
 % Formulas that are not ordinary clauses:
-1 (p_like_music(c_george) -> p_want_to_compose(c_george)) & (p_access_to_program(c_george) -> p_can_compose(c_george)) & (p_want_to_compose(c_george) & p_can_compose(c_george) -> p_will_compose(c_george)) # label(non_clause).  [assumption].
-2 -(p_like_music(c_george) & p_access_to_program(c_george) -> p_will_compose(c_george)) # label(non_clause) # label(goal).  [goal].
+1 (all v_x (p_hydrocarbon(v_x) -> p_organic_compound(v_x))) & (all v_x (p_alkane(v_x) -> p_hydrocarbon(v_x))) & (all v_x (p_organic_compound(v_x) -> p_chemical_compound(v_x))) & (all v_x (p_organic_compound(v_x) -> p_contain(v_x,c_carbon))) & (all v_x (p_chemical_compound(v_x) -> -(exists v_y (p_contain(v_x,v_y) & (all v_z (p_contain(v_x,v_z) -> v_z = v_y)))))) & -((p_chemical_compound(c_mixture) | (exists v_y (p_contain(c_mixture,v_y) & (all v_z (p_contain(c_mixture,v_z) -> v_z = v_y))))) & -(p_chemical_compound(c_mixture) & (exists v_y (p_contain(c_mixture,v_y) & (all v_z (p_contain(c_mixture,v_z) -> v_z = v_y)))))) # label(non_clause).  [assumption].
+2 -(p_alkane(c_mixture) & p_contain(c_mixture,c_carbon)) # label(non_clause) # label(goal).  [goal].
 
 ============================== end of process non-clausal formulas ===
 
@@ -35,10 +36,23 @@ formulas(usable).
 end_of_list.
 
 formulas(sos).
--p_like_music(c_george) | p_want_to_compose(c_george).  [clausify(1)].
--p_access_to_program(c_george) | p_can_compose(c_george).  [clausify(1)].
--p_want_to_compose(c_george) | -p_can_compose(c_george) | p_will_compose(c_george).  [clausify(1)].
--p_like_music(c_george) | -p_access_to_program(c_george) | p_will_compose(c_george).  [deny(2)].
+-p_hydrocarbon(x) | p_organic_compound(x).  [clausify(1)].
+-p_alkane(x) | p_hydrocarbon(x).  [clausify(1)].
+-p_organic_compound(x) | p_chemical_compound(x).  [clausify(1)].
+-p_organic_compound(x) | p_contain(x,c_carbon).  [clausify(1)].
+-p_chemical_compound(x) | -p_contain(x,y) | p_contain(x,f1(x,y)).  [clausify(1)].
+-p_chemical_compound(x) | -p_contain(x,y) | f1(x,y) != y.  [clausify(1)].
+-p_chemical_compound(c_mixture) | p_contain(c_mixture,c1).  [clausify(1)].
+-p_chemical_compound(c_mixture) | -p_contain(c_mixture,x) | x = c1.  [clausify(1)].
+-p_contain(c_mixture,x) | p_contain(c_mixture,f2(x)) | p_chemical_compound(c_mixture).  [clausify(1)].
+-p_contain(c_mixture,x) | p_contain(c_mixture,f2(x)) | p_contain(c_mixture,c1).  [clausify(1)].
+-p_contain(c_mixture,x) | p_contain(c_mixture,f2(x)) | -p_contain(c_mixture,y) | y = c1.  [clausify(1)].
+-p_contain(c_mixture,x) | f2(x) != x | p_chemical_compound(c_mixture).  [clausify(1)].
+-p_contain(c_mixture,x) | f2(x) != x | p_contain(c_mixture,c1).  [clausify(1)].
+-p_contain(c_mixture,x) | f2(x) != x | -p_contain(c_mixture,y) | y = c1.  [clausify(1)].
+c_carbon != c_mixture.  [assumption].
+p_alkane(c_mixture).  [deny(2)].
+p_contain(c_mixture,c_carbon).  [deny(2)].
 end_of_list.
 
 formulas(demodulators).
@@ -46,31 +60,64 @@ end_of_list.
 
 ============================== PREDICATE ELIMINATION =================
 
-Eliminating p_like_music/1
+Eliminating p_hydrocarbon/1
+3 -p_alkane(x) | p_hydrocarbon(x).  [clausify(1)].
+4 -p_hydrocarbon(x) | p_organic_compound(x).  [clausify(1)].
+Derived: -p_alkane(x) | p_organic_compound(x).  [resolve(3,b,4,a)].
 
-Eliminating p_access_to_program/1
+Eliminating p_organic_compound/1
+5 -p_alkane(x) | p_organic_compound(x).  [resolve(3,b,4,a)].
+6 -p_organic_compound(x) | p_chemical_compound(x).  [clausify(1)].
+7 -p_organic_compound(x) | p_contain(x,c_carbon).  [clausify(1)].
+Derived: -p_alkane(x) | p_chemical_compound(x).  [resolve(5,b,6,a)].
+Derived: -p_alkane(x) | p_contain(x,c_carbon).  [resolve(5,b,7,a)].
 
-Eliminating p_want_to_compose/1
+Eliminating p_alkane/1
+8 -p_alkane(x) | p_chemical_compound(x).  [resolve(5,b,6,a)].
+9 p_alkane(c_mixture).  [deny(2)].
+Derived: p_chemical_compound(c_mixture).  [resolve(8,a,9,a)].
+10 -p_alkane(x) | p_contain(x,c_carbon).  [resolve(5,b,7,a)].
+Derived: p_contain(c_mixture,c_carbon).  [resolve(10,a,9,a)].
 
 ============================== end predicate elimination =============
 
-Auto_denials:  (no changes).
+Auto_denials:  (non-Horn, no changes).
 
 Term ordering decisions:
-Predicate symbol precedence:  predicate_order([ ]).
-Function symbol precedence:  function_order([ ]).
+Predicate symbol precedence:  predicate_order([ =, p_chemical_compound, p_contain ]).
+Function symbol precedence:  function_order([ c_mixture, c_carbon, c1, f1, f2 ]).
 After inverse_order:  (no changes).
 Unfolding symbols: (none).
 
 Auto_inference settings:
-  % set(neg_binary_resolution).  % (HNE depth_diff=0)
-  % clear(ordered_res).  % (HNE depth_diff=0)
-  % set(ur_resolution).  % (HNE depth_diff=0)
-    % set(ur_resolution) -> set(pos_ur_resolution).
-    % set(ur_resolution) -> set(neg_ur_resolution).
+  % set(paramodulation).  % (positive equality literals)
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
 
-Auto_process settings:  (no changes).
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
 
+kept:      11 -p_chemical_compound(x) | -p_contain(x,y) | p_contain(x,f1(x,y)).  [clausify(1)].
+kept:      12 -p_chemical_compound(x) | -p_contain(x,y) | f1(x,y) != y.  [clausify(1)].
+kept:      13 -p_chemical_compound(c_mixture) | p_contain(c_mixture,c1).  [clausify(1)].
+           14 -p_chemical_compound(c_mixture) | -p_contain(c_mixture,x) | x = c1.  [clausify(1)].
+kept:      15 -p_chemical_compound(c_mixture) | -p_contain(c_mixture,x) | c1 = x.  [copy(14),flip(c)].
+kept:      16 -p_contain(c_mixture,x) | p_contain(c_mixture,f2(x)) | p_chemical_compound(c_mixture).  [clausify(1)].
+kept:      17 -p_contain(c_mixture,x) | p_contain(c_mixture,f2(x)) | p_contain(c_mixture,c1).  [clausify(1)].
+           18 -p_contain(c_mixture,x) | p_contain(c_mixture,f2(x)) | -p_contain(c_mixture,y) | y = c1.  [clausify(1)].
+kept:      19 -p_contain(c_mixture,x) | p_contain(c_mixture,f2(x)) | -p_contain(c_mixture,y) | c1 = y.  [copy(18),flip(d)].
+kept:      20 -p_contain(c_mixture,x) | f2(x) != x | p_chemical_compound(c_mixture).  [clausify(1)].
+kept:      21 -p_contain(c_mixture,x) | f2(x) != x | p_contain(c_mixture,c1).  [clausify(1)].
+           22 -p_contain(c_mixture,x) | f2(x) != x | -p_contain(c_mixture,y) | y = c1.  [clausify(1)].
+kept:      23 -p_contain(c_mixture,x) | f2(x) != x | -p_contain(c_mixture,y) | c1 = y.  [copy(22),flip(d)].
+kept:      24 c_carbon != c_mixture.  [assumption].
+kept:      25 p_contain(c_mixture,c_carbon).  [deny(2)].
+kept:      26 p_chemical_compound(c_mixture).  [resolve(8,a,9,a)].
+kept:      27 -p_contain(c_mixture,x) | p_contain(c_mixture,f2(x)) | c1 = x.  [factor(19,a,c)].
+kept:      28 -p_contain(c_mixture,x) | f2(x) != x | c1 = x.  [factor(23,a,c)].
+kept:      29 -p_contain(c_mixture,x) | c1 = x.  [back_unit_del(15),unit_del(a,26)].
+kept:      30 p_contain(c_mixture,c1).  [back_unit_del(13),unit_del(a,26)].
 
 ============================== end of process initial clauses ========
 
@@ -82,6 +129,13 @@ formulas(usable).
 end_of_list.
 
 formulas(sos).
+11 -p_chemical_compound(x) | -p_contain(x,y) | p_contain(x,f1(x,y)).  [clausify(1)].
+12 -p_chemical_compound(x) | -p_contain(x,y) | f1(x,y) != y.  [clausify(1)].
+24 c_carbon != c_mixture.  [assumption].
+25 p_contain(c_mixture,c_carbon).  [deny(2)].
+26 p_chemical_compound(c_mixture).  [resolve(8,a,9,a)].
+29 -p_contain(c_mixture,x) | c1 = x.  [back_unit_del(15),unit_del(a,26)].
+30 p_contain(c_mixture,c1).  [back_unit_del(13),unit_del(a,26)].
 end_of_list.
 
 formulas(demodulators).
@@ -93,31 +147,83 @@ end_of_list.
 
 % Starting search at 0.00 seconds.
 
+given #1 (I,wt=10): 11 -p_chemical_compound(x) | -p_contain(x,y) | p_contain(x,f1(x,y)).  [clausify(1)].
+
+given #2 (I,wt=10): 12 -p_chemical_compound(x) | -p_contain(x,y) | f1(x,y) != y.  [clausify(1)].
+
+given #3 (I,wt=3): 24 c_carbon != c_mixture.  [assumption].
+
+given #4 (I,wt=3): 25 p_contain(c_mixture,c_carbon).  [deny(2)].
+
+given #5 (I,wt=2): 26 p_chemical_compound(c_mixture).  [resolve(8,a,9,a)].
+
+given #6 (I,wt=6): 29 -p_contain(c_mixture,x) | c1 = x.  [back_unit_del(15),unit_del(a,26)].
+
+given #7 (A,wt=5): 31 f1(c_mixture,c_carbon) != c_carbon.  [resolve(25,a,12,b),unit_del(a,26)].
+
+given #8 (T,wt=3): 33 c1 = c_carbon.  [resolve(29,a,25,a)].
+
+given #9 (T,wt=5): 32 p_contain(c_mixture,f1(c_mixture,c_carbon)).  [resolve(25,a,11,b),unit_del(a,26)].
+
+given #10 (T,wt=6): 34 -p_contain(c_mixture,x) | c_carbon = x.  [back_rewrite(29),rewrite([33(3)])].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 20.
+% Level of proof is 8.
+% Maximum clause weight is 10.000.
+% Given clauses 10.
+
+1 (all v_x (p_hydrocarbon(v_x) -> p_organic_compound(v_x))) & (all v_x (p_alkane(v_x) -> p_hydrocarbon(v_x))) & (all v_x (p_organic_compound(v_x) -> p_chemical_compound(v_x))) & (all v_x (p_organic_compound(v_x) -> p_contain(v_x,c_carbon))) & (all v_x (p_chemical_compound(v_x) -> -(exists v_y (p_contain(v_x,v_y) & (all v_z (p_contain(v_x,v_z) -> v_z = v_y)))))) & -((p_chemical_compound(c_mixture) | (exists v_y (p_contain(c_mixture,v_y) & (all v_z (p_contain(c_mixture,v_z) -> v_z = v_y))))) & -(p_chemical_compound(c_mixture) & (exists v_y (p_contain(c_mixture,v_y) & (all v_z (p_contain(c_mixture,v_z) -> v_z = v_y)))))) # label(non_clause).  [assumption].
+2 -(p_alkane(c_mixture) & p_contain(c_mixture,c_carbon)) # label(non_clause) # label(goal).  [goal].
+3 -p_alkane(x) | p_hydrocarbon(x).  [clausify(1)].
+4 -p_hydrocarbon(x) | p_organic_compound(x).  [clausify(1)].
+5 -p_alkane(x) | p_organic_compound(x).  [resolve(3,b,4,a)].
+6 -p_organic_compound(x) | p_chemical_compound(x).  [clausify(1)].
+8 -p_alkane(x) | p_chemical_compound(x).  [resolve(5,b,6,a)].
+9 p_alkane(c_mixture).  [deny(2)].
+11 -p_chemical_compound(x) | -p_contain(x,y) | p_contain(x,f1(x,y)).  [clausify(1)].
+12 -p_chemical_compound(x) | -p_contain(x,y) | f1(x,y) != y.  [clausify(1)].
+14 -p_chemical_compound(c_mixture) | -p_contain(c_mixture,x) | x = c1.  [clausify(1)].
+15 -p_chemical_compound(c_mixture) | -p_contain(c_mixture,x) | c1 = x.  [copy(14),flip(c)].
+25 p_contain(c_mixture,c_carbon).  [deny(2)].
+26 p_chemical_compound(c_mixture).  [resolve(8,a,9,a)].
+29 -p_contain(c_mixture,x) | c1 = x.  [back_unit_del(15),unit_del(a,26)].
+31 f1(c_mixture,c_carbon) != c_carbon.  [resolve(25,a,12,b),unit_del(a,26)].
+32 p_contain(c_mixture,f1(c_mixture,c_carbon)).  [resolve(25,a,11,b),unit_del(a,26)].
+33 c1 = c_carbon.  [resolve(29,a,25,a)].
+34 -p_contain(c_mixture,x) | c_carbon = x.  [back_rewrite(29),rewrite([33(3)])].
+37 $F.  [resolve(34,a,32,a),flip(a),unit_del(a,31)].
+
+============================== end of proof ==========================
+
 ============================== STATISTICS ============================
 
-Given=0. Generated=0. Kept=0. proofs=0.
-Usable=0. Sos=0. Demods=0. Limbo=0, Disabled=4. Hints=0.
+Given=10. Generated=29. Kept=23. proofs=1.
+Usable=9. Sos=2. Demods=1. Limbo=0, Disabled=34. Hints=0.
 Kept_by_rule=0, Deleted_by_rule=0.
-Forward_subsumed=0. Back_subsumed=0.
+Forward_subsumed=5. Back_subsumed=8.
 Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
-New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
-Demod_attempts=0. Demod_rewrites=0.
+New_demodulators=1 (0 lex), Back_demodulated=2. Back_unit_deleted=2.
+Demod_attempts=46. Demod_rewrites=2.
 Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
-Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
-Megabytes=0.02.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=24.
+Megabytes=0.09.
 User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
 
 ============================== end of statistics =====================
 
 ============================== end of search =========================
 
-SEARCH FAILED
+THEOREM PROVED
 
-Exiting with failure.
+Exiting with 1 proof.
 
-Process 29695 exit (sos_empty) Sat Oct 17 13:02:00 2026
+Process 47280 exit (max_proofs) Fri Oct 23 14:35:08 2026
+-------- Proof 1 -------- 
 
-SEARCH FAILED
+THEOREM PROVED
 
------- process 29695 exit (sos_empty) ------
+------ process 47280 exit (max_proofs) ------
 

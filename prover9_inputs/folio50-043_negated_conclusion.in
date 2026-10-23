@@ -1,10 +1,10 @@
 formulas(assumptions).
-((p_sporting_event(c_olympics) & p_last_summer_olympics(c_tokyoolympics)) & p_most_medals(c_united_states, c_tokyoolympics)).
--(c_olympics = c_tokyoolympics).
--(c_olympics = c_united_states).
--(c_tokyoolympics = c_united_states).
+((p_fly_to(c_susan, c_lga_airport) & all v_x (all v_y (-((p_fly_from(v_x, v_y) & p_fly_to(v_x, v_y)))))) & p_fly_from(c_john, c_lga_airport)).
+-(c_john = c_lga_airport).
+-(c_john = c_susan).
+-(c_lga_airport = c_susan).
 end_of_list.
 
 formulas(goals).
--(-(p_last_summer_olympics(c_tokyoolympics))).
+-(p_fly_from(c_susan, c_lga_airport)).
 end_of_list.

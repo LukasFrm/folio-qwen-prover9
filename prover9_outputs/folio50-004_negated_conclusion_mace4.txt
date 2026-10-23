@@ -1,18 +1,24 @@
 ============================== Mace4 =================================
 Mace4 (64) version 2009-11A, November 2009.
-Process 29591 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
-Sat Oct 17 13:01:59 2026
+Process 47161 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:07 2026
 The command was "mace4 -t 5 -n 2 -N 8".
 ============================== end of head ===========================
 
 ============================== INPUT =================================
 
 formulas(assumptions).
-(all v_x (p_square(v_x) -> p_four_sided(v_x))) & (all v_x (p_four_sided(v_x) -> p_shape(v_x))).
+p_netflix_show(c_stranger_things) & p_popular(c_stranger_things) & (all v_x (p_netflix_show(v_x) & p_popular(v_x) -> p_binge_watch(c_karen,v_x))) & (all v_x (p_netflix_show(v_x) -> (p_binge_watch(c_karen,v_x) <-> p_download(c_karen,v_x)))) & -p_download(c_karen,c_black_mirror) & p_netflix_show(c_black_mirror) & (all v_x (p_netflix_show(v_x) & p_binge_watch(c_karen,v_x) -> p_share_with(c_karen,v_x,c_lisa))).
+c_black_mirror != c_karen.
+c_black_mirror != c_lisa.
+c_black_mirror != c_stranger_things.
+c_karen != c_lisa.
+c_karen != c_stranger_things.
+c_lisa != c_stranger_things.
 end_of_list.
 
 formulas(goals).
--(all v_x (p_square(v_x) -> p_shape(v_x))).
+-p_share_with(c_karen,c_stranger_things,c_lisa).
 end_of_list.
 
 % From the command line: assign(max_seconds, 5).
@@ -28,17 +34,29 @@ end_of_list.
 ============================== PROCESS NON-CLAUSAL FORMULAS ==========
 
 % Formulas that are not ordinary clauses:
-1 (all v_x (p_square(v_x) -> p_four_sided(v_x))) & (all v_x (p_four_sided(v_x) -> p_shape(v_x))) # label(non_clause).  [assumption].
-2 -(all v_x (p_square(v_x) -> p_shape(v_x))) # label(non_clause) # label(goal).  [goal].
+1 p_netflix_show(c_stranger_things) & p_popular(c_stranger_things) & (all v_x (p_netflix_show(v_x) & p_popular(v_x) -> p_binge_watch(c_karen,v_x))) & (all v_x (p_netflix_show(v_x) -> (p_binge_watch(c_karen,v_x) <-> p_download(c_karen,v_x)))) & -p_download(c_karen,c_black_mirror) & p_netflix_show(c_black_mirror) & (all v_x (p_netflix_show(v_x) & p_binge_watch(c_karen,v_x) -> p_share_with(c_karen,v_x,c_lisa))) # label(non_clause).  [assumption].
+2 -p_share_with(c_karen,c_stranger_things,c_lisa) # label(non_clause) # label(goal).  [goal].
 
 ============================== end of process non-clausal formulas ===
 
 ============================== CLAUSES FOR SEARCH ====================
 
 formulas(mace4_clauses).
--p_square(x) | p_four_sided(x).
--p_four_sided(x) | p_shape(x).
--p_square(x) | p_shape(x).
+p_netflix_show(c_stranger_things).
+p_popular(c_stranger_things).
+-p_netflix_show(x) | -p_popular(x) | p_binge_watch(c_karen,x).
+-p_netflix_show(x) | -p_binge_watch(c_karen,x) | p_download(c_karen,x).
+-p_netflix_show(x) | p_binge_watch(c_karen,x) | -p_download(c_karen,x).
+-p_download(c_karen,c_black_mirror).
+p_netflix_show(c_black_mirror).
+-p_netflix_show(x) | -p_binge_watch(c_karen,x) | p_share_with(c_karen,x,c_lisa).
+c_black_mirror != c_karen.
+c_black_mirror != c_lisa.
+c_black_mirror != c_stranger_things.
+c_karen != c_lisa.
+c_karen != c_stranger_things.
+c_lisa != c_stranger_things.
+p_share_with(c_karen,c_stranger_things,c_lisa).
 end_of_list.
 
 ============================== end of clauses for search =============
@@ -47,28 +65,92 @@ end_of_list.
 
 ============================== DOMAIN SIZE 2 =========================
 
+============================== STATISTICS ============================
+
+For domain size 2.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=19, kept=19.
+Selections=1, assignments=1, propagations=4, current_models=0.
+Rewrite_terms=7, rewrite_bools=5, indexes=1.
+Rules_from_neg_clauses=3, cross_offs=3.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 3 =========================
+
+============================== STATISTICS ============================
+
+For domain size 3.
+
+Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
+Ground clauses: seen=23, kept=23.
+Selections=2, assignments=3, propagations=6, current_models=0.
+Rewrite_terms=37, rewrite_bools=14, indexes=17.
+Rules_from_neg_clauses=2, cross_offs=5.
+
+============================== end of statistics =====================
+
+============================== DOMAIN SIZE 4 =========================
+
 ============================== MODEL =================================
 
-interpretation( 2, [number=1, seconds=0], [
+interpretation( 4, [number=1, seconds=0], [
 
-        relation(p_four_sided(_), [ 0, 0 ]),
+        function(c_black_mirror, [ 0 ]),
 
-        relation(p_shape(_), [ 0, 0 ]),
+        function(c_karen, [ 1 ]),
 
-        relation(p_square(_), [ 0, 0 ])
+        function(c_lisa, [ 2 ]),
+
+        function(c_stranger_things, [ 3 ]),
+
+        relation(p_netflix_show(_), [ 1, 0, 0, 1 ]),
+
+        relation(p_popular(_), [ 0, 0, 0, 1 ]),
+
+        relation(p_binge_watch(_,_), [
+			   0, 0, 0, 0,
+			   0, 0, 0, 1,
+			   0, 0, 0, 0,
+			   0, 0, 0, 0 ]),
+
+        relation(p_download(_,_), [
+			   0, 0, 0, 0,
+			   0, 0, 0, 1,
+			   0, 0, 0, 0,
+			   0, 0, 0, 0 ]),
+
+        relation(p_share_with(_,_,_), [
+			   0, 0, 0, 0,
+			   0, 0, 0, 0,
+			   0, 0, 0, 0,
+			   0, 0, 0, 0,
+			   0, 0, 0, 0,
+			   0, 0, 0, 0,
+			   0, 0, 0, 0,
+			   0, 0, 1, 0,
+			   0, 0, 0, 0,
+			   0, 0, 0, 0,
+			   0, 0, 0, 0,
+			   0, 0, 0, 0,
+			   0, 0, 0, 0,
+			   0, 0, 0, 0,
+			   0, 0, 0, 0,
+			   0, 0, 0, 0 ])
 ]).
 
 ============================== end of model ==========================
 
 ============================== STATISTICS ============================
 
-For domain size 2.
+For domain size 4.
 
 Current CPU time: 0.00 seconds (total CPU time: 0.00 seconds).
-Ground clauses: seen=6, kept=6.
-Selections=4, assignments=4, propagations=2, current_models=1.
-Rewrite_terms=0, rewrite_bools=8, indexes=0.
-Rules_from_neg_clauses=0, cross_offs=0.
+Ground clauses: seen=27, kept=27.
+Selections=98, assignments=101, propagations=10, current_models=1.
+Rewrite_terms=63, rewrite_bools=44, indexes=30.
+Rules_from_neg_clauses=1, cross_offs=6.
 
 ============================== end of statistics =====================
 
@@ -76,9 +158,13 @@ User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
 
 Exiting with 1 model.
 
-Process 29591 exit (max_models) Sat Oct 17 13:01:59 2026
-The process finished Sat Oct 17 13:01:59 2026
+Process 47161 exit (max_models) Fri Oct 23 14:35:07 2026
+The process finished Fri Oct 23 14:35:07 2026
 
 === Mace4 starting on domain size 2. ===
 
------- process 29591 exit (max_models) ------
+=== Mace4 starting on domain size 3. ===
+
+=== Mace4 starting on domain size 4. ===
+
+------ process 47161 exit (max_models) ------

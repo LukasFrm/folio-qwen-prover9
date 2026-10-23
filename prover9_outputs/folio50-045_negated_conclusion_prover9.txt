@@ -1,21 +1,33 @@
 ============================== Prover9 ===============================
 Prover9 (64) version 2009-11A, November 2009.
-Process 29726 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
-Sat Oct 17 13:02:00 2026
+Process 47309 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:08 2026
 The command was "prover9 -t 5".
 ============================== end of head ===========================
 
 ============================== INPUT =================================
 
 formulas(assumptions).
-(exists v_x (p_professional(v_x) & p_basketball_player(v_x) & -p_american_national(v_x))) & (all v_x (p_professional(v_x) & p_basketball_player(v_x) -> p_can_do(v_x,c_jump_shot))) & (all v_x (p_can_do(v_x,c_jump_shot) -> p_leap_straight_into_air(v_x))) & (all v_x (p_leap_straight_into_air(v_x) -> p_activate(v_x,c_leg_muscle))) & -p_activate(c_yuri,c_leg_muscle).
-c_jump_shot != c_leg_muscle.
-c_jump_shot != c_yuri.
-c_leg_muscle != c_yuri.
+(all v_x (p_podcast(v_x) -> -p_novel(v_x))) & (all v_x ((exists v_y (p_born_in(v_x,v_y) & p_city(v_y) & p_located_in(v_y,c_america))) -> p_american(v_x))) & (all v_x all v_y (p_novel(v_x) & p_written_by(v_x,v_y) -> p_writes_novel(v_y))) & p_american(c_dani_shapiro) & p_writer(c_dani_shapiro) & p_written_by(c_family_history,c_dani_shapiro) & p_novel(c_family_history) & p_written_in(c_family_history,c_yr2003) & p_podcast(c_family_secrets) & p_created_by(c_family_secrets,c_dani_shapiro) & p_city(c_boston) & p_located_in(c_boston,c_america).
+c_america != c_boston.
+c_america != c_dani_shapiro.
+c_america != c_family_history.
+c_america != c_family_secrets.
+c_america != c_yr2003.
+c_boston != c_dani_shapiro.
+c_boston != c_family_history.
+c_boston != c_family_secrets.
+c_boston != c_yr2003.
+c_dani_shapiro != c_family_history.
+c_dani_shapiro != c_family_secrets.
+c_dani_shapiro != c_yr2003.
+c_family_history != c_family_secrets.
+c_family_history != c_yr2003.
+c_family_secrets != c_yr2003.
 end_of_list.
 
 formulas(goals).
---(p_american_national(c_yuri) & p_professional(c_yuri) & p_basketball_player(c_yuri)).
+-p_novel(c_family_secrets).
 end_of_list.
 
 ============================== end of input ==========================
@@ -25,8 +37,8 @@ end_of_list.
 ============================== PROCESS NON-CLAUSAL FORMULAS ==========
 
 % Formulas that are not ordinary clauses:
-1 (exists v_x (p_professional(v_x) & p_basketball_player(v_x) & -p_american_national(v_x))) & (all v_x (p_professional(v_x) & p_basketball_player(v_x) -> p_can_do(v_x,c_jump_shot))) & (all v_x (p_can_do(v_x,c_jump_shot) -> p_leap_straight_into_air(v_x))) & (all v_x (p_leap_straight_into_air(v_x) -> p_activate(v_x,c_leg_muscle))) & -p_activate(c_yuri,c_leg_muscle) # label(non_clause).  [assumption].
-2 --(p_american_national(c_yuri) & p_professional(c_yuri) & p_basketball_player(c_yuri)) # label(non_clause) # label(goal).  [goal].
+1 (all v_x (p_podcast(v_x) -> -p_novel(v_x))) & (all v_x ((exists v_y (p_born_in(v_x,v_y) & p_city(v_y) & p_located_in(v_y,c_america))) -> p_american(v_x))) & (all v_x all v_y (p_novel(v_x) & p_written_by(v_x,v_y) -> p_writes_novel(v_y))) & p_american(c_dani_shapiro) & p_writer(c_dani_shapiro) & p_written_by(c_family_history,c_dani_shapiro) & p_novel(c_family_history) & p_written_in(c_family_history,c_yr2003) & p_podcast(c_family_secrets) & p_created_by(c_family_secrets,c_dani_shapiro) & p_city(c_boston) & p_located_in(c_boston,c_america) # label(non_clause).  [assumption].
+2 -p_novel(c_family_secrets) # label(non_clause) # label(goal).  [goal].
 
 ============================== end of process non-clausal formulas ===
 
@@ -38,17 +50,34 @@ formulas(usable).
 end_of_list.
 
 formulas(sos).
-p_professional(c1).  [clausify(1)].
-p_basketball_player(c1).  [clausify(1)].
--p_american_national(c1).  [clausify(1)].
--p_professional(x) | -p_basketball_player(x) | p_can_do(x,c_jump_shot).  [clausify(1)].
--p_can_do(x,c_jump_shot) | p_leap_straight_into_air(x).  [clausify(1)].
--p_leap_straight_into_air(x) | p_activate(x,c_leg_muscle).  [clausify(1)].
--p_activate(c_yuri,c_leg_muscle).  [clausify(1)].
-c_jump_shot != c_leg_muscle.  [assumption].
-c_jump_shot != c_yuri.  [assumption].
-c_leg_muscle != c_yuri.  [assumption].
--p_american_national(c_yuri) | -p_professional(c_yuri) | -p_basketball_player(c_yuri).  [deny(2)].
+-p_podcast(x) | -p_novel(x).  [clausify(1)].
+-p_born_in(x,y) | -p_city(y) | -p_located_in(y,c_america) | p_american(x).  [clausify(1)].
+-p_novel(x) | -p_written_by(x,y) | p_writes_novel(y).  [clausify(1)].
+p_american(c_dani_shapiro).  [clausify(1)].
+p_writer(c_dani_shapiro).  [clausify(1)].
+p_written_by(c_family_history,c_dani_shapiro).  [clausify(1)].
+p_novel(c_family_history).  [clausify(1)].
+p_written_in(c_family_history,c_yr2003).  [clausify(1)].
+p_podcast(c_family_secrets).  [clausify(1)].
+p_created_by(c_family_secrets,c_dani_shapiro).  [clausify(1)].
+p_city(c_boston).  [clausify(1)].
+p_located_in(c_boston,c_america).  [clausify(1)].
+c_america != c_boston.  [assumption].
+c_america != c_dani_shapiro.  [assumption].
+c_america != c_family_history.  [assumption].
+c_america != c_family_secrets.  [assumption].
+c_america != c_yr2003.  [assumption].
+c_boston != c_dani_shapiro.  [assumption].
+c_boston != c_family_history.  [assumption].
+c_boston != c_family_secrets.  [assumption].
+c_boston != c_yr2003.  [assumption].
+c_dani_shapiro != c_family_history.  [assumption].
+c_dani_shapiro != c_family_secrets.  [assumption].
+c_dani_shapiro != c_yr2003.  [assumption].
+c_family_history != c_family_secrets.  [assumption].
+c_family_history != c_yr2003.  [assumption].
+c_family_secrets != c_yr2003.  [assumption].
+p_novel(c_family_secrets).  [deny(2)].
 end_of_list.
 
 formulas(demodulators).
@@ -56,24 +85,45 @@ end_of_list.
 
 ============================== PREDICATE ELIMINATION =================
 
-Eliminating p_leap_straight_into_air/1
-3 -p_leap_straight_into_air(x) | p_activate(x,c_leg_muscle).  [clausify(1)].
-4 -p_can_do(x,c_jump_shot) | p_leap_straight_into_air(x).  [clausify(1)].
-Derived: p_activate(x,c_leg_muscle) | -p_can_do(x,c_jump_shot).  [resolve(3,a,4,b)].
+Eliminating p_podcast/1
+3 p_podcast(c_family_secrets).  [clausify(1)].
+4 -p_podcast(x) | -p_novel(x).  [clausify(1)].
+Derived: -p_novel(c_family_secrets).  [resolve(3,a,4,a)].
+
+Eliminating p_born_in/2
+
+Eliminating p_written_by/2
+5 p_written_by(c_family_history,c_dani_shapiro).  [clausify(1)].
+6 -p_novel(x) | -p_written_by(x,y) | p_writes_novel(y).  [clausify(1)].
+Derived: -p_novel(c_family_history) | p_writes_novel(c_dani_shapiro).  [resolve(5,a,6,b)].
+
+Eliminating p_american/1
+
+Eliminating p_writer/1
+
+Eliminating p_written_in/2
+
+Eliminating p_created_by/2
+
+Eliminating p_city/1
+
+Eliminating p_located_in/2
+
+Eliminating p_writes_novel/1
 
 ============================== end predicate elimination =============
 
 Auto_denials:
-  % assign(max_proofs, 6).  % (Horn set with more than one neg. clause)
+  % assign(max_proofs, 16).  % (Horn set with more than one neg. clause)
 
 WARNING, because some of the denials share constants,
 some of the denials or their descendents may be subsumed,
 preventing the target number of proofs from being found.
-The shared constants are:  c_jump_shot, c_yuri, c_leg_muscle.
+The shared constants are:  c_yr2003, c_family_secrets, c_family_history, c_dani_shapiro, c_boston, c_america.
 
 Term ordering decisions:
-Predicate symbol precedence:  predicate_order([ =, p_basketball_player, p_professional, p_american_national, p_can_do, p_activate ]).
-Function symbol precedence:  function_order([ c_jump_shot, c_leg_muscle, c_yuri, c1 ]).
+Predicate symbol precedence:  predicate_order([ =, p_novel ]).
+Function symbol precedence:  function_order([ c_family_history, c_family_secrets, c_america, c_boston, c_dani_shapiro, c_yr2003 ]).
 After inverse_order:  (no changes).
 Unfolding symbols: (none).
 
@@ -84,22 +134,56 @@ Auto_inference settings:
     % set(ur_resolution) -> set(pos_ur_resolution).
     % set(ur_resolution) -> set(neg_ur_resolution).
 
-Auto_process settings:
-  % set(unit_deletion).  % (Horn set with negative nonunits)
+Auto_process settings:  (no changes).
 
-kept:      5 p_professional(c1).  [clausify(1)].
-kept:      6 p_basketball_player(c1).  [clausify(1)].
-kept:      7 -p_american_national(c1).  [clausify(1)].
-kept:      8 -p_professional(x) | -p_basketball_player(x) | p_can_do(x,c_jump_shot).  [clausify(1)].
-kept:      9 -p_activate(c_yuri,c_leg_muscle).  [clausify(1)].
-           10 c_jump_shot != c_leg_muscle.  [assumption].
-kept:      11 c_leg_muscle != c_jump_shot.  [copy(10),flip(a)].
-           12 c_jump_shot != c_yuri.  [assumption].
-kept:      13 c_yuri != c_jump_shot.  [copy(12),flip(a)].
-           14 c_leg_muscle != c_yuri.  [assumption].
-kept:      15 c_yuri != c_leg_muscle.  [copy(14),flip(a)].
-kept:      16 -p_american_national(c_yuri) | -p_professional(c_yuri) | -p_basketball_player(c_yuri).  [deny(2)].
-kept:      17 p_activate(x,c_leg_muscle) | -p_can_do(x,c_jump_shot).  [resolve(3,a,4,b)].
+kept:      7 p_novel(c_family_history).  [clausify(1)].
+           8 c_america != c_boston.  [assumption].
+kept:      9 c_boston != c_america.  [copy(8),flip(a)].
+           10 c_america != c_dani_shapiro.  [assumption].
+kept:      11 c_dani_shapiro != c_america.  [copy(10),flip(a)].
+kept:      12 c_america != c_family_history.  [assumption].
+kept:      13 c_america != c_family_secrets.  [assumption].
+           14 c_america != c_yr2003.  [assumption].
+kept:      15 c_yr2003 != c_america.  [copy(14),flip(a)].
+           16 c_boston != c_dani_shapiro.  [assumption].
+kept:      17 c_dani_shapiro != c_boston.  [copy(16),flip(a)].
+kept:      18 c_boston != c_family_history.  [assumption].
+kept:      19 c_boston != c_family_secrets.  [assumption].
+           20 c_boston != c_yr2003.  [assumption].
+kept:      21 c_yr2003 != c_boston.  [copy(20),flip(a)].
+kept:      22 c_dani_shapiro != c_family_history.  [assumption].
+kept:      23 c_dani_shapiro != c_family_secrets.  [assumption].
+           24 c_dani_shapiro != c_yr2003.  [assumption].
+kept:      25 c_yr2003 != c_dani_shapiro.  [copy(24),flip(a)].
+           26 c_family_history != c_family_secrets.  [assumption].
+kept:      27 c_family_secrets != c_family_history.  [copy(26),flip(a)].
+           28 c_family_history != c_yr2003.  [assumption].
+kept:      29 c_yr2003 != c_family_history.  [copy(28),flip(a)].
+           30 c_family_secrets != c_yr2003.  [assumption].
+kept:      31 c_yr2003 != c_family_secrets.  [copy(30),flip(a)].
+kept:      32 p_novel(c_family_secrets).  [deny(2)].
+kept:      33 -p_novel(c_family_secrets).  [resolve(3,a,4,a)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 7.
+% Level of proof is 3.
+% Maximum clause weight is 2.000.
+% Given clauses 0.
+
+1 (all v_x (p_podcast(v_x) -> -p_novel(v_x))) & (all v_x ((exists v_y (p_born_in(v_x,v_y) & p_city(v_y) & p_located_in(v_y,c_america))) -> p_american(v_x))) & (all v_x all v_y (p_novel(v_x) & p_written_by(v_x,v_y) -> p_writes_novel(v_y))) & p_american(c_dani_shapiro) & p_writer(c_dani_shapiro) & p_written_by(c_family_history,c_dani_shapiro) & p_novel(c_family_history) & p_written_in(c_family_history,c_yr2003) & p_podcast(c_family_secrets) & p_created_by(c_family_secrets,c_dani_shapiro) & p_city(c_boston) & p_located_in(c_boston,c_america) # label(non_clause).  [assumption].
+2 -p_novel(c_family_secrets) # label(non_clause) # label(goal).  [goal].
+3 p_podcast(c_family_secrets).  [clausify(1)].
+4 -p_podcast(x) | -p_novel(x).  [clausify(1)].
+32 p_novel(c_family_secrets).  [deny(2)].
+33 -p_novel(c_family_secrets).  [resolve(3,a,4,a)].
+34 $F.  [resolve(33,a,32,a)].
+
+============================== end of proof ==========================
+
+% Disable descendants (x means already disabled):
+ 0x 4x 33
 
 ============================== end of process initial clauses ========
 
@@ -111,16 +195,23 @@ formulas(usable).
 end_of_list.
 
 formulas(sos).
-5 p_professional(c1).  [clausify(1)].
-6 p_basketball_player(c1).  [clausify(1)].
-7 -p_american_national(c1).  [clausify(1)].
-8 -p_professional(x) | -p_basketball_player(x) | p_can_do(x,c_jump_shot).  [clausify(1)].
-9 -p_activate(c_yuri,c_leg_muscle).  [clausify(1)].
-11 c_leg_muscle != c_jump_shot.  [copy(10),flip(a)].
-13 c_yuri != c_jump_shot.  [copy(12),flip(a)].
-15 c_yuri != c_leg_muscle.  [copy(14),flip(a)].
-16 -p_american_national(c_yuri) | -p_professional(c_yuri) | -p_basketball_player(c_yuri).  [deny(2)].
-17 p_activate(x,c_leg_muscle) | -p_can_do(x,c_jump_shot).  [resolve(3,a,4,b)].
+7 p_novel(c_family_history).  [clausify(1)].
+9 c_boston != c_america.  [copy(8),flip(a)].
+11 c_dani_shapiro != c_america.  [copy(10),flip(a)].
+12 c_america != c_family_history.  [assumption].
+13 c_america != c_family_secrets.  [assumption].
+15 c_yr2003 != c_america.  [copy(14),flip(a)].
+17 c_dani_shapiro != c_boston.  [copy(16),flip(a)].
+18 c_boston != c_family_history.  [assumption].
+19 c_boston != c_family_secrets.  [assumption].
+21 c_yr2003 != c_boston.  [copy(20),flip(a)].
+22 c_dani_shapiro != c_family_history.  [assumption].
+23 c_dani_shapiro != c_family_secrets.  [assumption].
+25 c_yr2003 != c_dani_shapiro.  [copy(24),flip(a)].
+27 c_family_secrets != c_family_history.  [copy(26),flip(a)].
+29 c_yr2003 != c_family_history.  [copy(28),flip(a)].
+31 c_yr2003 != c_family_secrets.  [copy(30),flip(a)].
+32 p_novel(c_family_secrets).  [deny(2)].
 end_of_list.
 
 formulas(demodulators).
@@ -132,45 +223,51 @@ end_of_list.
 
 % Starting search at 0.00 seconds.
 
-given #1 (I,wt=2): 5 p_professional(c1).  [clausify(1)].
+given #1 (I,wt=2): 7 p_novel(c_family_history).  [clausify(1)].
 
-given #2 (I,wt=2): 6 p_basketball_player(c1).  [clausify(1)].
+given #2 (I,wt=3): 9 c_boston != c_america.  [copy(8),flip(a)].
 
-given #3 (I,wt=2): 7 -p_american_national(c1).  [clausify(1)].
+given #3 (I,wt=3): 11 c_dani_shapiro != c_america.  [copy(10),flip(a)].
 
-given #4 (I,wt=7): 8 -p_professional(x) | -p_basketball_player(x) | p_can_do(x,c_jump_shot).  [clausify(1)].
+given #4 (I,wt=3): 12 c_america != c_family_history.  [assumption].
 
-given #5 (I,wt=3): 9 -p_activate(c_yuri,c_leg_muscle).  [clausify(1)].
+given #5 (I,wt=3): 13 c_america != c_family_secrets.  [assumption].
 
-given #6 (I,wt=3): 11 c_leg_muscle != c_jump_shot.  [copy(10),flip(a)].
+given #6 (I,wt=3): 15 c_yr2003 != c_america.  [copy(14),flip(a)].
 
-given #7 (I,wt=3): 13 c_yuri != c_jump_shot.  [copy(12),flip(a)].
+given #7 (I,wt=3): 17 c_dani_shapiro != c_boston.  [copy(16),flip(a)].
 
-given #8 (I,wt=3): 15 c_yuri != c_leg_muscle.  [copy(14),flip(a)].
+given #8 (I,wt=3): 18 c_boston != c_family_history.  [assumption].
 
-given #9 (I,wt=6): 16 -p_american_national(c_yuri) | -p_professional(c_yuri) | -p_basketball_player(c_yuri).  [deny(2)].
+given #9 (I,wt=3): 19 c_boston != c_family_secrets.  [assumption].
 
-given #10 (I,wt=6): 17 p_activate(x,c_leg_muscle) | -p_can_do(x,c_jump_shot).  [resolve(3,a,4,b)].
+given #10 (I,wt=3): 21 c_yr2003 != c_boston.  [copy(20),flip(a)].
 
-given #11 (A,wt=3): 18 p_can_do(c1,c_jump_shot).  [ur(8,a,5,a,b,6,a)].
+given #11 (I,wt=3): 22 c_dani_shapiro != c_family_history.  [assumption].
 
-given #12 (F,wt=3): 19 -p_can_do(c_yuri,c_jump_shot).  [resolve(17,a,9,a)].
+given #12 (I,wt=3): 23 c_dani_shapiro != c_family_secrets.  [assumption].
 
-given #13 (F,wt=4): 21 -p_professional(c_yuri) | -p_basketball_player(c_yuri).  [resolve(19,a,8,c)].
+given #13 (I,wt=3): 25 c_yr2003 != c_dani_shapiro.  [copy(24),flip(a)].
 
-given #14 (T,wt=3): 20 p_activate(c1,c_leg_muscle).  [ur(17,b,18,a)].
+given #14 (I,wt=3): 27 c_family_secrets != c_family_history.  [copy(26),flip(a)].
+
+given #15 (I,wt=3): 29 c_yr2003 != c_family_history.  [copy(28),flip(a)].
+
+given #16 (I,wt=3): 31 c_yr2003 != c_family_secrets.  [copy(30),flip(a)].
+
+given #17 (I,wt=2): 32 p_novel(c_family_secrets).  [deny(2)].
 
 ============================== STATISTICS ============================
 
-Given=14. Generated=15. Kept=14. proofs=0.
-Usable=13. Sos=0. Demods=0. Limbo=0, Disabled=13. Hints=0.
+Given=17. Generated=18. Kept=18. proofs=1.
+Usable=17. Sos=0. Demods=0. Limbo=0, Disabled=31. Hints=0.
 Kept_by_rule=0, Deleted_by_rule=0.
-Forward_subsumed=1. Back_subsumed=1.
+Forward_subsumed=0. Back_subsumed=0.
 Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
 New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
 Demod_attempts=0. Demod_rewrites=0.
 Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
-Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=5.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
 Megabytes=0.06.
 User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
 
@@ -180,14 +277,15 @@ User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
 
 SEARCH FAILED
 
-Exiting with failure.
+Exiting with 1 proof.
 
-Process 29726 exit (sos_empty) Sat Oct 17 13:02:00 2026
+Process 47309 exit (sos_empty) Fri Oct 23 14:35:08 2026
 
 WARNING: denials share constants (see output).
 
+-------- Proof 1 -------- 
 
 SEARCH FAILED
 
------- process 29726 exit (sos_empty) ------
+------ process 47309 exit (sos_empty) ------
 

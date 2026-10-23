@@ -1,11 +1,13 @@
 import argparse
 import hashlib
+import importlib.metadata
 import json
+import re
 import time
 from pathlib import Path
 from typing import Literal
 
-from ollama import chat
+from ollama import chat, show
 from pydantic import BaseModel
 
 
@@ -14,6 +16,7 @@ TEMPERATURE = 0
 SEED = 42
 NUM_CTX = 4096
 NUM_PREDICT = 32
+MODEL_BLOB_RE = re.compile(r"^FROM .*/sha256-([0-9a-f]{64})$", re.MULTILINE)
 
 ROOT = Path(__file__).resolve().parent.parent
 DATASET_PATH = ROOT / "data" / "folio50.jsonl"
@@ -21,24 +24,21 @@ RESULTS_PATH = ROOT / "results" / "qwen3_8b_folio50.jsonl"
 
 
 class ModelAnswer(BaseModel):
-    label: Literal["True", "False", "Uncertain"]
+    label: Literal["True", "False"]
 
 
 SYSTEM_PROMPT = """
-You are solving logical reasoning problems.
+You are solving a two-class logical reasoning problem.
 
 You will receive a set of premises and a conclusion.
 
-Classify the conclusion as exactly one of:
+Every example has a known answer. Classify the conclusion as exactly one of:
 
 True:
 The conclusion logically follows from the premises.
 
 False:
 The negation of the conclusion logically follows from the premises.
-
-Uncertain:
-Neither the conclusion nor its negation logically follows from the premises.
 
 Use only the information contained in the premises.
 Do not rely on outside knowledge.
@@ -60,7 +60,7 @@ Premises:
 Conclusion:
 {example["conclusion"]}
 
-Determine whether the conclusion is True, False, or Uncertain.
+Determine whether the conclusion is True or False.
 """.strip()
 
 
@@ -81,6 +81,17 @@ def dataset_sha256() -> str:
         for chunk in iter(lambda: f.read(64 * 1024), b""):
             digest.update(chunk)
     return digest.hexdigest()
+
+
+def model_runtime_metadata() -> dict:
+    details = show(MODEL)
+    blob_match = MODEL_BLOB_RE.search(details.modelfile or "")
+    return {
+        "ollama_python_version": importlib.metadata.version("ollama"),
+        "model_blob_sha256": blob_match.group(1) if blob_match else None,
+        "model_parameter_size": details.details.parameter_size,
+        "model_quantization": details.details.quantization_level,
+    }
 
 
 def load_existing_results() -> list[dict]:
@@ -137,7 +148,7 @@ def print_summary(results: list[dict]) -> None:
 
 def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
-        description="Run Qwen3-8B on the deterministic curated FOLIO-50 subset."
+        description="Run Qwen3-8B on the deterministic two-class FOLIO-50 subset."
     )
     parser.add_argument(
         "--limit",
@@ -154,6 +165,11 @@ def parse_args() -> argparse.Namespace:
         type=int,
         help="Override Ollama GPU layers (default: let Ollama choose).",
     )
+    parser.add_argument(
+        "--restart",
+        action="store_true",
+        help="Start a fresh run by replacing the current primary results file.",
+    )
     return parser.parse_args()
 
 
@@ -161,7 +177,22 @@ def main() -> None:
     args = parse_args()
     dataset = load_dataset()
     dataset_hash = dataset_sha256()
+    runtime_metadata = model_runtime_metadata()
+    if args.restart and RESULTS_PATH.exists():
+        RESULTS_PATH.unlink()
     existing_results = load_existing_results()
+
+    stale = [
+        result["id"]
+        for result in existing_results
+        if result.get("dataset_sha256") != dataset_hash
+    ]
+    if stale:
+        raise RuntimeError(
+            "Existing results belong to a different dataset. "
+            "Use --restart after preserving them; mismatched IDs: "
+            + ", ".join(stale[:5])
+        )
 
     completed_ids = {
         result["id"]
@@ -248,6 +279,7 @@ def main() -> None:
                 "prompt": prompt,
                 "duration_seconds": round(duration, 4),
                 "model": MODEL,
+                **runtime_metadata,
                 "dataset_sha256": dataset_hash,
                 "temperature": TEMPERATURE,
                 "seed": SEED,
@@ -255,6 +287,7 @@ def main() -> None:
                 "num_ctx": NUM_CTX,
                 "num_predict": NUM_PREDICT,
                 "num_gpu": args.num_gpu,
+                "prompt_mode": "two_class_known_labels",
             }
 
             save_result(result)

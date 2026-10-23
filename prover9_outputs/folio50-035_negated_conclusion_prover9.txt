@@ -1,19 +1,33 @@
 ============================== Prover9 ===============================
 Prover9 (64) version 2009-11A, November 2009.
-Process 29693 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
-Sat Oct 17 13:02:00 2026
+Process 47276 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:08 2026
 The command was "prover9 -t 5".
 ============================== end of head ===========================
 
 ============================== INPUT =================================
 
 formulas(assumptions).
-(all v_x (p_hydrocarbon(v_x) -> p_organic_compound(v_x))) & (all v_x (p_alkane(v_x) -> p_hydrocarbon(v_x))) & (all v_x (p_organic_compound(v_x) -> p_chemical_compound(v_x))) & (all v_x (p_organic_compound(v_x) -> p_contain(v_x,c_carbon))) & (all v_x (p_chemical_compound(v_x) -> -(exists v_y (p_contain(v_x,v_y) & (all v_z (p_contain(v_x,v_z) -> v_z = v_y)))))) & -((p_chemical_compound(c_mixture) | (exists v_y (p_contain(c_mixture,v_y) & (all v_z (p_contain(c_mixture,v_z) -> v_z = v_y))))) & -(p_chemical_compound(c_mixture) & (exists v_y (p_contain(c_mixture,v_y) & (all v_z (p_contain(c_mixture,v_z) -> v_z = v_y)))))).
-c_carbon != c_mixture.
+p_publishing_house(c_new_vessel_press) & p_specializes_in_translating_into_english(c_new_vessel_press,c_foreign_literature) & (all v_x (p_book(v_x) & p_published_by(v_x,c_new_vessel_press) -> p_in(v_x,c_english))) & p_book(c_neapolitan_chronicles) & p_published_by(c_neapolitan_chronicles,c_new_vessel_press) & p_translated_from(c_neapolitan_chronicles,c_italian) & p_book(c_palace_of_flies) & p_published_by(c_palace_of_flies,c_new_vessel_press).
+c_english != c_foreign_literature.
+c_english != c_italian.
+c_english != c_neapolitan_chronicles.
+c_english != c_new_vessel_press.
+c_english != c_palace_of_flies.
+c_foreign_literature != c_italian.
+c_foreign_literature != c_neapolitan_chronicles.
+c_foreign_literature != c_new_vessel_press.
+c_foreign_literature != c_palace_of_flies.
+c_italian != c_neapolitan_chronicles.
+c_italian != c_new_vessel_press.
+c_italian != c_palace_of_flies.
+c_neapolitan_chronicles != c_new_vessel_press.
+c_neapolitan_chronicles != c_palace_of_flies.
+c_new_vessel_press != c_palace_of_flies.
 end_of_list.
 
 formulas(goals).
--(p_alkane(c_mixture) & p_contain(c_mixture,c_carbon)).
+-(p_book(c_neapolitan_chronicles) & p_in(c_neapolitan_chronicles,c_english)).
 end_of_list.
 
 ============================== end of input ==========================
@@ -23,8 +37,8 @@ end_of_list.
 ============================== PROCESS NON-CLAUSAL FORMULAS ==========
 
 % Formulas that are not ordinary clauses:
-1 (all v_x (p_hydrocarbon(v_x) -> p_organic_compound(v_x))) & (all v_x (p_alkane(v_x) -> p_hydrocarbon(v_x))) & (all v_x (p_organic_compound(v_x) -> p_chemical_compound(v_x))) & (all v_x (p_organic_compound(v_x) -> p_contain(v_x,c_carbon))) & (all v_x (p_chemical_compound(v_x) -> -(exists v_y (p_contain(v_x,v_y) & (all v_z (p_contain(v_x,v_z) -> v_z = v_y)))))) & -((p_chemical_compound(c_mixture) | (exists v_y (p_contain(c_mixture,v_y) & (all v_z (p_contain(c_mixture,v_z) -> v_z = v_y))))) & -(p_chemical_compound(c_mixture) & (exists v_y (p_contain(c_mixture,v_y) & (all v_z (p_contain(c_mixture,v_z) -> v_z = v_y)))))) # label(non_clause).  [assumption].
-2 -(p_alkane(c_mixture) & p_contain(c_mixture,c_carbon)) # label(non_clause) # label(goal).  [goal].
+1 p_publishing_house(c_new_vessel_press) & p_specializes_in_translating_into_english(c_new_vessel_press,c_foreign_literature) & (all v_x (p_book(v_x) & p_published_by(v_x,c_new_vessel_press) -> p_in(v_x,c_english))) & p_book(c_neapolitan_chronicles) & p_published_by(c_neapolitan_chronicles,c_new_vessel_press) & p_translated_from(c_neapolitan_chronicles,c_italian) & p_book(c_palace_of_flies) & p_published_by(c_palace_of_flies,c_new_vessel_press) # label(non_clause).  [assumption].
+2 -(p_book(c_neapolitan_chronicles) & p_in(c_neapolitan_chronicles,c_english)) # label(non_clause) # label(goal).  [goal].
 
 ============================== end of process non-clausal formulas ===
 
@@ -36,23 +50,31 @@ formulas(usable).
 end_of_list.
 
 formulas(sos).
--p_hydrocarbon(x) | p_organic_compound(x).  [clausify(1)].
--p_alkane(x) | p_hydrocarbon(x).  [clausify(1)].
--p_organic_compound(x) | p_chemical_compound(x).  [clausify(1)].
--p_organic_compound(x) | p_contain(x,c_carbon).  [clausify(1)].
--p_chemical_compound(x) | -p_contain(x,y) | p_contain(x,f1(x,y)).  [clausify(1)].
--p_chemical_compound(x) | -p_contain(x,y) | f1(x,y) != y.  [clausify(1)].
--p_chemical_compound(c_mixture) | p_contain(c_mixture,c1).  [clausify(1)].
--p_chemical_compound(c_mixture) | -p_contain(c_mixture,x) | x = c1.  [clausify(1)].
--p_contain(c_mixture,x) | p_contain(c_mixture,f2(x)) | p_chemical_compound(c_mixture).  [clausify(1)].
--p_contain(c_mixture,x) | p_contain(c_mixture,f2(x)) | p_contain(c_mixture,c1).  [clausify(1)].
--p_contain(c_mixture,x) | p_contain(c_mixture,f2(x)) | -p_contain(c_mixture,y) | y = c1.  [clausify(1)].
--p_contain(c_mixture,x) | f2(x) != x | p_chemical_compound(c_mixture).  [clausify(1)].
--p_contain(c_mixture,x) | f2(x) != x | p_contain(c_mixture,c1).  [clausify(1)].
--p_contain(c_mixture,x) | f2(x) != x | -p_contain(c_mixture,y) | y = c1.  [clausify(1)].
-c_carbon != c_mixture.  [assumption].
-p_alkane(c_mixture).  [deny(2)].
-p_contain(c_mixture,c_carbon).  [deny(2)].
+p_publishing_house(c_new_vessel_press).  [clausify(1)].
+p_specializes_in_translating_into_english(c_new_vessel_press,c_foreign_literature).  [clausify(1)].
+-p_book(x) | -p_published_by(x,c_new_vessel_press) | p_in(x,c_english).  [clausify(1)].
+p_book(c_neapolitan_chronicles).  [clausify(1)].
+p_published_by(c_neapolitan_chronicles,c_new_vessel_press).  [clausify(1)].
+p_translated_from(c_neapolitan_chronicles,c_italian).  [clausify(1)].
+p_book(c_palace_of_flies).  [clausify(1)].
+p_published_by(c_palace_of_flies,c_new_vessel_press).  [clausify(1)].
+c_english != c_foreign_literature.  [assumption].
+c_english != c_italian.  [assumption].
+c_english != c_neapolitan_chronicles.  [assumption].
+c_english != c_new_vessel_press.  [assumption].
+c_english != c_palace_of_flies.  [assumption].
+c_foreign_literature != c_italian.  [assumption].
+c_foreign_literature != c_neapolitan_chronicles.  [assumption].
+c_foreign_literature != c_new_vessel_press.  [assumption].
+c_foreign_literature != c_palace_of_flies.  [assumption].
+c_italian != c_neapolitan_chronicles.  [assumption].
+c_italian != c_new_vessel_press.  [assumption].
+c_italian != c_palace_of_flies.  [assumption].
+c_neapolitan_chronicles != c_new_vessel_press.  [assumption].
+c_neapolitan_chronicles != c_palace_of_flies.  [assumption].
+c_new_vessel_press != c_palace_of_flies.  [assumption].
+p_book(c_neapolitan_chronicles).  [deny(2)].
+p_in(c_neapolitan_chronicles,c_english).  [deny(2)].
 end_of_list.
 
 formulas(demodulators).
@@ -60,64 +82,78 @@ end_of_list.
 
 ============================== PREDICATE ELIMINATION =================
 
-Eliminating p_hydrocarbon/1
-3 -p_alkane(x) | p_hydrocarbon(x).  [clausify(1)].
-4 -p_hydrocarbon(x) | p_organic_compound(x).  [clausify(1)].
-Derived: -p_alkane(x) | p_organic_compound(x).  [resolve(3,b,4,a)].
+Eliminating p_publishing_house/1
 
-Eliminating p_organic_compound/1
-5 -p_alkane(x) | p_organic_compound(x).  [resolve(3,b,4,a)].
-6 -p_organic_compound(x) | p_chemical_compound(x).  [clausify(1)].
-7 -p_organic_compound(x) | p_contain(x,c_carbon).  [clausify(1)].
-Derived: -p_alkane(x) | p_chemical_compound(x).  [resolve(5,b,6,a)].
-Derived: -p_alkane(x) | p_contain(x,c_carbon).  [resolve(5,b,7,a)].
+Eliminating p_specializes_in_translating_into_english/2
 
-Eliminating p_alkane/1
-8 -p_alkane(x) | p_chemical_compound(x).  [resolve(5,b,6,a)].
-9 p_alkane(c_mixture).  [deny(2)].
-Derived: p_chemical_compound(c_mixture).  [resolve(8,a,9,a)].
-10 -p_alkane(x) | p_contain(x,c_carbon).  [resolve(5,b,7,a)].
-Derived: p_contain(c_mixture,c_carbon).  [resolve(10,a,9,a)].
+Eliminating p_book/1
+3 p_book(c_neapolitan_chronicles).  [clausify(1)].
+4 -p_book(x) | -p_published_by(x,c_new_vessel_press) | p_in(x,c_english).  [clausify(1)].
+5 p_book(c_palace_of_flies).  [clausify(1)].
+Derived: -p_published_by(c_palace_of_flies,c_new_vessel_press) | p_in(c_palace_of_flies,c_english).  [resolve(5,a,4,a)].
+6 p_book(c_neapolitan_chronicles).  [deny(2)].
+
+Eliminating p_translated_from/2
+
+Eliminating p_in/2
+
+Eliminating p_published_by/2
 
 ============================== end predicate elimination =============
 
-Auto_denials:  (non-Horn, no changes).
+Auto_denials:
+  % assign(max_proofs, 15).  % (Horn set with more than one neg. clause)
+
+WARNING, because some of the denials share constants,
+some of the denials or their descendents may be subsumed,
+preventing the target number of proofs from being found.
+The shared constants are:  c_palace_of_flies, c_new_vessel_press, c_neapolitan_chronicles, c_italian, c_foreign_literature, c_english.
 
 Term ordering decisions:
-Predicate symbol precedence:  predicate_order([ =, p_chemical_compound, p_contain ]).
-Function symbol precedence:  function_order([ c_mixture, c_carbon, c1, f1, f2 ]).
+Predicate symbol precedence:  predicate_order([ = ]).
+Function symbol precedence:  function_order([ c_english, c_foreign_literature, c_italian, c_neapolitan_chronicles, c_new_vessel_press, c_palace_of_flies ]).
 After inverse_order:  (no changes).
 Unfolding symbols: (none).
 
 Auto_inference settings:
-  % set(paramodulation).  % (positive equality literals)
-  % set(binary_resolution).  % (non-Horn)
-  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
+  % set(neg_binary_resolution).  % (HNE depth_diff=0)
+  % clear(ordered_res).  % (HNE depth_diff=0)
+  % set(ur_resolution).  % (HNE depth_diff=0)
+    % set(ur_resolution) -> set(pos_ur_resolution).
+    % set(ur_resolution) -> set(neg_ur_resolution).
 
-Auto_process settings:
-  % set(factor).  % (non-Horn)
-  % set(unit_deletion).  % (non-Horn)
+Auto_process settings:  (no changes).
 
-kept:      11 -p_chemical_compound(x) | -p_contain(x,y) | p_contain(x,f1(x,y)).  [clausify(1)].
-kept:      12 -p_chemical_compound(x) | -p_contain(x,y) | f1(x,y) != y.  [clausify(1)].
-kept:      13 -p_chemical_compound(c_mixture) | p_contain(c_mixture,c1).  [clausify(1)].
-           14 -p_chemical_compound(c_mixture) | -p_contain(c_mixture,x) | x = c1.  [clausify(1)].
-kept:      15 -p_chemical_compound(c_mixture) | -p_contain(c_mixture,x) | c1 = x.  [copy(14),flip(c)].
-kept:      16 -p_contain(c_mixture,x) | p_contain(c_mixture,f2(x)) | p_chemical_compound(c_mixture).  [clausify(1)].
-kept:      17 -p_contain(c_mixture,x) | p_contain(c_mixture,f2(x)) | p_contain(c_mixture,c1).  [clausify(1)].
-           18 -p_contain(c_mixture,x) | p_contain(c_mixture,f2(x)) | -p_contain(c_mixture,y) | y = c1.  [clausify(1)].
-kept:      19 -p_contain(c_mixture,x) | p_contain(c_mixture,f2(x)) | -p_contain(c_mixture,y) | c1 = y.  [copy(18),flip(d)].
-kept:      20 -p_contain(c_mixture,x) | f2(x) != x | p_chemical_compound(c_mixture).  [clausify(1)].
-kept:      21 -p_contain(c_mixture,x) | f2(x) != x | p_contain(c_mixture,c1).  [clausify(1)].
-           22 -p_contain(c_mixture,x) | f2(x) != x | -p_contain(c_mixture,y) | y = c1.  [clausify(1)].
-kept:      23 -p_contain(c_mixture,x) | f2(x) != x | -p_contain(c_mixture,y) | c1 = y.  [copy(22),flip(d)].
-kept:      24 c_carbon != c_mixture.  [assumption].
-kept:      25 p_contain(c_mixture,c_carbon).  [deny(2)].
-kept:      26 p_chemical_compound(c_mixture).  [resolve(8,a,9,a)].
-kept:      27 -p_contain(c_mixture,x) | p_contain(c_mixture,f2(x)) | c1 = x.  [factor(19,a,c)].
-kept:      28 -p_contain(c_mixture,x) | f2(x) != x | c1 = x.  [factor(23,a,c)].
-kept:      29 -p_contain(c_mixture,x) | c1 = x.  [back_unit_del(15),unit_del(a,26)].
-kept:      30 p_contain(c_mixture,c1).  [back_unit_del(13),unit_del(a,26)].
+           7 c_english != c_foreign_literature.  [assumption].
+kept:      8 c_foreign_literature != c_english.  [copy(7),flip(a)].
+           9 c_english != c_italian.  [assumption].
+kept:      10 c_italian != c_english.  [copy(9),flip(a)].
+           11 c_english != c_neapolitan_chronicles.  [assumption].
+kept:      12 c_neapolitan_chronicles != c_english.  [copy(11),flip(a)].
+           13 c_english != c_new_vessel_press.  [assumption].
+kept:      14 c_new_vessel_press != c_english.  [copy(13),flip(a)].
+           15 c_english != c_palace_of_flies.  [assumption].
+kept:      16 c_palace_of_flies != c_english.  [copy(15),flip(a)].
+           17 c_foreign_literature != c_italian.  [assumption].
+kept:      18 c_italian != c_foreign_literature.  [copy(17),flip(a)].
+           19 c_foreign_literature != c_neapolitan_chronicles.  [assumption].
+kept:      20 c_neapolitan_chronicles != c_foreign_literature.  [copy(19),flip(a)].
+           21 c_foreign_literature != c_new_vessel_press.  [assumption].
+kept:      22 c_new_vessel_press != c_foreign_literature.  [copy(21),flip(a)].
+           23 c_foreign_literature != c_palace_of_flies.  [assumption].
+kept:      24 c_palace_of_flies != c_foreign_literature.  [copy(23),flip(a)].
+           25 c_italian != c_neapolitan_chronicles.  [assumption].
+kept:      26 c_neapolitan_chronicles != c_italian.  [copy(25),flip(a)].
+           27 c_italian != c_new_vessel_press.  [assumption].
+kept:      28 c_new_vessel_press != c_italian.  [copy(27),flip(a)].
+           29 c_italian != c_palace_of_flies.  [assumption].
+kept:      30 c_palace_of_flies != c_italian.  [copy(29),flip(a)].
+           31 c_neapolitan_chronicles != c_new_vessel_press.  [assumption].
+kept:      32 c_new_vessel_press != c_neapolitan_chronicles.  [copy(31),flip(a)].
+           33 c_neapolitan_chronicles != c_palace_of_flies.  [assumption].
+kept:      34 c_palace_of_flies != c_neapolitan_chronicles.  [copy(33),flip(a)].
+           35 c_new_vessel_press != c_palace_of_flies.  [assumption].
+kept:      36 c_palace_of_flies != c_new_vessel_press.  [copy(35),flip(a)].
 
 ============================== end of process initial clauses ========
 
@@ -129,13 +165,21 @@ formulas(usable).
 end_of_list.
 
 formulas(sos).
-11 -p_chemical_compound(x) | -p_contain(x,y) | p_contain(x,f1(x,y)).  [clausify(1)].
-12 -p_chemical_compound(x) | -p_contain(x,y) | f1(x,y) != y.  [clausify(1)].
-24 c_carbon != c_mixture.  [assumption].
-25 p_contain(c_mixture,c_carbon).  [deny(2)].
-26 p_chemical_compound(c_mixture).  [resolve(8,a,9,a)].
-29 -p_contain(c_mixture,x) | c1 = x.  [back_unit_del(15),unit_del(a,26)].
-30 p_contain(c_mixture,c1).  [back_unit_del(13),unit_del(a,26)].
+8 c_foreign_literature != c_english.  [copy(7),flip(a)].
+10 c_italian != c_english.  [copy(9),flip(a)].
+12 c_neapolitan_chronicles != c_english.  [copy(11),flip(a)].
+14 c_new_vessel_press != c_english.  [copy(13),flip(a)].
+16 c_palace_of_flies != c_english.  [copy(15),flip(a)].
+18 c_italian != c_foreign_literature.  [copy(17),flip(a)].
+20 c_neapolitan_chronicles != c_foreign_literature.  [copy(19),flip(a)].
+22 c_new_vessel_press != c_foreign_literature.  [copy(21),flip(a)].
+24 c_palace_of_flies != c_foreign_literature.  [copy(23),flip(a)].
+26 c_neapolitan_chronicles != c_italian.  [copy(25),flip(a)].
+28 c_new_vessel_press != c_italian.  [copy(27),flip(a)].
+30 c_palace_of_flies != c_italian.  [copy(29),flip(a)].
+32 c_new_vessel_press != c_neapolitan_chronicles.  [copy(31),flip(a)].
+34 c_palace_of_flies != c_neapolitan_chronicles.  [copy(33),flip(a)].
+36 c_palace_of_flies != c_new_vessel_press.  [copy(35),flip(a)].
 end_of_list.
 
 formulas(demodulators).
@@ -147,83 +191,64 @@ end_of_list.
 
 % Starting search at 0.00 seconds.
 
-given #1 (I,wt=10): 11 -p_chemical_compound(x) | -p_contain(x,y) | p_contain(x,f1(x,y)).  [clausify(1)].
+given #1 (I,wt=3): 8 c_foreign_literature != c_english.  [copy(7),flip(a)].
 
-given #2 (I,wt=10): 12 -p_chemical_compound(x) | -p_contain(x,y) | f1(x,y) != y.  [clausify(1)].
+given #2 (I,wt=3): 10 c_italian != c_english.  [copy(9),flip(a)].
 
-given #3 (I,wt=3): 24 c_carbon != c_mixture.  [assumption].
+given #3 (I,wt=3): 12 c_neapolitan_chronicles != c_english.  [copy(11),flip(a)].
 
-given #4 (I,wt=3): 25 p_contain(c_mixture,c_carbon).  [deny(2)].
+given #4 (I,wt=3): 14 c_new_vessel_press != c_english.  [copy(13),flip(a)].
 
-given #5 (I,wt=2): 26 p_chemical_compound(c_mixture).  [resolve(8,a,9,a)].
+given #5 (I,wt=3): 16 c_palace_of_flies != c_english.  [copy(15),flip(a)].
 
-given #6 (I,wt=6): 29 -p_contain(c_mixture,x) | c1 = x.  [back_unit_del(15),unit_del(a,26)].
+given #6 (I,wt=3): 18 c_italian != c_foreign_literature.  [copy(17),flip(a)].
 
-given #7 (A,wt=5): 31 f1(c_mixture,c_carbon) != c_carbon.  [resolve(25,a,12,b),unit_del(a,26)].
+given #7 (I,wt=3): 20 c_neapolitan_chronicles != c_foreign_literature.  [copy(19),flip(a)].
 
-given #8 (T,wt=3): 33 c1 = c_carbon.  [resolve(29,a,25,a)].
+given #8 (I,wt=3): 22 c_new_vessel_press != c_foreign_literature.  [copy(21),flip(a)].
 
-given #9 (T,wt=5): 32 p_contain(c_mixture,f1(c_mixture,c_carbon)).  [resolve(25,a,11,b),unit_del(a,26)].
+given #9 (I,wt=3): 24 c_palace_of_flies != c_foreign_literature.  [copy(23),flip(a)].
 
-given #10 (T,wt=6): 34 -p_contain(c_mixture,x) | c_carbon = x.  [back_rewrite(29),rewrite([33(3)])].
+given #10 (I,wt=3): 26 c_neapolitan_chronicles != c_italian.  [copy(25),flip(a)].
 
-============================== PROOF =================================
+given #11 (I,wt=3): 28 c_new_vessel_press != c_italian.  [copy(27),flip(a)].
 
-% Proof 1 at 0.00 (+ 0.00) seconds.
-% Length of proof is 20.
-% Level of proof is 8.
-% Maximum clause weight is 10.000.
-% Given clauses 10.
+given #12 (I,wt=3): 30 c_palace_of_flies != c_italian.  [copy(29),flip(a)].
 
-1 (all v_x (p_hydrocarbon(v_x) -> p_organic_compound(v_x))) & (all v_x (p_alkane(v_x) -> p_hydrocarbon(v_x))) & (all v_x (p_organic_compound(v_x) -> p_chemical_compound(v_x))) & (all v_x (p_organic_compound(v_x) -> p_contain(v_x,c_carbon))) & (all v_x (p_chemical_compound(v_x) -> -(exists v_y (p_contain(v_x,v_y) & (all v_z (p_contain(v_x,v_z) -> v_z = v_y)))))) & -((p_chemical_compound(c_mixture) | (exists v_y (p_contain(c_mixture,v_y) & (all v_z (p_contain(c_mixture,v_z) -> v_z = v_y))))) & -(p_chemical_compound(c_mixture) & (exists v_y (p_contain(c_mixture,v_y) & (all v_z (p_contain(c_mixture,v_z) -> v_z = v_y)))))) # label(non_clause).  [assumption].
-2 -(p_alkane(c_mixture) & p_contain(c_mixture,c_carbon)) # label(non_clause) # label(goal).  [goal].
-3 -p_alkane(x) | p_hydrocarbon(x).  [clausify(1)].
-4 -p_hydrocarbon(x) | p_organic_compound(x).  [clausify(1)].
-5 -p_alkane(x) | p_organic_compound(x).  [resolve(3,b,4,a)].
-6 -p_organic_compound(x) | p_chemical_compound(x).  [clausify(1)].
-8 -p_alkane(x) | p_chemical_compound(x).  [resolve(5,b,6,a)].
-9 p_alkane(c_mixture).  [deny(2)].
-11 -p_chemical_compound(x) | -p_contain(x,y) | p_contain(x,f1(x,y)).  [clausify(1)].
-12 -p_chemical_compound(x) | -p_contain(x,y) | f1(x,y) != y.  [clausify(1)].
-14 -p_chemical_compound(c_mixture) | -p_contain(c_mixture,x) | x = c1.  [clausify(1)].
-15 -p_chemical_compound(c_mixture) | -p_contain(c_mixture,x) | c1 = x.  [copy(14),flip(c)].
-25 p_contain(c_mixture,c_carbon).  [deny(2)].
-26 p_chemical_compound(c_mixture).  [resolve(8,a,9,a)].
-29 -p_contain(c_mixture,x) | c1 = x.  [back_unit_del(15),unit_del(a,26)].
-31 f1(c_mixture,c_carbon) != c_carbon.  [resolve(25,a,12,b),unit_del(a,26)].
-32 p_contain(c_mixture,f1(c_mixture,c_carbon)).  [resolve(25,a,11,b),unit_del(a,26)].
-33 c1 = c_carbon.  [resolve(29,a,25,a)].
-34 -p_contain(c_mixture,x) | c_carbon = x.  [back_rewrite(29),rewrite([33(3)])].
-37 $F.  [resolve(34,a,32,a),flip(a),unit_del(a,31)].
+given #13 (I,wt=3): 32 c_new_vessel_press != c_neapolitan_chronicles.  [copy(31),flip(a)].
 
-============================== end of proof ==========================
+given #14 (I,wt=3): 34 c_palace_of_flies != c_neapolitan_chronicles.  [copy(33),flip(a)].
+
+given #15 (I,wt=3): 36 c_palace_of_flies != c_new_vessel_press.  [copy(35),flip(a)].
 
 ============================== STATISTICS ============================
 
-Given=10. Generated=29. Kept=23. proofs=1.
-Usable=9. Sos=2. Demods=1. Limbo=0, Disabled=34. Hints=0.
+Given=15. Generated=15. Kept=15. proofs=0.
+Usable=15. Sos=0. Demods=0. Limbo=0, Disabled=26. Hints=0.
 Kept_by_rule=0, Deleted_by_rule=0.
-Forward_subsumed=5. Back_subsumed=8.
+Forward_subsumed=0. Back_subsumed=0.
 Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
-New_demodulators=1 (0 lex), Back_demodulated=2. Back_unit_deleted=2.
-Demod_attempts=46. Demod_rewrites=2.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+Demod_attempts=0. Demod_rewrites=0.
 Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
-Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=24.
-Megabytes=0.09.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
+Megabytes=0.05.
 User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
 
 ============================== end of statistics =====================
 
 ============================== end of search =========================
 
-THEOREM PROVED
+SEARCH FAILED
 
-Exiting with 1 proof.
+Exiting with failure.
 
-Process 29693 exit (max_proofs) Sat Oct 17 13:02:00 2026
--------- Proof 1 -------- 
+Process 47276 exit (sos_empty) Fri Oct 23 14:35:08 2026
+
+WARNING: denials share constants (see output).
 
-THEOREM PROVED
 
------- process 29693 exit (max_proofs) ------
+SEARCH FAILED
+
+------ process 47276 exit (sos_empty) ------
 

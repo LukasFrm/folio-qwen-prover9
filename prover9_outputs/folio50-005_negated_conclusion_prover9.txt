@@ -1,19 +1,21 @@
 ============================== Prover9 ===============================
 Prover9 (64) version 2009-11A, November 2009.
-Process 29594 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
-Sat Oct 17 13:01:59 2026
+Process 47164 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:07 2026
 The command was "prover9 -t 5".
 ============================== end of head ===========================
 
 ============================== INPUT =================================
 
 formulas(assumptions).
-(all v_x (p_at(v_x,c_mixer) -> p_grand_slam_champion(v_x) | p_oscar_nominated(v_x) & p_actor(v_x))) & (all v_x (p_at(v_x,c_mixer) -> (p_grand_slam_champion(v_x) -> p_professional(v_x) & p_tennis_player(v_x)))) & (all v_x (p_at(v_x,c_mixer) -> (p_oscar_nominated(v_x) & p_actor(v_x) -> p_celebrity(v_x)))) & (all v_x (p_at(v_x,c_mixer) & p_professional(v_x) & p_tennis_player(v_x) -> p_athlete(v_x))) & (all v_x (p_at(v_x,c_mixer) & p_celebrity(v_x) -> p_well_paid(v_x))) & (all v_x (p_at(v_x,c_mixer) & p_athlete(v_x) -> p_famous(v_x))) & (all v_x (p_at(v_x,c_mixer) & p_well_paid(v_x) -> (exists v_y (p_tax_haven(v_y) & p_live_in(v_x,v_y))))) & p_at(c_djokovic,c_mixer) & (p_famous(c_djokovic) & p_athlete(c_djokovic) -> p_well_paid(c_djokovic)).
-c_djokovic != c_mixer.
+(all v_x (p_alien(v_x) -> p_extraterrestrial(v_x))) & (all v_x (p_from(v_x,c_mars) -> p_alien(v_x))) & (all v_x (p_extraterrestrial(v_x) -> -p_human(v_x))) & (all v_x (p_highly_intelligent_being(v_x) & p_from(v_x,c_earth) -> p_human(v_x))) & p_highly_intelligent_being(c_marvin) & -((p_from(c_marvin,c_earth) | p_from(c_marvin,c_mars)) & -(p_from(c_marvin,c_earth) & p_from(c_marvin,c_mars))) & (-p_from(c_marvin,c_earth) -> p_extraterrestrial(c_marvin)).
+c_earth != c_mars.
+c_earth != c_marvin.
+c_mars != c_marvin.
 end_of_list.
 
 formulas(goals).
--p_grand_slam_champion(c_djokovic).
+-(-p_from(c_marvin,c_mars) -> p_human(c_marvin)).
 end_of_list.
 
 ============================== end of input ==========================
@@ -23,8 +25,8 @@ end_of_list.
 ============================== PROCESS NON-CLAUSAL FORMULAS ==========
 
 % Formulas that are not ordinary clauses:
-1 (all v_x (p_at(v_x,c_mixer) -> p_grand_slam_champion(v_x) | p_oscar_nominated(v_x) & p_actor(v_x))) & (all v_x (p_at(v_x,c_mixer) -> (p_grand_slam_champion(v_x) -> p_professional(v_x) & p_tennis_player(v_x)))) & (all v_x (p_at(v_x,c_mixer) -> (p_oscar_nominated(v_x) & p_actor(v_x) -> p_celebrity(v_x)))) & (all v_x (p_at(v_x,c_mixer) & p_professional(v_x) & p_tennis_player(v_x) -> p_athlete(v_x))) & (all v_x (p_at(v_x,c_mixer) & p_celebrity(v_x) -> p_well_paid(v_x))) & (all v_x (p_at(v_x,c_mixer) & p_athlete(v_x) -> p_famous(v_x))) & (all v_x (p_at(v_x,c_mixer) & p_well_paid(v_x) -> (exists v_y (p_tax_haven(v_y) & p_live_in(v_x,v_y))))) & p_at(c_djokovic,c_mixer) & (p_famous(c_djokovic) & p_athlete(c_djokovic) -> p_well_paid(c_djokovic)) # label(non_clause).  [assumption].
-2 -p_grand_slam_champion(c_djokovic) # label(non_clause) # label(goal).  [goal].
+1 (all v_x (p_alien(v_x) -> p_extraterrestrial(v_x))) & (all v_x (p_from(v_x,c_mars) -> p_alien(v_x))) & (all v_x (p_extraterrestrial(v_x) -> -p_human(v_x))) & (all v_x (p_highly_intelligent_being(v_x) & p_from(v_x,c_earth) -> p_human(v_x))) & p_highly_intelligent_being(c_marvin) & -((p_from(c_marvin,c_earth) | p_from(c_marvin,c_mars)) & -(p_from(c_marvin,c_earth) & p_from(c_marvin,c_mars))) & (-p_from(c_marvin,c_earth) -> p_extraterrestrial(c_marvin)) # label(non_clause).  [assumption].
+2 -(-p_from(c_marvin,c_mars) -> p_human(c_marvin)) # label(non_clause) # label(goal).  [goal].
 
 ============================== end of process non-clausal formulas ===
 
@@ -36,20 +38,18 @@ formulas(usable).
 end_of_list.
 
 formulas(sos).
--p_at(x,c_mixer) | p_grand_slam_champion(x) | p_oscar_nominated(x).  [clausify(1)].
--p_at(x,c_mixer) | p_grand_slam_champion(x) | p_actor(x).  [clausify(1)].
--p_at(x,c_mixer) | -p_grand_slam_champion(x) | p_professional(x).  [clausify(1)].
--p_at(x,c_mixer) | -p_grand_slam_champion(x) | p_tennis_player(x).  [clausify(1)].
--p_at(x,c_mixer) | -p_oscar_nominated(x) | -p_actor(x) | p_celebrity(x).  [clausify(1)].
--p_at(x,c_mixer) | -p_professional(x) | -p_tennis_player(x) | p_athlete(x).  [clausify(1)].
--p_at(x,c_mixer) | -p_celebrity(x) | p_well_paid(x).  [clausify(1)].
--p_at(x,c_mixer) | -p_athlete(x) | p_famous(x).  [clausify(1)].
--p_at(x,c_mixer) | -p_well_paid(x) | p_tax_haven(f1(x)).  [clausify(1)].
--p_at(x,c_mixer) | -p_well_paid(x) | p_live_in(x,f1(x)).  [clausify(1)].
-p_at(c_djokovic,c_mixer).  [clausify(1)].
--p_famous(c_djokovic) | -p_athlete(c_djokovic) | p_well_paid(c_djokovic).  [clausify(1)].
-c_djokovic != c_mixer.  [assumption].
-p_grand_slam_champion(c_djokovic).  [deny(2)].
+-p_alien(x) | p_extraterrestrial(x).  [clausify(1)].
+-p_from(x,c_mars) | p_alien(x).  [clausify(1)].
+-p_extraterrestrial(x) | -p_human(x).  [clausify(1)].
+-p_highly_intelligent_being(x) | -p_from(x,c_earth) | p_human(x).  [clausify(1)].
+p_highly_intelligent_being(c_marvin).  [clausify(1)].
+-p_from(c_marvin,c_earth) | p_from(c_marvin,c_mars).  [clausify(1)].
+-p_from(c_marvin,c_mars) | p_from(c_marvin,c_earth).  [clausify(1)].
+p_from(c_marvin,c_earth) | p_extraterrestrial(c_marvin).  [clausify(1)].
+c_earth != c_mars.  [assumption].
+c_earth != c_marvin.  [assumption].
+c_mars != c_marvin.  [assumption].
+p_from(c_marvin,c_mars) | p_human(c_marvin).  [deny(2)].
 end_of_list.
 
 formulas(demodulators).
@@ -57,103 +57,51 @@ end_of_list.
 
 ============================== PREDICATE ELIMINATION =================
 
-Eliminating p_grand_slam_champion/1
-3 -p_at(x,c_mixer) | -p_grand_slam_champion(x) | p_professional(x).  [clausify(1)].
-4 -p_at(x,c_mixer) | p_grand_slam_champion(x) | p_oscar_nominated(x).  [clausify(1)].
-5 -p_at(x,c_mixer) | p_grand_slam_champion(x) | p_actor(x).  [clausify(1)].
-Derived: -p_at(x,c_mixer) | p_professional(x) | -p_at(x,c_mixer) | p_oscar_nominated(x).  [resolve(3,b,4,b)].
-Derived: -p_at(x,c_mixer) | p_professional(x) | -p_at(x,c_mixer) | p_actor(x).  [resolve(3,b,5,b)].
-6 -p_at(x,c_mixer) | -p_grand_slam_champion(x) | p_tennis_player(x).  [clausify(1)].
-Derived: -p_at(x,c_mixer) | p_tennis_player(x) | -p_at(x,c_mixer) | p_oscar_nominated(x).  [resolve(6,b,4,b)].
-Derived: -p_at(x,c_mixer) | p_tennis_player(x) | -p_at(x,c_mixer) | p_actor(x).  [resolve(6,b,5,b)].
-7 p_grand_slam_champion(c_djokovic).  [deny(2)].
-Derived: -p_at(c_djokovic,c_mixer) | p_professional(c_djokovic).  [resolve(7,a,3,b)].
-Derived: -p_at(c_djokovic,c_mixer) | p_tennis_player(c_djokovic).  [resolve(7,a,6,b)].
+Eliminating p_alien/1
+3 -p_from(x,c_mars) | p_alien(x).  [clausify(1)].
+4 -p_alien(x) | p_extraterrestrial(x).  [clausify(1)].
+Derived: -p_from(x,c_mars) | p_extraterrestrial(x).  [resolve(3,b,4,a)].
 
-Eliminating p_oscar_nominated/1
-8 -p_at(x,c_mixer) | p_professional(x) | -p_at(x,c_mixer) | p_oscar_nominated(x).  [resolve(3,b,4,b)].
-9 -p_at(x,c_mixer) | -p_oscar_nominated(x) | -p_actor(x) | p_celebrity(x).  [clausify(1)].
-Derived: -p_at(x,c_mixer) | p_professional(x) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_actor(x) | p_celebrity(x).  [resolve(8,d,9,b)].
-10 -p_at(x,c_mixer) | p_tennis_player(x) | -p_at(x,c_mixer) | p_oscar_nominated(x).  [resolve(6,b,4,b)].
-Derived: -p_at(x,c_mixer) | p_tennis_player(x) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_actor(x) | p_celebrity(x).  [resolve(10,d,9,b)].
+Eliminating p_extraterrestrial/1
+5 p_from(c_marvin,c_earth) | p_extraterrestrial(c_marvin).  [clausify(1)].
+6 -p_extraterrestrial(x) | -p_human(x).  [clausify(1)].
+Derived: p_from(c_marvin,c_earth) | -p_human(c_marvin).  [resolve(5,b,6,a)].
+7 -p_from(x,c_mars) | p_extraterrestrial(x).  [resolve(3,b,4,a)].
+Derived: -p_from(x,c_mars) | -p_human(x).  [resolve(7,b,6,a)].
 
-Eliminating p_professional/1
-11 -p_at(x,c_mixer) | p_professional(x) | -p_at(x,c_mixer) | p_actor(x).  [resolve(3,b,5,b)].
-12 -p_at(x,c_mixer) | -p_professional(x) | -p_tennis_player(x) | p_athlete(x).  [clausify(1)].
-Derived: -p_at(x,c_mixer) | -p_at(x,c_mixer) | p_actor(x) | -p_at(x,c_mixer) | -p_tennis_player(x) | p_athlete(x).  [resolve(11,b,12,b)].
-13 -p_at(c_djokovic,c_mixer) | p_professional(c_djokovic).  [resolve(7,a,3,b)].
-Derived: -p_at(c_djokovic,c_mixer) | -p_at(c_djokovic,c_mixer) | -p_tennis_player(c_djokovic) | p_athlete(c_djokovic).  [resolve(13,b,12,b)].
-14 -p_at(x,c_mixer) | p_professional(x) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_actor(x) | p_celebrity(x).  [resolve(8,d,9,b)].
-Derived: -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_actor(x) | p_celebrity(x) | -p_at(x,c_mixer) | -p_tennis_player(x) | p_athlete(x).  [resolve(14,b,12,b)].
-
-Eliminating p_celebrity/1
-15 -p_at(x,c_mixer) | p_tennis_player(x) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_actor(x) | p_celebrity(x).  [resolve(10,d,9,b)].
-16 -p_at(x,c_mixer) | -p_celebrity(x) | p_well_paid(x).  [clausify(1)].
-Derived: -p_at(x,c_mixer) | p_tennis_player(x) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_actor(x) | -p_at(x,c_mixer) | p_well_paid(x).  [resolve(15,f,16,b)].
-17 -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_actor(x) | p_celebrity(x) | -p_at(x,c_mixer) | -p_tennis_player(x) | p_athlete(x).  [resolve(14,b,12,b)].
-Derived: -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_actor(x) | -p_at(x,c_mixer) | -p_tennis_player(x) | p_athlete(x) | -p_at(x,c_mixer) | p_well_paid(x).  [resolve(17,e,16,b)].
-
-Eliminating p_well_paid/1
-18 -p_famous(c_djokovic) | -p_athlete(c_djokovic) | p_well_paid(c_djokovic).  [clausify(1)].
-19 -p_at(x,c_mixer) | -p_well_paid(x) | p_tax_haven(f1(x)).  [clausify(1)].
-20 -p_at(x,c_mixer) | -p_well_paid(x) | p_live_in(x,f1(x)).  [clausify(1)].
-Derived: -p_famous(c_djokovic) | -p_athlete(c_djokovic) | -p_at(c_djokovic,c_mixer) | p_tax_haven(f1(c_djokovic)).  [resolve(18,c,19,b)].
-Derived: -p_famous(c_djokovic) | -p_athlete(c_djokovic) | -p_at(c_djokovic,c_mixer) | p_live_in(c_djokovic,f1(c_djokovic)).  [resolve(18,c,20,b)].
-21 -p_at(x,c_mixer) | p_tennis_player(x) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_actor(x) | -p_at(x,c_mixer) | p_well_paid(x).  [resolve(15,f,16,b)].
-Derived: -p_at(x,c_mixer) | p_tennis_player(x) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_actor(x) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | p_tax_haven(f1(x)).  [resolve(21,g,19,b)].
-Derived: -p_at(x,c_mixer) | p_tennis_player(x) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_actor(x) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | p_live_in(x,f1(x)).  [resolve(21,g,20,b)].
-22 -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_actor(x) | -p_at(x,c_mixer) | -p_tennis_player(x) | p_athlete(x) | -p_at(x,c_mixer) | p_well_paid(x).  [resolve(17,e,16,b)].
-Derived: -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_actor(x) | -p_at(x,c_mixer) | -p_tennis_player(x) | p_athlete(x) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | p_tax_haven(f1(x)).  [resolve(22,i,19,b)].
-Derived: -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_actor(x) | -p_at(x,c_mixer) | -p_tennis_player(x) | p_athlete(x) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | p_live_in(x,f1(x)).  [resolve(22,i,20,b)].
-
-Eliminating p_actor/1
-23 -p_at(x,c_mixer) | p_tennis_player(x) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_actor(x) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | p_tax_haven(f1(x)).  [resolve(21,g,19,b)].
-24 -p_at(x,c_mixer) | p_tennis_player(x) | -p_at(x,c_mixer) | p_actor(x).  [resolve(6,b,5,b)].
-25 -p_at(x,c_mixer) | -p_at(x,c_mixer) | p_actor(x) | -p_at(x,c_mixer) | -p_tennis_player(x) | p_athlete(x).  [resolve(11,b,12,b)].
-Derived: -p_at(x,c_mixer) | p_tennis_player(x) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | p_tax_haven(f1(x)) | -p_at(x,c_mixer) | p_tennis_player(x) | -p_at(x,c_mixer).  [resolve(23,e,24,d)].
-26 -p_at(x,c_mixer) | p_tennis_player(x) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_actor(x) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | p_live_in(x,f1(x)).  [resolve(21,g,20,b)].
-Derived: -p_at(x,c_mixer) | p_tennis_player(x) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | p_live_in(x,f1(x)) | -p_at(x,c_mixer) | p_tennis_player(x) | -p_at(x,c_mixer).  [resolve(26,e,24,d)].
-27 -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_actor(x) | -p_at(x,c_mixer) | -p_tennis_player(x) | p_athlete(x) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | p_tax_haven(f1(x)).  [resolve(22,i,19,b)].
-Derived: -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_tennis_player(x) | p_athlete(x) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | p_tax_haven(f1(x)) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_tennis_player(x) | p_athlete(x).  [resolve(27,d,25,c)].
-28 -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_actor(x) | -p_at(x,c_mixer) | -p_tennis_player(x) | p_athlete(x) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | p_live_in(x,f1(x)).  [resolve(22,i,20,b)].
-Derived: -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_tennis_player(x) | p_athlete(x) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | p_live_in(x,f1(x)) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_at(x,c_mixer) | -p_tennis_player(x) | p_athlete(x).  [resolve(28,d,25,c)].
-
-Eliminating p_tax_haven/1
-
-Eliminating p_live_in/2
-
-Eliminating p_athlete/1
-29 -p_at(c_djokovic,c_mixer) | -p_at(c_djokovic,c_mixer) | -p_tennis_player(c_djokovic) | p_athlete(c_djokovic).  [resolve(13,b,12,b)].
-30 -p_at(x,c_mixer) | -p_athlete(x) | p_famous(x).  [clausify(1)].
-Derived: -p_at(c_djokovic,c_mixer) | -p_at(c_djokovic,c_mixer) | -p_tennis_player(c_djokovic) | -p_at(c_djokovic,c_mixer) | p_famous(c_djokovic).  [resolve(29,d,30,b)].
-
-Eliminating p_famous/1
-
-Eliminating p_tennis_player/1
-
-Eliminating p_at/2
+Eliminating p_highly_intelligent_being/1
+8 p_highly_intelligent_being(c_marvin).  [clausify(1)].
+9 -p_highly_intelligent_being(x) | -p_from(x,c_earth) | p_human(x).  [clausify(1)].
+Derived: -p_from(c_marvin,c_earth) | p_human(c_marvin).  [resolve(8,a,9,a)].
 
 ============================== end predicate elimination =============
 
-Auto_denials:  (no changes).
+Auto_denials:  (non-Horn, no changes).
 
 Term ordering decisions:
-Predicate symbol precedence:  predicate_order([ = ]).
-Function symbol precedence:  function_order([ c_djokovic, c_mixer ]).
+Predicate symbol precedence:  predicate_order([ =, p_human, p_from ]).
+Function symbol precedence:  function_order([ c_marvin, c_earth, c_mars ]).
 After inverse_order:  (no changes).
 Unfolding symbols: (none).
 
 Auto_inference settings:
-  % set(neg_binary_resolution).  % (HNE depth_diff=0)
-  % clear(ordered_res).  % (HNE depth_diff=0)
-  % set(ur_resolution).  % (HNE depth_diff=0)
-    % set(ur_resolution) -> set(pos_ur_resolution).
-    % set(ur_resolution) -> set(neg_ur_resolution).
+  % set(binary_resolution).  % (non-Horn)
+  % set(neg_ur_resolution).  % (non-Horn, less than 100 clauses)
 
-Auto_process settings:  (no changes).
+Auto_process settings:
+  % set(factor).  % (non-Horn)
+  % set(unit_deletion).  % (non-Horn)
 
-           31 c_djokovic != c_mixer.  [assumption].
-kept:      32 c_mixer != c_djokovic.  [copy(31),flip(a)].
+kept:      10 -p_from(c_marvin,c_earth) | p_from(c_marvin,c_mars).  [clausify(1)].
+kept:      11 -p_from(c_marvin,c_mars) | p_from(c_marvin,c_earth).  [clausify(1)].
+           12 c_earth != c_mars.  [assumption].
+kept:      13 c_mars != c_earth.  [copy(12),flip(a)].
+kept:      14 c_earth != c_marvin.  [assumption].
+kept:      15 c_mars != c_marvin.  [assumption].
+kept:      16 p_from(c_marvin,c_mars) | p_human(c_marvin).  [deny(2)].
+kept:      17 p_from(c_marvin,c_earth) | -p_human(c_marvin).  [resolve(5,b,6,a)].
+kept:      18 -p_from(x,c_mars) | -p_human(x).  [resolve(7,b,6,a)].
+kept:      19 -p_from(c_marvin,c_earth) | p_human(c_marvin).  [resolve(8,a,9,a)].
 
 ============================== end of process initial clauses ========
 
@@ -165,7 +113,15 @@ formulas(usable).
 end_of_list.
 
 formulas(sos).
-32 c_mixer != c_djokovic.  [copy(31),flip(a)].
+10 -p_from(c_marvin,c_earth) | p_from(c_marvin,c_mars).  [clausify(1)].
+11 -p_from(c_marvin,c_mars) | p_from(c_marvin,c_earth).  [clausify(1)].
+13 c_mars != c_earth.  [copy(12),flip(a)].
+14 c_earth != c_marvin.  [assumption].
+15 c_mars != c_marvin.  [assumption].
+16 p_from(c_marvin,c_mars) | p_human(c_marvin).  [deny(2)].
+17 p_from(c_marvin,c_earth) | -p_human(c_marvin).  [resolve(5,b,6,a)].
+18 -p_from(x,c_mars) | -p_human(x).  [resolve(7,b,6,a)].
+19 -p_from(c_marvin,c_earth) | p_human(c_marvin).  [resolve(8,a,9,a)].
 end_of_list.
 
 formulas(demodulators).
@@ -175,35 +131,87 @@ end_of_list.
 
 ============================== SEARCH ================================
 
-% Starting search at 0.04 seconds.
+% Starting search at 0.00 seconds.
 
-given #1 (I,wt=3): 32 c_mixer != c_djokovic.  [copy(31),flip(a)].
+given #1 (I,wt=6): 10 -p_from(c_marvin,c_earth) | p_from(c_marvin,c_mars).  [clausify(1)].
+
+given #2 (I,wt=6): 11 -p_from(c_marvin,c_mars) | p_from(c_marvin,c_earth).  [clausify(1)].
+
+given #3 (I,wt=3): 13 c_mars != c_earth.  [copy(12),flip(a)].
+
+given #4 (I,wt=3): 14 c_earth != c_marvin.  [assumption].
+
+given #5 (I,wt=3): 15 c_mars != c_marvin.  [assumption].
+
+given #6 (I,wt=5): 16 p_from(c_marvin,c_mars) | p_human(c_marvin).  [deny(2)].
+
+given #7 (I,wt=5): 17 p_from(c_marvin,c_earth) | -p_human(c_marvin).  [resolve(5,b,6,a)].
+
+given #8 (I,wt=5): 18 -p_from(x,c_mars) | -p_human(x).  [resolve(7,b,6,a)].
+
+given #9 (I,wt=5): 19 -p_from(c_marvin,c_earth) | p_human(c_marvin).  [resolve(8,a,9,a)].
+
+given #10 (A,wt=5): 20 p_human(c_marvin) | p_from(c_marvin,c_earth).  [resolve(16,a,11,a)].
+
+given #11 (T,wt=2): 21 p_human(c_marvin).  [resolve(20,b,19,a),merge(b)].
+
+============================== PROOF =================================
+
+% Proof 1 at 0.00 (+ 0.00) seconds.
+% Length of proof is 20.
+% Level of proof is 6.
+% Maximum clause weight is 6.000.
+% Given clauses 11.
+
+1 (all v_x (p_alien(v_x) -> p_extraterrestrial(v_x))) & (all v_x (p_from(v_x,c_mars) -> p_alien(v_x))) & (all v_x (p_extraterrestrial(v_x) -> -p_human(v_x))) & (all v_x (p_highly_intelligent_being(v_x) & p_from(v_x,c_earth) -> p_human(v_x))) & p_highly_intelligent_being(c_marvin) & -((p_from(c_marvin,c_earth) | p_from(c_marvin,c_mars)) & -(p_from(c_marvin,c_earth) & p_from(c_marvin,c_mars))) & (-p_from(c_marvin,c_earth) -> p_extraterrestrial(c_marvin)) # label(non_clause).  [assumption].
+2 -(-p_from(c_marvin,c_mars) -> p_human(c_marvin)) # label(non_clause) # label(goal).  [goal].
+3 -p_from(x,c_mars) | p_alien(x).  [clausify(1)].
+4 -p_alien(x) | p_extraterrestrial(x).  [clausify(1)].
+5 p_from(c_marvin,c_earth) | p_extraterrestrial(c_marvin).  [clausify(1)].
+6 -p_extraterrestrial(x) | -p_human(x).  [clausify(1)].
+7 -p_from(x,c_mars) | p_extraterrestrial(x).  [resolve(3,b,4,a)].
+8 p_highly_intelligent_being(c_marvin).  [clausify(1)].
+9 -p_highly_intelligent_being(x) | -p_from(x,c_earth) | p_human(x).  [clausify(1)].
+10 -p_from(c_marvin,c_earth) | p_from(c_marvin,c_mars).  [clausify(1)].
+11 -p_from(c_marvin,c_mars) | p_from(c_marvin,c_earth).  [clausify(1)].
+16 p_from(c_marvin,c_mars) | p_human(c_marvin).  [deny(2)].
+17 p_from(c_marvin,c_earth) | -p_human(c_marvin).  [resolve(5,b,6,a)].
+18 -p_from(x,c_mars) | -p_human(x).  [resolve(7,b,6,a)].
+19 -p_from(c_marvin,c_earth) | p_human(c_marvin).  [resolve(8,a,9,a)].
+20 p_human(c_marvin) | p_from(c_marvin,c_earth).  [resolve(16,a,11,a)].
+21 p_human(c_marvin).  [resolve(20,b,19,a),merge(b)].
+22 p_from(c_marvin,c_earth).  [back_unit_del(17),unit_del(b,21)].
+23 p_from(c_marvin,c_mars).  [back_unit_del(10),unit_del(a,22)].
+24 $F.  [ur(18,b,21,a),unit_del(a,23)].
+
+============================== end of proof ==========================
 
 ============================== STATISTICS ============================
 
-Given=1. Generated=1. Kept=1. proofs=0.
-Usable=1. Sos=0. Demods=0. Limbo=0, Disabled=38. Hints=0.
+Given=11. Generated=16. Kept=13. proofs=1.
+Usable=5. Sos=2. Demods=0. Limbo=0, Disabled=22. Hints=0.
 Kept_by_rule=0, Deleted_by_rule=0.
-Forward_subsumed=0. Back_subsumed=0.
+Forward_subsumed=2. Back_subsumed=4.
 Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
-New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=0.
+New_demodulators=0 (0 lex), Back_demodulated=0. Back_unit_deleted=2.
 Demod_attempts=0. Demod_rewrites=0.
 Res_instance_prunes=0. Para_instance_prunes=0. Basic_paramod_prunes=0.
-Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=0.
-Megabytes=0.07.
-User_CPU=0.04, System_CPU=0.00, Wall_clock=0.
+Nonunit_fsub_feature_tests=0. Nonunit_bsub_feature_tests=11.
+Megabytes=0.06.
+User_CPU=0.00, System_CPU=0.00, Wall_clock=0.
 
 ============================== end of statistics =====================
 
 ============================== end of search =========================
 
-SEARCH FAILED
+THEOREM PROVED
 
-Exiting with failure.
+Exiting with 1 proof.
 
-Process 29594 exit (sos_empty) Sat Oct 17 13:01:59 2026
+Process 47164 exit (max_proofs) Fri Oct 23 14:35:07 2026
+-------- Proof 1 -------- 
 
-SEARCH FAILED
+THEOREM PROVED
 
------- process 29594 exit (sos_empty) ------
+------ process 47164 exit (max_proofs) ------
 

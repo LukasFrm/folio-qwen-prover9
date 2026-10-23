@@ -1,7 +1,7 @@
 ============================== Prover9 ===============================
 Prover9 (64) version 2009-11A, November 2009.
-Process 29580 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
-Sat Oct 17 13:01:59 2026
+Process 47150 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:07 2026
 The command was "prover9 -t 5".
 ============================== end of head ===========================
 
@@ -142,9 +142,9 @@ SEARCH FAILED
 
 Exiting with failure.
 
-Process 29580 exit (sos_empty) Sat Oct 17 13:01:59 2026
+Process 47150 exit (sos_empty) Fri Oct 23 14:35:07 2026
 
 SEARCH FAILED
 
------- process 29580 exit (sos_empty) ------
+------ process 47150 exit (sos_empty) ------
 

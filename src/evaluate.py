@@ -17,7 +17,7 @@ CSV_PATH = ROOT / "results" / "final_results.csv"
 SUMMARY_PATH = ROOT / "results" / "evaluation_summary.json"
 CASES_PATH = ROOT / "results" / "report_cases_lt.md"
 
-LABELS = ("True", "False", "Uncertain")
+LABELS = ("True", "False")
 
 REPORT_CASES = (
     {
@@ -34,44 +34,43 @@ REPORT_CASES = (
     },
     {
         "id": "folio50-002",
-        "title": "Teisingai nustatyta, kad išvada neseka",
+        "title": "Teisingai nustatyta, kad išvados neiginys seka",
         "analysis": (
-            "Visos prielaidos aprašo „The Legend of Zelda“; nė viena prielaida "
-            "nemini FIFA 22 ir nenustato jo kūrėjo. Todėl negalima įrodyti nei "
-            "egzistencinės išvados apie japonų bendrovę, sukūrusią FIFA 22, nei jos "
-            "neiginio. Mace4 rado po baigtinį kontrmodelį abiem kryptims, todėl "
-            "`Uncertain` yra pagrįsta žyma. Qwen šį neapibrėžtumą atpažino teisingai."
+            "Ketvirtoji prielaida teigia, kad „The Legend of Zelda“ parduota daugiau "
+            "nei milijonas kopijų, o trečioji taisyklė kiekvieną tokį žaidimą įtraukia "
+            "į Top 10 sąrašą. Todėl `InTop10(theLegendofZelda)` seka tiesiogiai, o "
+            "pateikta išvada yra būtent šio teiginio neiginys. Prover9 įrodė išvados "
+            "neiginį, o Qwen teisingai pasirinko klasę `False`."
         ),
     },
     {
-        "id": "folio50-024",
-        "title": "Klaida: išvada turėjo sekti, bet Qwen pasirinko „Uncertain“",
+        "id": "folio50-018",
+        "title": "Klaida: išvada turėjo sekti, bet Qwen pasirinko „False“",
         "analysis": (
-            "Šeštoji formalizuota prielaida yra XOR neiginys: Luke gimimas daugiavaisiame "
-            "gimdyme ir gyvenimas su nepažįstamaisiais turi vienodą teisingumo reikšmę. "
-            "Tarkime, kad `BornIn(luke, multipleBirth)` teisinga. Tuomet pagal 1 ir 5 "
-            "prielaidas Luke leidžia laiką su broliais ar seserimis ir gyvena namuose; "
-            "pagal 4 prielaidą jis negyvena su nepažįstamaisiais. Tačiau XOR neiginys "
-            "iš teisingo `BornIn` reikalauja teisingo `LiveWith`, todėl gaunamas "
-            "prieštaravimas. Vadinasi, `BornIn` yra klaidinga. Jei Luke dažnai skųstųsi "
-            "broliais ar seserimis, 3 ir 2 prielaidos vėl leistų išvesti `BornIn`; todėl "
-            "klaidingas ir `ComplainAboutOften`. Prover9 įrodė visą konjunkcinę išvadą. "
-            "Qwen klaidos vieta – nepakankamai išnaudotas XOR neiginys ir netiesioginis "
-            "įrodymas prieštaravimu."
+            "Penktoji prielaida užtikrina, kad Hamden Plaza Subway reitingas yra "
+            "didesnis nei keturi: tai teigiama tiesiogiai arba gaunama iš populiarumo "
+            "pagal ketvirtąją taisyklę. Pagal antrąją ir pirmąją taisykles restoranas "
+            "įtrauktas į Yelp rekomendacijas ir negauna daug neigiamų atsiliepimų. "
+            "Todėl išvados antecedentas, kuriame kartu teigiama, kad restoranas teikia "
+            "išsinešimo paslaugą ir gauna daug neigiamų atsiliepimų, negali būti "
+            "teisingas. Materialioji implikacija su klaidingu antecedentu yra teisinga. "
+            "Prover9 tai įrodė; Qwen klaida rodo neatsižvelgimą į vakuozų implikacijos "
+            "teisingumą."
         ),
     },
     {
-        "id": "folio50-007",
+        "id": "folio50-005",
         "title": "Klaida: išvada neturėjo sekti, bet Qwen pasirinko „True“",
         "analysis": (
-            "Taisyklės antecedentas yra konjunkcija: vasara yra mėgstamiausias sezonas "
-            "tik tiems asmenims, kurie ir yra studentai, ir nori ilgų atostogų. Apie "
-            "Jamesą žinoma tik antroji sąlyga – `Want(james, longVacation)`; prielaidos "
-            "`Student(james)` nėra. Todėl modus ponens taikyti negalima. Mace4 rado "
-            "modelį, kuriame Jameso mėgstamiausias sezonas yra vasara, ir modelį, "
-            "kuriame taip nėra. Qwen klaida atitinka antecedento dalies praleidimą: "
-            "noras turėti ilgas atostogas buvo traktuotas kaip pakankama, nors taisyklėje "
-            "jis yra tik viena iš dviejų būtinų sąlygų."
+            "Šeštoji prielaida `¬(From(earth) ⊕ From(mars))` reiškia, kad abu teiginiai "
+            "turi vienodą reikšmę. Atvejis, kai abu teisingi, sukelia prieštaravimą: "
+            "Marsas veda į `Alien`, `Extraterrestrial` ir `¬Human`, o Žemė kartu su "
+            "Marvino aukštu intelektu veda į `Human`. Taigi lieka atvejis, kai abu "
+            "klaidingi. Iš `¬From(earth)` gaunama `Extraterrestrial` ir `¬Human`, todėl "
+            "sąlyginio teiginio antecedentas `¬From(mars)` teisingas, o konsekventas "
+            "`Human` klaidingas. Prover9 įrodė išvados neiginį. Qwen klaida susijusi "
+            "su neigiamo XOR kaip lygiavertiškumo ir materialiosios implikacijos "
+            "neįvertinimu."
         ),
     },
 )

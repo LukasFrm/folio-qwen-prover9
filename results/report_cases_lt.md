@@ -35,12 +35,12 @@ Iš prielaidų gauname, kad „The Legend of Zelda“ yra žaidimas ir kad jo pa
 `prover9_outputs/folio50-001_conclusion_prover9.txt`, `prover9_outputs/folio50-001_negated_conclusion_prover9.txt`, `prover9_outputs/folio50-001_negated_conclusion_mace4.txt`
 
 
-## Teisingai nustatyta, kad išvada neseka
+## Teisingai nustatyta, kad išvados neiginys seka
 
-**Atvejis:** `folio50-002` / `concl_20_14`  
-**Etalonas:** `Uncertain`  
-**Qwen3-8B:** `Uncertain`  
-**Prover9/Mace4:** `Uncertain`
+**Atvejis:** `folio50-002` / `concl_20_15`  
+**Etalonas:** `False`  
+**Qwen3-8B:** `False`  
+**Prover9/Mace4:** `False`
 
 ### Prielaidos
 
@@ -51,87 +51,88 @@ Iš prielaidų gauname, kad „The Legend of Zelda“ yra žaidimas ir kad jo pa
 
 ### Išvada
 
-FIFA 22 is made by a Japanese video game company.
+The Legend of Zelda is not on the Top 10 list.
 
 ### FOL išvada
 
 ```text
-∃x(Created(x, fifa22) ∧ Japanese(x) ∧ VideoGameCompany(x))
+¬InTop10(theLegendofZelda)
 ```
 
 ### Analizė
 
-Visos prielaidos aprašo „The Legend of Zelda“; nė viena prielaida nemini FIFA 22 ir nenustato jo kūrėjo. Todėl negalima įrodyti nei egzistencinės išvados apie japonų bendrovę, sukūrusią FIFA 22, nei jos neiginio. Mace4 rado po baigtinį kontrmodelį abiem kryptims, todėl `Uncertain` yra pagrįsta žyma. Qwen šį neapibrėžtumą atpažino teisingai.
+Ketvirtoji prielaida teigia, kad „The Legend of Zelda“ parduota daugiau nei milijonas kopijų, o trečioji taisyklė kiekvieną tokį žaidimą įtraukia į Top 10 sąrašą. Todėl `InTop10(theLegendofZelda)` seka tiesiogiai, o pateikta išvada yra būtent šio teiginio neiginys. Prover9 įrodė išvados neiginį, o Qwen teisingai pasirinko klasę `False`.
 
 ### Automatinio tikrinimo failai
 
-`prover9_outputs/folio50-002_conclusion_prover9.txt`, `prover9_outputs/folio50-002_conclusion_mace4.txt`, `prover9_outputs/folio50-002_negated_conclusion_prover9.txt`, `prover9_outputs/folio50-002_negated_conclusion_mace4.txt`
+`prover9_outputs/folio50-002_conclusion_prover9.txt`, `prover9_outputs/folio50-002_conclusion_mace4.txt`, `prover9_outputs/folio50-002_negated_conclusion_prover9.txt`
 
 
-## Klaida: išvada turėjo sekti, bet Qwen pasirinko „Uncertain“
+## Klaida: išvada turėjo sekti, bet Qwen pasirinko „False“
 
-**Atvejis:** `folio50-024` / `concl_379_104`  
+**Atvejis:** `folio50-018` / `concl_306_84`  
 **Etalonas:** `True`  
-**Qwen3-8B:** `Uncertain`  
+**Qwen3-8B:** `False`  
 **Prover9/Mace4:** `True`
 
 ### Prielaidos
 
-1. People who are born in a multiple birth with siblings spend a lot of time hanging out with and playing with their siblings.
-2. If people have siblings who were born together, then they were born in a multiple birth.
-3. If people complain often about annoying siblings, then they have siblings who were born together.
-4. If people live at home, then they do not live with strangers.
-5. If people spend a lot of time hanging out with and playing with their siblings, then they often live at home.
-6. Luke either is a baby born in a multiple birth and lives with strangers, or is not a baby born in a multiple birth and does not live with strangers.
+1. If a restaurant is listed in Yelp's recommendations, then the restaurant has not received many negative reviews.
+2. All restaurants with a rating greater than four are listed in Yelp's recommendations.
+3. Some restaurants that do not provide take-out service receive many negative reviews.
+4. All restaurants that are popular among local residents have ratings greater than four.
+5. The Hamden Plaza Subway store has a rating greater than four, or it is popular among local residents.
 
 ### Išvada
 
-Luke is neither born in a multiple birth nor complains often about annoying siblings.
+If the Hamden Plaza Subway store provides take-out service and receives many negative reviews, then its rating is greater than 4 and it does not provide take-out service.
 
 ### FOL išvada
 
 ```text
-¬BornIn(luke, multipleBirth) ∧ ¬ComplainAboutOften(luke, annoyingSiblings)
+(Provide(hamdenPlazaSubway, takeOutService) ∧ ReceiveManyNegativeReviews(hamdenPlazaSubway)) → (∃y (HaveRating(hamdenPlazaSubway, y) ∧ GreaterThan(y, four)) ∧ ¬Provide(hamdenPlazaSubway, takeOutService))
 ```
 
 ### Analizė
 
-Šeštoji formalizuota prielaida yra XOR neiginys: Luke gimimas daugiavaisiame gimdyme ir gyvenimas su nepažįstamaisiais turi vienodą teisingumo reikšmę. Tarkime, kad `BornIn(luke, multipleBirth)` teisinga. Tuomet pagal 1 ir 5 prielaidas Luke leidžia laiką su broliais ar seserimis ir gyvena namuose; pagal 4 prielaidą jis negyvena su nepažįstamaisiais. Tačiau XOR neiginys iš teisingo `BornIn` reikalauja teisingo `LiveWith`, todėl gaunamas prieštaravimas. Vadinasi, `BornIn` yra klaidinga. Jei Luke dažnai skųstųsi broliais ar seserimis, 3 ir 2 prielaidos vėl leistų išvesti `BornIn`; todėl klaidingas ir `ComplainAboutOften`. Prover9 įrodė visą konjunkcinę išvadą. Qwen klaidos vieta – nepakankamai išnaudotas XOR neiginys ir netiesioginis įrodymas prieštaravimu.
+Penktoji prielaida užtikrina, kad Hamden Plaza Subway reitingas yra didesnis nei keturi: tai teigiama tiesiogiai arba gaunama iš populiarumo pagal ketvirtąją taisyklę. Pagal antrąją ir pirmąją taisykles restoranas įtrauktas į Yelp rekomendacijas ir negauna daug neigiamų atsiliepimų. Todėl išvados antecedentas, kuriame kartu teigiama, kad restoranas teikia išsinešimo paslaugą ir gauna daug neigiamų atsiliepimų, negali būti teisingas. Materialioji implikacija su klaidingu antecedentu yra teisinga. Prover9 tai įrodė; Qwen klaida rodo neatsižvelgimą į vakuozų implikacijos teisingumą.
 
 ### Automatinio tikrinimo failai
 
-`prover9_outputs/folio50-024_conclusion_prover9.txt`, `prover9_outputs/folio50-024_negated_conclusion_prover9.txt`, `prover9_outputs/folio50-024_negated_conclusion_mace4.txt`
+`prover9_outputs/folio50-018_conclusion_prover9.txt`, `prover9_outputs/folio50-018_negated_conclusion_prover9.txt`, `prover9_outputs/folio50-018_negated_conclusion_mace4.txt`
 
 
 ## Klaida: išvada neturėjo sekti, bet Qwen pasirinko „True“
 
-**Atvejis:** `folio50-007` / `concl_159_47`  
-**Etalonas:** `Uncertain`  
+**Atvejis:** `folio50-005` / `concl_452_30`  
+**Etalonas:** `False`  
 **Qwen3-8B:** `True`  
-**Prover9/Mace4:** `Uncertain`
+**Prover9/Mace4:** `False`
 
 ### Prielaidos
 
-1. There are four seasons in a year: Spring, Summer, Fall, and Winter.
-2. All students who want to have a long vacation have summer as their favorite season.
-3. Emma's favorite season is summer.
-4. Mia's favorite season is not the same as Emma's.
-5. James wants to have a long vacation.
+1. All aliens are extraterrestrials.
+2. If someone is from Mars, then they are an alien.
+3. No extraterrestrials are human.
+4. All highly intelligent beings from Earth are humans.
+5. Marvin is a highly intelligent being.
+6. Marvin is either from Earth and from Mars, or he is from neither.
+7. If Marvin is not from Earth, then Marvin is an extraterrestrial.
 
 ### Išvada
 
-James's favorite season is summer.
+If Marvin is not from Mars, then Marvin is a human.
 
 ### FOL išvada
 
 ```text
-Favorite(james, summer)
+¬From(marvin, mars) → Human(marvin)
 ```
 
 ### Analizė
 
-Taisyklės antecedentas yra konjunkcija: vasara yra mėgstamiausias sezonas tik tiems asmenims, kurie ir yra studentai, ir nori ilgų atostogų. Apie Jamesą žinoma tik antroji sąlyga – `Want(james, longVacation)`; prielaidos `Student(james)` nėra. Todėl modus ponens taikyti negalima. Mace4 rado modelį, kuriame Jameso mėgstamiausias sezonas yra vasara, ir modelį, kuriame taip nėra. Qwen klaida atitinka antecedento dalies praleidimą: noras turėti ilgas atostogas buvo traktuotas kaip pakankama, nors taisyklėje jis yra tik viena iš dviejų būtinų sąlygų.
+Šeštoji prielaida `¬(From(earth) ⊕ From(mars))` reiškia, kad abu teiginiai turi vienodą reikšmę. Atvejis, kai abu teisingi, sukelia prieštaravimą: Marsas veda į `Alien`, `Extraterrestrial` ir `¬Human`, o Žemė kartu su Marvino aukštu intelektu veda į `Human`. Taigi lieka atvejis, kai abu klaidingi. Iš `¬From(earth)` gaunama `Extraterrestrial` ir `¬Human`, todėl sąlyginio teiginio antecedentas `¬From(mars)` teisingas, o konsekventas `Human` klaidingas. Prover9 įrodė išvados neiginį. Qwen klaida susijusi su neigiamo XOR kaip lygiavertiškumo ir materialiosios implikacijos neįvertinimu.
 
 ### Automatinio tikrinimo failai
 
-`prover9_outputs/folio50-007_conclusion_prover9.txt`, `prover9_outputs/folio50-007_conclusion_mace4.txt`, `prover9_outputs/folio50-007_negated_conclusion_prover9.txt`, `prover9_outputs/folio50-007_negated_conclusion_mace4.txt`
+`prover9_outputs/folio50-005_conclusion_prover9.txt`, `prover9_outputs/folio50-005_conclusion_mace4.txt`, `prover9_outputs/folio50-005_negated_conclusion_prover9.txt`

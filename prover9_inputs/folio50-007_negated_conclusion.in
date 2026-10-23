@@ -1,35 +1,22 @@
 formulas(assumptions).
-((((((((p_season(c_spring) & p_season(c_summer)) & p_season(c_fall)) & p_season(c_winter)) & all v_x ((p_season(v_x) -> ((((v_x = c_spring) | (v_x = c_summer)) | (v_x = c_fall)) | (v_x = c_winter))))) & all v_x (((p_student(v_x) & p_want(v_x, c_long_vacation)) -> p_favorite(v_x, c_summer)))) & p_favorite(c_emma, c_summer)) & all v_x (all v_y (((((p_season(v_x) & p_season(v_y)) & p_favorite(c_mia, v_x)) & p_favorite(c_emma, v_y)) -> -((v_x = v_y)))))) & p_want(c_james, c_long_vacation)).
--(c_emma = c_fall).
--(c_emma = c_james).
--(c_emma = c_long_vacation).
--(c_emma = c_mia).
--(c_emma = c_spring).
--(c_emma = c_summer).
--(c_emma = c_winter).
--(c_fall = c_james).
--(c_fall = c_long_vacation).
--(c_fall = c_mia).
--(c_fall = c_spring).
--(c_fall = c_summer).
--(c_fall = c_winter).
--(c_james = c_long_vacation).
--(c_james = c_mia).
--(c_james = c_spring).
--(c_james = c_summer).
--(c_james = c_winter).
--(c_long_vacation = c_mia).
--(c_long_vacation = c_spring).
--(c_long_vacation = c_summer).
--(c_long_vacation = c_winter).
--(c_mia = c_spring).
--(c_mia = c_summer).
--(c_mia = c_winter).
--(c_spring = c_summer).
--(c_spring = c_winter).
--(c_summer = c_winter).
+(((((p_professional_wrestling_stable(c_diamond_mine) & p_in(c_diamond_mine, c_w_w_e)) & p_leads(c_roderick_strong, c_diamond_mine)) & p_includes(c_diamond_mine, c_creed_brothers)) & p_includes(c_diamond_mine, c_ivy_nile)) & p_feuds(c_imperium, c_diamond_mine)).
+-(c_creed_brothers = c_diamond_mine).
+-(c_creed_brothers = c_imperium).
+-(c_creed_brothers = c_ivy_nile).
+-(c_creed_brothers = c_roderick_strong).
+-(c_creed_brothers = c_w_w_e).
+-(c_diamond_mine = c_imperium).
+-(c_diamond_mine = c_ivy_nile).
+-(c_diamond_mine = c_roderick_strong).
+-(c_diamond_mine = c_w_w_e).
+-(c_imperium = c_ivy_nile).
+-(c_imperium = c_roderick_strong).
+-(c_imperium = c_w_w_e).
+-(c_ivy_nile = c_roderick_strong).
+-(c_ivy_nile = c_w_w_e).
+-(c_roderick_strong = c_w_w_e).
 end_of_list.
 
 formulas(goals).
--(p_favorite(c_james, c_summer)).
+-(exists v_x ((p_leads(c_roderick_strong, v_x) & p_professional_wrestling_stable(v_x)))).
 end_of_list.

@@ -1,8 +1,22 @@
 formulas(assumptions).
-(((((all v_x ((p_hydrocarbon(v_x) -> p_organic_compound(v_x))) & all v_x ((p_alkane(v_x) -> p_hydrocarbon(v_x)))) & all v_x ((p_organic_compound(v_x) -> p_chemical_compound(v_x)))) & all v_x ((p_organic_compound(v_x) -> p_contain(v_x, c_carbon)))) & all v_x ((p_chemical_compound(v_x) -> -(exists v_y ((p_contain(v_x, v_y) & all v_z ((p_contain(v_x, v_z) -> (v_z = v_y))))))))) & -(((p_chemical_compound(c_mixture) | exists v_y ((p_contain(c_mixture, v_y) & all v_z ((p_contain(c_mixture, v_z) -> (v_z = v_y)))))) & -(p_chemical_compound(c_mixture) & exists v_y ((p_contain(c_mixture, v_y) & all v_z ((p_contain(c_mixture, v_z) -> (v_z = v_y))))))))).
--(c_carbon = c_mixture).
+(((((((p_publishing_house(c_new_vessel_press) & p_specializes_in_translating_into_english(c_new_vessel_press, c_foreign_literature)) & all v_x (((p_book(v_x) & p_published_by(v_x, c_new_vessel_press)) -> p_in(v_x, c_english)))) & p_book(c_neapolitan_chronicles)) & p_published_by(c_neapolitan_chronicles, c_new_vessel_press)) & p_translated_from(c_neapolitan_chronicles, c_italian)) & p_book(c_palace_of_flies)) & p_published_by(c_palace_of_flies, c_new_vessel_press)).
+-(c_english = c_foreign_literature).
+-(c_english = c_italian).
+-(c_english = c_neapolitan_chronicles).
+-(c_english = c_new_vessel_press).
+-(c_english = c_palace_of_flies).
+-(c_foreign_literature = c_italian).
+-(c_foreign_literature = c_neapolitan_chronicles).
+-(c_foreign_literature = c_new_vessel_press).
+-(c_foreign_literature = c_palace_of_flies).
+-(c_italian = c_neapolitan_chronicles).
+-(c_italian = c_new_vessel_press).
+-(c_italian = c_palace_of_flies).
+-(c_neapolitan_chronicles = c_new_vessel_press).
+-(c_neapolitan_chronicles = c_palace_of_flies).
+-(c_new_vessel_press = c_palace_of_flies).
 end_of_list.
 
 formulas(goals).
-(p_alkane(c_mixture) & p_contain(c_mixture, c_carbon)).
+(p_book(c_neapolitan_chronicles) & p_in(c_neapolitan_chronicles, c_english)).
 end_of_list.

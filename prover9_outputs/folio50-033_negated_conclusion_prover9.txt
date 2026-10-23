@@ -1,7 +1,7 @@
 ============================== Prover9 ===============================
 Prover9 (64) version 2009-11A, November 2009.
-Process 29686 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
-Sat Oct 17 13:02:00 2026
+Process 47270 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:08 2026
 The command was "prover9 -t 5".
 ============================== end of head ===========================
 
@@ -13,7 +13,7 @@ c_duster != c_space.
 end_of_list.
 
 formulas(goals).
--p_vampire(c_space).
+-p_suck(c_space).
 end_of_list.
 
 ============================== end of input ==========================
@@ -24,7 +24,7 @@ end_of_list.
 
 % Formulas that are not ordinary clauses:
 1 (all v_x (p_plunger(v_x) -> p_suck(v_x))) & (all v_x (p_vacuum(v_x) -> p_suck(v_x))) & (all v_x (p_vampire(v_x) -> p_suck(v_x))) & p_vacuum(c_space) & p_household_appliance(c_duster) & -p_suck(c_duster) # label(non_clause).  [assumption].
-2 -p_vampire(c_space) # label(non_clause) # label(goal).  [goal].
+2 -p_suck(c_space) # label(non_clause) # label(goal).  [goal].
 
 ============================== end of process non-clausal formulas ===
 
@@ -43,7 +43,7 @@ p_vacuum(c_space).  [clausify(1)].
 p_household_appliance(c_duster).  [clausify(1)].
 -p_suck(c_duster).  [clausify(1)].
 c_duster != c_space.  [assumption].
-p_vampire(c_space).  [deny(2)].
+p_suck(c_space).  [deny(2)].
 end_of_list.
 
 formulas(demodulators).
@@ -56,11 +56,8 @@ Eliminating p_plunger/1
 Eliminating p_vacuum/1
 3 p_vacuum(c_space).  [clausify(1)].
 4 -p_vacuum(x) | p_suck(x).  [clausify(1)].
-Derived: p_suck(c_space).  [resolve(3,a,4,a)].
 
 Eliminating p_vampire/1
-5 p_vampire(c_space).  [deny(2)].
-6 -p_vampire(x) | p_suck(x).  [clausify(1)].
 
 Eliminating p_household_appliance/1
 
@@ -89,9 +86,9 @@ Auto_inference settings:
 
 Auto_process settings:  (no changes).
 
-kept:      7 -p_suck(c_duster).  [clausify(1)].
-kept:      8 c_duster != c_space.  [assumption].
-kept:      9 p_suck(c_space).  [resolve(3,a,4,a)].
+kept:      5 -p_suck(c_duster).  [clausify(1)].
+kept:      6 c_duster != c_space.  [assumption].
+kept:      7 p_suck(c_space).  [deny(2)].
 
 ============================== end of process initial clauses ========
 
@@ -103,9 +100,9 @@ formulas(usable).
 end_of_list.
 
 formulas(sos).
-7 -p_suck(c_duster).  [clausify(1)].
-8 c_duster != c_space.  [assumption].
-9 p_suck(c_space).  [resolve(3,a,4,a)].
+5 -p_suck(c_duster).  [clausify(1)].
+6 c_duster != c_space.  [assumption].
+7 p_suck(c_space).  [deny(2)].
 end_of_list.
 
 formulas(demodulators).
@@ -117,16 +114,16 @@ end_of_list.
 
 % Starting search at 0.00 seconds.
 
-given #1 (I,wt=2): 7 -p_suck(c_duster).  [clausify(1)].
+given #1 (I,wt=2): 5 -p_suck(c_duster).  [clausify(1)].
 
-given #2 (I,wt=3): 8 c_duster != c_space.  [assumption].
+given #2 (I,wt=3): 6 c_duster != c_space.  [assumption].
 
-given #3 (I,wt=2): 9 p_suck(c_space).  [resolve(3,a,4,a)].
+given #3 (I,wt=2): 7 p_suck(c_space).  [deny(2)].
 
 ============================== STATISTICS ============================
 
 Given=3. Generated=3. Kept=3. proofs=0.
-Usable=3. Sos=0. Demods=0. Limbo=0, Disabled=9. Hints=0.
+Usable=3. Sos=0. Demods=0. Limbo=0, Disabled=8. Hints=0.
 Kept_by_rule=0, Deleted_by_rule=0.
 Forward_subsumed=0. Back_subsumed=0.
 Sos_limit_deleted=0. Sos_displaced=0. Sos_removed=0.
@@ -145,12 +142,12 @@ SEARCH FAILED
 
 Exiting with failure.
 
-Process 29686 exit (sos_empty) Sat Oct 17 13:02:00 2026
+Process 47270 exit (sos_empty) Fri Oct 23 14:35:08 2026
 
 WARNING: denials share constants (see output).
 
 
 SEARCH FAILED
 
------- process 29686 exit (sos_empty) ------
+------ process 47270 exit (sos_empty) ------
 

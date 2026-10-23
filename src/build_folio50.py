@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build a deterministic 50-example subset from curated FOLIO validation data."""
+"""Build a deterministic two-class 50-example curated FOLIO subset."""
 
 from __future__ import annotations
 
@@ -18,10 +18,27 @@ SEED = 42
 TARGET_SIZE = 50
 MIN_LONG_EXAMPLES = 10
 LONG_PREMISE_THRESHOLD = 5
-LABEL_QUOTAS = {"True": 17, "False": 17, "Uncertain": 16}
+LABEL_QUOTAS = {"True": 25, "False": 25}
+# Required by the four-case qualitative analysis. This curated example is
+# flagged only because its English "either ... or" construction is ambiguous;
+# the source note says its FOL translation is accurate, and its original,
+# corrected, and Z3 labels all agree on False.
+REQUIRED_SOURCE_EXAMPLE_IDS = frozenset({"concl_452_30"})
+# This curated row needs an extra uniqueness assumption recorded only in its
+# metadata. Without that unstated axiom, Prover9/Mace4 classify its published
+# FOL as Uncertain rather than False, so it is not a suitable known-answer row.
+EXCLUDED_SOURCE_EXAMPLE_IDS = frozenset(
+    {
+        "concl_83_75",   # needs an unstated uniqueness assumption
+        "concl_368_77",  # inconsistent premise set
+        "concl_435_157", # inconsistent premise set
+        "concl_435_158", # inconsistent premise set
+    }
+)
 
 SOURCE_DATASET = "DSAVlab-UNIUD/FOLIO_validation-curated"
 SOURCE_REVISION = "5d8ef8e26e04b77bc386482e3f7901e999a16113"
+SOURCE_LABELS = frozenset({"True", "False", "Uncertain"})
 VALID_LABELS = frozenset(LABEL_QUOTAS)
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -145,7 +162,7 @@ def resolve_label(row: dict[str, Any]) -> tuple[str, str]:
     """Use the curated label, including the source's documented fallback keys."""
     for field in ("label", "label_new", "label_z3"):
         value = row.get(field)
-        if value in VALID_LABELS:
+        if value in SOURCE_LABELS:
             return value, field
     raise DatasetError(
         f"No valid curated label for conclusion {row.get('id')!r}; "
@@ -266,25 +283,41 @@ def build_candidates(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
 def select_examples(
     candidates: list[dict[str, Any]], seed: int
 ) -> list[dict[str, Any]]:
-    """Select balanced examples, preferring only unambiguous candidates."""
+    """Select a balanced known-answer set, with one documented exception."""
     rng = random.Random(seed)
     shuffled = list(candidates)
     rng.shuffle(shuffled)
+    shuffled = [
+        row
+        for row in shuffled
+        if row["source_example_id"] not in EXCLUDED_SOURCE_EXAMPLE_IDS
+    ]
 
     unambiguous = [row for row in shuffled if not row["is_ambiguous"]]
     selected: list[dict[str, Any]] = []
 
     for label, quota in LABEL_QUOTAS.items():
-        preferred = [row for row in unambiguous if row["label"] == label]
-        fallback = [
-            row for row in shuffled if row["label"] == label and row["is_ambiguous"]
+        required = [
+            row
+            for row in shuffled
+            if row["label"] == label
+            and row["source_example_id"] in REQUIRED_SOURCE_EXAMPLE_IDS
         ]
-        available = preferred + fallback
-        if len(available) < quota:
+        if len(required) > quota:
+            raise DatasetError(f"Too many required {label} examples for quota {quota}.")
+        preferred = [row for row in unambiguous if row["label"] == label]
+        preferred = [
+            row
+            for row in preferred
+            if row["source_example_id"] not in REQUIRED_SOURCE_EXAMPLE_IDS
+        ]
+        remaining = quota - len(required)
+        if len(preferred) < remaining:
             raise DatasetError(
-                f"Need {quota} {label} examples, found {len(available)}."
+                f"Need {remaining} additional unambiguous {label} examples, "
+                f"found {len(preferred)}."
             )
-        selected.extend(available[:quota])
+        selected.extend(required + preferred[:remaining])
 
     # A deterministic same-label swap guarantees the >=5-premise constraint
     # without changing the requested class balance.
@@ -302,7 +335,9 @@ def select_examples(
             replaceable = [
                 row
                 for row in reversed(selected)
-                if row["label"] == label and not row["has_at_least_5_premises"]
+                if row["label"] == label
+                and not row["has_at_least_5_premises"]
+                and row["source_example_id"] not in REQUIRED_SOURCE_EXAMPLE_IDS
             ]
             for old, new in zip(replaceable, replacements):
                 index = selected.index(old)
@@ -318,6 +353,16 @@ def select_examples(
     selected.sort(key=lambda row: row["source_example_row_number"])
     for index, row in enumerate(selected, start=1):
         row["id"] = f"folio50-{index:03d}"
+        row["task_labels"] = ["True", "False"]
+        row["selection_seed"] = seed
+        row["selection_mode"] = "balanced_known_labels"
+        row["required_qualitative_case"] = (
+            row["source_example_id"] in REQUIRED_SOURCE_EXAMPLE_IDS
+        )
+        row["ambiguity_exception"] = (
+            row["source_example_id"] in REQUIRED_SOURCE_EXAMPLE_IDS
+            and row["is_ambiguous"]
+        )
         # Compatibility with the existing Qwen runner's result schema.
         row["source_index"] = row["source_example_row_number"] - 1
     return selected
@@ -334,6 +379,26 @@ def validate(examples: list[dict[str, Any]]) -> None:
         errors.append("generated IDs are not unique")
     if len(source_ids) != len(set(source_ids)):
         errors.append("source example IDs are not unique")
+
+    selected_source_ids = set(source_ids)
+    missing_required = REQUIRED_SOURCE_EXAMPLE_IDS - selected_source_ids
+    if missing_required:
+        errors.append(f"missing required qualitative cases: {sorted(missing_required)}")
+
+    unexpected_ambiguous = [
+        row["source_example_id"]
+        for row in examples
+        if row["is_ambiguous"]
+        and row["source_example_id"] not in REQUIRED_SOURCE_EXAMPLE_IDS
+    ]
+    if unexpected_ambiguous:
+        errors.append(
+            "unexpected ambiguous examples selected: " + ", ".join(unexpected_ambiguous)
+        )
+
+    invalid_labels = sorted({row["label"] for row in examples} - VALID_LABELS)
+    if invalid_labels:
+        errors.append(f"unexpected labels selected: {invalid_labels}")
 
     label_counts = Counter(row["label"] for row in examples)
     if label_counts != Counter(LABEL_QUOTAS):

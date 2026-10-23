@@ -1,10 +1,8 @@
 formulas(assumptions).
-(((p_german(c_heinrich_schmidt) & p_politician(c_heinrich_schmidt)) & p_member(c_heinrich_schmidt, c_prussian_state_parliament)) & p_member(c_heinrich_schmidt, c_nazi_reichstag)).
--(c_heinrich_schmidt = c_nazi_reichstag).
--(c_heinrich_schmidt = c_prussian_state_parliament).
--(c_nazi_reichstag = c_prussian_state_parliament).
+(((((all v_x ((p_deadly_disease(v_x) -> p_come_with(v_x, c_low_survival_rate))) & all v_x ((p_severe_cancer(v_x) -> p_deadly_disease(v_x)))) & all v_x ((p_bile_duct_cancer(v_x) -> p_severe_cancer(v_x)))) & all v_x ((p_cholangiocarcinoma(v_x) -> p_bile_duct_cancer(v_x)))) & all v_x ((p_mild_flu(v_x) -> p_come_with(v_x, c_low_survival_rate)))) & -((p_bile_duct_cancer(c_colorectal_cancer) & p_come_with(c_colorectal_cancer, c_low_survival_rate)))).
+-(c_colorectal_cancer = c_low_survival_rate).
 end_of_list.
 
 formulas(goals).
-all v_x ((p_politician(v_x) -> -(p_member(v_x, c_nazi_reichstag)))).
+(p_cholangiocarcinoma(c_colorectal_cancer) & (p_mild_flu(c_colorectal_cancer) | p_bile_duct_cancer(c_colorectal_cancer))).
 end_of_list.

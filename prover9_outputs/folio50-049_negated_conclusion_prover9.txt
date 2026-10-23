@@ -1,7 +1,7 @@
 ============================== Prover9 ===============================
 Prover9 (64) version 2009-11A, November 2009.
-Process 29740 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
-Sat Oct 17 13:02:00 2026
+Process 47321 was started by lukasfreimonas on Lukass-MacBook-Pro.local,
+Fri Oct 23 14:35:08 2026
 The command was "prover9 -t 5".
 ============================== end of head ===========================
 
@@ -233,7 +233,7 @@ SEARCH FAILED
 
 Exiting with 1 proof.
 
-Process 29740 exit (sos_empty) Sat Oct 17 13:02:00 2026
+Process 47321 exit (sos_empty) Fri Oct 23 14:35:08 2026
 
 WARNING: denials share constants (see output).
 
@@ -241,5 +241,5 @@ WARNING: denials share constants (see output).
 
 SEARCH FAILED
 
------- process 29740 exit (sos_empty) ------
+------ process 47321 exit (sos_empty) ------
 
